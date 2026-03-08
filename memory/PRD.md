@@ -42,7 +42,10 @@ A "Florárium Mester" (Florarium Master) mobil alkalmazás, amely terrárium nö
 - [x] Frontend API calls with language parameter
 
 ## In Progress
-- [ ] Database content translation (currently ~35/77 plants) - RUNNING IN BACKGROUND
+- None
+
+## Recently Completed (2025-03-08)
+- [x] Database content translation - ALL 77 plants translated to EN and EL
 
 ## Preview URL
 https://terrarium-guide-dev.preview.emergentagent.com
