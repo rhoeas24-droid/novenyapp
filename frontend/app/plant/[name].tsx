@@ -7,7 +7,6 @@ import {
   Image,
   ActivityIndicator,
   TouchableOpacity,
-  Dimensions,
 } from 'react-native';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -15,14 +14,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { usePlantStore } from '../../src/store/plantStore';
 import PlantCard from '../../src/components/PlantCard';
 import FilterChip from '../../src/components/FilterChip';
+import { useLanguage } from '../../src/i18n/LanguageContext';
 
 const HERO_HEIGHT = 250;
-
-const TERRARIUM_TYPES = [
-  { id: 'zart', label: 'Zárt', field: 'Z', color: '#2E7D32' },
-  { id: 'felzart', label: 'Félzárt', field: 'F', color: '#689F38' },
-  { id: 'nyitott', label: 'Nyitott', field: 'N', color: '#AFB42B' },
-] as const;
 
 export default function PlantDetailScreen() {
   const { name } = useLocalSearchParams<{ name: string }>();
@@ -30,6 +24,13 @@ export default function PlantDetailScreen() {
   const insets = useSafeAreaInsets();
   const [activeTab, setActiveTab] = useState<'info' | 'compatible'>('info');
   const [compatTerrariumType, setCompatTerrariumType] = useState<string | null>(null);
+  const { t } = useLanguage();
+
+  const TERRARIUM_TYPES = [
+    { id: 'zart', label: t('closed'), field: 'Z', color: '#2E7D32' },
+    { id: 'felzart', label: t('semiClosed'), field: 'F', color: '#689F38' },
+    { id: 'nyitott', label: t('open'), field: 'N', color: '#AFB42B' },
+  ] as const;
 
   const {
     selectedPlant,
@@ -57,7 +58,6 @@ export default function PlantDetailScreen() {
   useEffect(() => {
     if (name && activeTab === 'compatible') {
       const decodedName = decodeURIComponent(name);
-      // Update store terrarium type for compatibility filtering
       usePlantStore.setState({ selectedTerrariumType: compatTerrariumType as any });
       fetchCompatiblePlants(decodedName);
     }
@@ -77,7 +77,7 @@ export default function PlantDetailScreen() {
     return (
       <View style={styles.centered}>
         <ActivityIndicator size="large" color="#388E3C" />
-        <Text style={styles.loadingText}>Betöltés...</Text>
+        <Text style={styles.loadingText}>{t('loadingPlants')}</Text>
       </View>
     );
   }
@@ -85,7 +85,7 @@ export default function PlantDetailScreen() {
   if (error || !selectedPlant) {
     return (
       <View style={styles.centered}>
-        <Text style={styles.errorText}>{error || 'Növény nem található'}</Text>
+        <Text style={styles.errorText}>{error || t('errorLoading')}</Text>
       </View>
     );
   }
@@ -95,7 +95,7 @@ export default function PlantDetailScreen() {
       <Stack.Screen
         options={{
           title: selectedPlant.name,
-          headerBackTitle: 'Vissza',
+          headerBackTitle: t('back'),
         }}
       />
       <ScrollView
@@ -126,7 +126,7 @@ export default function PlantDetailScreen() {
 
           {/* Terrarium Compatibility */}
           <View style={styles.terrariumSection}>
-            <Text style={styles.sectionTitle}>Terrárium kompatibilitás</Text>
+            <Text style={styles.sectionTitle}>{t('terrariumCompatibility')}</Text>
             <View style={styles.terrariumRow}>
               {TERRARIUM_TYPES.map((type) => {
                 const value = selectedPlant[type.field as keyof typeof selectedPlant] as string;
@@ -159,7 +159,7 @@ export default function PlantDetailScreen() {
               style={styles.tabIcon}
             />
             <Text style={[styles.tabText, activeTab === 'info' && styles.activeTabText]}>
-              Információk
+              {t('information')}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -173,7 +173,7 @@ export default function PlantDetailScreen() {
               style={styles.tabIcon}
             />
             <Text style={[styles.tabText, activeTab === 'compatible' && styles.activeTabText]}>
-              Társítható ({compatiblePlants.length})
+              {t('compatible')} ({compatiblePlants.length})
             </Text>
           </TouchableOpacity>
         </View>
@@ -183,12 +183,12 @@ export default function PlantDetailScreen() {
           <View style={styles.infoSection}>
             {/* Basic Care */}
             <View style={styles.infoCard}>
-              <Text style={styles.cardTitle}>Alapvető gondozás</Text>
+              <Text style={styles.cardTitle}>{t('basicCare')}</Text>
               
               <View style={styles.infoRow}>
                 <Ionicons name="sunny" size={20} color="#FFA726" />
                 <View style={styles.infoContent}>
-                  <Text style={styles.infoLabel}>Fényigény</Text>
+                  <Text style={styles.infoLabel}>{t('lightRequirement')}</Text>
                   <Text style={styles.infoValue}>{selectedPlant.light}</Text>
                 </View>
               </View>
@@ -196,7 +196,7 @@ export default function PlantDetailScreen() {
               <View style={styles.infoRow}>
                 <Ionicons name="water" size={20} color="#42A5F5" />
                 <View style={styles.infoContent}>
-                  <Text style={styles.infoLabel}>Páratartalom</Text>
+                  <Text style={styles.infoLabel}>{t('humidity')}</Text>
                   <Text style={styles.infoValue}>{selectedPlant.humidity}</Text>
                 </View>
               </View>
@@ -204,7 +204,7 @@ export default function PlantDetailScreen() {
               <View style={styles.infoRow}>
                 <Ionicons name="thermometer" size={20} color="#EF5350" />
                 <View style={styles.infoContent}>
-                  <Text style={styles.infoLabel}>Hőmérséklet</Text>
+                  <Text style={styles.infoLabel}>{t('temperature')}</Text>
                   <Text style={styles.infoValue}>{selectedPlant.temp}</Text>
                 </View>
               </View>
@@ -213,7 +213,7 @@ export default function PlantDetailScreen() {
                 <View style={styles.infoRow}>
                   <Ionicons name="layers" size={20} color="#8D6E63" />
                   <View style={styles.infoContent}>
-                    <Text style={styles.infoLabel}>Szubsztrát</Text>
+                    <Text style={styles.infoLabel}>{t('substrate')}</Text>
                     <Text style={styles.infoValue}>{selectedPlant.substrate_notes}</Text>
                   </View>
                 </View>
@@ -222,14 +222,14 @@ export default function PlantDetailScreen() {
 
             {/* Growth Info */}
             <View style={styles.infoCard}>
-              <Text style={styles.cardTitle}>Növekedés</Text>
+              <Text style={styles.cardTitle}>{t('growth')}</Text>
               
               <View style={styles.infoRow}>
                 <Ionicons name="resize" size={20} color="#66BB6A" />
                 <View style={styles.infoContent}>
-                  <Text style={styles.infoLabel}>Méret</Text>
+                  <Text style={styles.infoLabel}>{t('size')}</Text>
                   <Text style={styles.infoValue}>
-                    {selectedPlant.height_cm} cm (magasság) × {selectedPlant.spread_cm} cm (szélesség)
+                    {selectedPlant.height_cm} cm ({t('height')}) × {selectedPlant.spread_cm} cm ({t('width')})
                   </Text>
                 </View>
               </View>
@@ -237,7 +237,7 @@ export default function PlantDetailScreen() {
               <View style={styles.infoRow}>
                 <Ionicons name="trending-up" size={20} color="#26A69A" />
                 <View style={styles.infoContent}>
-                  <Text style={styles.infoLabel}>Növekedési ütem</Text>
+                  <Text style={styles.infoLabel}>{t('growthRate')}</Text>
                   <Text style={styles.infoValue}>{selectedPlant.growth_rate}</Text>
                 </View>
               </View>
@@ -246,7 +246,7 @@ export default function PlantDetailScreen() {
                 <View style={styles.infoRow}>
                   <Ionicons name="git-branch" size={20} color="#7E57C2" />
                   <View style={styles.infoContent}>
-                    <Text style={styles.infoLabel}>Szaporítás</Text>
+                    <Text style={styles.infoLabel}>{t('propagation')}</Text>
                     <Text style={styles.infoValue}>{selectedPlant.propagation}</Text>
                   </View>
                 </View>
@@ -256,7 +256,7 @@ export default function PlantDetailScreen() {
                 <View style={styles.infoRow}>
                   <Ionicons name="locate" size={20} color="#5C6BC0" />
                   <View style={styles.infoContent}>
-                    <Text style={styles.infoLabel}>Szerep a terráriumban</Text>
+                    <Text style={styles.infoLabel}>{t('roleInTerrarium')}</Text>
                     <Text style={styles.infoValue}>{selectedPlant.role}</Text>
                   </View>
                 </View>
@@ -267,7 +267,7 @@ export default function PlantDetailScreen() {
             {selectedPlant.avoid && (
               <View style={[styles.infoCard, styles.warningCard]}>
                 <Text style={[styles.cardTitle, styles.warningTitle]}>
-                  <Ionicons name="warning" size={18} color="#F57C00" /> Figyelmeztetés
+                  <Ionicons name="warning" size={18} color="#F57C00" /> {t('warning')}
                 </Text>
                 <Text style={styles.warningText}>{selectedPlant.avoid}</Text>
               </View>
@@ -276,7 +276,7 @@ export default function PlantDetailScreen() {
             {/* Maintenance */}
             {selectedPlant.maintenance && (
               <View style={styles.infoCard}>
-                <Text style={styles.cardTitle}>Karbantartás</Text>
+                <Text style={styles.cardTitle}>{t('maintenance')}</Text>
                 <Text style={styles.maintenanceText}>{selectedPlant.maintenance}</Text>
               </View>
             )}
@@ -284,16 +284,16 @@ export default function PlantDetailScreen() {
             {/* Diseases */}
             {selectedPlant.diseases && (
               <View style={styles.infoCard}>
-                <Text style={styles.cardTitle}>Betegségek és kártevők</Text>
+                <Text style={styles.cardTitle}>{t('diseasesAndPests')}</Text>
                 
                 {selectedPlant.diseases.fungal?.length > 0 && (
                   <View style={styles.diseaseSection}>
-                    <Text style={styles.diseaseType}>Gombás betegségek</Text>
+                    <Text style={styles.diseaseType}>{t('fungalDiseases')}</Text>
                     {selectedPlant.diseases.fungal.map((d, i) => (
                       <View key={i} style={styles.diseaseItem}>
                         <Text style={styles.diseaseName}>{d.name}</Text>
-                        <Text style={styles.diseaseSymptoms}>Tünetek: {d.symptoms}</Text>
-                        <Text style={styles.diseaseTreatment}>Kezelés: {d.treatment}</Text>
+                        <Text style={styles.diseaseSymptoms}>{t('symptoms')}: {d.symptoms}</Text>
+                        <Text style={styles.diseaseTreatment}>{t('treatment')}: {d.treatment}</Text>
                       </View>
                     ))}
                   </View>
@@ -301,12 +301,12 @@ export default function PlantDetailScreen() {
 
                 {selectedPlant.diseases.pests?.length > 0 && (
                   <View style={styles.diseaseSection}>
-                    <Text style={styles.diseaseType}>Kártevők</Text>
+                    <Text style={styles.diseaseType}>{t('pests')}</Text>
                     {selectedPlant.diseases.pests.map((d, i) => (
                       <View key={i} style={styles.diseaseItem}>
                         <Text style={styles.diseaseName}>{d.name}</Text>
-                        <Text style={styles.diseaseSymptoms}>Tünetek: {d.symptoms}</Text>
-                        <Text style={styles.diseaseTreatment}>Kezelés: {d.treatment}</Text>
+                        <Text style={styles.diseaseSymptoms}>{t('symptoms')}: {d.symptoms}</Text>
+                        <Text style={styles.diseaseTreatment}>{t('treatment')}: {d.treatment}</Text>
                       </View>
                     ))}
                   </View>
@@ -314,12 +314,12 @@ export default function PlantDetailScreen() {
 
                 {selectedPlant.diseases.other?.length > 0 && (
                   <View style={styles.diseaseSection}>
-                    <Text style={styles.diseaseType}>Egyéb problémák</Text>
+                    <Text style={styles.diseaseType}>{t('otherProblems')}</Text>
                     {selectedPlant.diseases.other.map((d, i) => (
                       <View key={i} style={styles.diseaseItem}>
                         <Text style={styles.diseaseName}>{d.name}</Text>
-                        <Text style={styles.diseaseSymptoms}>Tünetek: {d.symptoms}</Text>
-                        <Text style={styles.diseaseTreatment}>Kezelés: {d.treatment}</Text>
+                        <Text style={styles.diseaseSymptoms}>{t('symptoms')}: {d.symptoms}</Text>
+                        <Text style={styles.diseaseTreatment}>{t('treatment')}: {d.treatment}</Text>
                       </View>
                     ))}
                   </View>
@@ -331,14 +331,14 @@ export default function PlantDetailScreen() {
           <View style={styles.compatibleSection}>
             {/* Filter for compatible plants */}
             <View style={styles.compatFilterSection}>
-              <Text style={styles.compatFilterLabel}>Szűrés terrárium típus szerint:</Text>
+              <Text style={styles.compatFilterLabel}>{t('filterByTerrarium')}</Text>
               <ScrollView
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 style={styles.compatFilterRow}
               >
                 <FilterChip
-                  label="Mind"
+                  label={t('all')}
                   selected={compatTerrariumType === null}
                   onPress={() => setCompatTerrariumType(null)}
                   color="#666"
@@ -360,7 +360,7 @@ export default function PlantDetailScreen() {
             </View>
 
             <Text style={styles.compatInfo}>
-              A kompatibilitás a páratartalom, fényigény és szubsztrát igények alapján kerül kiszámításra.
+              {t('compatibilityInfo')}
             </Text>
 
             {/* Compatible Plants Grid */}
@@ -378,7 +378,7 @@ export default function PlantDetailScreen() {
                 <View style={styles.noCompatible}>
                   <Ionicons name="leaf-outline" size={48} color="#ccc" />
                   <Text style={styles.noCompatibleText}>
-                    Nincs megfelelő kompatibilitású növény a szűrési feltételekkel.
+                    {t('noCompatiblePlants')}
                   </Text>
                 </View>
               )}

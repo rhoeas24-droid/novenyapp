@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -18,10 +18,29 @@ const queryClient = new QueryClient({
   },
 });
 
+function HeaderLanguageButton({ onPress }: { onPress: () => void }) {
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      style={{ marginRight: 8, padding: 4 }}
+    >
+      <Ionicons name="globe-outline" size={24} color="#fff" />
+    </TouchableOpacity>
+  );
+}
+
 function AppContent() {
   const [showSplash, setShowSplash] = useState(true);
   const [showLanguageSelector, setShowLanguageSelector] = useState(false);
   const { t } = useLanguage();
+
+  const openLanguageSelector = useCallback(() => {
+    setShowLanguageSelector(true);
+  }, []);
+
+  const closeLanguageSelector = useCallback(() => {
+    setShowLanguageSelector(false);
+  }, []);
 
   if (showSplash) {
     return <SplashScreen onFinish={() => setShowSplash(false)} />;
@@ -49,14 +68,7 @@ function AppContent() {
           options={{
             title: t('appName'),
             headerLargeTitle: false,
-            headerRight: () => (
-              <TouchableOpacity
-                onPress={() => setShowLanguageSelector(true)}
-                style={{ marginRight: 8, padding: 4 }}
-              >
-                <Ionicons name="globe-outline" size={24} color="#fff" />
-              </TouchableOpacity>
-            ),
+            headerRight: () => <HeaderLanguageButton onPress={openLanguageSelector} />,
           }}
         />
         <Stack.Screen
@@ -70,7 +82,7 @@ function AppContent() {
       
       <LanguageSelector
         visible={showLanguageSelector}
-        onClose={() => setShowLanguageSelector(false)}
+        onClose={closeLanguageSelector}
       />
     </>
   );
