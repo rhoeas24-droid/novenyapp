@@ -3324,5 +3324,294 @@
     "vessel_max": 25,
     "growth_rate": "Lassú",
     "substrate_group": "foliage"
+  },
+  {
+    "name": "Hypnum cupressiforme",
+    "common": "Sheet Moss / Szőnyegmoha",
+    "group": "Moss & Selaginella",
+    "family": "Hypnaceae",
+    "light": "Low–indirect, 2–4 h",
+    "temp": "10–25°C (opt. 12–20°C)",
+    "humidity": "60–90% RH; állandóan nedves",
+    "substrate_notes": "Savanyú, jól szellőző szubsztrát; sphagnum tőzeg + perlit mix; pH 5.5–6.5; kövekre, fára is telepíthető",
+    "propagation": "Division / fragmentation · ⭐ Very Easy · 2–4 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "✓ Kozmopolita faj; jól tartható beltérben; szellőztetésre érzékeny zárt terráriumban",
+    "avoid": "Zárt terráriumban rothadásra hajlamos ha nincs szellőzés; csapvíz sólerakódást okoz; erős fény elkerülése",
+    "maintenance": "Minimális; ha kiszárad, párásítással újraéleszthető; barnuló részek eltávolítása",
+    "role": "Groundcover / background carpet",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rothadás",
+          "symptoms": "Barna, pépessé váló foltok pangó levegőjű környezetben",
+          "treatment": "Szellőztetés javítása; érintett rész eltávolítása"
+        }
+      ],
+      "pests": [],
+      "other": [
+        {
+          "name": "Kiszáradás",
+          "symptoms": "Összecsukódó, száraz, matt levelek",
+          "treatment": "Áztatás desztillált vízben; párásítás növelése"
+        }
+      ]
+    },
+    "height_cm": "1–3",
+    "spread_cm": "15–40 (terítő szőnyeg)",
+    "vessel_min": 10,
+    "vessel_max": 40,
+    "growth_rate": "Közepes",
+    "substrate_group": "moss_both",
+    "image_file": "Hypnum cupressiforme.jpeg"
+  },
+  {
+    "name": "Leucobryum glaucum",
+    "common": "Cushion Moss / Párnás fehérmoha",
+    "group": "Moss & Selaginella",
+    "family": "Leucobryaceae",
+    "light": "Low–indirect, 3–5 h",
+    "temp": "10–24°C (opt. 12–20°C)",
+    "humidity": "70–95% RH; állandóan nedves de nem vízálló",
+    "substrate_notes": "Savanyú szubsztrát; sphagnum tőzeg + perlit mix; pH 5.0–5.8; kövekre, fára is telepíthető",
+    "propagation": "Division / fragmentation · ⭐ Very Easy · 2–4 wks",
+    "Z": "✓",
+    "F": "~",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "⚠ Mérsékelt övi faj; hőérzékeny; 24°C felett stresszelhet; AC-s szobában OK",
+    "avoid": "Közvetlen napfény tönkreteszi; túlöntözés kerülése — szivacsszerűen szívja a vizet; csapvíz kerülése",
+    "maintenance": "Minimális; áztatás desztillált vízben ha kiszárad; felesleges víz kinyomása",
+    "role": "Focal point / midground accent (párna-domb hatás)",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Penészesedés",
+          "symptoms": "Fehéres penészréteg a párna tetején",
+          "treatment": "Szellőztetés javítása; érintett rész eltávolítása; nem túlöntözni"
+        }
+      ],
+      "pests": [],
+      "other": [
+        {
+          "name": "Hőstressz elszíneződés",
+          "symptoms": "Fehéres-szürkés elszíneződés szárazság vagy meleg hatására",
+          "treatment": "Párásítás növelése; hőmérséklet csökkentése; áztatás"
+        }
+      ]
+    },
+    "height_cm": "3–10",
+    "spread_cm": "5–30 (párna-csomók)",
+    "vessel_min": 10,
+    "vessel_max": 35,
+    "growth_rate": "Lassú",
+    "substrate_group": "moss_both",
+    "image_file": "Leucobryum_glaucum.jpg"
+  },
+  {
+    "name": "Octoblepharum albidum",
+    "common": "White Moss / Fehér moha",
+    "group": "Moss & Selaginella",
+    "family": "Octoblepharaceae",
+    "light": "Indirect–bright, 4–6 h",
+    "temp": "18–30°C (opt. 20–26°C)",
+    "humidity": "70–95% RH; nedvesen tartani de jó drénázs szükséges",
+    "substrate_notes": "Savanyú, jól drenáló szubsztrát; epifiton — fára, kőre is telepíthető; pH 5.0–6.0",
+    "propagation": "Division / fragmentation · ⭐ Very Easy · 2–4 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "~",
+    "cites": "—",
+    "cyprus": "✓ Trópusi/szubtrópusi faj; meleget jól tűri; Cipruson is tartható",
+    "avoid": "Pangó víz rothadást okoz; jó szellőzés és drénázs elengedhetetlen; nem tűri a tartós szárazságot",
+    "maintenance": "Minimális; rendszeres párásítás; barnuló részek eltávolítása",
+    "role": "Groundcover / epiphyte accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rothadás",
+          "symptoms": "Barna, szétmálló részek túlnedves környezetben",
+          "treatment": "Drénázs javítása; szellőztetés; érintett rész eltávolítása"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "1–3",
+    "spread_cm": "5–20 (terítő)",
+    "vessel_min": 8,
+    "vessel_max": 30,
+    "growth_rate": "Közepes",
+    "substrate_group": "moss_both",
+    "image_file": "Octoblepharum albidum.webp"
+  },
+  {
+    "name": "Thuidium tamariscinum",
+    "common": "Tamarisk Moss / Ciprusmoha",
+    "group": "Moss & Selaginella",
+    "family": "Thuidiaceae",
+    "light": "Low–indirect, 2–5 h",
+    "temp": "10–25°C (opt. 14–22°C)",
+    "humidity": "70–95% RH; állandóan nedves",
+    "substrate_notes": "Savanyú erdei komposzt; sphagnum tőzeg + perlit; pH 5.0–6.5; giliszta humusz kiegészítés ajánlott",
+    "propagation": "Division / fragmentation · ⭐⭐ Easy · 3–6 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "⚠ Mérsékelt övi faj; hűvösebb hőmérsékletet preferál; AC-s szobában OK",
+    "avoid": "Erős direkt fény kerülése; pangó víz rothadást okozhat; kiszáradás elkerülése",
+    "maintenance": "Minimális; barnuló részek eltávolítása; felső réteg párásítása",
+    "role": "Groundcover / midground (páfrányszerű textúra)",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rothadás",
+          "symptoms": "Barna, pépessé váló részek túlnedves/meleg környezetben",
+          "treatment": "Hőmérséklet csökkentése; szellőztetés; érintett rész eltávolítása"
+        }
+      ],
+      "pests": [],
+      "other": [
+        {
+          "name": "Hőstressz",
+          "symptoms": "Barnás-narancssárga elszíneződés meleg hatására",
+          "treatment": "Hűvösebb helyre mozgatás; párásítás növelése"
+        }
+      ]
+    },
+    "height_cm": "3–10",
+    "spread_cm": "15–40 (terítő szőnyeg)",
+    "vessel_min": 12,
+    "vessel_max": 40,
+    "growth_rate": "Közepes",
+    "substrate_group": "moss_both",
+    "image_file": "Thuidium tamariscinum.jpeg"
+  },
+  {
+    "name": "Sphagnum affine",
+    "common": "Sphagnum Moss / Tőzegmoha",
+    "group": "Moss & Selaginella",
+    "family": "Sphagnaceae",
+    "light": "Low–indirect, 3–5 h",
+    "temp": "10–25°C (opt. 12–20°C)",
+    "humidity": "80–100% RH; állandóan vizes",
+    "substrate_notes": "Savas szubsztrát; pH 3.5–5.0; tápanyagszegény; desztillált/esővíz szükséges; NE trágyázz",
+    "propagation": "Division / fragmentation · ⭐ Very Easy · 2–4 wks",
+    "Z": "✓",
+    "F": "~",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "✗ Hűvös mérsékelt/boreális faj; meleg éghajlat nem alkalmas",
+    "avoid": "Csapvíz és trágyázás tilos — savanyú, tápanyagszegény közeget igényel; lombos növényeknek mérgező a savas pH",
+    "maintenance": "Minimális; desztillált vízzel nedvesen tartani; hőmérséklet ellenőrzése",
+    "role": "Groundcover / substrate layer (húsevő társítás)",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Algásodás",
+          "symptoms": "Zöld algabevonat a felszínen",
+          "treatment": "Fény csökkentése; levegőztetés"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "3–15",
+    "spread_cm": "10–30 (terítő)",
+    "vessel_min": 10,
+    "vessel_max": 35,
+    "growth_rate": "Lassú–közepes",
+    "substrate_group": "sphagnum_acidic",
+    "image_file": "Sphagnum affine .jpg"
+  },
+  {
+    "name": "Sphagnum medium",
+    "common": "Sphagnum Moss / Közép-tőzegmoha",
+    "group": "Moss & Selaginella",
+    "family": "Sphagnaceae",
+    "light": "Low–indirect, 3–5 h",
+    "temp": "8–22°C (opt. 10–18°C)",
+    "humidity": "80–100% RH; állandóan vizes",
+    "substrate_notes": "Savas szubsztrát; pH 3.5–5.0; tápanyagszegény; desztillált/esővíz szükséges; NE trágyázz",
+    "propagation": "Division / fragmentation · ⭐ Very Easy · 2–4 wks",
+    "Z": "✓",
+    "F": "~",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "✗ Hűvös boreális faj; meleg éghajlat nem alkalmas; hűtött zárt terráriumban tartható",
+    "avoid": "Csapvíz és trágyázás tilos; savas pH a legtöbb más növénynek nem megfelelő; csak húsevőkkel és más Sphagnumokkal párosítható",
+    "maintenance": "Minimális; desztillált vízzel nedvesen tartani; hőmérséklet ellenőrzése nyáron",
+    "role": "Groundcover / substrate layer (húsevő társítás)",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Algásodás",
+          "symptoms": "Zöld algabevonat a felszínen túl sok fénynél",
+          "treatment": "Fény csökkentése; levegőztetés; érintett réteg eltávolítása"
+        }
+      ],
+      "pests": [],
+      "other": [
+        {
+          "name": "Hőstressz",
+          "symptoms": "Fehéredés, szürkülés meleg hatására",
+          "treatment": "Hőmérséklet csökkentése; hűtés biztosítása"
+        }
+      ]
+    },
+    "height_cm": "5–20",
+    "spread_cm": "10–40 (terítő párna)",
+    "vessel_min": 12,
+    "vessel_max": 40,
+    "growth_rate": "Lassú",
+    "substrate_group": "sphagnum_acidic",
+    "image_file": "Sphagnum medium.jpg"
+  },
+  {
+    "name": "Sphagnum magellanicum",
+    "common": "Magellán-tőzegmoha / Red Bog Moss",
+    "group": "Moss & Selaginella",
+    "family": "Sphagnaceae",
+    "light": "Low–indirect, 3–5 h",
+    "temp": "8–22°C (opt. 10–18°C)",
+    "humidity": "80–100% RH; állandóan vizes",
+    "substrate_notes": "Savas szubsztrát; pH 3.5–4.5; tápanyagszegény; desztillált/esővíz szükséges; NE trágyázz",
+    "propagation": "Division / fragmentation · ⭐ Very Easy · 2–4 wks",
+    "Z": "✓",
+    "F": "~",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "✗ Boreális lápi faj; meleg éghajlat nem alkalmas; hűtött zárt terráriumban tartható",
+    "avoid": "Csapvíz és trágyázás tilos; erősen savanyítja a közeget; csak húsevőkkel és más Sphagnumokkal párosítható; vörös szín erős fényben intenzívebb",
+    "maintenance": "Minimális; desztillált vízzel állandóan nedvesen tartani; hőmérséklet ellenőrzése",
+    "role": "Groundcover / substrate layer / dekoratív szín-akcentus (húsevő társítás)",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Algásodás",
+          "symptoms": "Zöld algabevonat a felszínen",
+          "treatment": "Fény csökkentése; levegőztetés"
+        }
+      ],
+      "pests": [],
+      "other": [
+        {
+          "name": "Hőstressz",
+          "symptoms": "Fehéredés, színvesztés meleg hatására",
+          "treatment": "Hőmérséklet csökkentése; hűtés biztosítása"
+        }
+      ]
+    },
+    "height_cm": "5–25",
+    "spread_cm": "10–40 (terítő párna)",
+    "vessel_min": 12,
+    "vessel_max": 40,
+    "growth_rate": "Lassú",
+    "substrate_group": "sphagnum_acidic",
+    "image_file": "Sphagnum_magellanicum.jpg"
   }
 ]

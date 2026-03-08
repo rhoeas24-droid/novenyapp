@@ -2,14 +2,14 @@
   "compatibility_rules": {
     "succulent": {
       "compatible_with": ["tillandsia"],
-      "incompatible_with": ["foliage", "carnivorous", "moss_compatible_with_foliage", "sphagnum_acidic"],
+      "incompatible_with": ["foliage", "carnivorous", "moss_both", "sphagnum_acidic"],
       "ideal_terrarium": "open",
       "humidity_range": "20-50%",
       "light_needs": "bright indirect to direct",
       "warnings": ["Avoid high humidity environments to prevent rot, well-draining substrate is crucial."]
     },
     "foliage": {
-      "compatible_with": ["moss_compatible_with_foliage", "tillandsia"],
+      "compatible_with": ["moss_both", "tillandsia"],
       "incompatible_with": ["succulent", "carnivorous", "sphagnum_acidic"],
       "ideal_terrarium": "semi-closed or closed",
       "humidity_range": "50-80%",
@@ -18,14 +18,14 @@
     },
     "carnivorous": {
       "compatible_with": ["sphagnum_acidic"],
-      "incompatible_with": ["succulent", "foliage", "moss_compatible_with_foliage"],
+      "incompatible_with": ["succulent", "foliage", "moss_both"],
       "ideal_terrarium": "closed",
       "humidity_range": "60-90%",
       "light_needs": "bright indirect to direct",
       "warnings": ["Requires low-nutrient, acidic substrates; distilled or rainwater preferred."]
     },
-    "moss_compatible_with_foliage": {
-      "compatible_with": ["foliage", "moss_compatible_with_foliage"],
+    "moss_both": {
+      "compatible_with": ["foliage", "moss_both"],
       "incompatible_with": ["succulent", "carnivorous"],
       "ideal_terrarium": "semi-closed to closed",
       "humidity_range": "70-100%",
@@ -34,7 +34,7 @@
     },
     "sphagnum_acidic": {
       "compatible_with": ["carnivorous"],
-      "incompatible_with": ["succulent", "foliage", "moss_compatible_with_foliage"],
+      "incompatible_with": ["succulent", "foliage", "moss_both"],
       "ideal_terrarium": "closed",
       "humidity_range": "70-90%",
       "light_needs": "low to bright indirect",

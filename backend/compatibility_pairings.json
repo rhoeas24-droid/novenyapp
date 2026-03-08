@@ -252,6 +252,45 @@
       "terrarium_type": "open",
       "substrate": "succulent",
       "care_level": "easy"
+    },
+    {
+      "name": "Carnivorous Bog",
+      "plants": [
+        "Sphagnum magellanicum",
+        "Sphagnum affine",
+        "Drosera capensis",
+        "Drosera spatulata",
+        "Drosera rotundifolia"
+      ],
+      "terrarium_type": "closed",
+      "substrate": "sphagnum_acidic",
+      "care_level": "medium"
+    },
+    {
+      "name": "Temperate Moss Garden",
+      "plants": [
+        "Hypnum cupressiforme",
+        "Leucobryum glaucum",
+        "Thuidium tamariscinum",
+        "Plagiomnium affine",
+        "Selaginella uncinata"
+      ],
+      "terrarium_type": "closed",
+      "substrate": "moss_both",
+      "care_level": "easy"
+    },
+    {
+      "name": "Tropical Moss Carpet",
+      "plants": [
+        "Octoblepharum albidum",
+        "Taxiphyllum barbieri",
+        "Ficus pumila",
+        "Fittonia albivenis",
+        "Peperomia caperata"
+      ],
+      "terrarium_type": "closed",
+      "substrate": "foliage",
+      "care_level": "easy"
     }
   ]
 }
