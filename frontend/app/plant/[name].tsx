@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   View,
   Text,
@@ -8,28 +8,25 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
-import { useGlobalSearchParams, useRouter, Stack, useFocusEffect, usePathname } from 'expo-router';
+import { useGlobalSearchParams, useRouter, Stack, useFocusEffect } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { usePlantStore } from '../../src/store/plantStore';
 import PlantCard from '../../src/components/PlantCard';
 import FilterChip from '../../src/components/FilterChip';
 import { useLanguage } from '../../src/i18n/LanguageContext';
 import { Plant, getPlantDetail, getCompatiblePlants } from '../../src/api/client';
-import { getFromCache, setToCache } from '../../src/api/plantCache';
 
 const HERO_HEIGHT = 250;
 
 export default function PlantDetailScreen() {
-  const { name } = useGlobalSearchParams<{ name: string }>();
-  const pathname = usePathname();
+  const params = useGlobalSearchParams();
+  const name = params.name as string;
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const [activeTab, setActiveTab] = useState<'info' | 'compatible'>('info');
   const [compatTerrariumType, setCompatTerrariumType] = useState<string | null>(null);
   const { t } = useLanguage();
 
-  // Local state for this screen
   const [plant, setPlant] = useState<Plant | null>(null);
   const [compatiblePlants, setCompatiblePlants] = useState<Plant[]>([]);
   const [loading, setLoading] = useState(true);
@@ -41,72 +38,64 @@ export default function PlantDetailScreen() {
     { id: 'nyitott', label: t('open'), field: 'N', color: '#AFB42B' },
   ] as const;
 
-  // Load plant data - check cache first, then fetch
-  const loadPlantData = useCallback(async (plantName: string) => {
-    console.log('[PlantDetail] loadPlantData called for:', plantName);
-    
-    // Check cache first
-    const cached = getFromCache(plantName);
-    if (cached) {
-      console.log('[PlantDetail] Found in cache:', plantName);
-      setPlant(cached.plant);
-      setCompatiblePlants(cached.compatiblePlants);
-      setLoading(false);
-      setError(null);
-      return;
-    }
-    
-    // Not in cache, fetch from API
-    console.log('[PlantDetail] Fetching from API:', plantName);
-    setLoading(true);
-    setError(null);
-    
-    try {
-      const [plantData, compatData] = await Promise.all([
-        getPlantDetail(plantName),
-        getCompatiblePlants(plantName, undefined, 20)
-      ]);
-      
-      console.log('[PlantDetail] API success:', plantData.name);
-      
-      // Save to cache
-      setToCache(plantName, plantData, compatData.compatible_plants);
-      
-      // Update state
-      setPlant(plantData);
-      setCompatiblePlants(compatData.compatible_plants);
-      setError(null);
-    } catch (err) {
-      console.log('[PlantDetail] API error:', err);
-      setError(t('errorLoading'));
-      setPlant(null);
-    } finally {
-      setLoading(false);
-    }
-  }, [t]);
-
-  // Load on every focus - use pathname to detect actual route changes
+  // Always load fresh data on focus
   useFocusEffect(
     useCallback(() => {
-      if (name) {
+      let isActive = true;
+      
+      const loadData = async () => {
+        if (!name) return;
+        
         const decodedName = decodeURIComponent(name);
-        console.log('[PlantDetail] Focus effect for:', decodedName, 'pathname:', pathname);
-        loadPlantData(decodedName);
-      }
-    }, [pathname]) // Depend on pathname instead of name
+        setLoading(true);
+        setError(null);
+        
+        try {
+          const [plantData, compatData] = await Promise.all([
+            getPlantDetail(decodedName),
+            getCompatiblePlants(decodedName, undefined, 20)
+          ]);
+          
+          if (isActive) {
+            setPlant(plantData);
+            setCompatiblePlants(compatData.compatible_plants);
+          }
+        } catch (err) {
+          if (isActive) {
+            setError(t('errorLoading'));
+          }
+        } finally {
+          if (isActive) {
+            setLoading(false);
+          }
+        }
+      };
+      
+      loadData();
+      
+      return () => {
+        isActive = false;
+      };
+    }, [name, t])
   );
 
   // Reload compatible plants when filter changes
-  useEffect(() => {
-    if (name && activeTab === 'compatible' && plant) {
-      const decodedName = decodeURIComponent(name);
-      getCompatiblePlants(decodedName, compatTerrariumType || undefined, 20)
-        .then((data) => {
-          setCompatiblePlants(data.compatible_plants);
-        })
-        .catch(() => {});
+  const reloadCompatible = useCallback(async () => {
+    if (!name || !plant) return;
+    const decodedName = decodeURIComponent(name);
+    try {
+      const data = await getCompatiblePlants(decodedName, compatTerrariumType || undefined, 20);
+      setCompatiblePlants(data.compatible_plants);
+    } catch {}
+  }, [name, compatTerrariumType, plant]);
+
+  // Handle filter change
+  const handleFilterChange = (type: string | null) => {
+    setCompatTerrariumType(type);
+    if (type !== compatTerrariumType) {
+      reloadCompatible();
     }
-  }, [compatTerrariumType, activeTab, plant, name]);
+  };
 
   const handleCompatiblePlantPress = (plantName: string) => {
     router.push(`/plant/${encodeURIComponent(plantName)}`);
