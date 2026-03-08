@@ -1,0 +1,257 @@
+{
+  "recommended_pairings": {
+    "Nephrolepis cordifolia": {
+      "excellent_companions": [
+        "Asplenium nidus",
+        "Ficus pumila",
+        "Peperomia caperata",
+        "Philodendron oxycardium",
+        "Syngonium podophyllum"
+      ],
+      "good_companions": [
+        "Hypoestes phyllostachya",
+        "Fittonia albivenis",
+        "Pilea dipressa"
+      ],
+      "avoid_pairing_with": [
+        "Aloe vera (substrate and humidity mismatch)",
+        "Drosera capensis (substrate conflict)",
+        "Tillandsia ionantha (different light and air needs)"
+      ],
+      "terrarium_type": "semi-closed",
+      "substrate": "foliage"
+    },
+    "Asplenium nidus": {
+      "excellent_companions": [
+        "Nephrolepis cordifolia",
+        "Cryptanthus bivittatus",
+        "Peperomia obtusifolia",
+        "Selaginella uncinata",
+        "Fittonia albivenis"
+      ],
+      "good_companions": [
+        "Pilea multiflora",
+        "Syngonium podophyllum",
+        "Philodendron oxycardium"
+      ],
+      "avoid_pairing_with": [
+        "Haworthia cooperi (humidity sensitive)",
+        "Gasteria bicolor (substrate mismatch)",
+        "Tillandsia tectorum (requires different air flow)"
+      ],
+      "terrarium_type": "semi-closed",
+      "substrate": "foliage"
+    },
+    "Ficus pumila": {
+      "excellent_companions": [
+        "Peperomia verticillata",
+        "Pilea depressa",
+        "Nephrolepis exaltata",
+        "Hypoestes phyllostachya",
+        "Peperomia caperata"
+      ],
+      "good_companions": [
+        "Asplenium nidus",
+        "Philodendron oxycardium"
+      ],
+      "avoid_pairing_with": [
+        "Crassula muscosa (requires dry environments)",
+        "Drosera prolifera (substrate and moisture conflict)"
+      ],
+      "terrarium_type": "closed",
+      "substrate": "foliage"
+    },
+    "Peperomia caperata": {
+      "excellent_companions": [
+        "Ficus pumila",
+        "Nephrolepis cordifolia",
+        "Hypoestes phyllostachya",
+        "Philodendron oxycardium",
+        "Cryptanthus bivittatus"
+      ],
+      "good_companions": [
+        "Syngonium podophyllum",
+        "Pilea multiflora"
+      ],
+      "avoid_pairing_with": [
+        "Graptopetalum paraguayense (substrate mismatch)",
+        "Tillandsia concolor (different air circulation needs)"
+      ],
+      "terrarium_type": "semi-closed",
+      "substrate": "foliage"
+    },
+    "Philodendron oxycardium": {
+      "excellent_companions": [
+        "Syngonium podophyllum",
+        "Peperomia obtusifolia",
+        "Nephrolepis exaltata",
+        "Ficus pumila",
+        "Fittonia albivenis"
+      ],
+      "good_companions": [
+        "Peperomia verticillata",
+        "Hypoestes phyllostachya"
+      ],
+      "avoid_pairing_with": [
+        "Succulents (humidity and substrate conflict)"
+      ],
+      "terrarium_type": "semi-closed",
+      "substrate": "foliage"
+    },
+    "Syngonium podophyllum": {
+      "excellent_companions": [
+        "Philodendron oxycardium",
+        "Peperomia caperata",
+        "Cryptanthus bivittatus",
+        "Fittonia albivenis",
+        "Ficus pumila"
+      ],
+      "good_companions": [
+        "Hypoestes phyllostachya",
+        "Selaginella uncinata"
+      ],
+      "avoid_pairing_with": [
+        "Nepenthes alata (different substrate needs)"
+      ],
+      "terrarium_type": "closed",
+      "substrate": "foliage"
+    },
+    "Cryptanthus bivittatus": {
+      "excellent_companions": [
+        "Syngonium podophyllum",
+        "Philodendron oxycardium",
+        "Peperomia verticillata",
+        "Peperomia caperata",
+        "Ficus pumila"
+      ],
+      "good_companions": [
+        "Asplenium nidus"
+      ],
+      "avoid_pairing_with": [
+        "Succulents (bright light conflict)",
+        "Tillandsia xantho (requires different environment)",
+        "Drosera slackii (substrate conflict)"
+      ],
+      "terrarium_type": "semi-closed",
+      "substrate": "foliage"
+    },
+    "Fittonia albivenis": {
+      "excellent_companions": [
+        "Nephrolepis cordifolia",
+        "Syngonium podophyllum",
+        "Cryptanthus bivittatus",
+        "Pilea depressa",
+        "Ficus pumila"
+      ],
+      "good_companions": [
+        "Philodendron oxycardium",
+        "Asplenium nidus"
+      ],
+      "avoid_pairing_with": [
+        "Succulents (humidity conflict)"
+      ],
+      "terrarium_type": "closed",
+      "substrate": "foliage"
+    },
+    "Selaginella uncinata": {
+      "excellent_companions": [
+        "Nephrolepis cordifolia",
+        "Asplenium nidus",
+        "Philodendron oxycardium",
+        "Hypoestes phyllostachya",
+        "Syngonium podophyllum"
+      ],
+      "good_companions": [
+        "Ficus pumila",
+        "Peperomia caperata"
+      ],
+      "avoid_pairing_with": [
+        "Succulents (high humidity conflict)"
+      ],
+      "terrarium_type": "semi-closed",
+      "substrate": "moss_compatible_with_foliage"
+    },
+    "Hypoestes phyllostachya": {
+      "excellent_companions": [
+        "Peperomia obtusifolia",
+        "Ficus pumila",
+        "Syngonium podophyllum",
+        "Peperomia caperata",
+        "Nephrolepis exaltata"
+      ],
+      "good_companions": [
+        "Philodendron oxycardium",
+        "Fittonia albivenis"
+      ],
+      "avoid_pairing_with": [
+        "Tillandsia variabilis (environmental mismatch)",
+        "Succulents (humidity conflict)"
+      ],
+      "terrarium_type": "closed",
+      "substrate": "foliage"
+    }
+  },
+  "quick_terrarium_recipes": [
+    {
+      "name": "Tropical Fern Paradise",
+      "plants": [
+        "Nephrolepis cordifolia",
+        "Asplenium nidus",
+        "Fittonia albivenis",
+        "Ficus pumila",
+        "Hypoestes phyllostachya"
+      ],
+      "terrarium_type": "closed",
+      "substrate": "foliage",
+      "care_level": "easy"
+    },
+    {
+      "name": "Jungle Floor Mix",
+      "plants": [
+        "Philodendron oxycardium",
+        "Syngonium podophyllum",
+        "Peperomia caperata",
+        "Selaginella uncinata"
+      ],
+      "terrarium_type": "semi-closed",
+      "substrate": "foliage",
+      "care_level": "medium"
+    },
+    {
+      "name": "Mossy Retreat",
+      "plants": [
+        "Selaginella martensii",
+        "Kindbergia praelonga",
+        "Hypoestes phyllostachya",
+        "Asplenium nidus"
+      ],
+      "terrarium_type": "closed",
+      "substrate": "moss_compatible_with_foliage",
+      "care_level": "hard"
+    },
+    {
+      "name": "Airy Forest",
+      "plants": [
+        "Tillandsia bulbosa",
+        "Tillandsia pruinosa",
+        "Peperomia verticillata",
+        "Cryptanthus bivittatus"
+      ],
+      "terrarium_type": "semi-closed",
+      "substrate": "none for tillandsia",
+      "care_level": "medium"
+    },
+    {
+      "name": "Desert Oasis",
+      "plants": [
+        "Aloe vera",
+        "Graptopetalum paraguayense",
+        "Gymnocalycium mihanovichii",
+        "Haworthia cooperi"
+      ],
+      "terrarium_type": "open",
+      "substrate": "succulent",
+      "care_level": "easy"
+    }
+  ]
+}

@@ -379,6 +379,95 @@ async def reset_database():
     return {"status": "reset", "plants_count": plants_collection.count_documents({})}
 
 
+# Substrate compatibility rules
+SUBSTRATE_COMPATIBILITY = {
+    "succulent": {
+        "compatible_with": ["succulent", "tillandsia_no_substrate"],
+        "ideal_terrarium": "nyitott"
+    },
+    "foliage": {
+        "compatible_with": ["foliage", "moss_compatible_with_foliage", "tillandsia_no_substrate"],
+        "ideal_terrarium": "felzart"
+    },
+    "carnivorous": {
+        "compatible_with": ["carnivorous", "sphagnum_acidic"],
+        "ideal_terrarium": "zart"
+    },
+    "moss_compatible_with_foliage": {
+        "compatible_with": ["foliage", "moss_compatible_with_foliage"],
+        "ideal_terrarium": "zart"
+    },
+    "sphagnum_acidic": {
+        "compatible_with": ["carnivorous", "sphagnum_acidic"],
+        "ideal_terrarium": "zart"
+    },
+    "tillandsia_no_substrate": {
+        "compatible_with": ["succulent", "foliage", "tillandsia_no_substrate"],
+        "ideal_terrarium": "felzart"
+    }
+}
+
+
+@app.get("/api/plants/{plant_name}/substrate-compatible")
+async def get_substrate_compatible_plants(
+    plant_name: str,
+    limit: int = Query(default=30, le=77),
+    lang: str = "hu"
+):
+    """Get plants compatible based on substrate requirements"""
+    # Get the base plant
+    plant = plants_collection.find_one({"name": plant_name})
+    if not plant:
+        plant = plants_collection.find_one(
+            {"name": {"$regex": f"^{re.escape(plant_name)}$", "$options": "i"}}
+        )
+    
+    if not plant:
+        raise HTTPException(status_code=404, detail="Növény nem található")
+    
+    base_substrate = plant.get('substrate_group', 'foliage')
+    compatible_substrates = SUBSTRATE_COMPATIBILITY.get(base_substrate, {}).get('compatible_with', [base_substrate])
+    
+    # Find all plants with compatible substrates
+    all_plants = list(plants_collection.find({
+        "name": {"$ne": plant['name']},
+        "substrate_group": {"$in": compatible_substrates}
+    }))
+    
+    # Calculate compatibility scores
+    compatible = []
+    for other in all_plants:
+        score = calculate_compatibility_score(plant, other)
+        if score >= 30:
+            other['_id'] = str(other['_id'])
+            other['compatibility_score'] = score
+            # Remove image for performance
+            other.pop('image_base64', None)
+            apply_translations(other, lang)
+            other.pop('translations', None)
+            compatible.append(other)
+    
+    # Sort by score
+    compatible.sort(key=lambda x: x['compatibility_score'], reverse=True)
+    
+    # Apply translations to main plant
+    apply_translations(plant, lang)
+    plant.pop('translations', None)
+    plant['_id'] = str(plant['_id'])
+    
+    return {
+        "plant": {
+            "_id": plant['_id'],
+            "name": plant['name'],
+            "common": plant.get('common', ''),
+            "substrate_group": base_substrate,
+            "compatible_substrates": compatible_substrates
+        },
+        "compatible_plants": compatible[:limit],
+        "total": len(compatible)
+    }
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8001)

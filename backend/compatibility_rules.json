@@ -1,0 +1,78 @@
+{
+  "compatibility_rules": {
+    "succulent": {
+      "compatible_with": ["tillandsia"],
+      "incompatible_with": ["foliage", "carnivorous", "moss_compatible_with_foliage", "sphagnum_acidic"],
+      "ideal_terrarium": "open",
+      "humidity_range": "20-50%",
+      "light_needs": "bright indirect to direct",
+      "warnings": ["Avoid high humidity environments to prevent rot, well-draining substrate is crucial."]
+    },
+    "foliage": {
+      "compatible_with": ["moss_compatible_with_foliage", "tillandsia"],
+      "incompatible_with": ["succulent", "carnivorous", "sphagnum_acidic"],
+      "ideal_terrarium": "semi-closed or closed",
+      "humidity_range": "50-80%",
+      "light_needs": "low to bright indirect",
+      "warnings": ["Maintain consistent moisture in substrate; avoid prolonged periods of sogginess to prevent root rot."]
+    },
+    "carnivorous": {
+      "compatible_with": ["sphagnum_acidic"],
+      "incompatible_with": ["succulent", "foliage", "moss_compatible_with_foliage"],
+      "ideal_terrarium": "closed",
+      "humidity_range": "60-90%",
+      "light_needs": "bright indirect to direct",
+      "warnings": ["Requires low-nutrient, acidic substrates; distilled or rainwater preferred."]
+    },
+    "moss_compatible_with_foliage": {
+      "compatible_with": ["foliage"],
+      "incompatible_with": ["succulent", "carnivorous"],
+      "ideal_terrarium": "semi-closed to closed",
+      "humidity_range": "70-100%",
+      "light_needs": "low to indirect",
+      "warnings": ["Ensure constant moisture is maintained; high humidity is essential to prevent drying out."]
+    },
+    "sphagnum_acidic": {
+      "compatible_with": ["carnivorous"],
+      "incompatible_with": ["succulent", "foliage", "moss_compatible_with_foliage"],
+      "ideal_terrarium": "closed",
+      "humidity_range": "70-90%",
+      "light_needs": "low to bright indirect",
+      "warnings": ["Acidifies the substrate, which is suitable for carnivorous plants but harmful to others."]
+    },
+    "tillandsia": {
+      "compatible_with": ["succulent", "foliage"],
+      "incompatible_with": ["carnivorous", "sphagnum_acidic"],
+      "ideal_terrarium": "open",
+      "humidity_range": "40-80%",
+      "light_needs": "bright indirect to direct",
+      "warnings": ["No substrate required; ensure good air circulation, avoid overwatering."]
+    }
+  },
+  "pairing_matrix": {
+    "succulent+succulent": "excellent",
+    "succulent+foliage": "incompatible - different substrate needs",
+    "foliage+foliage": "excellent",
+    "foliage+moss": "good - similar requirements",
+    "carnivorous+carnivorous": "excellent",
+    "carnivorous+sphagnum_acidic": "excellent",
+    "moss+foliage": "good - compatible moisture needs",
+    "tillandsia+succulent": "good - low substrate needs",
+    "tillandsia+foliage": "good - both adaptable",
+    "tillandsia+tillandsia": "excellent",
+    "succulent+carnivorous": "incompatible - substrate conflict"
+  },
+  "tillandsia_special_rules": {
+    "high_air_circulation_needed": [
+      "Tillandsia aeranthos",
+      "Tillandsia ionantha",
+      "Tillandsia xerographica"
+    ],
+    "tolerates_enclosed": [
+      "Tillandsia bulbosa",
+      "Tillandsia pruinosa",
+      "Tillandsia filifolia"
+    ],
+    "compatible_environments": "Tillandsias need environments that aren't fully enclosed, with proper airflow to avoid rot, and can do well in environments that mimic their natural airy and bright habitat."
+  }
+}

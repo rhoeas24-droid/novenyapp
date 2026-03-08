@@ -193,6 +193,22 @@ export const getCompatiblePlants = async (
   return response.data;
 };
 
+// Get substrate-compatible plants
+export const getSubstrateCompatiblePlants = async (
+  plantName: string,
+  limit = 30,
+  language?: string
+): Promise<{ plant: any; compatible_plants: Plant[]; total: number }> => {
+  const lang = language || await getCurrentLanguage();
+  const params: Record<string, string | number> = { limit, lang };
+
+  const response = await api.get(
+    `/plants/${encodeURIComponent(plantName)}/substrate-compatible`,
+    { params }
+  );
+  return response.data;
+};
+
 // Get groups with caching
 export const getGroups = async (language?: string): Promise<Group[]> => {
   const lang = language || await getCurrentLanguage();

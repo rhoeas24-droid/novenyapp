@@ -1,0 +1,101 @@
+{
+  "substrate_groups": {
+    "succulent": [
+      "Aloe vera",
+      "Crassula muscosa",
+      "Echeveria elegans",
+      "Echeveria subsessilis",
+      "Gasteria bicolor",
+      "Gasteria carinata",
+      "Graptopetalum paraguayense",
+      "Gymnocalycium mihanovichii",
+      "Haworthia cooperi",
+      "Haworthia fasciata",
+      "Kalanchoe tomentosa",
+      "Mammillaria elongata",
+      "Mammillaria gracilis",
+      "Sedum morganianum",
+      "Sedum rubrotinctum",
+      "Sempervivum tectorum",
+      "Senecio rowleyanus"
+    ],
+    "foliage": [
+      "Nephrolepis cordifolia",
+      "Asplenium nidus",
+      "Bolbitis heudelotii",
+      "Ficus pumila",
+      "Hedera canariensis",
+      "Microsorum pteropus",
+      "Nephrolepis exaltata",
+      "Peperomia caperata",
+      "Peperomia obtusifolia",
+      "Peperomia verticillata",
+      "Pilea depressa",
+      "Pilea multiflora",
+      "Philodendron oxycardium",
+      "Syngonium podophyllum",
+      "Cryptanthus bivittatus",
+      "Soleirolia soleirolii",
+      "Fittonia albivenis",
+      "Hypoestes phyllostachya",
+      "Peperomia metallica"
+    ],
+    "carnivorous": [
+      "Drosera adelae",
+      "Drosera aliciae",
+      "Drosera binata",
+      "Drosera capensis",
+      "Drosera prolifera",
+      "Drosera rotundifolia",
+      "Drosera slackii",
+      "Drosera spatulata",
+      "Nepenthes alata",
+      "Nepenthes ventricosa"
+    ],
+    "moss_compatible_with_foliage": [
+      "Selaginella martensii",
+      "Selaginella uncinata",
+      "Soleirolia soleirolii",
+      "Kindbergia praelonga"
+    ],
+    "sphagnum_acidic": [
+      "Plagiomnium undulatum",
+      "Plagiomnium affine",
+      "Taxiphyllum barbieri",
+      "Vesicularia dubyana"
+    ],
+    "tillandsia_no_substrate": [
+      "Tillandsia aeranthos",
+      "Tillandsia argentea",
+      "Tillandsia brachycaulos",
+      "Tillandsia bulbosa",
+      "Tillandsia capitata",
+      "Tillandsia caput-medusae",
+      "Tillandsia circinata",
+      "Tillandsia concolor",
+      "Tillandsia fasciculata",
+      "Tillandsia filifolia",
+      "Tillandsia flabellata",
+      "Tillandsia funckiana",
+      "Tillandsia gardneri",
+      "Tillandsia guatemalensis",
+      "Tillandsia intermedia",
+      "Tillandsia ionantha",
+      "Tillandsia juncea",
+      "Tillandsia magnusiana",
+      "Tillandsia pruinosa",
+      "Tillandsia streptophylla",
+      "Tillandsia stricta",
+      "Tillandsia tectorum",
+      "Tillandsia velutina",
+      "Tillandsia xerographica"
+    ],
+    "special_cases": [
+      "Microsorum pteropus (requires very wet substrate)",
+      "Bolbitis heudelotii (requires very wet substrate)",
+      "Selaginella martensii (high humidity requirement)",
+      "Selaginella uncinata (high humidity requirement)"
+    ]
+  },
+  "notes": "The 'moss_compatible_with_foliage' group includes some Selaginella and Soleirolia types which are not true mosses but often used in similar conditions. Ensure that humidity levels are maintained to avoid issues. Sphagnum acidic mosses should be avoided with non-carnivorous plant groups due to their tendency to acidify substrates. Tillandsias require no soil and should be mounted in a way to encourage airflow."
+}

@@ -12,7 +12,7 @@ import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useLanguage } from '../src/i18n/LanguageContext';
-import { Plant, getPlants, getCompatiblePlants } from '../src/api/client';
+import { Plant, getPlants, getSubstrateCompatiblePlants } from '../src/api/client';
 
 // Container types
 const CONTAINER_SHAPES = [
@@ -101,21 +101,37 @@ export default function TerrariumBuilderScreen() {
     }
   }, [getTerrariumType]);
 
-  // Load compatible plants after first plant is selected
+  // Load compatible plants after first plant is selected (substrate-based)
   const loadCompatiblePlants = useCallback(async (basePlant: Plant) => {
     setLoading(true);
     try {
-      const terrariumType = getTerrariumType();
-      const result = await getCompatiblePlants(basePlant.name, terrariumType, 50);
-      setCompatiblePlants(result.compatible_plants.filter(p => 
-        !selectedPlants.some(sp => sp.name === p.name)
-      ));
+      const result = await getSubstrateCompatiblePlants(basePlant.name, 50);
+      
+      // Load images for compatible plants
+      const plantsWithImages = await Promise.all(
+        result.compatible_plants
+          .filter(p => !selectedPlants.some(sp => sp.name === p.name))
+          .map(async (plant) => {
+            try {
+              const imageResponse = await fetch(
+                `https://terrarium-guide-dev.preview.emergentagent.com/api/plants/${encodeURIComponent(plant.name)}/image`
+              );
+              if (imageResponse.ok) {
+                const imageData = await imageResponse.json();
+                return { ...plant, image_base64: imageData.image_base64 };
+              }
+            } catch {}
+            return plant;
+          })
+      );
+      
+      setCompatiblePlants(plantsWithImages);
     } catch (error) {
       console.error('Error loading compatible plants:', error);
     } finally {
       setLoading(false);
     }
-  }, [getTerrariumType, selectedPlants]);
+  }, [selectedPlants]);
 
   // Handle container selection complete
   const handleContainerComplete = useCallback(() => {
