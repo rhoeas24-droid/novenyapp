@@ -11,6 +11,13 @@ import {
 const { width, height } = Dimensions.get('window');
 const SPLASH_IMAGE = require('../assets/splash.jpg');
 
+// Subtitles in different languages
+const subtitles = {
+  hu: 'Találd meg a tökéletes növénytársakat',
+  en: 'Find the perfect plant companions',
+  el: 'Βρες τους τέλειους συντρόφους φυτών',
+};
+
 interface SplashScreenProps {
   onFinish: () => void;
 }

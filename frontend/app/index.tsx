@@ -14,17 +14,19 @@ import PlantCard from '../src/components/PlantCard';
 import FilterChip from '../src/components/FilterChip';
 import SearchBar from '../src/components/SearchBar';
 import { Plant } from '../src/api/client';
-
-const TERRARIUM_TYPES = [
-  { id: 'zart', label: 'Zárt', color: '#2E7D32' },
-  { id: 'felzart', label: 'Félzárt', color: '#689F38' },
-  { id: 'nyitott', label: 'Nyitott', color: '#AFB42B' },
-] as const;
+import { useLanguage } from '../src/i18n/LanguageContext';
 
 export default function HomeScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const [refreshing, setRefreshing] = useState(false);
+  const { t, tGroup } = useLanguage();
+
+  const TERRARIUM_TYPES = [
+    { id: 'zart', label: t('closed'), color: '#2E7D32' },
+    { id: 'felzart', label: t('semiClosed'), color: '#689F38' },
+    { id: 'nyitott', label: t('open'), color: '#AFB42B' },
+  ] as const;
 
   const {
     plants,
@@ -67,7 +69,7 @@ export default function HomeScreen() {
     return (
       <View style={styles.centered}>
         <ActivityIndicator size="large" color="#388E3C" />
-        <Text style={styles.loadingText}>Növények betöltése...</Text>
+        <Text style={styles.loadingText}>{t('loadingPlants')}</Text>
       </View>
     );
   }
@@ -75,7 +77,7 @@ export default function HomeScreen() {
   if (error && plants.length === 0) {
     return (
       <View style={styles.centered}>
-        <Text style={styles.errorText}>{error}</Text>
+        <Text style={styles.errorText}>{t('errorLoading')}</Text>
       </View>
     );
   }
@@ -99,11 +101,11 @@ export default function HomeScreen() {
         <SearchBar
           value={searchQuery}
           onChangeText={setSearchQuery}
-          placeholder="Növény keresése..."
+          placeholder={t('searchPlaceholder')}
         />
 
         {/* Terrarium Type Filter */}
-        <Text style={styles.filterLabel}>Terrárium típus</Text>
+        <Text style={styles.filterLabel}>{t('terrariumType')}</Text>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -111,7 +113,7 @@ export default function HomeScreen() {
           contentContainerStyle={styles.filterRowContent}
         >
           <FilterChip
-            label="Mind"
+            label={t('all')}
             selected={selectedTerrariumType === null}
             onPress={() => setSelectedTerrariumType(null)}
             color="#666"
@@ -132,7 +134,7 @@ export default function HomeScreen() {
         </ScrollView>
 
         {/* Group Filter */}
-        <Text style={styles.filterLabel}>Növénycsoport</Text>
+        <Text style={styles.filterLabel}>{t('plantGroup')}</Text>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -140,7 +142,7 @@ export default function HomeScreen() {
           contentContainerStyle={styles.filterRowContent}
         >
           <FilterChip
-            label="Mind"
+            label={t('all')}
             selected={selectedGroup === null}
             onPress={() => setSelectedGroup(null)}
             color="#666"
@@ -148,7 +150,7 @@ export default function HomeScreen() {
           {groups.map((group) => (
             <FilterChip
               key={group.id}
-              label={group.name}
+              label={tGroup(group.id)}
               selected={selectedGroup === group.id}
               onPress={() =>
                 setSelectedGroup(selectedGroup === group.id ? null : group.id)
@@ -160,10 +162,10 @@ export default function HomeScreen() {
 
         <View style={styles.resultCount}>
           <Text style={styles.resultText}>
-            {plants.length} növény{' '}
+            {plants.length} {t('plants')}{' '}
             {selectedTerrariumType && (
               <Text style={styles.filterActive}>
-                ({TERRARIUM_TYPES.find(t => t.id === selectedTerrariumType)?.label} terráriumba)
+                ({TERRARIUM_TYPES.find(type => type.id === selectedTerrariumType)?.label} {t('intoTerrarium')})
               </Text>
             )}
           </Text>
@@ -183,10 +185,8 @@ export default function HomeScreen() {
         </View>
       ) : (
         <View style={styles.emptyContainer}>
-          <Text style={styles.emptyText}>Nincs találat</Text>
-          <Text style={styles.emptySubtext}>
-            Próbálj más keresési feltételeket
-          </Text>
+          <Text style={styles.emptyText}>{t('noResults')}</Text>
+          <Text style={styles.emptySubtext}>{t('tryOtherFilters')}</Text>
         </View>
       )}
     </ScrollView>
