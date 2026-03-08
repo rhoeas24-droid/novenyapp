@@ -89,7 +89,7 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, onPress, showCompatibility
 
 const styles = StyleSheet.create({
   container: {
-    width: '48%',
+    flexBasis: '48%',
     backgroundColor: '#fff',
     borderRadius: 12,
     marginBottom: 16,
