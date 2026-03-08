@@ -25,7 +25,7 @@
       "warnings": ["Requires low-nutrient, acidic substrates; distilled or rainwater preferred."]
     },
     "moss_compatible_with_foliage": {
-      "compatible_with": ["foliage"],
+      "compatible_with": ["foliage", "moss_compatible_with_foliage"],
       "incompatible_with": ["succulent", "carnivorous"],
       "ideal_terrarium": "semi-closed to closed",
       "humidity_range": "70-100%",
@@ -41,7 +41,7 @@
       "warnings": ["Acidifies the substrate, which is suitable for carnivorous plants but harmful to others."]
     },
     "tillandsia": {
-      "compatible_with": ["succulent", "foliage"],
+      "compatible_with": ["succulent", "foliage", "tillandsia"],
       "incompatible_with": ["carnivorous", "sphagnum_acidic"],
       "ideal_terrarium": "open",
       "humidity_range": "40-80%",
