@@ -12,7 +12,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Plant } from '../api/client';
 import axios from 'axios';
 
-const API_URL = 'https://store-ready-3.preview.emergentagent.com';
+const API_URL = 'https://terrarium-guide-dev.preview.emergentagent.com';
 
 interface PlantCardProps {
   plant: Plant;

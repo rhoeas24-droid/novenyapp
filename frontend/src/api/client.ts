@@ -2,12 +2,25 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Use the public API URL directly
-const API_URL = 'https://store-ready-3.preview.emergentagent.com';
+const API_URL = 'https://terrarium-guide-dev.preview.emergentagent.com';
 
 const api = axios.create({
   baseURL: `${API_URL}/api`,
   timeout: 60000, // Increased timeout for large images
 });
+
+// Language key for cache
+const LANGUAGE_KEY = 'app_language';
+
+// Get current language from storage
+const getCurrentLanguage = async (): Promise<string> => {
+  try {
+    const lang = await AsyncStorage.getItem(LANGUAGE_KEY);
+    return lang || 'hu';
+  } catch {
+    return 'hu';
+  }
+};
 
 // Cache keys
 const CACHE_KEYS = {
@@ -78,13 +91,18 @@ export const getPlants = async (
   group?: string,
   terrariumType?: string,
   search?: string,
-  forceRefresh = false
+  forceRefresh = false,
+  language?: string
 ): Promise<{ plants: Plant[]; total: number }> => {
+  // Get current language
+  const lang = language || await getCurrentLanguage();
+  const cacheKey = `${CACHE_KEYS.PLANTS}_${lang}`;
+  
   // Try cache first if no filters and not forcing refresh
   if (!group && !terrariumType && !search && !forceRefresh) {
     const cacheValid = await isCacheValid();
     if (cacheValid) {
-      const cached = await AsyncStorage.getItem(CACHE_KEYS.PLANTS);
+      const cached = await AsyncStorage.getItem(cacheKey);
       if (cached) {
         return JSON.parse(cached);
       }
@@ -92,7 +110,7 @@ export const getPlants = async (
   }
 
   try {
-    const params: Record<string, string> = {};
+    const params: Record<string, string> = { lang };
     if (group) params.group = group;
     if (terrariumType) params.terrarium_type = terrariumType;
     if (search) params.search = search;
@@ -102,14 +120,14 @@ export const getPlants = async (
 
     // Cache if no filters
     if (!group && !terrariumType && !search) {
-      await AsyncStorage.setItem(CACHE_KEYS.PLANTS, JSON.stringify(data));
+      await AsyncStorage.setItem(cacheKey, JSON.stringify(data));
       await AsyncStorage.setItem(CACHE_KEYS.LAST_SYNC, Date.now().toString());
     }
 
     return data;
   } catch (error) {
     // Return cached data on error
-    const cached = await AsyncStorage.getItem(CACHE_KEYS.PLANTS);
+    const cached = await AsyncStorage.getItem(cacheKey);
     if (cached) {
       const data = JSON.parse(cached);
       // Apply client-side filtering
@@ -136,11 +154,14 @@ export const getPlants = async (
 };
 
 // Get plant detail with caching
-export const getPlantDetail = async (plantName: string): Promise<Plant> => {
-  const cacheKey = CACHE_KEYS.PLANT_DETAILS + plantName;
+export const getPlantDetail = async (plantName: string, language?: string): Promise<Plant> => {
+  const lang = language || await getCurrentLanguage();
+  const cacheKey = `${CACHE_KEYS.PLANT_DETAILS}${plantName}_${lang}`;
 
   try {
-    const response = await api.get(`/plants/${encodeURIComponent(plantName)}`);
+    const response = await api.get(`/plants/${encodeURIComponent(plantName)}`, {
+      params: { lang }
+    });
     const data = response.data;
     await AsyncStorage.setItem(cacheKey, JSON.stringify(data));
     return data;
@@ -157,9 +178,11 @@ export const getPlantDetail = async (plantName: string): Promise<Plant> => {
 export const getCompatiblePlants = async (
   plantName: string,
   terrariumType?: string,
-  limit = 20
+  limit = 20,
+  language?: string
 ): Promise<{ plant: Plant; compatible_plants: Plant[]; total: number }> => {
-  const params: Record<string, string | number> = { limit };
+  const lang = language || await getCurrentLanguage();
+  const params: Record<string, string | number> = { limit, lang };
   if (terrariumType) params.terrarium_type = terrariumType;
 
   const response = await api.get(
@@ -170,15 +193,17 @@ export const getCompatiblePlants = async (
 };
 
 // Get groups with caching
-export const getGroups = async (): Promise<Group[]> => {
-  const cached = await AsyncStorage.getItem(CACHE_KEYS.GROUPS);
+export const getGroups = async (language?: string): Promise<Group[]> => {
+  const lang = language || await getCurrentLanguage();
+  const cacheKey = `${CACHE_KEYS.GROUPS}_${lang}`;
+  const cached = await AsyncStorage.getItem(cacheKey);
   if (cached) {
     const groups = JSON.parse(cached);
     if (groups.length > 0) {
       // Still try to update in background
-      api.get('/groups').then(async (response) => {
+      api.get('/groups', { params: { lang } }).then(async (response) => {
         await AsyncStorage.setItem(
-          CACHE_KEYS.GROUPS,
+          cacheKey,
           JSON.stringify(response.data.groups)
         );
       }).catch(() => {});
@@ -187,9 +212,9 @@ export const getGroups = async (): Promise<Group[]> => {
   }
 
   try {
-    const response = await api.get('/groups');
+    const response = await api.get('/groups', { params: { lang } });
     await AsyncStorage.setItem(
-      CACHE_KEYS.GROUPS,
+      cacheKey,
       JSON.stringify(response.data.groups)
     );
     return response.data.groups;

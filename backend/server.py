@@ -167,12 +167,30 @@ async def health_check():
     return {"status": "healthy", "plants_count": plants_collection.count_documents({})}
 
 
+def apply_translations(plant: dict, lang: str) -> dict:
+    """Apply translations to a plant based on language"""
+    if lang == 'hu' or 'translations' not in plant:
+        return plant
+    
+    translations = plant.get('translations', {}).get(lang, {})
+    if not translations:
+        return plant
+    
+    # Apply translations to fields
+    for field, translated_value in translations.items():
+        if translated_value and field in plant:
+            plant[field] = translated_value
+    
+    return plant
+
+
 @app.get("/api/plants")
 async def get_plants(
     group: Optional[str] = None,
     terrarium_type: Optional[str] = None,
     search: Optional[str] = None,
-    include_images: bool = False
+    include_images: bool = False,
+    lang: str = "hu"
 ):
     """Get all plants with optional filtering"""
     query = {}
@@ -194,7 +212,8 @@ async def get_plants(
         'substrate_group': 1,
         'humidity_min': 1,
         'humidity_max': 1,
-        'light_level': 1
+        'light_level': 1,
+        'translations': 1
     }
     
     # Only include images if explicitly requested
@@ -203,9 +222,12 @@ async def get_plants(
     
     plants = list(plants_collection.find(query, projection))
     
-    # Convert ObjectId to string
+    # Convert ObjectId to string and apply translations
     for plant in plants:
         plant['_id'] = str(plant['_id'])
+        apply_translations(plant, lang)
+        # Remove translations field from response
+        plant.pop('translations', None)
     
     # Filter by terrarium type
     if terrarium_type:
@@ -222,7 +244,7 @@ async def get_plants(
 
 
 @app.get("/api/plants/{plant_name}")
-async def get_plant_detail(plant_name: str):
+async def get_plant_detail(plant_name: str, lang: str = "hu"):
     """Get detailed plant information"""
     plant = plants_collection.find_one({"name": plant_name})
     
@@ -236,6 +258,8 @@ async def get_plant_detail(plant_name: str):
         raise HTTPException(status_code=404, detail="Növény nem található")
     
     plant['_id'] = str(plant['_id'])
+    apply_translations(plant, lang)
+    plant.pop('translations', None)
     return plant
 
 
@@ -266,7 +290,8 @@ async def get_plant_image(plant_name: str):
 async def get_compatible_plants(
     plant_name: str,
     terrarium_type: Optional[str] = None,
-    limit: int = Query(default=20, le=50)
+    limit: int = Query(default=20, le=50),
+    lang: str = "hu"
 ):
     """Get plants compatible with the selected plant"""
     # Get the selected plant
@@ -297,10 +322,16 @@ async def get_compatible_plants(
         if score >= 30:  # Minimum compatibility threshold
             other['_id'] = str(other['_id'])
             other['compatibility_score'] = score
+            apply_translations(other, lang)
+            other.pop('translations', None)
             compatible.append(other)
     
     # Sort by compatibility score
     compatible.sort(key=lambda x: x['compatibility_score'], reverse=True)
+    
+    # Apply translations to main plant
+    apply_translations(plant, lang)
+    plant.pop('translations', None)
     
     return {
         "plant": {

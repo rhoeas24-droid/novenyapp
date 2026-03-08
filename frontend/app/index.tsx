@@ -20,7 +20,7 @@ export default function HomeScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const [refreshing, setRefreshing] = useState(false);
-  const { t, tGroup } = useLanguage();
+  const { t, tGroup, language } = useLanguage();
 
   const TERRARIUM_TYPES = [
     { id: 'zart', label: t('closed'), color: '#2E7D32' },
@@ -47,6 +47,12 @@ export default function HomeScreen() {
     fetchGroups();
     fetchPlants();
   }, []);
+
+  // Reload data when language changes
+  useEffect(() => {
+    fetchGroups();
+    fetchPlants();
+  }, [language]);
 
   useEffect(() => {
     const debounce = setTimeout(() => {

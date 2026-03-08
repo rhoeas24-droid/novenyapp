@@ -9,6 +9,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useLanguage } from '../i18n/LanguageContext';
 import { Language } from '../i18n/translations';
+import { clearCache } from '../api/client';
 
 interface LanguageSelectorProps {
   visible: boolean;
@@ -24,8 +25,12 @@ const languages: { id: Language; name: string; flag: string }[] = [
 const LanguageSelector: React.FC<LanguageSelectorProps> = ({ visible, onClose }) => {
   const { language, setLanguage, t } = useLanguage();
 
-  const handleSelect = (lang: Language) => {
-    setLanguage(lang);
+  const handleSelect = async (lang: Language) => {
+    if (lang !== language) {
+      // Clear cache when language changes to force reload with new language
+      await clearCache();
+      setLanguage(lang);
+    }
     onClose();
   };
 
