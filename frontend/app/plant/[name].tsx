@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
-import { useLocalSearchParams, useRouter, Stack, useFocusEffect } from 'expo-router';
+import { useGlobalSearchParams, useRouter, Stack, useFocusEffect, usePathname } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { usePlantStore } from '../../src/store/plantStore';
@@ -21,7 +21,8 @@ import { getFromCache, setToCache } from '../../src/api/plantCache';
 const HERO_HEIGHT = 250;
 
 export default function PlantDetailScreen() {
-  const { name } = useLocalSearchParams<{ name: string }>();
+  const { name } = useGlobalSearchParams<{ name: string }>();
+  const pathname = usePathname();
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const [activeTab, setActiveTab] = useState<'info' | 'compatible'>('info');
@@ -84,15 +85,15 @@ export default function PlantDetailScreen() {
     }
   }, [t]);
 
-  // Load on every focus - this is the key for back navigation
+  // Load on every focus - use pathname to detect actual route changes
   useFocusEffect(
     useCallback(() => {
       if (name) {
         const decodedName = decodeURIComponent(name);
-        console.log('[PlantDetail] Focus effect for:', decodedName);
+        console.log('[PlantDetail] Focus effect for:', decodedName, 'pathname:', pathname);
         loadPlantData(decodedName);
       }
-    }, [name, loadPlantData])
+    }, [pathname]) // Depend on pathname instead of name
   );
 
   // Reload compatible plants when filter changes

@@ -73,7 +73,6 @@ function AppContent() {
         />
         <Stack.Screen
           name="plant/[name]"
-          getId={({ params }) => params?.name}
           options={{
             title: t('plantDetails'),
             headerBackTitle: t('back'),
