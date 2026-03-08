@@ -55,6 +55,7 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, onPress, showCompatibility
             source={{ uri: plant.image_base64 }}
             style={styles.image}
             resizeMode="cover"
+            fadeDuration={0}
           />
         ) : (
           <View style={[styles.placeholder, { backgroundColor: groupColor }]}>
