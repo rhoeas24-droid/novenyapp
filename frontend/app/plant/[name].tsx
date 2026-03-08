@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import {
   View,
   Text,
@@ -89,13 +89,10 @@ export default function PlantDetailScreen() {
     } catch {}
   }, [name, compatTerrariumType, plant]);
 
-  // Handle filter change
-  const handleFilterChange = (type: string | null) => {
-    setCompatTerrariumType(type);
-    if (type !== compatTerrariumType) {
-      reloadCompatible();
-    }
-  };
+  // Trigger reload when terrarium type filter changes
+  useEffect(() => {
+    reloadCompatible();
+  }, [compatTerrariumType]);
 
   const handleCompatiblePlantPress = (plantName: string) => {
     router.push(`/plant/${encodeURIComponent(plantName)}`);
