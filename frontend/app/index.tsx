@@ -1,30 +1,270 @@
-import { Text, View, StyleSheet, Image } from "react-native";
+import React, { useEffect, useCallback, useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  ScrollView,
+  RefreshControl,
+} from 'react-native';
+import { useRouter } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { usePlantStore } from '../src/store/plantStore';
+import PlantCard from '../src/components/PlantCard';
+import FilterChip from '../src/components/FilterChip';
+import SearchBar from '../src/components/SearchBar';
+import { Plant } from '../src/api/client';
 
-const EXPO_PUBLIC_BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
+const TERRARIUM_TYPES = [
+  { id: 'zart', label: 'Zárt', color: '#2E7D32' },
+  { id: 'felzart', label: 'Félzárt', color: '#689F38' },
+  { id: 'nyitott', label: 'Nyitott', color: '#AFB42B' },
+] as const;
 
-export default function Index() {
-  console.log(EXPO_PUBLIC_BACKEND_URL, "EXPO_PUBLIC_BACKEND_URL");
+export default function HomeScreen() {
+  const router = useRouter();
+  const insets = useSafeAreaInsets();
+  const [refreshing, setRefreshing] = useState(false);
+
+  const {
+    plants,
+    groups,
+    loading,
+    error,
+    searchQuery,
+    selectedGroup,
+    selectedTerrariumType,
+    setSearchQuery,
+    setSelectedGroup,
+    setSelectedTerrariumType,
+    fetchPlants,
+    fetchGroups,
+  } = usePlantStore();
+
+  useEffect(() => {
+    fetchGroups();
+    fetchPlants();
+  }, []);
+
+  useEffect(() => {
+    const debounce = setTimeout(() => {
+      fetchPlants();
+    }, 300);
+    return () => clearTimeout(debounce);
+  }, [searchQuery, selectedGroup, selectedTerrariumType]);
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    await fetchPlants();
+    setRefreshing(false);
+  }, []);
+
+  const handlePlantPress = (plant: Plant) => {
+    router.push(`/plant/${encodeURIComponent(plant.name)}`);
+  };
+
+  if (loading && plants.length === 0) {
+    return (
+      <View style={styles.centered}>
+        <ActivityIndicator size="large" color="#388E3C" />
+        <Text style={styles.loadingText}>Növények betöltése...</Text>
+      </View>
+    );
+  }
+
+  if (error && plants.length === 0) {
+    return (
+      <View style={styles.centered}>
+        <Text style={styles.errorText}>{error}</Text>
+      </View>
+    );
+  }
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={require("../assets/images/app-image.png")}
-        style={styles.image}
-      />
-    </View>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + 20 }]}
+      showsVerticalScrollIndicator={false}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          colors={['#388E3C']}
+          tintColor="#388E3C"
+        />
+      }
+    >
+      {/* Header with filters */}
+      <View style={styles.header}>
+        <SearchBar
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          placeholder="Növény keresése..."
+        />
+
+        {/* Terrarium Type Filter */}
+        <Text style={styles.filterLabel}>Terrárium típus</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.filterRow}
+          contentContainerStyle={styles.filterRowContent}
+        >
+          <FilterChip
+            label="Mind"
+            selected={selectedTerrariumType === null}
+            onPress={() => setSelectedTerrariumType(null)}
+            color="#666"
+          />
+          {TERRARIUM_TYPES.map((type) => (
+            <FilterChip
+              key={type.id}
+              label={type.label}
+              selected={selectedTerrariumType === type.id}
+              onPress={() =>
+                setSelectedTerrariumType(
+                  selectedTerrariumType === type.id ? null : type.id
+                )
+              }
+              color={type.color}
+            />
+          ))}
+        </ScrollView>
+
+        {/* Group Filter */}
+        <Text style={styles.filterLabel}>Növénycsoport</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.filterRow}
+          contentContainerStyle={styles.filterRowContent}
+        >
+          <FilterChip
+            label="Mind"
+            selected={selectedGroup === null}
+            onPress={() => setSelectedGroup(null)}
+            color="#666"
+          />
+          {groups.map((group) => (
+            <FilterChip
+              key={group.id}
+              label={group.name}
+              selected={selectedGroup === group.id}
+              onPress={() =>
+                setSelectedGroup(selectedGroup === group.id ? null : group.id)
+              }
+              color="#388E3C"
+            />
+          ))}
+        </ScrollView>
+
+        <View style={styles.resultCount}>
+          <Text style={styles.resultText}>
+            {plants.length} növény{' '}
+            {selectedTerrariumType && (
+              <Text style={styles.filterActive}>
+                ({TERRARIUM_TYPES.find(t => t.id === selectedTerrariumType)?.label} terráriumba)
+              </Text>
+            )}
+          </Text>
+        </View>
+      </View>
+
+      {/* Plant Grid */}
+      {plants.length > 0 ? (
+        <View style={styles.plantsGrid}>
+          {plants.map((plant) => (
+            <PlantCard
+              key={plant._id}
+              plant={plant}
+              onPress={() => handlePlantPress(plant)}
+            />
+          ))}
+        </View>
+      ) : (
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyText}>Nincs találat</Text>
+          <Text style={styles.emptySubtext}>
+            Próbálj más keresési feltételeket
+          </Text>
+        </View>
+      )}
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0c0c0c",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#f8f9fa',
   },
-  image: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "contain",
+  scrollContent: {
+    flexGrow: 1,
+  },
+  header: {
+    paddingHorizontal: 16,
+    paddingTop: 16,
+  },
+  filterLabel: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: '#666',
+    marginBottom: 8,
+    marginTop: 8,
+  },
+  filterRow: {
+    marginBottom: 4,
+  },
+  filterRowContent: {
+    paddingRight: 16,
+  },
+  resultCount: {
+    marginTop: 16,
+    marginBottom: 8,
+  },
+  resultText: {
+    fontSize: 14,
+    color: '#666',
+  },
+  filterActive: {
+    color: '#388E3C',
+    fontWeight: '500',
+  },
+  plantsGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+  },
+  centered: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f8f9fa',
+  },
+  loadingText: {
+    marginTop: 12,
+    fontSize: 15,
+    color: '#666',
+  },
+  errorText: {
+    fontSize: 15,
+    color: '#d32f2f',
+    textAlign: 'center',
+    paddingHorizontal: 32,
+  },
+  emptyContainer: {
+    paddingVertical: 60,
+    alignItems: 'center',
+  },
+  emptyText: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#666',
+  },
+  emptySubtext: {
+    fontSize: 14,
+    color: '#999',
+    marginTop: 8,
   },
 });
