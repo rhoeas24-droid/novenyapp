@@ -49,10 +49,6 @@ export default function PlantDetailScreen() {
       fetchPlantDetail(decodedName);
       fetchCompatiblePlants(decodedName);
     }
-
-    return () => {
-      clearSelectedPlant();
-    };
   }, [name]);
 
   useEffect(() => {
