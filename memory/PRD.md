@@ -58,7 +58,7 @@ A "Florárium Mester" (Florarium Master) mobil alkalmazás, amely terrárium nö
 
 ## Known Limitations
 - Back navigation from compatible plants goes directly to home (not to previous plant) - this is an Expo Router limitation with dynamic routes
-https://terrarium-builder-1.preview.emergentagent.com
+https://terrarium-matcher.preview.emergentagent.com
 
 ## User Language
 Hungarian (Magyar)

@@ -18,9 +18,9 @@ def get_backend_url():
                 if line.startswith('EXPO_PUBLIC_BACKEND_URL='):
                     base_url = line.strip().split('=')[1]
                     return f"{base_url}/api"
-        return "https://terrarium-builder-1.preview.emergentagent.com/api"  # fallback
+        return "https://terrarium-matcher.preview.emergentagent.com/api"  # fallback
     except:
-        return "https://terrarium-builder-1.preview.emergentagent.com/api"  # fallback
+        return "https://terrarium-matcher.preview.emergentagent.com/api"  # fallback
 
 BASE_URL = get_backend_url()
 

@@ -94,7 +94,7 @@ export default function TerrariumBuilderScreen() {
         result.plants.map(async (plant) => {
           try {
             const imageResponse = await fetch(
-              `https://terrarium-builder-1.preview.emergentagent.com/api/plants/${encodeURIComponent(plant.name)}/image`
+              `https://terrarium-matcher.preview.emergentagent.com/api/plants/${encodeURIComponent(plant.name)}/image`
             );
             if (imageResponse.ok) {
               const imageData = await imageResponse.json();
@@ -131,7 +131,7 @@ export default function TerrariumBuilderScreen() {
           .map(async (plant) => {
             try {
               const imageResponse = await fetch(
-                `https://terrarium-builder-1.preview.emergentagent.com/api/plants/${encodeURIComponent(plant.name)}/image`
+                `https://terrarium-matcher.preview.emergentagent.com/api/plants/${encodeURIComponent(plant.name)}/image`
               );
               if (imageResponse.ok) {
                 const imageData = await imageResponse.json();
