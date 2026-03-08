@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -6,9 +6,13 @@ import {
   StyleSheet,
   TouchableOpacity,
   useWindowDimensions,
+  ActivityIndicator,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Plant } from '../api/client';
+import axios from 'axios';
+
+const API_URL = 'https://store-ready-3.preview.emergentagent.com';
 
 interface PlantCardProps {
   plant: Plant;
@@ -31,6 +35,36 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, onPress, showCompatibility
   const cardWidth = Math.floor((screenWidth - 48) / 2);
   const groupColor = groupColors[plant.group] || '#388E3C';
   
+  const [imageUri, setImageUri] = useState<string | null>(plant.image_base64 || null);
+  const [loading, setLoading] = useState(!plant.image_base64);
+  
+  useEffect(() => {
+    // If plant already has image, don't fetch
+    if (plant.image_base64) {
+      setImageUri(plant.image_base64);
+      setLoading(false);
+      return;
+    }
+    
+    // Lazy load image
+    const loadImage = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/api/plants/${encodeURIComponent(plant.name)}/image`, {
+          timeout: 15000
+        });
+        if (response.data.image_base64) {
+          setImageUri(response.data.image_base64);
+        }
+      } catch (error) {
+        // Silently fail - show placeholder
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    loadImage();
+  }, [plant.name, plant.image_base64]);
+  
   const renderTerrarium = (type: string, value: string) => {
     const isCompatible = value === '✓';
     const isPartial = value === '~';
@@ -50,9 +84,13 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, onPress, showCompatibility
       activeOpacity={0.8}
     >
       <View style={styles.imageContainer}>
-        {plant.image_base64 ? (
+        {loading ? (
+          <View style={[styles.placeholder, { backgroundColor: groupColor }]}>
+            <ActivityIndicator size="small" color="rgba(255,255,255,0.8)" />
+          </View>
+        ) : imageUri ? (
           <Image
-            source={{ uri: plant.image_base64 }}
+            source={{ uri: imageUri }}
             style={styles.image}
             resizeMode="cover"
             fadeDuration={0}

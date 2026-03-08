@@ -171,7 +171,8 @@ async def health_check():
 async def get_plants(
     group: Optional[str] = None,
     terrarium_type: Optional[str] = None,
-    search: Optional[str] = None
+    search: Optional[str] = None,
+    include_images: bool = False
 ):
     """Get all plants with optional filtering"""
     query = {}
@@ -179,7 +180,7 @@ async def get_plants(
     if group:
         query['group'] = group
     
-    # Build projection (exclude large image data for list view)
+    # Build projection - exclude large image data for list view by default
     projection = {
         'name': 1,
         'common': 1,
@@ -190,12 +191,15 @@ async def get_plants(
         'F': 1,
         'N': 1,
         'role': 1,
-        'image_base64': 1,
         'substrate_group': 1,
         'humidity_min': 1,
         'humidity_max': 1,
         'light_level': 1
     }
+    
+    # Only include images if explicitly requested
+    if include_images:
+        projection['image_base64'] = 1
     
     plants = list(plants_collection.find(query, projection))
     
@@ -233,6 +237,29 @@ async def get_plant_detail(plant_name: str):
     
     plant['_id'] = str(plant['_id'])
     return plant
+
+
+@app.get("/api/plants/{plant_name}/image")
+async def get_plant_image(plant_name: str):
+    """Get only the image for a plant (for lazy loading)"""
+    plant = plants_collection.find_one(
+        {"name": plant_name},
+        {"image_base64": 1, "name": 1}
+    )
+    
+    if not plant:
+        plant = plants_collection.find_one(
+            {"name": {"$regex": f"^{re.escape(plant_name)}$", "$options": "i"}},
+            {"image_base64": 1, "name": 1}
+        )
+    
+    if not plant:
+        raise HTTPException(status_code=404, detail="Növény nem található")
+    
+    return {
+        "name": plant.get("name"),
+        "image_base64": plant.get("image_base64")
+    }
 
 
 @app.get("/api/plants/{plant_name}/compatible")
