@@ -72,11 +72,12 @@ export default function TerrariumBuilderScreen() {
     return size?.maxPlants || 5;
   }, [container.size]);
 
-  // Load plants for first selection
+  // Load plants for first selection - filtered by terrarium type
   const loadPlantsForFirstSelection = useCallback(async () => {
     setLoading(true);
     try {
       const terrariumType = getTerrariumType();
+      // Get plants that are suitable for the selected terrarium type
       const result = await getPlants(undefined, terrariumType);
       
       // Load images for each plant
