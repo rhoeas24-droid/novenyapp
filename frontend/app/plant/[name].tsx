@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
   View,
   Text,
@@ -16,6 +16,7 @@ import PlantCard from '../../src/components/PlantCard';
 import FilterChip from '../../src/components/FilterChip';
 import { useLanguage } from '../../src/i18n/LanguageContext';
 import { Plant, getPlantDetail, getCompatiblePlants } from '../../src/api/client';
+import { getFromCache, setToCache } from '../../src/api/plantCache';
 
 const HERO_HEIGHT = 250;
 
@@ -32,9 +33,6 @@ export default function PlantDetailScreen() {
   const [compatiblePlants, setCompatiblePlants] = useState<Plant[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  
-  // Track which plant was loaded to detect changes
-  const loadedPlantRef = useRef<string | null>(null);
 
   const TERRARIUM_TYPES = [
     { id: 'zart', label: t('closed'), field: 'Z', color: '#2E7D32' },
@@ -42,16 +40,23 @@ export default function PlantDetailScreen() {
     { id: 'nyitott', label: t('open'), field: 'N', color: '#AFB42B' },
   ] as const;
 
-  // Function to load plant data
-  const loadPlantData = useCallback(async (plantName: string, force: boolean = false) => {
-    // Skip if already loaded this plant (unless forced)
-    if (!force && loadedPlantRef.current === plantName && plant && !error) {
-      console.log('[PlantDetail] Already loaded:', plantName);
+  // Load plant data - check cache first, then fetch
+  const loadPlantData = useCallback(async (plantName: string) => {
+    console.log('[PlantDetail] loadPlantData called for:', plantName);
+    
+    // Check cache first
+    const cached = getFromCache(plantName);
+    if (cached) {
+      console.log('[PlantDetail] Found in cache:', plantName);
+      setPlant(cached.plant);
+      setCompatiblePlants(cached.compatiblePlants);
+      setLoading(false);
+      setError(null);
       return;
     }
     
-    console.log('[PlantDetail] Loading:', plantName, 'force:', force);
-    loadedPlantRef.current = plantName;
+    // Not in cache, fetch from API
+    console.log('[PlantDetail] Fetching from API:', plantName);
     setLoading(true);
     setError(null);
     
@@ -60,31 +65,34 @@ export default function PlantDetailScreen() {
         getPlantDetail(plantName),
         getCompatiblePlants(plantName, undefined, 20)
       ]);
-      console.log('[PlantDetail] Success:', plantData.name);
+      
+      console.log('[PlantDetail] API success:', plantData.name);
+      
+      // Save to cache
+      setToCache(plantName, plantData, compatData.compatible_plants);
+      
+      // Update state
       setPlant(plantData);
       setCompatiblePlants(compatData.compatible_plants);
       setError(null);
     } catch (err) {
-      console.log('[PlantDetail] Error:', err);
+      console.log('[PlantDetail] API error:', err);
       setError(t('errorLoading'));
       setPlant(null);
     } finally {
       setLoading(false);
     }
-  }, [plant, error, t]);
+  }, [t]);
 
-  // Load on focus - this handles both initial load and returning via back button
+  // Load on every focus - this is the key for back navigation
   useFocusEffect(
     useCallback(() => {
       if (name) {
         const decodedName = decodeURIComponent(name);
-        // Always load when gaining focus if plant doesn't match or there's an error
-        const needsLoad = !plant || plant.name !== decodedName || error;
-        if (needsLoad) {
-          loadPlantData(decodedName, true);
-        }
+        console.log('[PlantDetail] Focus effect for:', decodedName);
+        loadPlantData(decodedName);
       }
-    }, [name, plant, error])
+    }, [name, loadPlantData])
   );
 
   // Reload compatible plants when filter changes
@@ -97,7 +105,7 @@ export default function PlantDetailScreen() {
         })
         .catch(() => {});
     }
-  }, [compatTerrariumType, activeTab, plant]);
+  }, [compatTerrariumType, activeTab, plant, name]);
 
   const handleCompatiblePlantPress = (plantName: string) => {
     router.push(`/plant/${encodeURIComponent(plantName)}`);
