@@ -107,7 +107,8 @@
     "vessel_min": 25,
     "vessel_max": 50,
     "growth_rate": "Lassú",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Asplenium nidus 'Osaka'.jpeg"
   },
   {
     "name": "Bolbitis heudelotii",
@@ -149,7 +150,8 @@
     "vessel_min": 15,
     "vessel_max": 35,
     "growth_rate": "Lassú",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Bolbitis_heudelotii.jpg"
   },
   {
     "name": "Ficus pumila",
@@ -196,7 +198,8 @@
     "vessel_min": 10,
     "vessel_max": 50,
     "growth_rate": "Gyors",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Ficus_pumila.jpg"
   },
   {
     "name": "Hedera canariensis",
@@ -249,7 +252,8 @@
     "vessel_min": 20,
     "vessel_max": 50,
     "growth_rate": "Gyors",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Hedera_canariensis.jpg"
   },
   {
     "name": "Microsorum pteropus",
@@ -297,7 +301,8 @@
     "vessel_min": 15,
     "vessel_max": 35,
     "growth_rate": "Lassú–közepes",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Microsorum_pteropus.jpg"
   },
   {
     "name": "Nephrolepis exaltata",
@@ -349,7 +354,8 @@
     "vessel_min": 30,
     "vessel_max": 60,
     "growth_rate": "Gyors",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Nephrolepis_exaltata.jpg"
   },
   {
     "name": "Peperomia caperata",
@@ -401,7 +407,8 @@
     "vessel_min": 10,
     "vessel_max": 25,
     "growth_rate": "Lassú",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Peperomia_caperata.jpg"
   },
   {
     "name": "Peperomia obtusifolia",
@@ -448,7 +455,8 @@
     "vessel_min": 12,
     "vessel_max": 30,
     "growth_rate": "Lassú–közepes",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Peperomia_obtusifolia.jpg"
   },
   {
     "name": "Peperomia verticillata",
@@ -490,7 +498,8 @@
     "vessel_min": 10,
     "vessel_max": 25,
     "growth_rate": "Közepes",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Peperomia_verticillata.jpg"
   },
   {
     "name": "Pilea depressa",
@@ -532,7 +541,8 @@
     "vessel_min": 8,
     "vessel_max": 30,
     "growth_rate": "Gyors",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Pilea_depressa.jpg"
   },
   {
     "name": "Pilea multiflora",
@@ -574,7 +584,8 @@
     "vessel_min": 12,
     "vessel_max": 30,
     "growth_rate": "Közepes–gyors",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Pilea multiflora.jpeg"
   },
   {
     "name": "Philodendron oxycardium",
@@ -626,7 +637,8 @@
     "vessel_min": 25,
     "vessel_max": 50,
     "growth_rate": "Gyors",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Philodendron oxycardium.jpg"
   },
   {
     "name": "Syngonium podophyllum",
@@ -720,7 +732,8 @@
     "vessel_min": 10,
     "vessel_max": 25,
     "growth_rate": "Lassú",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Cryptanthus_bivittatus.jpg"
   },
   {
     "name": "Selaginella martensii",
@@ -768,7 +781,8 @@
     "vessel_min": 10,
     "vessel_max": 30,
     "growth_rate": "Közepes",
-    "substrate_group": "moss_both"
+    "substrate_group": "moss_both",
+    "image_file": "Selaginella_martensii.jpg"
   },
   {
     "name": "Selaginella uncinata",
@@ -810,7 +824,8 @@
     "vessel_min": 10,
     "vessel_max": 35,
     "growth_rate": "Közepes",
-    "substrate_group": "moss_both"
+    "substrate_group": "moss_both",
+    "image_file": "selaginella-uncinata.jpeg"
   },
   {
     "name": "Soleirolia soleirolii",
@@ -852,7 +867,8 @@
     "vessel_min": 8,
     "vessel_max": 40,
     "growth_rate": "Nagyon gyors",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Soleirolia_soleirolii.jpg"
   },
   {
     "name": "Taxiphyllum barbieri",
@@ -888,7 +904,8 @@
     "vessel_min": 8,
     "vessel_max": 40,
     "growth_rate": "Közepes",
-    "substrate_group": "moss_both"
+    "substrate_group": "moss_both",
+    "image_file": "Taxiphyllum_barbieri.jpg"
   },
   {
     "name": "Plagiomnium undulatum",
@@ -924,7 +941,8 @@
     "vessel_min": 10,
     "vessel_max": 30,
     "growth_rate": "Lassú",
-    "substrate_group": "moss_both"
+    "substrate_group": "moss_both",
+    "image_file": "Plagiomnium_undulatum.jpg"
   },
   {
     "name": "Vesicularia dubyana",
@@ -960,7 +978,8 @@
     "vessel_min": 8,
     "vessel_max": 40,
     "growth_rate": "Közepes",
-    "substrate_group": "moss_both"
+    "substrate_group": "moss_both",
+    "image_file": "Vesicularia_dubyana.jpg"
   },
   {
     "name": "Aloe vera",
@@ -1012,7 +1031,8 @@
     "vessel_min": 20,
     "vessel_max": 40,
     "growth_rate": "Közepes",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Aloe_vera.jpg"
   },
   {
     "name": "Crassula muscosa",
@@ -1054,7 +1074,8 @@
     "vessel_min": 8,
     "vessel_max": 20,
     "growth_rate": "Közepes",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Crassula_muscosa.jpg"
   },
   {
     "name": "Echeveria elegans",
@@ -1101,7 +1122,8 @@
     "vessel_min": 8,
     "vessel_max": 18,
     "growth_rate": "Lassú",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Echeveria_elegans.jpg"
   },
   {
     "name": "Echeveria subsessilis",
@@ -1143,7 +1165,8 @@
     "vessel_min": 8,
     "vessel_max": 20,
     "growth_rate": "Lassú",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Echeveria subsessilis.jpg"
   },
   {
     "name": "Gasteria bicolor",
@@ -1185,7 +1208,8 @@
     "vessel_min": 8,
     "vessel_max": 18,
     "growth_rate": "Lassú",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Gasteria_bicolor.jpg"
   },
   {
     "name": "Gasteria carinata",
@@ -1227,7 +1251,8 @@
     "vessel_min": 8,
     "vessel_max": 18,
     "growth_rate": "Lassú",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Gasteria_carinata.jpg"
   },
   {
     "name": "Graptopetalum paraguayense",
@@ -1269,7 +1294,8 @@
     "vessel_min": 10,
     "vessel_max": 25,
     "growth_rate": "Közepes",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Graptopetalum_paraguayense.jpg"
   },
   {
     "name": "Gymnocalycium mihanovichii",
@@ -1316,7 +1342,8 @@
     "vessel_min": 8,
     "vessel_max": 15,
     "growth_rate": "Nagyon lassú",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Gymnocalycium_mihanovichii.jpg"
   },
   {
     "name": "Haworthia cooperi",
@@ -1358,7 +1385,8 @@
     "vessel_min": 6,
     "vessel_max": 15,
     "growth_rate": "Lassú",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Haworthia_cooperi.jpg"
   },
   {
     "name": "Haworthia fasciata",
@@ -1400,7 +1428,8 @@
     "vessel_min": 8,
     "vessel_max": 18,
     "growth_rate": "Lassú",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Haworthia_fasciata.jpg"
   },
   {
     "name": "Kalanchoe tomentosa",
@@ -1442,7 +1471,8 @@
     "vessel_min": 12,
     "vessel_max": 25,
     "growth_rate": "Lassú–közepes",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Kalanchoe_tomentosa.jpg"
   },
   {
     "name": "Mammillaria elongata",
@@ -1484,7 +1514,8 @@
     "vessel_min": 8,
     "vessel_max": 20,
     "growth_rate": "Lassú",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Mammillaria_elongata.jpg"
   },
   {
     "name": "Mammillaria gracilis",
@@ -1526,7 +1557,8 @@
     "vessel_min": 8,
     "vessel_max": 18,
     "growth_rate": "Lassú",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Mammillaria_gracilis.jpg"
   },
   {
     "name": "Sedum morganianum",
@@ -1568,7 +1600,8 @@
     "vessel_min": 10,
     "vessel_max": 25,
     "growth_rate": "Közepes",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Sedum_morganianum.jpg"
   },
   {
     "name": "Sedum rubrotinctum",
@@ -1610,7 +1643,8 @@
     "vessel_min": 8,
     "vessel_max": 20,
     "growth_rate": "Közepes",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Sedum_rubrotinctum.jpg"
   },
   {
     "name": "Sempervivum tectorum",
@@ -1652,7 +1686,8 @@
     "vessel_min": 10,
     "vessel_max": 25,
     "growth_rate": "Közepes",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Sempervivum_tectorum.jpg"
   },
   {
     "name": "Senecio rowleyanus",
@@ -1699,7 +1734,8 @@
     "vessel_min": 10,
     "vessel_max": 25,
     "growth_rate": "Közepes",
-    "substrate_group": "succulent"
+    "substrate_group": "succulent",
+    "image_file": "Senecio_rowleyanus.jpg"
   },
   {
     "name": "Drosera adelae",
@@ -1746,7 +1782,8 @@
     "vessel_min": 10,
     "vessel_max": 25,
     "growth_rate": "Közepes",
-    "substrate_group": "carnivorous"
+    "substrate_group": "carnivorous",
+    "image_file": "Drosera_adelae.jpg"
   },
   {
     "name": "Drosera aliciae",
@@ -1830,7 +1867,8 @@
     "vessel_min": 15,
     "vessel_max": 35,
     "growth_rate": "Közepes",
-    "substrate_group": "carnivorous"
+    "substrate_group": "carnivorous",
+    "image_file": "Drosera_binata.jpg"
   },
   {
     "name": "Drosera capensis",
@@ -1872,7 +1910,8 @@
     "vessel_min": 10,
     "vessel_max": 25,
     "growth_rate": "Gyors",
-    "substrate_group": "carnivorous"
+    "substrate_group": "carnivorous",
+    "image_file": "Drosera_capensis.jpg"
   },
   {
     "name": "Drosera prolifera",
@@ -1914,7 +1953,8 @@
     "vessel_min": 10,
     "vessel_max": 30,
     "growth_rate": "Közepes",
-    "substrate_group": "carnivorous"
+    "substrate_group": "carnivorous",
+    "image_file": "Drosera_prolifera.jpg"
   },
   {
     "name": "Drosera rotundifolia",
@@ -1950,7 +1990,8 @@
     "vessel_min": 8,
     "vessel_max": 20,
     "growth_rate": "Lassú",
-    "substrate_group": "carnivorous"
+    "substrate_group": "carnivorous",
+    "image_file": "Drosera_rotundifolia.jpg"
   },
   {
     "name": "Drosera slackii",
@@ -1992,7 +2033,8 @@
     "vessel_min": 10,
     "vessel_max": 25,
     "growth_rate": "Lassú–közepes",
-    "substrate_group": "carnivorous"
+    "substrate_group": "carnivorous",
+    "image_file": "Drosera_slackii.jpg"
   },
   {
     "name": "Drosera spatulata",
@@ -2034,7 +2076,8 @@
     "vessel_min": 6,
     "vessel_max": 18,
     "growth_rate": "Közepes (magról: gyors)",
-    "substrate_group": "carnivorous"
+    "substrate_group": "carnivorous",
+    "image_file": "Drosera_spatulata.jpg"
   },
   {
     "name": "Nepenthes alata",
@@ -2106,7 +2149,8 @@
     "vessel_min": 25,
     "vessel_max": 50,
     "growth_rate": "Közepes",
-    "substrate_group": "carnivorous"
+    "substrate_group": "carnivorous",
+    "image_file": "Nepenthes_alata.jpg"
   },
   {
     "name": "Nepenthes ventricosa",
@@ -2168,7 +2212,8 @@
     "vessel_min": 25,
     "vessel_max": 50,
     "growth_rate": "Közepes",
-    "substrate_group": "carnivorous"
+    "substrate_group": "carnivorous",
+    "image_file": "Nepenthes_ventricosa.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2210,7 +2255,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_aeranthos.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2246,7 +2292,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Lassú",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_argentea.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2282,7 +2329,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_brachycaulos.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2318,7 +2366,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Lassú–közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_bulbosa.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2354,7 +2403,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_capitata.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2390,7 +2440,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Lassú",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_caput-medusae.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2426,7 +2477,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Lassú",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_circinata.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2462,7 +2514,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_concolor.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2504,7 +2557,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_fasciculata.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2540,7 +2594,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_filifolia.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2576,7 +2631,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_flabellata.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2612,7 +2668,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_funckiana.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2648,7 +2705,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Lassú",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_gardneri.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2684,7 +2742,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_guatemalensis.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2720,7 +2779,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_intermedia.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2762,7 +2822,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_ionantha.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2798,7 +2859,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_juncea.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2834,7 +2896,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Nagyon lassú",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_magnusiana.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2870,7 +2933,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Lassú",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_pruinosa.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2906,7 +2970,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Lassú",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_streptophylla.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2942,7 +3007,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_stricta.jpg"
   },
   {
     "group": "Tillandsia",
@@ -2978,7 +3044,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Nagyon lassú",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_tectorum.jpg"
   },
   {
     "group": "Tillandsia",
@@ -3014,7 +3081,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Közepes",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia velutina.jpg"
   },
   {
     "group": "Tillandsia",
@@ -3056,7 +3124,8 @@
     "vessel_min": 0,
     "vessel_max": 0,
     "growth_rate": "Nagyon lassú",
-    "substrate_group": "tillandsia"
+    "substrate_group": "tillandsia",
+    "image_file": "Tillandsia_xerographica.jpg"
   },
   {
     "name": "Fittonia albivenis",
@@ -3323,7 +3392,8 @@
     "vessel_min": 10,
     "vessel_max": 25,
     "growth_rate": "Lassú",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Peperomia-Metallica.jpg"
   },
   {
     "name": "Hypnum cupressiforme",
