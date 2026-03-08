@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
-import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
+import { useLocalSearchParams, useRouter, Stack, useFocusEffect } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { usePlantStore } from '../../src/store/plantStore';
@@ -39,28 +39,37 @@ export default function PlantDetailScreen() {
     { id: 'nyitott', label: t('open'), field: 'N', color: '#AFB42B' },
   ] as const;
 
-  // Load plant data
-  useEffect(() => {
-    if (name) {
-      const decodedName = decodeURIComponent(name);
-      setLoading(true);
-      setError(null);
-      
-      Promise.all([
-        getPlantDetail(decodedName),
-        getCompatiblePlants(decodedName, undefined, 20)
-      ])
-        .then(([plantData, compatData]) => {
-          setPlant(plantData);
-          setCompatiblePlants(compatData.compatible_plants);
-          setLoading(false);
-        })
-        .catch((err) => {
-          setError(t('errorLoading'));
-          setLoading(false);
-        });
-    }
-  }, [name]);
+  // Load plant data when screen gets focus (including back navigation)
+  useFocusEffect(
+    useCallback(() => {
+      if (name) {
+        const decodedName = decodeURIComponent(name);
+        console.log('[PlantDetail] Focus - Loading plant:', decodedName);
+        
+        // Only load if different plant or no plant loaded
+        if (!plant || plant.name !== decodedName) {
+          setLoading(true);
+          setError(null);
+          
+          Promise.all([
+            getPlantDetail(decodedName),
+            getCompatiblePlants(decodedName, undefined, 20)
+          ])
+            .then(([plantData, compatData]) => {
+              console.log('[PlantDetail] Loaded:', plantData.name);
+              setPlant(plantData);
+              setCompatiblePlants(compatData.compatible_plants);
+              setLoading(false);
+            })
+            .catch((err) => {
+              console.log('[PlantDetail] Error:', err);
+              setError(t('errorLoading'));
+              setLoading(false);
+            });
+        }
+      }
+    }, [name])
+  );
 
   // Reload compatible plants when filter changes
   useEffect(() => {
