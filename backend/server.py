@@ -388,7 +388,7 @@ SUBSTRATE_COMPATIBILITY = {
         "avoid_terrarium": ["zart"]
     },
     "foliage": {
-        "compatible_with": ["foliage", "moss_compatible_with_foliage", "tillandsia_no_substrate"],
+        "compatible_with": ["foliage", "moss_compatible_with_foliage"],
         "ideal_terrarium": ["zart", "felzart"],
         "acceptable_terrarium": ["nyitott"],
         "avoid_terrarium": []
@@ -412,7 +412,7 @@ SUBSTRATE_COMPATIBILITY = {
         "avoid_terrarium": ["felzart", "nyitott"]
     },
     "tillandsia_no_substrate": {
-        "compatible_with": ["succulent", "foliage", "tillandsia_no_substrate"],
+        "compatible_with": ["tillandsia_no_substrate"],
         "ideal_terrarium": ["felzart", "nyitott"],
         "acceptable_terrarium": ["zart"],
         "avoid_terrarium": []
@@ -482,6 +482,14 @@ async def get_substrate_compatible_plants(
     substrate_rules = SUBSTRATE_COMPATIBILITY.get(base_substrate, {})
     compatible_substrates = substrate_rules.get('compatible_with', [base_substrate])
     
+    # Special case: Tillandsia can be combined with ANY plant that matches
+    # its environmental requirements (terrarium type, humidity, light)
+    # The substrate will be determined by the first non-Tillandsia plant
+    is_tillandsia = base_substrate == 'tillandsia_no_substrate'
+    if is_tillandsia:
+        # Tillandsia is flexible on substrate - can go with any
+        compatible_substrates = list(SUBSTRATE_COMPATIBILITY.keys())
+    
     # Check terrarium type compatibility
     warnings = []
     if terrarium_type:
@@ -500,7 +508,7 @@ async def get_substrate_compatible_plants(
             else:
                 warnings.append(f"Note: {plant['name']} would do better in a {'closed' if 'zart' in ideal else 'open'} terrarium.")
     
-    # Get substrate recipe
+    # Get substrate recipe - for Tillandsia, show info that substrate depends on other plants
     recipe = SUBSTRATE_RECIPES.get(base_substrate, {})
     recipe_name = recipe.get(f'name_{lang}', recipe.get('name_hu', base_substrate))
     recipe_text = recipe.get(f'recipe_{lang}', recipe.get('recipe_hu', ''))
@@ -511,16 +519,44 @@ async def get_substrate_compatible_plants(
         "substrate_group": {"$in": compatible_substrates}
     }
     
-    # Also filter by terrarium type if specified
+    # Filter by terrarium type - STRICT matching (only ✓) for better compatibility
     if terrarium_type:
         terrarium_field = 'Z' if terrarium_type == 'zart' else 'F' if terrarium_type == 'felzart' else 'N'
-        query[terrarium_field] = {"$in": ['✓', '~']}
+        # For Tillandsia, allow plants that thrive in the selected type
+        # Tillandsia works well in both open and semi-closed
+        if is_tillandsia:
+            # Tillandsia is flexible - works in nyitott and felzart
+            # Only show plants that actually thrive (✓) in chosen type
+            query[terrarium_field] = '✓'
+        elif terrarium_type == 'nyitott':
+            # Open terrariums need strict matching - only plants that thrive there
+            query[terrarium_field] = '✓'
+        else:
+            # Closed/semi-closed can be more lenient
+            query[terrarium_field] = {"$in": ['✓', '~']}
     
     all_plants = list(plants_collection.find(query))
     
-    # Calculate compatibility scores
+    # Calculate compatibility scores with additional humidity/light matching
     compatible = []
+    base_humidity_min = plant.get('humidity_min', 50)
+    base_humidity_max = plant.get('humidity_max', 70)
+    base_light = plant.get('light_level', 'medium')
+    
     for other in all_plants:
+        # For Tillandsia, also check humidity range overlap
+        if is_tillandsia:
+            other_humidity_min = other.get('humidity_min', 50)
+            other_humidity_max = other.get('humidity_max', 70)
+            
+            # Check if humidity ranges overlap reasonably
+            overlap_min = max(base_humidity_min, other_humidity_min)
+            overlap_max = min(base_humidity_max, other_humidity_max)
+            
+            # Skip if no humidity overlap or very small overlap
+            if overlap_max - overlap_min < 10:
+                continue
+        
         score = calculate_compatibility_score(plant, other)
         if score >= 30:
             other['_id'] = str(other['_id'])
