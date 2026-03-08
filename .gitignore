@@ -82,3 +82,7 @@ android-sdk/ -e
 *.env
 *.env.*
 frontend.zip
+-e 
+# Environment files
+*.env
+*.env.*
