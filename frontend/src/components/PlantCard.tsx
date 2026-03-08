@@ -96,10 +96,6 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     overflow: 'hidden',
     elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
   },
   imageContainer: {
     height: 120,
@@ -134,7 +130,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '600',
     color: '#1a1a1a',
-    fontStyle: 'italic',
   },
   common: {
     fontSize: 10,

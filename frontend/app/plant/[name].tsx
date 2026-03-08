@@ -438,7 +438,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     color: '#1a1a1a',
-    fontStyle: 'italic',
   },
   commonName: {
     fontSize: 16,
@@ -507,10 +506,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 16,
     marginBottom: 12,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
     elevation: 1,
   },
   cardTitle: {
@@ -607,7 +602,6 @@ const styles = StyleSheet.create({
   compatInfo: {
     fontSize: 12,
     color: '#999',
-    fontStyle: 'italic',
     marginBottom: 16,
   },
   compatGrid: {
