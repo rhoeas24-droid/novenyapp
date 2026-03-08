@@ -32,6 +32,7 @@ export default function PlantDetailScreen() {
   const [compatiblePlants, setCompatiblePlants] = useState<Plant[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentName, setCurrentName] = useState<string | null>(null);
 
   const TERRARIUM_TYPES = [
     { id: 'zart', label: t('closed'), field: 'Z', color: '#2E7D32' },
@@ -39,36 +40,64 @@ export default function PlantDetailScreen() {
     { id: 'nyitott', label: t('open'), field: 'N', color: '#AFB42B' },
   ] as const;
 
-  // Load plant data when screen gets focus (including back navigation)
+  // Load plant data
+  useEffect(() => {
+    if (!name) return;
+    
+    const decodedName = decodeURIComponent(name);
+    
+    // Skip if already loaded this plant
+    if (currentName === decodedName && plant) {
+      return;
+    }
+    
+    console.log('[PlantDetail] Loading plant:', decodedName);
+    setCurrentName(decodedName);
+    setLoading(true);
+    setError(null);
+    setPlant(null);
+    
+    Promise.all([
+      getPlantDetail(decodedName),
+      getCompatiblePlants(decodedName, undefined, 20)
+    ])
+      .then(([plantData, compatData]) => {
+        console.log('[PlantDetail] Loaded:', plantData.name);
+        setPlant(plantData);
+        setCompatiblePlants(compatData.compatible_plants);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log('[PlantDetail] Error:', err);
+        setError(t('errorLoading'));
+        setLoading(false);
+      });
+  }, [name]);
+
+  // Reload on focus if there was an error
   useFocusEffect(
     useCallback(() => {
-      if (name) {
+      if (name && error) {
         const decodedName = decodeURIComponent(name);
-        console.log('[PlantDetail] Focus - Loading plant:', decodedName);
+        console.log('[PlantDetail] Focus retry:', decodedName);
+        setLoading(true);
+        setError(null);
         
-        // Only load if different plant or no plant loaded
-        if (!plant || plant.name !== decodedName) {
-          setLoading(true);
-          setError(null);
-          
-          Promise.all([
-            getPlantDetail(decodedName),
-            getCompatiblePlants(decodedName, undefined, 20)
-          ])
-            .then(([plantData, compatData]) => {
-              console.log('[PlantDetail] Loaded:', plantData.name);
-              setPlant(plantData);
-              setCompatiblePlants(compatData.compatible_plants);
-              setLoading(false);
-            })
-            .catch((err) => {
-              console.log('[PlantDetail] Error:', err);
-              setError(t('errorLoading'));
-              setLoading(false);
-            });
-        }
+        Promise.all([
+          getPlantDetail(decodedName),
+          getCompatiblePlants(decodedName, undefined, 20)
+        ])
+          .then(([plantData, compatData]) => {
+            setPlant(plantData);
+            setCompatiblePlants(compatData.compatible_plants);
+            setLoading(false);
+          })
+          .catch(() => {
+            setError(t('errorLoading'));
+            setLoading(false);
+          });
       }
-    }, [name])
+    }, [name, error, t])
   );
 
   // Reload compatible plants when filter changes
