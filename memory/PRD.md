@@ -46,6 +46,7 @@ A "Florárium Mester" (Florarium Master) mobil alkalmazás, amely terrárium nö
 
 ## Recently Completed (2025-03-08)
 - [x] Database content translation - ALL 77 plants translated to EN and EL
+- [x] Disease names translation - ALL disease/pest names translated to EN and EL
 
 ## Preview URL
 https://terrarium-guide-dev.preview.emergentagent.com
