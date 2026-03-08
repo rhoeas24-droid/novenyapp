@@ -98,7 +98,7 @@ export default function PlantDetailScreen() {
   };
 
   const handleCompatiblePlantPress = (plantName: string) => {
-    router.replace(`/plant/${encodeURIComponent(plantName)}`);
+    router.push(`/plant/${encodeURIComponent(plantName)}`);
   };
 
   const getCompatibilityIcon = (value: string) => {
