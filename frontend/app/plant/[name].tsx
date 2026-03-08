@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import {
   View,
   Text,
@@ -32,7 +32,9 @@ export default function PlantDetailScreen() {
   const [compatiblePlants, setCompatiblePlants] = useState<Plant[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [currentName, setCurrentName] = useState<string | null>(null);
+  
+  // Track which plant was loaded to detect changes
+  const loadedPlantRef = useRef<string | null>(null);
 
   const TERRARIUM_TYPES = [
     { id: 'zart', label: t('closed'), field: 'Z', color: '#2E7D32' },
@@ -40,69 +42,54 @@ export default function PlantDetailScreen() {
     { id: 'nyitott', label: t('open'), field: 'N', color: '#AFB42B' },
   ] as const;
 
-  // Load plant data
-  useEffect(() => {
-    if (!name) return;
-    
-    const decodedName = decodeURIComponent(name);
-    
-    // Skip if already loaded this plant
-    if (currentName === decodedName && plant) {
+  // Function to load plant data
+  const loadPlantData = useCallback(async (plantName: string, force: boolean = false) => {
+    // Skip if already loaded this plant (unless forced)
+    if (!force && loadedPlantRef.current === plantName && plant && !error) {
+      console.log('[PlantDetail] Already loaded:', plantName);
       return;
     }
     
-    console.log('[PlantDetail] Loading plant:', decodedName);
-    setCurrentName(decodedName);
+    console.log('[PlantDetail] Loading:', plantName, 'force:', force);
+    loadedPlantRef.current = plantName;
     setLoading(true);
     setError(null);
-    setPlant(null);
     
-    Promise.all([
-      getPlantDetail(decodedName),
-      getCompatiblePlants(decodedName, undefined, 20)
-    ])
-      .then(([plantData, compatData]) => {
-        console.log('[PlantDetail] Loaded:', plantData.name);
-        setPlant(plantData);
-        setCompatiblePlants(compatData.compatible_plants);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log('[PlantDetail] Error:', err);
-        setError(t('errorLoading'));
-        setLoading(false);
-      });
-  }, [name]);
+    try {
+      const [plantData, compatData] = await Promise.all([
+        getPlantDetail(plantName),
+        getCompatiblePlants(plantName, undefined, 20)
+      ]);
+      console.log('[PlantDetail] Success:', plantData.name);
+      setPlant(plantData);
+      setCompatiblePlants(compatData.compatible_plants);
+      setError(null);
+    } catch (err) {
+      console.log('[PlantDetail] Error:', err);
+      setError(t('errorLoading'));
+      setPlant(null);
+    } finally {
+      setLoading(false);
+    }
+  }, [plant, error, t]);
 
-  // Reload on focus if there was an error
+  // Load on focus - this handles both initial load and returning via back button
   useFocusEffect(
     useCallback(() => {
-      if (name && error) {
+      if (name) {
         const decodedName = decodeURIComponent(name);
-        console.log('[PlantDetail] Focus retry:', decodedName);
-        setLoading(true);
-        setError(null);
-        
-        Promise.all([
-          getPlantDetail(decodedName),
-          getCompatiblePlants(decodedName, undefined, 20)
-        ])
-          .then(([plantData, compatData]) => {
-            setPlant(plantData);
-            setCompatiblePlants(compatData.compatible_plants);
-            setLoading(false);
-          })
-          .catch(() => {
-            setError(t('errorLoading'));
-            setLoading(false);
-          });
+        // Always load when gaining focus if plant doesn't match or there's an error
+        const needsLoad = !plant || plant.name !== decodedName || error;
+        if (needsLoad) {
+          loadPlantData(decodedName, true);
+        }
       }
-    }, [name, error, t])
+    }, [name, plant, error])
   );
 
   // Reload compatible plants when filter changes
   useEffect(() => {
-    if (name && activeTab === 'compatible') {
+    if (name && activeTab === 'compatible' && plant) {
       const decodedName = decodeURIComponent(name);
       getCompatiblePlants(decodedName, compatTerrariumType || undefined, 20)
         .then((data) => {
@@ -110,11 +97,10 @@ export default function PlantDetailScreen() {
         })
         .catch(() => {});
     }
-  }, [compatTerrariumType, activeTab]);
+  }, [compatTerrariumType, activeTab, plant]);
 
   const handleCompatiblePlantPress = (plantName: string) => {
-    // Use replace instead of push to avoid stack issues
-    router.replace(`/plant/${encodeURIComponent(plantName)}`);
+    router.push(`/plant/${encodeURIComponent(plantName)}`);
   };
 
   const getCompatibilityIcon = (value: string) => {
