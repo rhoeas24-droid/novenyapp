@@ -197,7 +197,7 @@ export default function TerrariumBuilderScreen() {
 
   // Render container selection step
   const renderContainerStep = () => (
-    <View style={styles.stepContainer}>
+    <ScrollView style={styles.stepContainer} showsVerticalScrollIndicator={false}>
       <Text style={styles.stepTitle}>{t('selectContainer')}</Text>
       
       {/* Shape Selection */}
@@ -294,7 +294,9 @@ export default function TerrariumBuilderScreen() {
         <Text style={styles.continueButtonText}>{t('continue')}</Text>
         <Ionicons name="arrow-forward" size={20} color="#fff" />
       </TouchableOpacity>
-    </View>
+      
+      <View style={{ height: 40 }} />
+    </ScrollView>
   );
 
   // Render plant selection grid
