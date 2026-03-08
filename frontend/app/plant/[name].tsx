@@ -15,6 +15,7 @@ import { usePlantStore } from '../../src/store/plantStore';
 import PlantCard from '../../src/components/PlantCard';
 import FilterChip from '../../src/components/FilterChip';
 import { useLanguage } from '../../src/i18n/LanguageContext';
+import { Plant, getPlantDetail, getCompatiblePlants } from '../../src/api/client';
 
 const HERO_HEIGHT = 250;
 
@@ -26,36 +27,50 @@ export default function PlantDetailScreen() {
   const [compatTerrariumType, setCompatTerrariumType] = useState<string | null>(null);
   const { t } = useLanguage();
 
+  // Local state for this screen
+  const [plant, setPlant] = useState<Plant | null>(null);
+  const [compatiblePlants, setCompatiblePlants] = useState<Plant[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const TERRARIUM_TYPES = [
     { id: 'zart', label: t('closed'), field: 'Z', color: '#2E7D32' },
     { id: 'felzart', label: t('semiClosed'), field: 'F', color: '#689F38' },
     { id: 'nyitott', label: t('open'), field: 'N', color: '#AFB42B' },
   ] as const;
 
-  const {
-    selectedPlant,
-    compatiblePlants,
-    loading,
-    error,
-    fetchPlantDetail,
-    fetchCompatiblePlants,
-    clearSelectedPlant,
-    setSelectedTerrariumType,
-  } = usePlantStore();
-
+  // Load plant data
   useEffect(() => {
     if (name) {
       const decodedName = decodeURIComponent(name);
-      fetchPlantDetail(decodedName);
-      fetchCompatiblePlants(decodedName);
+      setLoading(true);
+      setError(null);
+      
+      Promise.all([
+        getPlantDetail(decodedName),
+        getCompatiblePlants(decodedName, undefined, 20)
+      ])
+        .then(([plantData, compatData]) => {
+          setPlant(plantData);
+          setCompatiblePlants(compatData.compatible_plants);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError(t('errorLoading'));
+          setLoading(false);
+        });
     }
   }, [name]);
 
+  // Reload compatible plants when filter changes
   useEffect(() => {
     if (name && activeTab === 'compatible') {
       const decodedName = decodeURIComponent(name);
-      usePlantStore.setState({ selectedTerrariumType: compatTerrariumType as any });
-      fetchCompatiblePlants(decodedName);
+      getCompatiblePlants(decodedName, compatTerrariumType || undefined, 20)
+        .then((data) => {
+          setCompatiblePlants(data.compatible_plants);
+        })
+        .catch(() => {});
     }
   }, [compatTerrariumType, activeTab]);
 
@@ -69,7 +84,7 @@ export default function PlantDetailScreen() {
     return { name: 'close-circle', color: '#E57373' };
   };
 
-  if (loading && !selectedPlant) {
+  if (loading) {
     return (
       <View style={styles.centered}>
         <ActivityIndicator size="large" color="#388E3C" />
@@ -78,13 +93,16 @@ export default function PlantDetailScreen() {
     );
   }
 
-  if (error || !selectedPlant) {
+  if (error || !plant) {
     return (
       <View style={styles.centered}>
         <Text style={styles.errorText}>{error || t('errorLoading')}</Text>
       </View>
     );
   }
+
+  // Use local plant variable instead of selectedPlant
+  const selectedPlant = plant;
 
   return (
     <>
