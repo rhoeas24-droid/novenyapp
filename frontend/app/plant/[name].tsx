@@ -113,7 +113,8 @@ export default function PlantDetailScreen() {
   }, [compatTerrariumType, activeTab]);
 
   const handleCompatiblePlantPress = (plantName: string) => {
-    router.push(`/plant/${encodeURIComponent(plantName)}`);
+    // Use replace instead of push to avoid stack issues
+    router.replace(`/plant/${encodeURIComponent(plantName)}`);
   };
 
   const getCompatibilityIcon = (value: string) => {
