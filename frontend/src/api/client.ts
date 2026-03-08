@@ -1,14 +1,12 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Constants from 'expo-constants';
 
-const API_URL = Constants.expoConfig?.extra?.EXPO_PUBLIC_BACKEND_URL || 
-                process.env.EXPO_PUBLIC_BACKEND_URL || 
-                'https://store-ready-3.preview.emergentagent.com';
+// Use the public API URL directly
+const API_URL = 'https://store-ready-3.preview.emergentagent.com';
 
 const api = axios.create({
   baseURL: `${API_URL}/api`,
-  timeout: 30000,
+  timeout: 60000, // Increased timeout for large images
 });
 
 // Cache keys
