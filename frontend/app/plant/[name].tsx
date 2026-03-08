@@ -156,6 +156,7 @@ export default function PlantDetailScreen() {
               name="information-circle"
               size={20}
               color={activeTab === 'info' ? '#388E3C' : '#999'}
+              style={styles.tabIcon}
             />
             <Text style={[styles.tabText, activeTab === 'info' && styles.activeTabText]}>
               Információk
@@ -169,6 +170,7 @@ export default function PlantDetailScreen() {
               name="git-compare"
               size={20}
               color={activeTab === 'compatible' ? '#388E3C' : '#999'}
+              style={styles.tabIcon}
             />
             <Text style={[styles.tabText, activeTab === 'compatible' && styles.activeTabText]}>
               Társítható ({compatiblePlants.length})
@@ -484,7 +486,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 14,
-    gap: 8,
   },
   activeTab: {
     borderBottomWidth: 2,
@@ -497,6 +498,9 @@ const styles = StyleSheet.create({
   },
   activeTabText: {
     color: '#388E3C',
+  },
+  tabIcon: {
+    marginRight: 8,
   },
   infoSection: {
     padding: 16,
