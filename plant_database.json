@@ -1,0 +1,3328 @@
+[
+  {
+    "name": "Nephrolepis cordifolia",
+    "common": "Tuberous Sword Fern / Lemon Button Fern",
+    "group": "Ferns & Foliage",
+    "family": "Nephrolepidaceae",
+    "light": "Indirect–bright, 4–7 h",
+    "temp": "10–30°C (opt. 18–26°C)",
+    "humidity": "50–70% RH; hagyni felszínét megszáradni öntözések között",
+    "substrate_notes": "—",
+    "propagation": "Division / tubers / runners · ⭐ Very Easy · 2–4 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "~",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; szárazságtűrőbb mint az exaltata; gumók vízraktározók; kültéren is él árnyékban",
+    "avoid": "Invazív potenciál szabadban (Ausztrália, Florida); terráriumban kontrollálható; futók agresszíven terjednek",
+    "maintenance": "Futók nyírása; elhalt frondok eltávolítása; gumók ellenőrzése",
+    "role": "Midground / background",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rhizoctonia blight",
+          "symptoms": "Barna, vizenyős foltok a tövön; frondok hervadása",
+          "treatment": "Érintett rész eltávolítása; szellztetés javítása; fungicid"
+        },
+        {
+          "name": "Pythium root rot",
+          "symptoms": "Puha, barna gyökerek; általános hervadás",
+          "treatment": "Drénázs javítása; öntözés csökkentése"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Pajzstetű (scale)",
+          "symptoms": "Barna ovális pajzsok a szár és levélnyélen",
+          "treatment": "Neem olaj; mechanikus eltávolítás"
+        },
+        {
+          "name": "Lisztestű (mealybug)",
+          "symptoms": "Fehér csromók a levélhónaljban",
+          "treatment": "Alkohol; inszeticid szappan"
+        }
+      ],
+      "other": [
+        {
+          "name": "Gumók túlszaporodása",
+          "symptoms": "Túl sok gumó szorítja a gyökérzetet; cserép kitöltve",
+          "treatment": "Átültetés; gumók felosztása/szaporítása"
+        }
+      ]
+    },
+    "height_cm": "30–60",
+    "spread_cm": "30–60",
+    "vessel_min": 20,
+    "vessel_max": 40,
+    "growth_rate": "Közepes–gyors",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Asplenium nidus",
+    "common": "Bird's Nest Fern",
+    "group": "Ferns & Foliage",
+    "family": "Aspleniaceae",
+    "light": "Low–indirect, 4–6 h",
+    "temp": "18–27°C (opt. 20–24°C)",
+    "humidity": "60–80% RH; substrate egyenletesen nedves",
+    "substrate_notes": "—",
+    "propagation": "Spores · ⭐⭐⭐ Moderate · 8–12 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "~",
+    "cites": "—",
+    "cyprus": "✓ Beltérben jól tartható; AC mellett párásítás ajánlott",
+    "avoid": "Levél közepébe ne önts vizet (rothadás); ne párosítsd erős fényigényű fajokkal",
+    "maintenance": "Alsó elhalt levelek eltávolítása; levéltisztítás nedves ruhával",
+    "role": "Background / focal point",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Cercospora leaf spot",
+          "symptoms": "Kerek, sötétbarna foltok sárgás szegéllyel a leveleken",
+          "treatment": "Érintett levelek eltávolítása; fungicid; permetezés kerülése"
+        },
+        {
+          "name": "Pythium root rot",
+          "symptoms": "Puha, barna gyökerek; növény hervadása öntözés ellenére",
+          "treatment": "Túlöntözés megszüntetése; drenázs javítása; új szubsztrát"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Pajzstetű",
+          "symptoms": "Barna pajzsok a levelek alsó felén",
+          "treatment": "Neem olaj; mechanikus eltávolítás"
+        },
+        {
+          "name": "Csigák/meztelen csigák",
+          "symptoms": "Szabálytalan lyukak a leveleken; nyálkanyom",
+          "treatment": "Csigacsapda; kézi összegyűjtés"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "30–60",
+    "spread_cm": "30–60",
+    "vessel_min": 25,
+    "vessel_max": 50,
+    "growth_rate": "Lassú",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Bolbitis heudelotii",
+    "common": "African Water Fern",
+    "group": "Ferns & Foliage",
+    "family": "Dryopteridaceae",
+    "light": "Low–indirect, 3–5 h",
+    "temp": "20–28°C (opt. 22–26°C)",
+    "humidity": "80–100% RH; szubsztrát nagyon nedves, akár félig vízben",
+    "substrate_notes": "Kötözhető fára/kőre; ha szubsztrátban: +20% sphagnum, nagyon nedves tartás",
+    "propagation": "Rhizome division · ⭐⭐ Easy · 4–6 wks",
+    "Z": "✓",
+    "F": "~",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "⚠ Csak zárt, párás terráriumban; nyári hő nem probléma ha zárt",
+    "avoid": "Nem bírja a szárazságot; ne párosítsd alacsony páraigényű fajokkal",
+    "maintenance": "Rhizóma terjedésének ellenőrzése; sérült levelek eltávolítása",
+    "role": "Midground / epiphyte on wood",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rhizome rot",
+          "symptoms": "Rhizóma puha, barna részek; levél sárgulás",
+          "treatment": "Érintett rhizóma rész eltávolítása; jobb vízmozgás"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Algásodás",
+          "symptoms": "Zöld bevonat a leveleken gyenge áramlásnál",
+          "treatment": "Jobb vízmozgás; kevesebb fény ideiglenesen"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "15–40",
+    "spread_cm": "15–30",
+    "vessel_min": 15,
+    "vessel_max": 35,
+    "growth_rate": "Lassú",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Ficus pumila",
+    "common": "Creeping Fig",
+    "group": "Ferns & Foliage",
+    "family": "Moraceae",
+    "light": "Indirect–bright, 4–7 h",
+    "temp": "15–28°C (opt. 18–24°C)",
+    "humidity": "60–80% RH; egyenletesen nedves",
+    "substrate_notes": "—",
+    "propagation": "Stem cuttings · ⭐ Very Easy · 2–3 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "~",
+    "cites": "—",
+    "cyprus": "✓ Kiváló beltérben; kültéren is él árnyékos falon",
+    "avoid": "Nagyon agresszív terjedés – rendszeres nyírás elengedhetetlen; latex méreg",
+    "maintenance": "Heti nyírás terráriumban; gyökérzet ellenőrzése",
+    "role": "Groundcover / climber / wall cover",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Levélfoltosság (leaf spot)",
+          "symptoms": "Sötét foltok sárgás udvarral",
+          "treatment": "Légáramlás javítása; érintett levelek eltávolítása"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Takácsatka",
+          "symptoms": "Finom hálók; pontszerű elszíneződés",
+          "treatment": "Rendszeres permetezés vízzel; neem olaj"
+        },
+        {
+          "name": "Pajzstetű",
+          "symptoms": "Barna ovális pajzsok a száron",
+          "treatment": "Mechanikus eltávolítás; neem olaj"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "5–15 (kúszó)",
+    "spread_cm": "Korlátlan (kúszó)",
+    "vessel_min": 10,
+    "vessel_max": 50,
+    "growth_rate": "Gyors",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Hedera canariensis",
+    "common": "Canary Island Ivy",
+    "group": "Ferns & Foliage",
+    "family": "Araliaceae",
+    "light": "Indirect–bright, 4–6 h",
+    "temp": "10–25°C (opt. 15–20°C)",
+    "humidity": "40–60% RH; hagyni felszínét megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Stem cuttings in water · ⭐ Very Easy · 2–3 wks",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kültéren is él; beltérben AC mellé kiváló; inkább hűvösebb helyet szeret",
+    "avoid": "Toxikus (ha lenyeli ember/állat); agresszív terjedés; nem szereti a zárt, párás közeget",
+    "maintenance": "Nyírás; levéltisztítás; ellenőrzés atkák miatt",
+    "role": "Trailing / climber (nyitott terrárium dekor)",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Lisztharmat (powdery mildew)",
+          "symptoms": "Fehér, lisztes bevonat a leveleken",
+          "treatment": "Légáramlás; neem olaj; kénbázisú fungicid"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Takácsatka",
+          "symptoms": "Sárgás levelek; finom hálók",
+          "treatment": "Rendszeres vízpermet; neem olaj"
+        },
+        {
+          "name": "Levéltetű (aphid)",
+          "symptoms": "Zöld/fekete apró rovarok a hajtásokon; ragadós mézharmat",
+          "treatment": "Vízzel lemosás; inszeticid szappan"
+        }
+      ],
+      "other": [
+        {
+          "name": "Bacterial leaf spot",
+          "symptoms": "Vizenyős, sötét foltok",
+          "treatment": "Érintett levelek eltávolítása; permetezés kerülése"
+        }
+      ]
+    },
+    "height_cm": "20–100+ (kúszó)",
+    "spread_cm": "Korlátlan",
+    "vessel_min": 20,
+    "vessel_max": 50,
+    "growth_rate": "Gyors",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Microsorum pteropus",
+    "common": "Java Fern",
+    "group": "Ferns & Foliage",
+    "family": "Polypodiaceae",
+    "light": "Low–indirect, 3–5 h",
+    "temp": "20–28°C (opt. 22–26°C)",
+    "humidity": "80–100% RH; nagyon nedves / félig vízi",
+    "substrate_notes": "NE ültesd a rhizómát szubsztrátba! Kötözd fára/kőre",
+    "propagation": "Rhizome division / adventitious plantlets · ⭐ Very Easy · 3–4 wks",
+    "Z": "✓",
+    "F": "~",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "⚠ Csak zárt párás terráriumban vagy paludáriumban",
+    "avoid": "Rhizóma ne legyen elfedve szubsztráttal – rothadás; csak RO/esővíz",
+    "maintenance": "Plantletek eltávolítása ha túlnőnek; rhizóma ellenőrzése",
+    "role": "Midground / epiphyte",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rhizome rot",
+          "symptoms": "Puha, barna rhizóma; levelek leválnak",
+          "treatment": "Érintett rész eltávolítása; jobb vízmozgás"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Csigák",
+          "symptoms": "Lyukak a leveleken",
+          "treatment": "Kézi gyűjtés"
+        }
+      ],
+      "other": [
+        {
+          "name": "Java fern melt",
+          "symptoms": "Levelek transzparensek, barnulnak, feloldódnak",
+          "treatment": "Kevesebb fény; CO2/tápanyag egyensúly javítása"
+        }
+      ]
+    },
+    "height_cm": "15–35",
+    "spread_cm": "15–30",
+    "vessel_min": 15,
+    "vessel_max": 35,
+    "growth_rate": "Lassú–közepes",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Nephrolepis exaltata",
+    "common": "Boston Fern",
+    "group": "Ferns & Foliage",
+    "family": "Nephrolepidaceae",
+    "light": "Indirect, 4–6 h",
+    "temp": "16–27°C (opt. 18–24°C)",
+    "humidity": "60–80% RH; egyenletesen nedves szubsztrát",
+    "substrate_notes": "—",
+    "propagation": "Division / runners · ⭐ Very Easy · 2–4 wks",
+    "Z": "~",
+    "F": "✓",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja beltérben; AC mellett párásítás ajánlott; kültérben árnyékos helyen",
+    "avoid": "Sok levelet hullat – gyakori takarítás; zárt terráriumban túl nagy lehet",
+    "maintenance": "Elhalt frondok eltávolítása; futók nyírása; néha forgatás",
+    "role": "Background / hanging accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Pythium root rot",
+          "symptoms": "Gyökerek barnák, puhák; növény hervad",
+          "treatment": "Drenázs javítása; öntözés csökkentése"
+        },
+        {
+          "name": "Botrytis",
+          "symptoms": "Szürke penész a lombon nedves időben",
+          "treatment": "Légáramlás; érintett részek eltávolítása"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók",
+          "treatment": "Alkoholos törlés; inszeticid szappan"
+        },
+        {
+          "name": "Pajzstetű",
+          "symptoms": "Barna pajzsok a szár mentén",
+          "treatment": "Neem olaj; mechanikus eltávolítás"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "40–90",
+    "spread_cm": "50–100",
+    "vessel_min": 30,
+    "vessel_max": 60,
+    "growth_rate": "Gyors",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Peperomia caperata",
+    "common": "Emerald Ripple Peperomia",
+    "group": "Peperomia & Pilea",
+    "family": "Piperaceae",
+    "light": "Indirect, 4–6 h",
+    "temp": "18–27°C (opt. 20–24°C)",
+    "humidity": "50–70% RH; hagyni felszínét megszáradni",
+    "substrate_notes": "+10% perlit a jobb drénezésért",
+    "propagation": "Leaf cuttings · ⭐⭐ Easy · 4–6 wks",
+    "Z": "~",
+    "F": "✓",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló beltéri növény; AC mellett nem kell párásítás",
+    "avoid": "Túlöntözésérzékeny – gyökérrothadás gyakori; nem bírja a közvetlen napot",
+    "maintenance": "Elhalt levelek eltávolítása; ritka öntözés",
+    "role": "Foreground / accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás (Pythium/Phytophthora)",
+          "symptoms": "Tő puha, barna; levelek hirtelen hervadnak",
+          "treatment": "Szubsztrát csere; öntözés drasztikus csökkentése; érintett tő eltávolítása"
+        },
+        {
+          "name": "Cercospora leaf spot",
+          "symptoms": "Kerek barna foltok",
+          "treatment": "Érintett levelek eltávolítása; szellőztetés"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér viaszos csomók",
+          "treatment": "Alkohol; neem olaj"
+        },
+        {
+          "name": "Tripszek (thrips)",
+          "symptoms": "Ezüstös csíkok a leveleken; apró fekete pontok",
+          "treatment": "Kék ragacslapok; inszeticid szappan"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "10–20",
+    "vessel_min": 10,
+    "vessel_max": 25,
+    "growth_rate": "Lassú",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Peperomia obtusifolia",
+    "common": "Baby Rubber Plant",
+    "group": "Peperomia & Pilea",
+    "family": "Piperaceae",
+    "light": "Indirect–bright, 4–6 h",
+    "temp": "18–28°C (opt. 20–25°C)",
+    "humidity": "40–60% RH; hagyni felszínét megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Stem/leaf cuttings · ⭐ Very Easy · 3–5 wks",
+    "Z": "~",
+    "F": "✓",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; húsos levelei jól bírják az alacsony páratartalmat",
+    "avoid": "Túlöntözésérzékeny; vastagodó gyökérzet – ne ültesd túl mélyre",
+    "maintenance": "Minimális; nyírás forma megtartásáért",
+    "role": "Foreground / midground",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Puha tő; levelek sárgulnak és hullanak",
+          "treatment": "Öntözés csökkentése; drenázs javítása"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók",
+          "treatment": "Neem olaj; alkohol"
+        },
+        {
+          "name": "Takácsatka",
+          "symptoms": "Sárga pöttyök; háló",
+          "treatment": "Vízpermet; neem olaj"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "15–30",
+    "spread_cm": "15–25",
+    "vessel_min": 12,
+    "vessel_max": 30,
+    "growth_rate": "Lassú–közepes",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Peperomia verticillata",
+    "common": "Red Log Peperomia",
+    "group": "Peperomia & Pilea",
+    "family": "Piperaceae",
+    "light": "Indirect–bright, 4–6 h",
+    "temp": "18–27°C (opt. 20–24°C)",
+    "humidity": "50–70% RH; egyenletesen nedves",
+    "substrate_notes": "—",
+    "propagation": "Stem cuttings · ⭐ Very Easy · 2–4 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "~",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja; AC mellett is rendben van",
+    "avoid": "Nyúlóssá válik kevés fénynél; túlöntözésérzékeny",
+    "maintenance": "Csúcs visszacsípése kompakt növekedésért",
+    "role": "Midground / groundcover",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Puha szár tő közelében; hervadás",
+          "treatment": "Öntözés csökkentése; szubsztrát csere"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér viaszos csomók",
+          "treatment": "Alkohol; inszeticid szappan"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "10–25",
+    "spread_cm": "10–20",
+    "vessel_min": 10,
+    "vessel_max": 25,
+    "growth_rate": "Közepes",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Pilea depressa",
+    "common": "Miniature Peperomia / Depressed Clearweed",
+    "group": "Peperomia & Pilea",
+    "family": "Urticaceae",
+    "light": "Indirect, 3–5 h",
+    "temp": "18–26°C (opt. 20–24°C)",
+    "humidity": "60–80% RH; egyenletesen nedves",
+    "substrate_notes": "—",
+    "propagation": "Stem cuttings · ⭐ Very Easy · 1–2 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "~",
+    "cites": "—",
+    "cyprus": "⚠ Párásítás szükséges; AC kiszárítja",
+    "avoid": "Gyorsan teríti be a felszínt – más alacsony növények elnyomhatóak",
+    "maintenance": "Rendszeres nyírás; túlnőtt részek eltávolítása",
+    "role": "Groundcover",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Levélfoltosság",
+          "symptoms": "Barna foltok nedves környezetben",
+          "treatment": "Szellőztetés; érintett részek eltávolítása"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Levéltetű",
+          "symptoms": "Apró rovarok a hajtásvégeken",
+          "treatment": "Vízzel lemosás; inszeticid szappan"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "3–8",
+    "spread_cm": "15–30 (terítő)",
+    "vessel_min": 8,
+    "vessel_max": 30,
+    "growth_rate": "Gyors",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Pilea multiflora",
+    "common": "Pilea multiflora",
+    "group": "Peperomia & Pilea",
+    "family": "Urticaceae",
+    "light": "Indirect, 3–5 h",
+    "temp": "18–26°C (opt. 20–24°C)",
+    "humidity": "60–80% RH; egyenletesen nedves",
+    "substrate_notes": "—",
+    "propagation": "Stem cuttings · ⭐ Very Easy · 2–3 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "~",
+    "cites": "—",
+    "cyprus": "⚠ Párásítás ajánlott; AC szárító hatása ellen védeni",
+    "avoid": "Gyorsan nő; más kis növényeket elnyomhat",
+    "maintenance": "Nyírás kompakt formáért",
+    "role": "Midground / filler",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Szár aljának sötétedése",
+          "treatment": "Drenázs javítása; szubsztrát szellősítése"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Tripsz",
+          "symptoms": "Ezüstös csíkok",
+          "treatment": "Ragacslapok; inszeticid szappan"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "15–30",
+    "spread_cm": "15–25",
+    "vessel_min": 12,
+    "vessel_max": 30,
+    "growth_rate": "Közepes–gyors",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Philodendron oxycardium",
+    "common": "Heartleaf Philodendron",
+    "group": "Aroids & Tropicals",
+    "family": "Araceae",
+    "light": "Indirect, 4–6 h",
+    "temp": "18–30°C (opt. 20–26°C)",
+    "humidity": "50–70% RH; hagyni felszínét megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Stem cuttings in water · ⭐ Very Easy · 1–3 wks",
+    "Z": "~",
+    "F": "✓",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló beltéri növény; hőtűrő; AC mellett is jó",
+    "avoid": "Toxikus (kalcium-oxalát); gyorsan nő – nyírás kell; zárt terráriumban túl nagy lesz",
+    "maintenance": "Rendszeres nyírás; levéltisztítás",
+    "role": "Background / climber / trailing",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Erwinia blight",
+          "symptoms": "Vizenyős, bűzös szárrothadás; gyors terjedés",
+          "treatment": "Érintett rész azonnali eltávolítása; steril eszközök; szellőztetés"
+        },
+        {
+          "name": "Phytophthora",
+          "symptoms": "Sötét, nedves foltok a leveleken és tövön",
+          "treatment": "Öntözés csökkentése; fungicid"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Takácsatka",
+          "symptoms": "Sárgás pöttyök; háló",
+          "treatment": "Neem olaj; vízpermet"
+        },
+        {
+          "name": "Tripsz",
+          "symptoms": "Ezüstös sérülések",
+          "treatment": "Ragacslapok; inszeticid szappan"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "30–200+ (kúszó)",
+    "spread_cm": "30–100+",
+    "vessel_min": 25,
+    "vessel_max": 50,
+    "growth_rate": "Gyors",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Syngonium podophyllum",
+    "common": "Arrowhead Plant",
+    "group": "Aroids & Tropicals",
+    "family": "Araceae",
+    "light": "Indirect, 4–6 h",
+    "temp": "18–30°C (opt. 20–26°C)",
+    "humidity": "50–70% RH; hagyni felszínét megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Stem cuttings in water · ⭐ Very Easy · 1–3 wks",
+    "Z": "~",
+    "F": "✓",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló beltéri; jól bírja a meleget; AC mellett is rendben",
+    "avoid": "Toxikus; gyorsan nő; zárt terráriumban kontrollálatlanul terjedhet",
+    "maintenance": "Rendszeres nyírás; forgatás; levéltisztítás",
+    "role": "Background / climber",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Bacterial leaf blight (Xanthomonas)",
+          "symptoms": "Sötétbarna, vizenyős foltok sárgás szegéllyel",
+          "treatment": "Érintett levelek eltávolítása; réz-fungicid; permetezés kerülése"
+        },
+        {
+          "name": "Myrothecium leaf spot",
+          "symptoms": "Koncentrikus barna foltok spóratestekkel",
+          "treatment": "Fungicid; szellőztetés"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Levéltetű",
+          "symptoms": "Ragadós csomók a hajtásokon",
+          "treatment": "Vízzel lemosás; inszeticid szappan"
+        },
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér viaszos csomók",
+          "treatment": "Alkohol; neem olaj"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "30–150+ (kúszó)",
+    "spread_cm": "30–60",
+    "vessel_min": 25,
+    "vessel_max": 50,
+    "growth_rate": "Gyors",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Cryptanthus bivittatus",
+    "common": "Earth Star",
+    "group": "Aroids & Tropicals",
+    "family": "Bromeliaceae",
+    "light": "Indirect–bright, 5–7 h",
+    "temp": "18–30°C (opt. 20–26°C)",
+    "humidity": "50–70% RH; hagyni felszínét megszáradni",
+    "substrate_notes": "+20% perlit és kéreg a jobb szellőzésért",
+    "propagation": "Offsets (pups) · ⭐ Very Easy · 4–6 wks",
+    "Z": "~",
+    "F": "✓",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja a ciprusi meleget beltérben",
+    "avoid": "Ne öntsd a rozettába (zárt terráriumban rothadás); szín fakul kevés fénynél",
+    "maintenance": "Elhalt anyarozetta eltávolítása virágzás után; sarjak szedése",
+    "role": "Foreground / accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Belső levelek barnulnak, puha lesz a tő",
+          "treatment": "Öntözés csökkentése; szellőztetés; fertőzött tő eltávolítása"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Pajzstetű",
+          "symptoms": "Barna pajzsok a levélalján",
+          "treatment": "Alkohol; neem olaj"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "5–15",
+    "spread_cm": "10–25",
+    "vessel_min": 10,
+    "vessel_max": 25,
+    "growth_rate": "Lassú",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Selaginella martensii",
+    "common": "Martens' Spikemoss",
+    "group": "Moss & Selaginella",
+    "family": "Selaginellaceae",
+    "light": "Low–indirect, 3–5 h",
+    "temp": "18–26°C (opt. 20–24°C)",
+    "humidity": "70–90% RH; állandóan nedves",
+    "substrate_notes": "—",
+    "propagation": "Stem cuttings / division · ⭐ Very Easy · 2–3 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "⚠ Csak zárt/félzárt terráriumban; AC túl száraz",
+    "avoid": "Kiszárad egyszer → alig éled újra; ne párosítsd száraz fajokkal",
+    "maintenance": "Nyírás ha felfelé nő; alsó elhalt részek eltávolítása",
+    "role": "Groundcover",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Botrytis",
+          "symptoms": "Szürke penész a csúcsokon pangó levegőnél",
+          "treatment": "Szellőztetés; érintett részek eltávolítása"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Csigák",
+          "symptoms": "Rágásnyomok",
+          "treatment": "Kézi gyűjtés"
+        }
+      ],
+      "other": [
+        {
+          "name": "Desiccation",
+          "symptoms": "Levelek összezsugorodnak, barnulnak",
+          "treatment": "Páratartalom emelése; áttetsző fóliatakarás"
+        }
+      ]
+    },
+    "height_cm": "10–25",
+    "spread_cm": "15–30",
+    "vessel_min": 10,
+    "vessel_max": 30,
+    "growth_rate": "Közepes",
+    "substrate_group": "moss_both"
+  },
+  {
+    "name": "Selaginella uncinata",
+    "common": "Peacock Spikemoss",
+    "group": "Moss & Selaginella",
+    "family": "Selaginellaceae",
+    "light": "Low–indirect, 3–5 h",
+    "temp": "15–25°C (opt. 18–22°C)",
+    "humidity": "70–90% RH; állandóan nedves",
+    "substrate_notes": "—",
+    "propagation": "Stem cuttings / division · ⭐ Very Easy · 2–3 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "⚠ Csak zárt/félzárt terráriumban; hőérzékeny – 25°C felett stresszel",
+    "avoid": "Kék szín csak alacsony fénynél látszik; kiszáradás ellen védeni",
+    "maintenance": "Nyírás; elhalt ágak eltávolítása",
+    "role": "Groundcover / foreground accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Botrytis",
+          "symptoms": "Szürke penész",
+          "treatment": "Szellőztetés javítása"
+        }
+      ],
+      "pests": [],
+      "other": [
+        {
+          "name": "Hővédelmi stressz",
+          "symptoms": "Levelek összezsugorodnak; elveszti kék színét",
+          "treatment": "Hőmérséklet csökkentése; árnyékolás"
+        }
+      ]
+    },
+    "height_cm": "5–15",
+    "spread_cm": "20–40 (terítő)",
+    "vessel_min": 10,
+    "vessel_max": 35,
+    "growth_rate": "Közepes",
+    "substrate_group": "moss_both"
+  },
+  {
+    "name": "Soleirolia soleirolii",
+    "common": "Baby's Tears / Mind-your-own-business",
+    "group": "Moss & Selaginella",
+    "family": "Urticaceae",
+    "light": "Indirect, 3–5 h",
+    "temp": "12–24°C (opt. 15–20°C)",
+    "humidity": "60–80% RH; állandóan nedves",
+    "substrate_notes": "—",
+    "propagation": "Division / cuttings · ⭐ Very Easy · 1–2 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "~",
+    "cites": "—",
+    "cyprus": "⚠ Hőérzékeny – 25°C felett szenved; csak hűvös beltérben vagy zárt terráriumban",
+    "avoid": "Nagyon agresszív terjedés; más alacsony növényeket megfojtja; hő érzékeny",
+    "maintenance": "Rendszeres nyírás a terjedés kontrollálásáért",
+    "role": "Groundcover",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Botrytis",
+          "symptoms": "Szürke penész sűrű gyepben",
+          "treatment": "Ritkítás; légáramlás javítása"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Gombalégy (fungus gnat)",
+          "symptoms": "Apró legyek a talaj körül; lárvák a gyökereken",
+          "treatment": "Öntözés csökkentése; ragacslapok; Bt-baktérium"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "2–5",
+    "spread_cm": "Korlátlan (terítő)",
+    "vessel_min": 8,
+    "vessel_max": 40,
+    "growth_rate": "Nagyon gyors",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Taxiphyllum barbieri",
+    "common": "Java Moss",
+    "group": "Moss & Selaginella",
+    "family": "Hypnaceae",
+    "light": "Low–indirect, 3–5 h",
+    "temp": "18–28°C (opt. 20–25°C)",
+    "humidity": "90–100% RH; állandóan nedves/vízi",
+    "substrate_notes": "Nincs szubsztrát szükséges – kötözhető fára/kőre/hálóra",
+    "propagation": "Fragmentation · ⭐ Very Easy · 1–2 wks",
+    "Z": "✓",
+    "F": "~",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "⚠ Csak zárt terráriumban/paludáriumban; önmagában nem él száraz környezetben",
+    "avoid": "Algásodhat erős fénynél; kontrollálatlanul terjedhet",
+    "maintenance": "Nyírás; alga ellenőrzés; ritkítás",
+    "role": "Groundcover / epiphyte accent",
+    "diseases": {
+      "fungal": [],
+      "pests": [],
+      "other": [
+        {
+          "name": "Algásodás",
+          "symptoms": "Szálalga/zöldalga bevonat a mohán",
+          "treatment": "Fényidő csökkentése; jobb vízmozgás; kézi eltávolítás"
+        }
+      ]
+    },
+    "height_cm": "2–5",
+    "spread_cm": "Korlátlan (terítő)",
+    "vessel_min": 8,
+    "vessel_max": 40,
+    "growth_rate": "Közepes",
+    "substrate_group": "moss_both"
+  },
+  {
+    "name": "Plagiomnium undulatum",
+    "common": "Wavy-leaved Moss",
+    "group": "Moss & Selaginella",
+    "family": "Mniaceae",
+    "light": "Low, 2–4 h",
+    "temp": "10–22°C (opt. 12–18°C)",
+    "humidity": "80–100% RH; állandóan nedves",
+    "substrate_notes": "Savanyú, nedves szubsztrát; sphagnum alapú mix ideális",
+    "propagation": "Division / fragmentation · ⭐⭐ Easy · 2–4 wks",
+    "Z": "✓",
+    "F": "~",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "✗ Hűvös mérsékelt faj; ciprusi nyári meleg nem alkalmas; csak hűtött zárt terráriumban",
+    "avoid": "Meleg érzékeny; erős fény kerülése; kiszáradás elkerülése",
+    "maintenance": "Minimális; barnuló részek eltávolítása",
+    "role": "Groundcover",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rothadás",
+          "symptoms": "Barna, pépessé váló részek",
+          "treatment": "Hőmérséklet csökkentése; szellőztetés"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "3–8",
+    "spread_cm": "15–30 (terítő)",
+    "vessel_min": 10,
+    "vessel_max": 30,
+    "growth_rate": "Lassú",
+    "substrate_group": "moss_both"
+  },
+  {
+    "name": "Vesicularia dubyana",
+    "common": "Singapore Moss / Christmas Moss",
+    "group": "Moss & Selaginella",
+    "family": "Hypnaceae",
+    "light": "Low–indirect, 3–5 h",
+    "temp": "20–28°C (opt. 22–26°C)",
+    "humidity": "90–100% RH; állandóan nedves/vízi",
+    "substrate_notes": "Nincs szubsztrát – kötözhető fára/kőre",
+    "propagation": "Fragmentation · ⭐ Very Easy · 1–2 wks",
+    "Z": "✓",
+    "F": "~",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "⚠ Csak zárt terráriumban/paludáriumban",
+    "avoid": "Algásodhat; kontrollálatlan terjedés",
+    "maintenance": "Nyírás; ritkítás; alga ellenőrzés",
+    "role": "Groundcover / epiphyte accent",
+    "diseases": {
+      "fungal": [],
+      "pests": [],
+      "other": [
+        {
+          "name": "Algásodás",
+          "symptoms": "Zöld/barna algabevonat",
+          "treatment": "Fény csökkentése; jobb áramlás"
+        }
+      ]
+    },
+    "height_cm": "2–5",
+    "spread_cm": "Korlátlan (terítő)",
+    "vessel_min": 8,
+    "vessel_max": 40,
+    "growth_rate": "Közepes",
+    "substrate_group": "moss_both"
+  },
+  {
+    "name": "Aloe vera",
+    "common": "Aloe vera",
+    "group": "Succulents & Cacti",
+    "family": "Asphodelaceae",
+    "light": "Bright–direct, 6–8 h",
+    "temp": "10–35°C (opt. 18–27°C)",
+    "humidity": "20–40% RH; hagyni teljesen megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Offsets (pups) · ⭐ Very Easy · 2–4 wks",
+    "Z": "✗",
+    "F": "✗",
+    "N": "✓",
+    "cites": "— (Aloe vera CITES kivétel)",
+    "cyprus": "✓ Kiváló; kültéren is él; bírja a ciprusi nyarat",
+    "avoid": "Túlöntözés #1 gyilkos; ne locsold a rozettába; latex irritáló",
+    "maintenance": "Sarjak eltávolítása; elhalt alsó levelek szedése",
+    "role": "Focal point (nyitott terrárium/önálló)",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás (Phytophthora)",
+          "symptoms": "Puha, vizenyős tő; levelek barnulnak a bázistól",
+          "treatment": "Szubsztrát teljes csere; érintett gyökerek eltávolítása"
+        },
+        {
+          "name": "Rust (Puccinia)",
+          "symptoms": "Narancs-barna foltok a leveleken",
+          "treatment": "Érintett levelek eltávolítása; fungicid"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók a levéltövekben",
+          "treatment": "Alkohol; neem olaj"
+        },
+        {
+          "name": "Aloe mite (Eriophyid)",
+          "symptoms": "Daganatos növedékek (galls) a leveleken",
+          "treatment": "Érintett növényrész eltávolítása; izolálás; nincs hatékony vegyszeres kezelés"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "30–60",
+    "spread_cm": "30–60",
+    "vessel_min": 20,
+    "vessel_max": 40,
+    "growth_rate": "Közepes",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Crassula muscosa",
+    "common": "Watch Chain / Princess Pine",
+    "group": "Succulents & Cacti",
+    "family": "Crassulaceae",
+    "light": "Bright–direct, 5–7 h",
+    "temp": "10–30°C (opt. 15–25°C)",
+    "humidity": "30–50% RH; hagyni megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Stem cuttings · ⭐ Very Easy · 2–3 wks",
+    "Z": "✗",
+    "F": "✗",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; jól bírja a meleget és az alacsony páratartalmat",
+    "avoid": "Nyúlóssá válik kevés fénynél; belseje rothadhat sűrű növekedésnél",
+    "maintenance": "Nyírás; elhalt belső ágak eltávolítása a légáramlásért",
+    "role": "Midground / textúra",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Belső rothadás",
+          "symptoms": "Szár belseje barnul; külsőleg nem látszik azonnal",
+          "treatment": "Ritkítás; öntözés csökkentése"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók rejtett zugokban",
+          "treatment": "Alkohol; neem olaj"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "10–30",
+    "spread_cm": "10–25",
+    "vessel_min": 8,
+    "vessel_max": 20,
+    "growth_rate": "Közepes",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Echeveria elegans",
+    "common": "Mexican Snowball",
+    "group": "Succulents & Cacti",
+    "family": "Crassulaceae",
+    "light": "Bright–direct, 5–8 h",
+    "temp": "5–30°C (opt. 15–25°C)",
+    "humidity": "20–40% RH; hagyni teljesen megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Leaf cuttings / offsets · ⭐ Very Easy · 4–8 wks",
+    "Z": "✗",
+    "F": "✗",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; jól bírja a ciprusi klímát",
+    "avoid": "Etiolál (nyúlik) kevés fénynél; vízfoltok a rozettán",
+    "maintenance": "Elhalt alsó levelek szedése; forgatás",
+    "role": "Foreground / accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Puha tő; rozetta szétesik",
+          "treatment": "Szubsztrát csere; öntözés csökkentése"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók a levelek tövében",
+          "treatment": "Alkohol; neem olaj"
+        },
+        {
+          "name": "Pajzstetű",
+          "symptoms": "Pajzsok a levélaljon",
+          "treatment": "Mechanikus eltávolítás"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "5–10",
+    "spread_cm": "8–15",
+    "vessel_min": 8,
+    "vessel_max": 18,
+    "growth_rate": "Lassú",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Echeveria subsessilis",
+    "common": "Morning Beauty",
+    "group": "Succulents & Cacti",
+    "family": "Crassulaceae",
+    "light": "Bright–direct, 5–8 h",
+    "temp": "5–30°C (opt. 15–25°C)",
+    "humidity": "20–40% RH; hagyni teljesen megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Leaf cuttings / offsets · ⭐ Very Easy · 4–8 wks",
+    "Z": "✗",
+    "F": "✗",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló",
+    "avoid": "Etiolál kevés fénynél; ne érintsd a pruinose réteget",
+    "maintenance": "Elhalt levelek szedése; forgatás",
+    "role": "Foreground / accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Puha tő",
+          "treatment": "Drenázs javítása"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók",
+          "treatment": "Alkohol"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "5–12",
+    "spread_cm": "10–18",
+    "vessel_min": 8,
+    "vessel_max": 20,
+    "growth_rate": "Lassú",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Gasteria bicolor",
+    "common": "Lawyer's Tongue",
+    "group": "Succulents & Cacti",
+    "family": "Asphodelaceae",
+    "light": "Indirect–bright, 4–6 h",
+    "temp": "10–30°C (opt. 15–25°C)",
+    "humidity": "30–50% RH; hagyni megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Offsets / leaf cuttings · ⭐ Very Easy · 4–8 wks",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; árnyéktűrő sukkulens",
+    "avoid": "Közvetlen nap megégetheti a leveleket; ne öntözd a rozettába",
+    "maintenance": "Elhalt levelek szedése; sarjak kontrollálása",
+    "role": "Foreground / midground",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Puha tő; levelek sárgulnak",
+          "treatment": "Öntözés csökkentése"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók",
+          "treatment": "Alkohol; neem olaj"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "8–15",
+    "vessel_min": 8,
+    "vessel_max": 18,
+    "growth_rate": "Lassú",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Gasteria carinata",
+    "common": "Keeled Gasteria",
+    "group": "Succulents & Cacti",
+    "family": "Asphodelaceae",
+    "light": "Indirect–bright, 4–6 h",
+    "temp": "10–30°C (opt. 15–25°C)",
+    "humidity": "30–50% RH; hagyni megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Offsets / leaf cuttings · ⭐ Very Easy · 4–8 wks",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; árnyéktűrő",
+    "avoid": "Közvetlen nap megégetheti",
+    "maintenance": "Elhalt levelek szedése",
+    "role": "Foreground / midground",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Puha bázis",
+          "treatment": "Drenázs javítása"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók",
+          "treatment": "Alkohol"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "8–15",
+    "vessel_min": 8,
+    "vessel_max": 18,
+    "growth_rate": "Lassú",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Graptopetalum paraguayense",
+    "common": "Ghost Plant",
+    "group": "Succulents & Cacti",
+    "family": "Crassulaceae",
+    "light": "Bright–direct, 5–8 h",
+    "temp": "5–35°C (opt. 15–27°C)",
+    "humidity": "20–40% RH; hagyni teljesen megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Leaf cuttings / stem cuttings · ⭐ Very Easy · 3–6 wks",
+    "Z": "✗",
+    "F": "✗",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; nagyon strapabíró",
+    "avoid": "Levelek könnyen leesnek (normális); etiolál kevés fénynél",
+    "maintenance": "Elhalt levelek szedése; nyírás",
+    "role": "Foreground / trailing",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Puha szár/tő",
+          "treatment": "Öntözés csökkentése"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók",
+          "treatment": "Alkohol"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "15–30 (csüngő)",
+    "vessel_min": 10,
+    "vessel_max": 25,
+    "growth_rate": "Közepes",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Gymnocalycium mihanovichii",
+    "common": "Moon Cactus / Chin Cactus",
+    "group": "Succulents & Cacti",
+    "family": "Cactaceae",
+    "light": "Bright indirect, 5–7 h (grafted: kerülni a direkt napot)",
+    "temp": "10–35°C (opt. 18–28°C)",
+    "humidity": "20–40% RH; nagyon ritkán öntözni",
+    "substrate_notes": "—",
+    "propagation": "Seeds / grafting · ⭐⭐⭐⭐ Difficult · variable",
+    "Z": "✗",
+    "F": "✗",
+    "N": "✓",
+    "cites": "II (Cactaceae spp.)",
+    "cyprus": "✓ Jó beltéri; grafted formák rövidebb életűek",
+    "avoid": "Grafted formák (színes): az alany (Hylocereus) határozza meg az élettartamot; közvetlen nap megégetheti a klorofill-mentes fejet",
+    "maintenance": "Minimális; alany állapotának ellenőrzése",
+    "role": "Accent / foreground",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Bázis rothadás",
+          "symptoms": "Alany puha, sötét",
+          "treatment": "Újra-graftolás egészséges alanyra; szubsztrát csere"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Pajzstetű",
+          "symptoms": "Pajzsok a bordákon",
+          "treatment": "Alkohol; mechanikus eltávolítás"
+        },
+        {
+          "name": "Gyapjas pajzstetű (root mealybug)",
+          "symptoms": "Fehér csomók a gyökereken; lassú növekedés",
+          "treatment": "Gyökérmosás; imidakloprid"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "5–10 (graft: 8–15)",
+    "spread_cm": "5–10",
+    "vessel_min": 8,
+    "vessel_max": 15,
+    "growth_rate": "Nagyon lassú",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Haworthia cooperi",
+    "common": "Cooper's Haworthia",
+    "group": "Succulents & Cacti",
+    "family": "Asphodelaceae",
+    "light": "Indirect–bright, 4–6 h",
+    "temp": "10–30°C (opt. 15–25°C)",
+    "humidity": "30–50% RH; hagyni megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Offsets · ⭐ Very Easy · 3–6 wks",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló beltéri; árnyéktűrő",
+    "avoid": "Közvetlen nap kiszárítja az áttetsző ablakleveket",
+    "maintenance": "Elhalt levelek szedése",
+    "role": "Foreground / accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Puha gyökerek; levelek ráncosak",
+          "treatment": "Szubsztrát csere; száraz tartás"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók a levéltövekben",
+          "treatment": "Alkohol"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "5–10",
+    "spread_cm": "5–12",
+    "vessel_min": 6,
+    "vessel_max": 15,
+    "growth_rate": "Lassú",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Haworthia fasciata",
+    "common": "Zebra Haworthia",
+    "group": "Succulents & Cacti",
+    "family": "Asphodelaceae",
+    "light": "Indirect–bright, 4–6 h",
+    "temp": "10–30°C (opt. 15–25°C)",
+    "humidity": "30–50% RH; hagyni megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Offsets · ⭐ Very Easy · 3–6 wks",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló beltéri; igénytelen",
+    "avoid": "Közvetlen nap megégetheti; túlöntözés #1 veszély",
+    "maintenance": "Elhalt levelek; sarjak szedése",
+    "role": "Foreground / accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Puha bázis",
+          "treatment": "Drenázs javítása"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók",
+          "treatment": "Alkohol"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "8–15",
+    "spread_cm": "8–15",
+    "vessel_min": 8,
+    "vessel_max": 18,
+    "growth_rate": "Lassú",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Kalanchoe tomentosa",
+    "common": "Panda Plant / Chocolate Soldier",
+    "group": "Succulents & Cacti",
+    "family": "Crassulaceae",
+    "light": "Bright–direct, 5–7 h",
+    "temp": "10–30°C (opt. 15–25°C)",
+    "humidity": "30–50% RH; hagyni megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Leaf/stem cuttings · ⭐⭐ Easy · 4–6 wks",
+    "Z": "✗",
+    "F": "✗",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló beltéri; szőrös levelek jól bírják a száraz levegőt",
+    "avoid": "Ne permetezd a szőrös leveleket (rothadás); etiolál kevés fénynél",
+    "maintenance": "Elhalt levelek szedése; nyírás",
+    "role": "Midground / accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Levélrothadás",
+          "symptoms": "Szőrös levelek között penész",
+          "treatment": "Permetezés kerülése; szellőztetés"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók a szőrös levelek közötti zugokban",
+          "treatment": "Alkohol vatapálcikával"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "15–45",
+    "spread_cm": "15–30",
+    "vessel_min": 12,
+    "vessel_max": 25,
+    "growth_rate": "Lassú–közepes",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Mammillaria elongata",
+    "common": "Ladyfinger Cactus",
+    "group": "Succulents & Cacti",
+    "family": "Cactaceae",
+    "light": "Bright–direct, 6–8 h",
+    "temp": "5–35°C (opt. 15–28°C)",
+    "humidity": "20–40% RH; hagyni teljesen megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Offsets · ⭐ Very Easy · 2–4 wks",
+    "Z": "✗",
+    "F": "✗",
+    "N": "✓",
+    "cites": "II (Cactaceae spp.)",
+    "cyprus": "✓ Kiváló; kompakt; jól bírja a ciprusi klímát",
+    "avoid": "Tüskék; túlöntözés rothadást okoz",
+    "maintenance": "Minimális; elhalt fejek eltávolítása",
+    "role": "Foreground / accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Bázis rothadás",
+          "symptoms": "Puha, sötétedő szár alul",
+          "treatment": "Érintett rész eltávolítása; szárítás"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Gyapjas pajzstetű (root mealybug)",
+          "symptoms": "Fehér csomók a gyökereken",
+          "treatment": "Gyökérmosás; szubsztrát csere; szisztémás inszeticid"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "10–25 (csomó)",
+    "vessel_min": 8,
+    "vessel_max": 20,
+    "growth_rate": "Lassú",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Mammillaria gracilis",
+    "common": "Thimble Cactus",
+    "group": "Succulents & Cacti",
+    "family": "Cactaceae",
+    "light": "Bright–direct, 6–8 h",
+    "temp": "5–35°C (opt. 15–28°C)",
+    "humidity": "20–40% RH; hagyni teljesen megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Offsets (fragilis!) · ⭐ Very Easy · 2–4 wks",
+    "Z": "✗",
+    "F": "✗",
+    "N": "✓",
+    "cites": "II (Cactaceae spp.)",
+    "cyprus": "✓ Kiváló; nagyon kompakt",
+    "avoid": "Offszetek nagyon könnyen leesnek – óvatos kezelés!",
+    "maintenance": "Minimális",
+    "role": "Foreground / accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rothadás",
+          "symptoms": "Puha szár",
+          "treatment": "Öntözés csökkentése"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Root mealybug",
+          "symptoms": "Fehér a gyökereken",
+          "treatment": "Szisztémás kezelés"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "5–12",
+    "spread_cm": "8–20 (csomó)",
+    "vessel_min": 8,
+    "vessel_max": 18,
+    "growth_rate": "Lassú",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Sedum morganianum",
+    "common": "Burro's Tail",
+    "group": "Succulents & Cacti",
+    "family": "Crassulaceae",
+    "light": "Bright–direct, 5–7 h",
+    "temp": "10–30°C (opt. 15–25°C)",
+    "humidity": "30–50% RH; hagyni megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Leaf/stem cuttings · ⭐ Very Easy · 3–6 wks",
+    "Z": "✗",
+    "F": "✗",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló csüngő növény; bírja a ciprusi belteret",
+    "avoid": "Levelek NAGYON könnyen leesnek – minimálisan mozgatni",
+    "maintenance": "Minimális; lehullott levelekből új növény nő",
+    "role": "Trailing / hanging",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Puha, áttetsző szár",
+          "treatment": "Öntözés csökkentése"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Levéltetű",
+          "symptoms": "Apró zöld rovarok a hajtáscsúcsokon",
+          "treatment": "Inszeticid szappan"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "10–15 (csüngő: 60+)",
+    "spread_cm": "15–30",
+    "vessel_min": 10,
+    "vessel_max": 25,
+    "growth_rate": "Közepes",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Sedum rubrotinctum",
+    "common": "Jelly Bean Plant",
+    "group": "Succulents & Cacti",
+    "family": "Crassulaceae",
+    "light": "Bright–direct, 5–8 h",
+    "temp": "5–35°C (opt. 15–28°C)",
+    "humidity": "20–40% RH; hagyni megszáradni",
+    "substrate_notes": "—",
+    "propagation": "Leaf cuttings · ⭐ Very Easy · 3–6 wks",
+    "Z": "✗",
+    "F": "✗",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; stresszszín (piros) erős fénytől gyönyörű",
+    "avoid": "Levelek leeshetnek (normális); toxikus",
+    "maintenance": "Elhalt levelek szedése",
+    "role": "Foreground / trailing",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Puha szár",
+          "treatment": "Öntözés csökkentése"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók",
+          "treatment": "Alkohol"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "15–25",
+    "vessel_min": 8,
+    "vessel_max": 20,
+    "growth_rate": "Közepes",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Sempervivum tectorum",
+    "common": "Common Houseleek / Hen and Chicks",
+    "group": "Succulents & Cacti",
+    "family": "Crassulaceae",
+    "light": "Bright–direct, 6–8 h",
+    "temp": "−20–35°C (opt. 10–25°C)",
+    "humidity": "20–40% RH; hagyni megszáradni",
+    "substrate_notes": "+30% extra szervetlen anyag (kavics)",
+    "propagation": "Offsets · ⭐ Very Easy · instant",
+    "Z": "✗",
+    "F": "✗",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Kiváló kültéri; fagyálló; kert/terasz dekor",
+    "avoid": "Monokarp (virágzás után elpusztul); sok sarjat képez; beltérben nem ideális (túl meleg, kevés fény)",
+    "maintenance": "Elhalt anyarozetták eltávolítása; sarjak kezelése",
+    "role": "Groundcover / foreground",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Belső levelek barnulnak",
+          "treatment": "Drenázs javítása; érintett rozetta eltávolítása"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Levéltetű",
+          "symptoms": "Ragadós rozetta-közepek",
+          "treatment": "Vízpermet; inszeticid szappan"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "5–10",
+    "spread_cm": "10–30 (sarjtelep)",
+    "vessel_min": 10,
+    "vessel_max": 25,
+    "growth_rate": "Közepes",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Senecio rowleyanus",
+    "common": "String of Pearls",
+    "group": "Succulents & Cacti",
+    "family": "Asteraceae",
+    "light": "Bright indirect, 5–7 h",
+    "temp": "10–28°C (opt. 15–24°C)",
+    "humidity": "30–50% RH; hagyni megszáradni",
+    "substrate_notes": "+10% extra perlit",
+    "propagation": "Stem cuttings · ⭐⭐ Easy · 3–6 wks",
+    "Z": "✗",
+    "F": "✗",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "⚠ Mérsékelt; nyári közvetlen nap megégetheti; AC előnyös",
+    "avoid": "TOXIKUS; levéltetű-érzékeny; túlöntözés gyorsan öli",
+    "maintenance": "Elhalt szálak eltávolítása",
+    "role": "Trailing / hanging",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Levelek zsugorodnak, szár barnul",
+          "treatment": "Öntözés drasztikus csökkentése; érintett rész eltávolítása; dugványozás az egészséges részből"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Levéltetű",
+          "symptoms": "Ragadós mézharmat",
+          "treatment": "Inszeticid szappan"
+        },
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók",
+          "treatment": "Alkohol"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "5–10 (csüngő: 60+)",
+    "spread_cm": "15–30",
+    "vessel_min": 10,
+    "vessel_max": 25,
+    "growth_rate": "Közepes",
+    "substrate_group": "succulent"
+  },
+  {
+    "name": "Drosera adelae",
+    "common": "Lance-leaved Sundew",
+    "group": "Carnivorous",
+    "family": "Droseraceae",
+    "light": "Indirect, 4–6 h",
+    "temp": "18–30°C (opt. 20–26°C)",
+    "humidity": "70–90% RH; állandóan nedves (tálcás módszer)",
+    "substrate_notes": "Tiszta sphagnum moha ideális",
+    "propagation": "Root/leaf cuttings, division · ⭐ Very Easy · 3–6 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "⚠ AC szükséges nyáron; párásítás kell",
+    "avoid": "Csak RO/esővíz; ne trágyázd; ne öntözd csapvízzel",
+    "maintenance": "Elhalt levelek szedése; ugróvillások fenntartása",
+    "role": "Midground",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Botrytis",
+          "symptoms": "Szürke penész a lombon alacsony szellőzésnél",
+          "treatment": "Légáramlás javítása; érintett levelek eltávolítása"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Levéltetű",
+          "symptoms": "Apró zöld rovarok a virágszáron",
+          "treatment": "Vízzel lemosás; NE használj vegyszert (érzékeny!)"
+        },
+        {
+          "name": "Gombalégy",
+          "symptoms": "Apró legyek a szubsztrát körül; lárvák a gyökereken",
+          "treatment": "Öntözés kismértékű csökkentése; ragacslapok"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "10–25",
+    "spread_cm": "10–20",
+    "vessel_min": 10,
+    "vessel_max": 25,
+    "growth_rate": "Közepes",
+    "substrate_group": "carnivorous"
+  },
+  {
+    "name": "Drosera aliciae",
+    "common": "Alice Sundew",
+    "group": "Carnivorous",
+    "family": "Droseraceae",
+    "light": "Bright indirect, 5–7 h",
+    "temp": "10–30°C (opt. 15–25°C)",
+    "humidity": "60–80% RH; állandóan nedves (tálcás módszer)",
+    "substrate_notes": "—",
+    "propagation": "Leaf cuttings / seed · ⭐⭐ Easy · 4–8 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "~",
+    "cites": "—",
+    "cyprus": "⚠ AC szükséges nyáron; de jól bírja a meleget egy ideig",
+    "avoid": "Csak RO víz; erős nap stresszeli",
+    "maintenance": "Virágszár eltávolítása ha nem kell mag",
+    "role": "Foreground / accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Botrytis",
+          "symptoms": "Szürke penész tél/alacsony hőnél",
+          "treatment": "Tálca szárítása télen; szellőztetés"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Levéltetű",
+          "symptoms": "Virágszáron",
+          "treatment": "Kézi eltávolítás"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "5–10",
+    "spread_cm": "5–12",
+    "vessel_min": 8,
+    "vessel_max": 20,
+    "growth_rate": "Lassú–közepes",
+    "substrate_group": "carnivorous"
+  },
+  {
+    "name": "Drosera binata",
+    "common": "Forked Sundew",
+    "group": "Carnivorous",
+    "family": "Droseraceae",
+    "light": "Bright indirect–direct, 5–8 h",
+    "temp": "5–30°C (opt. 15–25°C)",
+    "humidity": "60–80% RH; állandóan nedves",
+    "substrate_notes": "Perlit/sphagnum 1:1 mix jobb mint alapmix",
+    "propagation": "Root cuttings / division · ⭐⭐ Easy · 4–8 wks",
+    "Z": "~",
+    "F": "✓",
+    "N": "~",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja; AC mellett is; mérsékelten hőtűrő",
+    "avoid": "Dormancia hűvös télen; gyökerekből regenerálódik",
+    "maintenance": "Elhalt levelek szedése; virágszár vágás ha nem kell mag",
+    "role": "Background / midground",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Botrytis",
+          "symptoms": "Szürke penész az alap rozettán",
+          "treatment": "Téli szárazabb tartás; szellőztetés"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Levéltetű",
+          "symptoms": "Virágszáron csomók",
+          "treatment": "Kézi eltávolítás; vízpermet"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "20–50",
+    "spread_cm": "15–30",
+    "vessel_min": 15,
+    "vessel_max": 35,
+    "growth_rate": "Közepes",
+    "substrate_group": "carnivorous"
+  },
+  {
+    "name": "Drosera capensis",
+    "common": "Cape Sundew",
+    "group": "Carnivorous",
+    "family": "Droseraceae",
+    "light": "Bright indirect–direct, 5–8 h",
+    "temp": "5–35°C (opt. 15–28°C)",
+    "humidity": "50–80% RH; állandóan nedves (tálcás módszer)",
+    "substrate_notes": "—",
+    "propagation": "Leaf cuttings / seed · ⭐ Very Easy · 3–6 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "~",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; legkeményebb húsevő; bírja a ciprusi meleget",
+    "avoid": "Csak RO víz; önmagát túlszaporítja magról – virágszár vágás ha nem kell; invazív potenciál",
+    "maintenance": "Virágszár vágás; elhalt levelek; nagyon igénytelen",
+    "role": "Midground / accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Botrytis",
+          "symptoms": "Szürke penész téli nedves tartásnál",
+          "treatment": "Téli tálca szárítás; szellőztetés"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Levéltetű",
+          "symptoms": "Virágszáron",
+          "treatment": "Kézi eltávolítás"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "10–25",
+    "spread_cm": "10–20",
+    "vessel_min": 10,
+    "vessel_max": 25,
+    "growth_rate": "Gyors",
+    "substrate_group": "carnivorous"
+  },
+  {
+    "name": "Drosera prolifera",
+    "common": "Hen and Chickens Sundew",
+    "group": "Carnivorous",
+    "family": "Droseraceae",
+    "light": "Indirect, 4–6 h",
+    "temp": "18–30°C (opt. 20–26°C)",
+    "humidity": "70–90% RH; állandóan nedves",
+    "substrate_notes": "—",
+    "propagation": "Stolons / plantlets · ⭐ Very Easy · 2–4 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "⚠ Párásítás szükséges; AC előtt védeni",
+    "avoid": "Csak RO víz; stolon útján automatikusan szaporodik",
+    "maintenance": "Stolonok kontrollálása; elhalt levelek",
+    "role": "Groundcover / foreground",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Botrytis",
+          "symptoms": "Szürke penész",
+          "treatment": "Szellőztetés"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Gombalégy",
+          "symptoms": "Apró legyek",
+          "treatment": "Ragacslapok"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "3–8",
+    "spread_cm": "10–30 (stolon)",
+    "vessel_min": 10,
+    "vessel_max": 30,
+    "growth_rate": "Közepes",
+    "substrate_group": "carnivorous"
+  },
+  {
+    "name": "Drosera rotundifolia",
+    "common": "Round-leaved Sundew",
+    "group": "Carnivorous",
+    "family": "Droseraceae",
+    "light": "Bright indirect, 5–7 h",
+    "temp": "0–25°C (opt. 10–20°C)",
+    "humidity": "70–90% RH; állandóan nedves",
+    "substrate_notes": "Sphagnum + perlit (savanyúbb mix)",
+    "propagation": "Seed / leaf cuttings · ⭐⭐ Easy · 6–12 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "✗ Hűvös mérsékelt faj; ciprusi meleg nem alkalmas; csak hűtött környezetben",
+    "avoid": "Téli dormancia szükséges; hideg igényes; ne tartsd melegen egész évben",
+    "maintenance": "Minimális; dormanciakor hagyni nyugodni",
+    "role": "Foreground / groundcover",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Botrytis",
+          "symptoms": "Szürke penész dormancia alatt",
+          "treatment": "Szárazabb tartás dormanciakor"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "3–10",
+    "spread_cm": "3–8",
+    "vessel_min": 8,
+    "vessel_max": 20,
+    "growth_rate": "Lassú",
+    "substrate_group": "carnivorous"
+  },
+  {
+    "name": "Drosera slackii",
+    "common": "Slack's Sundew",
+    "group": "Carnivorous",
+    "family": "Droseraceae",
+    "light": "Bright indirect, 5–7 h",
+    "temp": "10–30°C (opt. 15–25°C)",
+    "humidity": "60–80% RH; állandóan nedves",
+    "substrate_notes": "—",
+    "propagation": "Leaf cuttings / seed · ⭐⭐ Easy · 4–8 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "~",
+    "cites": "—",
+    "cyprus": "⚠ AC szükséges nyáron; hasonló igények mint D. aliciae",
+    "avoid": "Csak RO víz; nagyobb rozetta mint aliciae",
+    "maintenance": "Elhalt levelek szedése",
+    "role": "Midground / accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Botrytis",
+          "symptoms": "Szürke penész",
+          "treatment": "Szellőztetés"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Levéltetű",
+          "symptoms": "Virágszáron",
+          "treatment": "Kézi eltávolítás"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "5–15",
+    "spread_cm": "8–18",
+    "vessel_min": 10,
+    "vessel_max": 25,
+    "growth_rate": "Lassú–közepes",
+    "substrate_group": "carnivorous"
+  },
+  {
+    "name": "Drosera spatulata",
+    "common": "Spoon-leaved Sundew",
+    "group": "Carnivorous",
+    "family": "Droseraceae",
+    "light": "Bright indirect, 5–7 h",
+    "temp": "10–35°C (opt. 15–28°C)",
+    "humidity": "50–80% RH; állandóan nedves",
+    "substrate_notes": "—",
+    "propagation": "Seed (prolific!) / leaf cuttings · ⭐ Very Easy · 3–6 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "~",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja; hőtűrő; második legkeményebb a capensis után",
+    "avoid": "Magról mindenhol kikel – kontrollálni; csak RO víz",
+    "maintenance": "Magvak kontrollálása; elhalt levelek",
+    "role": "Foreground / groundcover",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Botrytis",
+          "symptoms": "Penész a sűrű magoncok között",
+          "treatment": "Ritkítás; szellőztetés"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Gombalégy",
+          "symptoms": "Apró legyek",
+          "treatment": "Ragacslapok"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "3–8",
+    "spread_cm": "3–8",
+    "vessel_min": 6,
+    "vessel_max": 18,
+    "growth_rate": "Közepes (magról: gyors)",
+    "substrate_group": "carnivorous"
+  },
+  {
+    "name": "Nepenthes alata",
+    "common": "Winged Pitcher Plant",
+    "group": "Carnivorous",
+    "family": "Nepenthaceae",
+    "light": "Bright indirect, 5–7 h",
+    "temp": "18–32°C (opt. 22–28°C)",
+    "humidity": "60–80% RH; szubsztrát egyenletesen nedves, nem vizenyős",
+    "substrate_notes": "Tiszta sphagnum + perlit + orchidea kéreg (ne standard mix!)",
+    "propagation": "Stem cuttings · ⭐⭐⭐ Moderate · 6–12 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "✗",
+    "cites": "II (Nepenthes spp.)",
+    "cyprus": "⚠ AC szükséges nyáron; párásítás kell; de bírja a meleget egy ideig",
+    "avoid": "Csak RO/esővíz; NE trágyázd talajba; kancsóba opcionálisan rovar; ne tedd közvetlen napra",
+    "maintenance": "Elhalt kancsók/levelek eltávolítása; nyírás ha túl nő",
+    "role": "Background / focal point (zárt terrárium)",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Botrytis (szürkepenész)",
+          "symptoms": "Szürke penész a leveleken/kancsókon rossz szellőzésnél",
+          "treatment": "Légáramlás javítása; érintett részek eltávolítása; fungicid kerülése (érzékeny)"
+        },
+        {
+          "name": "Cercospora/Alternaria leaf spot",
+          "symptoms": "Barna/fekete foltok sárgás szegéllyel a leveleken",
+          "treatment": "Érintett levelek eltávolítása; szellőztetés; mérsékelt fungicid"
+        },
+        {
+          "name": "Fusarium wilt",
+          "symptoms": "Progresszív sárgulás; hervadás; szár elszíneződés",
+          "treatment": "Érintett növény izolálása; szubsztrát csere; megelőzés: jó drenázs"
+        },
+        {
+          "name": "Gyökérrothadás (Pythium)",
+          "symptoms": "Puha gyökerek; növény hervad öntözés ellenére",
+          "treatment": "Szubsztrát csere; jobb drenázs; öntözés csökkentése"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Levéltetű",
+          "symptoms": "Apró rovarok a hajtásokon",
+          "treatment": "Vízpermet; inszeticid szappan óvatosan"
+        },
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér viaszos csomók",
+          "treatment": "Alkohol; neem olaj"
+        },
+        {
+          "name": "Takácsatka",
+          "symptoms": "Sárga pöttyök; finom háló",
+          "treatment": "Pára emelése; neem olaj; ragadozó atkák (Persimilis)"
+        },
+        {
+          "name": "Pajzstetű",
+          "symptoms": "Barna pajzsok a száron",
+          "treatment": "Alkohol; mechanikus eltávolítás"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "30–150+ (kúszó)",
+    "spread_cm": "30–60",
+    "vessel_min": 25,
+    "vessel_max": 50,
+    "growth_rate": "Közepes",
+    "substrate_group": "carnivorous"
+  },
+  {
+    "name": "Nepenthes ventricosa",
+    "common": "Philippine Pitcher Plant",
+    "group": "Carnivorous",
+    "family": "Nepenthaceae",
+    "light": "Bright indirect, 5–7 h",
+    "temp": "15–30°C (opt. 20–26°C); éjszaka 12–18°C",
+    "humidity": "60–80% RH; szubsztrát egyenletesen nedves",
+    "substrate_notes": "Sphagnum + perlit + orchidea kéreg",
+    "propagation": "Stem cuttings · ⭐⭐⭐ Moderate · 6–12 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "✗",
+    "cites": "II (Nepenthes spp.)",
+    "cyprus": "⚠ Intermediate faj; éjszakai hőcsökkenés kedvező; AC előnyös",
+    "avoid": "Mint N. alata; éjszakai hőcsökkenés (10–15°C különbség) javítja a kancsóképzést",
+    "maintenance": "Mint N. alata",
+    "role": "Background / focal point",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Botrytis",
+          "symptoms": "Szürke penész",
+          "treatment": "Szellőztetés"
+        },
+        {
+          "name": "Cercospora leaf spot",
+          "symptoms": "Barna/fekete foltok",
+          "treatment": "Érintett levelek eltávolítása"
+        },
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Puha gyökerek",
+          "treatment": "Szubsztrát csere"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Levéltetű",
+          "symptoms": "Hajtásokon",
+          "treatment": "Vízpermet"
+        },
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók",
+          "treatment": "Alkohol"
+        },
+        {
+          "name": "Takácsatka",
+          "symptoms": "Sárgás pöttyök",
+          "treatment": "Neem olaj"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "30–100+ (kúszó)",
+    "spread_cm": "25–50",
+    "vessel_min": 25,
+    "vessel_max": 50,
+    "growth_rate": "Közepes",
+    "substrate_group": "carnivorous"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia aeranthos",
+    "common": "Air Plant",
+    "light": "Bright indirect–direct, 5–7 h",
+    "temp": "10–30°C (opt. 15–25°C)",
+    "propagation": "Offsets · ⭐ Very Easy · 4–8 wks",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; strapabíró; bírja a ciprusi belteret",
+    "avoid": "Szárítani az áztatás után; ne hagyj vizet a rozettában",
+    "maintenance": "Elhalt levelek szedése; áztatás hetente",
+    "role": "Accent / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Tő barnul, levelek kihullanak",
+          "treatment": "Szárítás áztatás után fejjel lefelé; szellőztetés"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Pajzstetű",
+          "symptoms": "Apró pajzsok a leveleken",
+          "treatment": "Alkohol; kézi eltávolítás"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "8–15",
+    "spread_cm": "8–15",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "40–60% RH; permetezés 1–2x/hét",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia argentea",
+    "common": "Silver Air Plant",
+    "light": "Bright indirect, 4–6 h",
+    "temp": "15–30°C (opt. 18–26°C)",
+    "propagation": "Offsets · ⭐⭐ Easy · 6–12 wks",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja",
+    "avoid": "Érzékenyebb túláztatásra – rövidebb áztatás",
+    "maintenance": "Szárítás; ritkább áztatás mint zöld fajok",
+    "role": "Accent / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Tő puha, barna",
+          "treatment": "Kevesebb áztatás; jobb szárítás"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "5–10",
+    "spread_cm": "5–10",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Lassú",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia brachycaulos",
+    "common": "Blushing Bride",
+    "light": "Bright indirect–direct, 5–7 h",
+    "temp": "15–32°C (opt. 18–28°C)",
+    "propagation": "Offsets · ⭐ Very Easy · 4–8 wks",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; látványos pirosodás virágzáskor",
+    "avoid": "Teljes nap megégetheti nyáron",
+    "maintenance": "Szárítás; elhalt levelek",
+    "role": "Accent / mounted / terrarium",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Belső levelek barnulnak",
+          "treatment": "Szárítás fejjel lefelé"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "10–20",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "60–80% RH; permetezés 2–3x/hét",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "✓",
+    "N": "✓",
+    "name": "Tillandsia bulbosa",
+    "common": "Bulbous Air Plant",
+    "light": "Indirect–bright, 4–6 h",
+    "temp": "18–32°C (opt. 20–28°C)",
+    "propagation": "Offsets · ⭐⭐ Easy · 6–12 wks",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja a meleget; trópusi faj",
+    "avoid": "Hagymás bázisban víz gyűlhet – óvatos áztatás, alapos szárítás",
+    "maintenance": "Áztatás után fejjel lefelé szárítás!",
+    "role": "Accent / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Bázis rothadás",
+          "symptoms": "Hagymás tő puha, barna",
+          "treatment": "Áztatás helyett permetezés; alapos szárítás"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "8–15",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Lassú–közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia capitata",
+    "common": "Capitata Air Plant",
+    "light": "Bright indirect–direct, 5–7 h",
+    "temp": "15–32°C (opt. 18–28°C)",
+    "propagation": "Offsets · ⭐ Very Easy · 4–8 wks",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; strapabíró; pirosodik virágzáskor",
+    "avoid": "Elég nagy lehet; szárítás fontos",
+    "maintenance": "Szárítás; elhalt levelek",
+    "role": "Focal point / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Tő barnulás",
+          "treatment": "Szellőztetés; szárítás"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "15–30",
+    "spread_cm": "15–30",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia caput-medusae",
+    "common": "Medusa's Head",
+    "light": "Bright indirect, 4–6 h",
+    "temp": "15–32°C (opt. 18–28°C)",
+    "propagation": "Offsets · ⭐⭐ Easy · 6–12 wks",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja; dekoratív forma",
+    "avoid": "Hagymás bázisban víz gyűlhet – alapos szárítás",
+    "maintenance": "Szárítás fejjel lefelé!",
+    "role": "Accent / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Bázis rothadás",
+          "symptoms": "Hagymás tő puha",
+          "treatment": "Kevesebb áztatás; jobb szellőzés"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "10–25",
+    "spread_cm": "10–20",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Lassú",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia circinata",
+    "common": "Potbelly Air Plant",
+    "light": "Bright indirect, 4–7 h",
+    "temp": "15–32°C (opt. 18–28°C)",
+    "propagation": "Offsets · ⭐⭐ Easy · 6–12 wks",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja",
+    "avoid": "Hagymás bázis – szárítás kritikus",
+    "maintenance": "Szárítás; áztatás hetente",
+    "role": "Accent / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Bázis rothadás",
+          "symptoms": "Puha tő",
+          "treatment": "Szárítás"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "8–15",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Lassú",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia concolor",
+    "common": "Concolor Air Plant",
+    "light": "Bright indirect–direct, 5–7 h",
+    "temp": "15–30°C (opt. 18–26°C)",
+    "propagation": "Offsets · ⭐ Very Easy · 4–8 wks",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; látványos sárga-narancs virágzat",
+    "avoid": "Normál tillandsia gondozás",
+    "maintenance": "Szárítás; elhalt levelek",
+    "role": "Accent / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Belső barnulás",
+          "treatment": "Szellőztetés"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "12–25",
+    "spread_cm": "12–25",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia fasciculata",
+    "common": "Giant Air Plant / Cardinal Air Plant",
+    "light": "Bright indirect–direct, 5–8 h",
+    "temp": "15–32°C (opt. 18–28°C)",
+    "propagation": "Offsets · ⭐⭐ Easy · 6–12 wks",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja; nagy méret",
+    "avoid": "Elég nagy (30–60cm); veszélyes weevil (Metamasius callizona) USA-ban",
+    "maintenance": "Szárítás; elhalt levelek; méret kontroll",
+    "role": "Focal point / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Tő barnulás",
+          "treatment": "Szellőztetés; szárítás"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Bromeliad weevil (Metamasius)",
+          "symptoms": "Belső szárpusztulás; frass (rágcsálás nyoma) a levelek között",
+          "treatment": "Karantén; érintett növény eltávolítása; EU-ban nem jellemző"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "30–60",
+    "spread_cm": "25–50",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "60–80% RH; permetezés 3–4x/hét",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "✓",
+    "N": "✓",
+    "name": "Tillandsia filifolia",
+    "common": "Filiform Air Plant",
+    "light": "Bright indirect, 4–6 h",
+    "temp": "15–28°C (opt. 18–24°C)",
+    "propagation": "Offsets · ⭐⭐ Easy · 6–12 wks",
+    "cites": "—",
+    "cyprus": "⚠ Párásabb környezetet szeret; szárítás problematikus lehet",
+    "avoid": "Vékony levelek gyorsan kiszáradnak – gyakoribb permetezés",
+    "maintenance": "Gyakori permetezés; szellőztetés",
+    "role": "Accent / textúra",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Tő barnulás",
+          "treatment": "Szellőztetés"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "15–25",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia flabellata",
+    "common": "Fan Air Plant",
+    "light": "Bright indirect, 5–7 h",
+    "temp": "15–30°C (opt. 18–26°C)",
+    "propagation": "Offsets · ⭐⭐ Easy · 6–12 wks",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja; látványos piros braktea",
+    "avoid": "Normál tillandsia gondozás",
+    "maintenance": "Szárítás; elhalt levelek",
+    "role": "Accent / focal point",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Belső barnulás",
+          "treatment": "Szellőztetés"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "15–25",
+    "spread_cm": "12–20",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia funckiana",
+    "common": "Funck's Air Plant",
+    "light": "Bright indirect–direct, 5–8 h",
+    "temp": "15–30°C (opt. 18–26°C)",
+    "propagation": "Offsets / stem fragments · ⭐ Very Easy · 3–6 wks",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; tűlevél-szerű; csomókban nő",
+    "avoid": "Száraz tartás télen; piros virág",
+    "maintenance": "Szárítás; formázás",
+    "role": "Accent / cluster",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Tő barnulás",
+          "treatment": "Szellőztetés"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "10–20 (csomó)",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "40–60% RH; permetezés 1–2x/hét",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia gardneri",
+    "common": "Gardner's Air Plant",
+    "light": "Bright indirect, 4–6 h",
+    "temp": "15–28°C (opt. 18–24°C)",
+    "propagation": "Offsets · ⭐⭐ Easy · 6–12 wks",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja; szőrös/ezüstös megjelenés",
+    "avoid": "Trichomás faj – rövidebb áztatás; permetezés jobb",
+    "maintenance": "Rövid áztatás; szárítás",
+    "role": "Accent / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Belső barnulás",
+          "treatment": "Szárítás"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "10–20",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Lassú",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia guatemalensis",
+    "common": "Guatemalan Air Plant",
+    "light": "Bright indirect, 4–7 h",
+    "temp": "15–30°C (opt. 18–26°C)",
+    "propagation": "Offsets · ⭐⭐ Easy · 6–12 wks",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja; nagyobb méretű",
+    "avoid": "Elég nagy (20–40cm); szárítás fontos",
+    "maintenance": "Szárítás; elhalt levelek",
+    "role": "Focal point / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Tő barnulás",
+          "treatment": "Szellőztetés"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "20–40",
+    "spread_cm": "20–35",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia intermedia",
+    "common": "Intermediate Air Plant",
+    "light": "Bright indirect, 4–7 h",
+    "temp": "15–30°C (opt. 18–26°C)",
+    "propagation": "Offsets · ⭐⭐ Easy · 6–12 wks",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja",
+    "avoid": "Normál gondozás",
+    "maintenance": "Szárítás; elhalt levelek",
+    "role": "Accent / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Tő barnulás",
+          "treatment": "Szellőztetés"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "15–25",
+    "spread_cm": "12–20",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia ionantha",
+    "common": "Sky Plant",
+    "light": "Bright indirect–direct, 5–8 h",
+    "temp": "10–32°C (opt. 15–28°C)",
+    "propagation": "Offsets · ⭐ Very Easy · 3–6 wks",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; leggyakoribb tillandsia; pirosodik virágzáskor",
+    "avoid": "Szárítás után fejjel lefelé; sok sarjat ad",
+    "maintenance": "Szárítás; sarjak szedése",
+    "role": "Accent / cluster / terrarium",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Tő puha, barna",
+          "treatment": "Szárítás; szellőztetés"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Pajzstetű",
+          "symptoms": "Apró pajzsok",
+          "treatment": "Alkohol"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "5–10",
+    "spread_cm": "3–8",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia juncea",
+    "common": "Rush-like Air Plant",
+    "light": "Bright indirect–direct, 5–8 h",
+    "temp": "15–32°C (opt. 18–28°C)",
+    "propagation": "Offsets · ⭐ Very Easy · 4–8 wks",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; füvesszerű textúra",
+    "avoid": "Szárítás fontos; nádas megjelenés",
+    "maintenance": "Szárítás; elhalt levelek",
+    "role": "Textúra / háttér accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Tő barnulás",
+          "treatment": "Szellőztetés"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "20–40",
+    "spread_cm": "10–15",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2x/hét; rövid áztatás",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia magnusiana",
+    "common": "Magnus' Air Plant",
+    "light": "Bright indirect, 4–6 h",
+    "temp": "15–28°C (opt. 18–24°C)",
+    "propagation": "Offsets · ⭐⭐⭐ Moderate · 8–16 wks",
+    "cites": "—",
+    "cyprus": "⚠ Érzékenyebb; párásabb környezet és jobb szellőzés kell",
+    "avoid": "Szőrös/ezüst faj; érzékenyebb a túláztatásra; lassú növekedésű",
+    "maintenance": "Rövid áztatás; alapos szárítás",
+    "role": "Accent / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Belső barnulás; levelek kihullanak",
+          "treatment": "Kevesebb víz; jobb szellőzés; szárítás fejjel lefelé"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "10–15",
+    "spread_cm": "8–12",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Nagyon lassú",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "60–80% RH; permetezés 2–3x/hét",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "✓",
+    "N": "✓",
+    "name": "Tillandsia pruinosa",
+    "common": "Fuzzywuzzy Air Plant",
+    "light": "Indirect–bright, 4–6 h",
+    "temp": "18–32°C (opt. 20–28°C)",
+    "propagation": "Offsets · ⭐⭐ Easy · 6–12 wks",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja a meleget; trópusi faj",
+    "avoid": "Hagymás bázis – szárítás kritikus; szőrös levelek",
+    "maintenance": "Szárítás fejjel lefelé!",
+    "role": "Accent / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Bázis rothadás",
+          "symptoms": "Hagymás tő puha",
+          "treatment": "Permetezés áztatás helyett; alapos szárítás"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "8–15",
+    "spread_cm": "5–10",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Lassú",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia streptophylla",
+    "common": "Shirley Temple Air Plant",
+    "light": "Bright indirect, 4–7 h",
+    "temp": "15–32°C (opt. 18–28°C)",
+    "propagation": "Offsets · ⭐⭐ Easy · 6–12 wks",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja; göndör levelek látványosak",
+    "avoid": "Hagymás bázis – szárítás NAGYON fontos; göndörödés normális szárazságnál",
+    "maintenance": "Szárítás fejjel lefelé; áztatás hetente max 10 perc",
+    "role": "Focal point / accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Bázis rothadás",
+          "symptoms": "Hagymás tő puha, barna",
+          "treatment": "Rövidebb áztatás; alapos szárítás; permetezés preferált"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "15–25",
+    "spread_cm": "15–25",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Lassú",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia stricta",
+    "common": "Strict Air Plant",
+    "light": "Bright indirect, 5–7 h",
+    "temp": "10–30°C (opt. 15–26°C)",
+    "propagation": "Offsets · ⭐ Very Easy · 3–6 wks",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; strapabíró; gazdag virágzás",
+    "avoid": "Normál gondozás; sok sarjat ad",
+    "maintenance": "Szárítás; sarjak kezelése",
+    "role": "Accent / cluster",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Tő puha",
+          "treatment": "Szellőztetés; szárítás"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "8–15",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "30–50% RH; könnyű permetezés 1x/hét",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "✗",
+    "N": "✓",
+    "name": "Tillandsia tectorum",
+    "common": "Roof Air Plant",
+    "light": "Bright–direct, 6–10 h",
+    "temp": "5–30°C (opt. 10–25°C)",
+    "propagation": "Offsets · ⭐⭐⭐ Moderate · 8–16 wks",
+    "cites": "—",
+    "cyprus": "✓ Kiváló; extrém szárazságtűrő; legtöbb fényt igényli",
+    "avoid": "NE áztasd be! Csak könnyű permetezés; legtöbb trichoma → legkevesebb víz",
+    "maintenance": "Minimális permetezés; rengeteg fény",
+    "role": "Accent / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Tő puha; levelek kihullanak",
+          "treatment": "Áztatás TILOS; csak permetezés; szellőztetés"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "10–20",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Nagyon lassú",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "50–70% RH; permetezés 2–3x/hét (RO víz)",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia velutina",
+    "common": "Velvet Air Plant",
+    "light": "Bright indirect, 4–6 h",
+    "temp": "15–30°C (opt. 18–26°C)",
+    "propagation": "Offsets · ⭐⭐ Easy · 6–12 wks",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja",
+    "avoid": "Normál gondozás",
+    "maintenance": "Szárítás; elhalt levelek",
+    "role": "Accent / mounted",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Tő barnulás",
+          "treatment": "Szellőztetés"
+        }
+      ],
+      "pests": [],
+      "other": []
+    },
+    "height_cm": "10–18",
+    "spread_cm": "10–15",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Közepes",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "group": "Tillandsia",
+    "family": "Bromeliaceae",
+    "humidity": "30–50% RH; rövid áztatás hetente; permetezés 1–2x/hét",
+    "substrate_notes": "Nincs szubsztrát (epifit); rögzítési felület",
+    "Z": "✗",
+    "F": "~",
+    "N": "✓",
+    "name": "Tillandsia xerographica",
+    "common": "Xerographic Air Plant / King of Air Plants",
+    "light": "Bright indirect–direct, 5–8 h",
+    "temp": "10–35°C (opt. 15–28°C)",
+    "propagation": "Offsets · ⭐⭐⭐ Moderate · slow – 12–24 wks",
+    "cites": "II (specifikusan listázott)",
+    "cyprus": "✓ Kiváló; méltóságteljes; bírja a száraz ciprusi belteret",
+    "avoid": "CITES II – legálisan szaporított példányok szükségesek; nagy méretű; lassú növekedésű; ne áztasd túl sokáig",
+    "maintenance": "Rövid áztatás (15–30 perc max); fejjel lefelé szárítás; szellőztetés",
+    "role": "Focal point / centerpiece",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rozetta rothadás",
+          "symptoms": "Belső levelek barnulnak; levelek kihullanak a bázisból",
+          "treatment": "Rövidebb áztatás; MINDIG fejjel lefelé szárítani; szellőztetés"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Pajzstetű",
+          "symptoms": "Apró pajzsok a levéltőnél",
+          "treatment": "Alkohol; kézi eltávolítás"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "20–40",
+    "spread_cm": "25–50",
+    "vessel_min": 0,
+    "vessel_max": 0,
+    "growth_rate": "Nagyon lassú",
+    "substrate_group": "tillandsia"
+  },
+  {
+    "name": "Fittonia albivenis",
+    "common": "Nerve Plant / Mosaic Plant",
+    "group": "Ferns & Foliage",
+    "family": "Acanthaceae",
+    "light": "Low–indirect, 3–5 h",
+    "temp": "18–27°C (opt. 20–24°C)",
+    "humidity": "70–90% RH; állandóan nedves, de nem vízben álló",
+    "substrate_notes": "—",
+    "propagation": "Stem cuttings · ⭐ Very Easy · 2–4 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "⚠ Csak zárt/félzárt terráriumban; AC túl száraz; párásítás nélkül gyorsan hervad",
+    "avoid": "Drámaian hervad ha kiszárad (de visszajön öntözésre); nem bírja a közvetlen napot; nem bírja a száraz levegőt",
+    "maintenance": "Csúcsok visszacsípése kompakt növekedésért; virágszár eltávolítása (jelentéktelen virág, energiát von el)",
+    "role": "Foreground / groundcover",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás (Pythium)",
+          "symptoms": "Puha, barna gyökerek; hirtelen hervadás öntözés ellenére",
+          "treatment": "Drenázs javítása; szubsztrát csere; öntözés csökkentése"
+        },
+        {
+          "name": "Levélfoltosság (Cercospora)",
+          "symptoms": "Barna/fekete foltok a leveleken",
+          "treatment": "Érintett levelek eltávolítása; szellőztetés; permetezés kerülése"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Levéltetű (aphid)",
+          "symptoms": "Apró zöld/fekete rovarok a hajtáscsúcsokon; ragadós mézharmat",
+          "treatment": "Vízpermet; inszeticid szappan"
+        },
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók a levélhónaljban",
+          "treatment": "Alkohol; neem olaj"
+        },
+        {
+          "name": "Gombalégy (fungus gnat)",
+          "symptoms": "Apró legyek a szubsztrát körül; lárvák a gyökereken",
+          "treatment": "Öntözés kismértékű csökkentése; ragacslapok; Bt-baktérium"
+        }
+      ],
+      "other": [
+        {
+          "name": "Drámai hervadás",
+          "symptoms": "Teljes növény elernyed, levelek lógnak — de NEM halott!",
+          "treatment": "Azonnali öntözés; 1–2 órán belül visszaáll. Rendszeres ismétlődés gyengíti a növényt."
+        }
+      ]
+    },
+    "height_cm": "10–20",
+    "spread_cm": "15–30 (terítő)",
+    "vessel_min": 10,
+    "vessel_max": 30,
+    "growth_rate": "Közepes",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Hypoestes phyllostachya",
+    "common": "Polka Dot Plant / Splash Plant",
+    "group": "Ferns & Foliage",
+    "family": "Acanthaceae",
+    "light": "Indirect–bright, 4–6 h",
+    "temp": "18–27°C (opt. 20–24°C)",
+    "humidity": "50–70% RH; egyenletesen nedves",
+    "substrate_notes": "—",
+    "propagation": "Stem cuttings · ⭐ Very Easy · 2–3 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "~",
+    "cites": "—",
+    "cyprus": "⚠ Beltérben AC mellett párásítás ajánlott; zárt terráriumban kiváló; kevés fénynél elveszti a mintázatot",
+    "avoid": "Gyorsan nyúlik (leggy) kevés fénynél — rendszeres csípés kell; virágzás után legyengül/elpusztulhat — virágszár azonnali eltávolítása!",
+    "maintenance": "Csúcsok rendszeres visszacsípése (KRITIKUS a kompakt formáért); virágszár azonnali eltávolítása; alsó elhalt levelek szedése",
+    "role": "Foreground / midground / accent (szín!)",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Lisztharmat (powdery mildew)",
+          "symptoms": "Fehér, lisztes bevonat a leveleken rossz szellőzésnél",
+          "treatment": "Szellőztetés; érintett levelek eltávolítása; neem olaj"
+        },
+        {
+          "name": "Gyökérrothadás",
+          "symptoms": "Puha tő; sárgulás; hervadás",
+          "treatment": "Öntözés csökkentése; drenázs javítása"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Levéltetű",
+          "symptoms": "Ragadós hajtáscsúcsok; apró rovarok",
+          "treatment": "Vízpermet; inszeticid szappan"
+        },
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér csomók",
+          "treatment": "Alkohol; neem olaj"
+        },
+        {
+          "name": "Pajzstetű",
+          "symptoms": "Barna pajzsok a száron",
+          "treatment": "Mechanikus eltávolítás; neem olaj"
+        },
+        {
+          "name": "Fehérlégy (whitefly)",
+          "symptoms": "Apró fehér legyek a levelek alján; felrepülnek ha megérintjük",
+          "treatment": "Sárga ragacslapok; inszeticid szappan"
+        }
+      ],
+      "other": [
+        {
+          "name": "Virágzás utáni pusztulás",
+          "symptoms": "Növény hirtelen legyengül, levelek hullanak virágzás után",
+          "treatment": "Virágszár azonnali eltávolítása amint megjelenik; ha már legyengült: erős visszavágás, dugványozás az egészséges részből"
+        }
+      ]
+    },
+    "height_cm": "15–30",
+    "spread_cm": "15–25",
+    "vessel_min": 10,
+    "vessel_max": 30,
+    "growth_rate": "Gyors",
+    "substrate_group": "foliage"
+  },
+  {
+    "name": "Kindbergia praelonga",
+    "common": "Common Feather-moss / Erdei moha",
+    "group": "Moss & Selaginella",
+    "family": "Brachytheciaceae",
+    "light": "Low–indirect, 2–4 h",
+    "temp": "5–25°C (opt. 12–20°C)",
+    "humidity": "70–100% RH; állandóan nedves",
+    "substrate_notes": "Bármilyen nedves felületen megél; szubsztrátra vagy kőre/fára telepíthető",
+    "propagation": "Fragmentation / division · ⭐ Very Easy · 2–4 wks",
+    "Z": "✓",
+    "F": "✓",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "⚠ Zárt terráriumban OK; nyílt ciprusi klímán nem él meg (túl száraz/meleg)",
+    "avoid": "Erős közvetlen fény megégeti; kiszáradás után nehezen regenerálódik; túl meleg (25°C+) stresszeli",
+    "maintenance": "Minimális; barnuló részek eltávolítása; permetezés ha nyílik a terrárium",
+    "role": "Groundcover / sziklaborítás",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rothadás/penész",
+          "symptoms": "Barna, pépes foltok pangó nedvességnél; fehér penészszálak",
+          "treatment": "Szellőztetés javítása; érintett rész eltávolítása; túlöntözés kerülése"
+        }
+      ],
+      "pests": [],
+      "other": [
+        {
+          "name": "Barnulás/kiszáradás",
+          "symptoms": "Levelek barnulnak a csúcsoktól; moha összezsugorodik",
+          "treatment": "Páratartalom emelése; permetezés RO vízzel; zárt terrárium biztosítja a párát"
+        }
+      ]
+    },
+    "height_cm": "2–5",
+    "spread_cm": "Korlátlan (terítő)",
+    "vessel_min": 8,
+    "vessel_max": 40,
+    "growth_rate": "Közepes",
+    "substrate_group": "moss_both"
+  },
+  {
+    "name": "Plagiomnium affine",
+    "common": "Star Moss / Csillagmoha",
+    "group": "Moss & Selaginella",
+    "family": "Mniaceae",
+    "light": "Low–indirect, 2–4 h",
+    "temp": "5–22°C (opt. 10–18°C)",
+    "humidity": "80–100% RH; állandóan nedves",
+    "substrate_notes": "Savanyú, nedves szubsztrát; sphagnum alapú mix ideális; kövekre is telepíthető",
+    "propagation": "Division / fragmentation · ⭐⭐ Easy · 3–6 wks",
+    "Z": "✓",
+    "F": "~",
+    "N": "✗",
+    "cites": "—",
+    "cyprus": "⚠ Hűvösebb mérsékelt faj; 22°C felett stresszelhet; zárt terráriumban AC-s szobában OK",
+    "avoid": "Hőérzékeny — 25°C felett barnul; erős fény kerülése; a Plagiomnium undulatum-nál kicsit toleránsabb de még mindig hűvöst szeret",
+    "maintenance": "Minimális; barnuló részek eltávolítása; hőmérséklet ellenőrzése nyáron",
+    "role": "Groundcover / sziklaborítás / accent",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Rothadás",
+          "symptoms": "Barna, pépessé váló részek túl meleg/nedves környezetben",
+          "treatment": "Hőmérséklet csökkentése; szellőztetés; érintett részek eltávolítása"
+        }
+      ],
+      "pests": [],
+      "other": [
+        {
+          "name": "Hőstressz elszíneződés",
+          "symptoms": "Lilás/barnás elszíneződés a leveleken (normális stresszreakció)",
+          "treatment": "Hőmérséklet csökkentése; stabilizálás után visszazöldül"
+        }
+      ]
+    },
+    "height_cm": "2–5",
+    "spread_cm": "10–30 (terítő)",
+    "vessel_min": 8,
+    "vessel_max": 35,
+    "growth_rate": "Lassú",
+    "substrate_group": "moss_both"
+  },
+  {
+    "name": "Peperomia metallica",
+    "common": "Red Tree Peperomia / Metallic Peperomia",
+    "group": "Peperomia & Pilea",
+    "family": "Piperaceae",
+    "light": "Indirect–bright, 4–6 h",
+    "temp": "18–28°C (opt. 20–25°C)",
+    "humidity": "50–70% RH; hagyni felszínét megszáradni",
+    "substrate_notes": "+10% perlit a jobb drénezésért",
+    "propagation": "Stem/leaf cuttings · ⭐⭐ Easy · 4–6 wks",
+    "Z": "~",
+    "F": "✓",
+    "N": "✓",
+    "cites": "—",
+    "cyprus": "✓ Jól bírja beltérben; fémes levelek szépek indirect fényben",
+    "avoid": "Túlöntözésérzékeny — gyökérrothadás gyakori; zárt terráriumban a magas pára okozhat levélrothadást",
+    "maintenance": "Elhalt levelek eltávolítása; nyírás kompakt formáért; ritka öntözés",
+    "role": "Foreground / midground / accent (szín!)",
+    "diseases": {
+      "fungal": [
+        {
+          "name": "Gyökérrothadás (Pythium)",
+          "symptoms": "Puha, barna tő; levelek hirtelen hullanak",
+          "treatment": "Szubsztrát csere; öntözés drasztikus csökkentése; drenázs javítása"
+        },
+        {
+          "name": "Levélrothadás",
+          "symptoms": "Sötét, vizenyős foltok a leveleken zárt környezetben",
+          "treatment": "Szellőztetés; érintett levelek eltávolítása; párásság mérséklése"
+        }
+      ],
+      "pests": [
+        {
+          "name": "Lisztestetű",
+          "symptoms": "Fehér viaszos csomók a levélhónaljban",
+          "treatment": "Alkohol; neem olaj"
+        },
+        {
+          "name": "Tripszek",
+          "symptoms": "Ezüstös csíkok a fémes leveleken",
+          "treatment": "Ragacslapok; inszeticid szappan"
+        }
+      ],
+      "other": []
+    },
+    "height_cm": "10–20",
+    "spread_cm": "10–20",
+    "vessel_min": 10,
+    "vessel_max": 25,
+    "growth_rate": "Lassú",
+    "substrate_group": "foliage"
+  }
+]
