@@ -22,10 +22,18 @@ const CONTAINER_SHAPES = [
   { id: 'cube', icon: 'cube-outline', labelKey: 'cube' },
 ];
 
+// Opening size - affects what physically fits + air circulation intensity
 const CONTAINER_OPENINGS = [
-  { id: 'narrow', icon: 'remove-outline', labelKey: 'narrowMouth', terrariumType: 'zart' },
-  { id: 'wide', icon: 'resize-outline', labelKey: 'wideMouth', terrariumType: 'nyitott' },
-  { id: 'medium', icon: 'contract-outline', labelKey: 'mediumMouth', terrariumType: 'felzart' },
+  { id: 'narrow', icon: 'remove-outline', labelKey: 'narrowMouth' },
+  { id: 'medium', icon: 'contract-outline', labelKey: 'mediumMouth' },
+  { id: 'wide', icon: 'resize-outline', labelKey: 'wideMouth' },
+];
+
+// Terrarium type - SEPARATE choice (is there a lid?)
+const TERRARIUM_TYPES = [
+  { id: 'zart', icon: 'lock-closed-outline', labelKey: 'closed', color: '#2E7D32' },
+  { id: 'felzart', icon: 'lock-open-outline', labelKey: 'semiClosed', color: '#689F38' },
+  { id: 'nyitott', icon: 'sunny-outline', labelKey: 'open', color: '#AFB42B' },
 ];
 
 const CONTAINER_SIZES = [
@@ -40,6 +48,7 @@ interface ContainerConfig {
   shape: string | null;
   opening: string | null;
   size: string | null;
+  terrariumType: string | null;
 }
 
 export default function TerrariumBuilderScreen() {
@@ -52,6 +61,7 @@ export default function TerrariumBuilderScreen() {
     shape: null,
     opening: null,
     size: null,
+    terrariumType: null,
   });
   const [selectedPlants, setSelectedPlants] = useState<Plant[]>([]);
   const [availablePlants, setAvailablePlants] = useState<Plant[]>([]);
@@ -60,11 +70,10 @@ export default function TerrariumBuilderScreen() {
   const [substrateRecipe, setSubstrateRecipe] = useState<{ name: string; recipe: string } | null>(null);
   const [terrariumWarnings, setTerrariumWarnings] = useState<string[]>([]);
 
-  // Get terrarium type based on opening
+  // Get terrarium type from container selection
   const getTerrariumType = useCallback(() => {
-    const opening = CONTAINER_OPENINGS.find(o => o.id === container.opening);
-    return opening?.terrariumType || 'felzart';
-  }, [container.opening]);
+    return container.terrariumType || 'felzart';
+  }, [container.terrariumType]);
 
   // Get max plants based on size
   const getMaxPlants = useCallback(() => {
@@ -85,7 +94,7 @@ export default function TerrariumBuilderScreen() {
         result.plants.map(async (plant) => {
           try {
             const imageResponse = await fetch(
-              `https://terrarium-guide-dev.preview.emergentagent.com/api/plants/${encodeURIComponent(plant.name)}/image`
+              `https://terrarium-builder-1.preview.emergentagent.com/api/plants/${encodeURIComponent(plant.name)}/image`
             );
             if (imageResponse.ok) {
               const imageData = await imageResponse.json();
@@ -122,7 +131,7 @@ export default function TerrariumBuilderScreen() {
           .map(async (plant) => {
             try {
               const imageResponse = await fetch(
-                `https://terrarium-guide-dev.preview.emergentagent.com/api/plants/${encodeURIComponent(plant.name)}/image`
+                `https://terrarium-builder-1.preview.emergentagent.com/api/plants/${encodeURIComponent(plant.name)}/image`
               );
               if (imageResponse.ok) {
                 const imageData = await imageResponse.json();
@@ -143,7 +152,7 @@ export default function TerrariumBuilderScreen() {
 
   // Handle container selection complete
   const handleContainerComplete = useCallback(() => {
-    if (container.shape && container.opening && container.size) {
+    if (container.shape && container.opening && container.size && container.terrariumType) {
       loadPlantsForFirstSelection();
       setStep('firstPlant');
     }
@@ -327,14 +336,41 @@ export default function TerrariumBuilderScreen() {
         ))}
       </View>
 
+      {/* Terrarium Type Selection */}
+      <Text style={styles.sectionLabel}>{t('terrariumType') || 'Terrárium típusa'}</Text>
+      <View style={styles.optionRow}>
+        {TERRARIUM_TYPES.map(type => (
+          <TouchableOpacity
+            key={type.id}
+            style={[
+              styles.optionButton,
+              container.terrariumType === type.id && { backgroundColor: type.color, borderColor: type.color },
+            ]}
+            onPress={() => setContainer(prev => ({ ...prev, terrariumType: type.id }))}
+          >
+            <Ionicons
+              name={type.icon as any}
+              size={32}
+              color={container.terrariumType === type.id ? '#fff' : type.color}
+            />
+            <Text style={[
+              styles.optionLabel,
+              container.terrariumType === type.id && styles.optionLabelSelected,
+            ]}>
+              {t(type.labelKey as any)}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
       {/* Continue Button */}
       <TouchableOpacity
         style={[
           styles.continueButton,
-          (!container.shape || !container.opening || !container.size) && styles.continueButtonDisabled,
+          (!container.shape || !container.opening || !container.size || !container.terrariumType) && styles.continueButtonDisabled,
         ]}
         onPress={handleContainerComplete}
-        disabled={!container.shape || !container.opening || !container.size}
+        disabled={!container.shape || !container.opening || !container.size || !container.terrariumType}
       >
         <Text style={styles.continueButtonText}>{t('continue')}</Text>
         <Ionicons name="arrow-forward" size={20} color="#fff" />
@@ -580,7 +616,7 @@ export default function TerrariumBuilderScreen() {
           onPress={() => {
             setStep('container');
             setSelectedPlants([]);
-            setContainer({ shape: null, opening: null, size: null });
+            setContainer({ shape: null, opening: null, size: null, terrariumType: null });
           }}
         >
           <Ionicons name="refresh" size={20} color="#fff" />

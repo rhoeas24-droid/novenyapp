@@ -2,7 +2,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Use the public API URL directly
-const API_URL = 'https://terrarium-guide-dev.preview.emergentagent.com';
+const API_URL = 'https://terrarium-builder-1.preview.emergentagent.com';
 
 const api = axios.create({
   baseURL: `${API_URL}/api`,
