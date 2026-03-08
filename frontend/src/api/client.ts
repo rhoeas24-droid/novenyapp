@@ -196,11 +196,20 @@ export const getCompatiblePlants = async (
 // Get substrate-compatible plants
 export const getSubstrateCompatiblePlants = async (
   plantName: string,
+  terrariumType?: string,
   limit = 30,
   language?: string
-): Promise<{ plant: any; compatible_plants: Plant[]; total: number }> => {
+): Promise<{ 
+  plant: any; 
+  compatible_plants: Plant[]; 
+  total: number;
+  substrate_recipe?: { name: string; recipe: string };
+  terrarium_compatibility?: { ideal: string[]; acceptable: string[]; avoid: string[] };
+  warnings?: string[];
+}> => {
   const lang = language || await getCurrentLanguage();
   const params: Record<string, string | number> = { limit, lang };
+  if (terrariumType) params.terrarium_type = terrariumType;
 
   const response = await api.get(
     `/plants/${encodeURIComponent(plantName)}/substrate-compatible`,

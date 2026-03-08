@@ -57,6 +57,8 @@ export default function TerrariumBuilderScreen() {
   const [availablePlants, setAvailablePlants] = useState<Plant[]>([]);
   const [compatiblePlants, setCompatiblePlants] = useState<Plant[]>([]);
   const [loading, setLoading] = useState(false);
+  const [substrateRecipe, setSubstrateRecipe] = useState<{ name: string; recipe: string } | null>(null);
+  const [terrariumWarnings, setTerrariumWarnings] = useState<string[]>([]);
 
   // Get terrarium type based on opening
   const getTerrariumType = useCallback(() => {
@@ -105,7 +107,12 @@ export default function TerrariumBuilderScreen() {
   const loadCompatiblePlants = useCallback(async (basePlant: Plant) => {
     setLoading(true);
     try {
-      const result = await getSubstrateCompatiblePlants(basePlant.name, 50);
+      const terrariumType = getTerrariumType();
+      const result = await getSubstrateCompatiblePlants(basePlant.name, terrariumType, 50);
+      
+      // Store warnings and recipe
+      setTerrariumWarnings(result.warnings || []);
+      setSubstrateRecipe(result.substrate_recipe || null);
       
       // Load images for compatible plants
       const plantsWithImages = await Promise.all(
@@ -131,7 +138,7 @@ export default function TerrariumBuilderScreen() {
     } finally {
       setLoading(false);
     }
-  }, [selectedPlants]);
+  }, [selectedPlants, getTerrariumType]);
 
   // Handle container selection complete
   const handleContainerComplete = useCallback(() => {
@@ -495,14 +502,33 @@ export default function TerrariumBuilderScreen() {
           <Text style={styles.summaryValue}>{terrariumTypeLabels[summary.terrariumType]}</Text>
         </View>
 
-        {/* Substrate */}
+        {/* Warnings */}
+        {terrariumWarnings.length > 0 && (
+          <View style={[styles.summarySection, styles.warningSection]}>
+            <Text style={styles.summaryLabel}>
+              <Ionicons name="alert-circle" size={18} color="#FF5722" /> Figyelmeztetés
+            </Text>
+            {terrariumWarnings.map((warning, i) => (
+              <Text key={i} style={styles.warningText}>{warning}</Text>
+            ))}
+          </View>
+        )}
+
+        {/* Substrate Recipe */}
         <View style={styles.summarySection}>
           <Text style={styles.summaryLabel}>
             <Ionicons name="layers" size={18} color="#8B4513" /> {t('substrate') || 'Szubsztrát'}
           </Text>
-          {summary.substrates.map(sub => (
-            <Text key={sub} style={styles.summaryValue}>• {sub}</Text>
-          ))}
+          {substrateRecipe ? (
+            <>
+              <Text style={styles.summarySubtitle}>{substrateRecipe.name}</Text>
+              <Text style={styles.summaryRecipe}>{substrateRecipe.recipe}</Text>
+            </>
+          ) : (
+            summary.substrates.map(sub => (
+              <Text key={sub} style={styles.summaryValue}>• {sub}</Text>
+            ))
+          )}
         </View>
 
         {/* Light */}
@@ -845,5 +871,31 @@ const styles = StyleSheet.create({
     color: '#333',
     textAlign: 'center',
     marginTop: 6,
+  },
+  warningSection: {
+    backgroundColor: '#FFF3E0',
+    borderLeftWidth: 4,
+    borderLeftColor: '#FF5722',
+  },
+  warningText: {
+    fontSize: 14,
+    color: '#E65100',
+    marginLeft: 8,
+    marginTop: 4,
+  },
+  summarySubtitle: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#5D4037',
+    marginLeft: 8,
+    marginTop: 4,
+  },
+  summaryRecipe: {
+    fontSize: 14,
+    color: '#6D4C41',
+    marginLeft: 8,
+    marginTop: 6,
+    fontStyle: 'italic',
+    lineHeight: 20,
   },
 });

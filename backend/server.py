@@ -383,27 +383,79 @@ async def reset_database():
 SUBSTRATE_COMPATIBILITY = {
     "succulent": {
         "compatible_with": ["succulent", "tillandsia_no_substrate"],
-        "ideal_terrarium": "nyitott"
+        "ideal_terrarium": ["nyitott"],
+        "acceptable_terrarium": ["felzart"],
+        "avoid_terrarium": ["zart"]
     },
     "foliage": {
         "compatible_with": ["foliage", "moss_compatible_with_foliage", "tillandsia_no_substrate"],
-        "ideal_terrarium": "felzart"
+        "ideal_terrarium": ["zart", "felzart"],
+        "acceptable_terrarium": ["nyitott"],
+        "avoid_terrarium": []
     },
     "carnivorous": {
         "compatible_with": ["carnivorous", "sphagnum_acidic"],
-        "ideal_terrarium": "zart"
+        "ideal_terrarium": ["zart"],
+        "acceptable_terrarium": ["felzart"],
+        "avoid_terrarium": ["nyitott"]
     },
     "moss_compatible_with_foliage": {
         "compatible_with": ["foliage", "moss_compatible_with_foliage"],
-        "ideal_terrarium": "zart"
+        "ideal_terrarium": ["zart"],
+        "acceptable_terrarium": ["felzart"],
+        "avoid_terrarium": ["nyitott"]
     },
     "sphagnum_acidic": {
         "compatible_with": ["carnivorous", "sphagnum_acidic"],
-        "ideal_terrarium": "zart"
+        "ideal_terrarium": ["zart"],
+        "acceptable_terrarium": [],
+        "avoid_terrarium": ["felzart", "nyitott"]
     },
     "tillandsia_no_substrate": {
         "compatible_with": ["succulent", "foliage", "tillandsia_no_substrate"],
-        "ideal_terrarium": "felzart"
+        "ideal_terrarium": ["felzart", "nyitott"],
+        "acceptable_terrarium": ["zart"],
+        "avoid_terrarium": []
+    }
+}
+
+# Substrate recipes
+SUBSTRATE_RECIPES = {
+    "succulent": {
+        "name_hu": "Szukkulens szubsztrát",
+        "name_en": "Succulent substrate",
+        "recipe_hu": "40% perlit/pumice + 30% durva homok + 20% akvárium kavics + 10% kókuszrost",
+        "recipe_en": "40% perlite/pumice + 30% coarse sand + 20% aquarium gravel + 10% coco coir"
+    },
+    "foliage": {
+        "name_hu": "Lombos szubsztrát",
+        "name_en": "Foliage substrate",
+        "recipe_hu": "40% kókuszrost + 30% sphagnum tőzeg + 20% perlit + 10% aktív szén",
+        "recipe_en": "40% coco coir + 30% sphagnum peat + 20% perlite + 10% activated charcoal"
+    },
+    "carnivorous": {
+        "name_hu": "Húsevő szubsztrát",
+        "name_en": "Carnivorous substrate",
+        "recipe_hu": "60% sphagnum tőzeg + 40% perlit (NE használj trágyát!)",
+        "recipe_en": "60% sphagnum peat + 40% perlite (NO fertilizer!)"
+    },
+    "moss_compatible_with_foliage": {
+        "name_hu": "Moha szubsztrát",
+        "name_en": "Moss substrate",
+        "recipe_hu": "50% sphagnum tőzeg + 30% kókuszrost + 20% perlit",
+        "recipe_en": "50% sphagnum peat + 30% coco coir + 20% perlite"
+    },
+    "sphagnum_acidic": {
+        "name_hu": "Savas moha szubsztrát",
+        "name_en": "Acidic sphagnum substrate",
+        "recipe_hu": "80% élő/száraz sphagnum + 20% perlit",
+        "recipe_en": "80% live/dried sphagnum + 20% perlite"
+    },
+    "tillandsia_no_substrate": {
+        "name_hu": "Tillandsia (szubsztrát nélkül)",
+        "name_en": "Tillandsia (no substrate)",
+        "recipe_hu": "Nincs szükség - rögzítsd fára, kőre vagy dróthoz",
+        "recipe_en": "No substrate - mount on wood, rock or wire"
     }
 }
 
@@ -411,10 +463,11 @@ SUBSTRATE_COMPATIBILITY = {
 @app.get("/api/plants/{plant_name}/substrate-compatible")
 async def get_substrate_compatible_plants(
     plant_name: str,
+    terrarium_type: Optional[str] = None,
     limit: int = Query(default=30, le=77),
     lang: str = "hu"
 ):
-    """Get plants compatible based on substrate requirements"""
+    """Get plants compatible based on substrate requirements and terrarium type"""
     # Get the base plant
     plant = plants_collection.find_one({"name": plant_name})
     if not plant:
@@ -426,13 +479,44 @@ async def get_substrate_compatible_plants(
         raise HTTPException(status_code=404, detail="Növény nem található")
     
     base_substrate = plant.get('substrate_group', 'foliage')
-    compatible_substrates = SUBSTRATE_COMPATIBILITY.get(base_substrate, {}).get('compatible_with', [base_substrate])
+    substrate_rules = SUBSTRATE_COMPATIBILITY.get(base_substrate, {})
+    compatible_substrates = substrate_rules.get('compatible_with', [base_substrate])
+    
+    # Check terrarium type compatibility
+    warnings = []
+    if terrarium_type:
+        ideal = substrate_rules.get('ideal_terrarium', [])
+        acceptable = substrate_rules.get('acceptable_terrarium', [])
+        avoid = substrate_rules.get('avoid_terrarium', [])
+        
+        if terrarium_type in avoid:
+            if lang == 'hu':
+                warnings.append(f"Figyelem: {plant['name']} nem ajánlott {terrarium_type} terráriumban!")
+            else:
+                warnings.append(f"Warning: {plant['name']} is not recommended for {terrarium_type} terrariums!")
+        elif terrarium_type not in ideal and terrarium_type not in acceptable:
+            if lang == 'hu':
+                warnings.append(f"Megjegyzés: {plant['name']} jobb lenne {'zárt' if 'zart' in ideal else 'nyitott'} terráriumban.")
+            else:
+                warnings.append(f"Note: {plant['name']} would do better in a {'closed' if 'zart' in ideal else 'open'} terrarium.")
+    
+    # Get substrate recipe
+    recipe = SUBSTRATE_RECIPES.get(base_substrate, {})
+    recipe_name = recipe.get(f'name_{lang}', recipe.get('name_hu', base_substrate))
+    recipe_text = recipe.get(f'recipe_{lang}', recipe.get('recipe_hu', ''))
     
     # Find all plants with compatible substrates
-    all_plants = list(plants_collection.find({
+    query = {
         "name": {"$ne": plant['name']},
         "substrate_group": {"$in": compatible_substrates}
-    }))
+    }
+    
+    # Also filter by terrarium type if specified
+    if terrarium_type:
+        terrarium_field = 'Z' if terrarium_type == 'zart' else 'F' if terrarium_type == 'felzart' else 'N'
+        query[terrarium_field] = {"$in": ['✓', '~']}
+    
+    all_plants = list(plants_collection.find(query))
     
     # Calculate compatibility scores
     compatible = []
@@ -463,6 +547,16 @@ async def get_substrate_compatible_plants(
             "substrate_group": base_substrate,
             "compatible_substrates": compatible_substrates
         },
+        "substrate_recipe": {
+            "name": recipe_name,
+            "recipe": recipe_text
+        },
+        "terrarium_compatibility": {
+            "ideal": substrate_rules.get('ideal_terrarium', []),
+            "acceptable": substrate_rules.get('acceptable_terrarium', []),
+            "avoid": substrate_rules.get('avoid_terrarium', [])
+        },
+        "warnings": warnings,
         "compatible_plants": compatible[:limit],
         "total": len(compatible)
     }

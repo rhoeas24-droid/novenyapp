@@ -1,0 +1,107 @@
+{
+  "succulent": {
+    "name_hu": "Szukkulens szubsztrát",
+    "name_en": "Succulent substrate",
+    "recipe_hu": "40% perlit/pumice + 30% durva homok + 20% akvárium kavics + 10% kókuszrost",
+    "recipe_en": "40% perlite/pumice + 30% coarse sand + 20% aquarium gravel + 10% coco coir",
+    "ideal_terrarium": [
+      "nyitott"
+    ],
+    "acceptable_terrarium": [
+      "felzart"
+    ],
+    "avoid_terrarium": [
+      "zart"
+    ],
+    "drainage": "excellent",
+    "moisture_retention": "low"
+  },
+  "foliage": {
+    "name_hu": "Lombos szubsztrát",
+    "name_en": "Foliage substrate",
+    "recipe_hu": "40% kókuszrost + 30% sphagnum tőzeg + 20% perlit + 10% aktív szén",
+    "recipe_en": "40% coco coir + 30% sphagnum peat + 20% perlite + 10% activated charcoal",
+    "ideal_terrarium": [
+      "zart",
+      "felzart"
+    ],
+    "acceptable_terrarium": [
+      "nyitott"
+    ],
+    "avoid_terrarium": [],
+    "drainage": "moderate",
+    "moisture_retention": "high"
+  },
+  "carnivorous": {
+    "name_hu": "Húsevő szubsztrát",
+    "name_en": "Carnivorous substrate",
+    "recipe_hu": "60% sphagnum tőzeg + 40% perlit (NE használj trágyát!)",
+    "recipe_en": "60% sphagnum peat + 40% perlite (NO fertilizer!)",
+    "ideal_terrarium": [
+      "zart"
+    ],
+    "acceptable_terrarium": [
+      "felzart"
+    ],
+    "avoid_terrarium": [
+      "nyitott"
+    ],
+    "drainage": "moderate",
+    "moisture_retention": "very high",
+    "special_notes_hu": "Csak desztillált vagy esővizet használj!",
+    "special_notes_en": "Use only distilled or rainwater!"
+  },
+  "moss_compatible_with_foliage": {
+    "name_hu": "Moha szubsztrát",
+    "name_en": "Moss substrate",
+    "recipe_hu": "50% sphagnum tőzeg + 30% kókuszrost + 20% perlit",
+    "recipe_en": "50% sphagnum peat + 30% coco coir + 20% perlite",
+    "ideal_terrarium": [
+      "zart"
+    ],
+    "acceptable_terrarium": [
+      "felzart"
+    ],
+    "avoid_terrarium": [
+      "nyitott"
+    ],
+    "drainage": "low",
+    "moisture_retention": "very high"
+  },
+  "sphagnum_acidic": {
+    "name_hu": "Savas moha szubsztrát",
+    "name_en": "Acidic sphagnum substrate",
+    "recipe_hu": "80% élő/száraz sphagnum + 20% perlit",
+    "recipe_en": "80% live/dried sphagnum + 20% perlite",
+    "ideal_terrarium": [
+      "zart"
+    ],
+    "acceptable_terrarium": [],
+    "avoid_terrarium": [
+      "felzart",
+      "nyitott"
+    ],
+    "drainage": "low",
+    "moisture_retention": "very high",
+    "special_notes_hu": "Savanyítja a környezetet - csak savkedvelő növényekkel!",
+    "special_notes_en": "Acidifies environment - only with acid-loving plants!"
+  },
+  "tillandsia_no_substrate": {
+    "name_hu": "Tillandsia (szubsztrát nélkül)",
+    "name_en": "Tillandsia (no substrate)",
+    "recipe_hu": "Nincs szükség szubsztrátra - rögzítsd fára, kőre vagy dróthoz",
+    "recipe_en": "No substrate needed - mount on wood, rock or wire",
+    "ideal_terrarium": [
+      "felzart",
+      "nyitott"
+    ],
+    "acceptable_terrarium": [
+      "zart"
+    ],
+    "avoid_terrarium": [],
+    "drainage": "n/a",
+    "moisture_retention": "n/a",
+    "special_notes_hu": "Légmozgás fontos! Zárt terráriumban csak toleráns fajok.",
+    "special_notes_en": "Air circulation important! In closed terrariums only tolerant species."
+  }
+}
