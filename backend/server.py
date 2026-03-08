@@ -519,21 +519,11 @@ async def get_substrate_compatible_plants(
         "substrate_group": {"$in": compatible_substrates}
     }
     
-    # Filter by terrarium type - STRICT matching (only ✓) for better compatibility
+    # Filter by terrarium type
     if terrarium_type:
         terrarium_field = 'Z' if terrarium_type == 'zart' else 'F' if terrarium_type == 'felzart' else 'N'
-        # For Tillandsia, allow plants that thrive in the selected type
-        # Tillandsia works well in both open and semi-closed
-        if is_tillandsia:
-            # Tillandsia is flexible - works in nyitott and felzart
-            # Only show plants that actually thrive (✓) in chosen type
-            query[terrarium_field] = '✓'
-        elif terrarium_type == 'nyitott':
-            # Open terrariums need strict matching - only plants that thrive there
-            query[terrarium_field] = '✓'
-        else:
-            # Closed/semi-closed can be more lenient
-            query[terrarium_field] = {"$in": ['✓', '~']}
+        # Allow both ✓ (ideal) and ~ (tolerable) - humidity check will filter further
+        query[terrarium_field] = {"$in": ['✓', '~']}
     
     all_plants = list(plants_collection.find(query))
     
