@@ -47,6 +47,14 @@ A "Florárium Mester" (Florarium Master) mobil alkalmazás, amely terrárium nö
 ## Recently Completed (2025-03-08)
 - [x] Database content translation - ALL 77 plants translated to EN and EL
 - [x] Disease names translation - ALL disease/pest names translated to EN and EL
+- [x] Hungarian words fixed (csomó, terítő, Korlátlan, etc.)
+- [x] Hypoestes phyllostachya image updated
+- [x] Navigation fix with router.replace
+- [x] **NEW: Build Your Own Terrarium** feature added
+  - Container selection (shape, opening type, size)
+  - First plant selection based on terrarium type
+  - Compatible plants with compatibility score
+  - Summary with substrate, light, humidity, care tips, warnings
 
 ## Known Limitations
 - Back navigation from compatible plants goes directly to home (not to previous plant) - this is an Expo Router limitation with dynamic routes

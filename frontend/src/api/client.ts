@@ -43,6 +43,7 @@ export interface Plant {
   temp?: string;
   humidity: string;
   substrate_notes?: string;
+  substrate_base?: string;
   propagation?: string;
   Z: string;
   F: string;

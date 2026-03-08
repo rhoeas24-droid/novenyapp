@@ -6,9 +6,11 @@ import {
   ActivityIndicator,
   ScrollView,
   RefreshControl,
+  TouchableOpacity,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 import { usePlantStore } from '../src/store/plantStore';
 import PlantCard from '../src/components/PlantCard';
 import FilterChip from '../src/components/FilterChip';
@@ -104,6 +106,15 @@ export default function HomeScreen() {
     >
       {/* Header with filters */}
       <View style={styles.header}>
+        {/* Build Terrarium Button */}
+        <TouchableOpacity
+          style={styles.buildButton}
+          onPress={() => router.push('/builder' as any)}
+        >
+          <Ionicons name="construct" size={20} color="#fff" />
+          <Text style={styles.buildButtonText}>{t('buildTerrarium')}</Text>
+        </TouchableOpacity>
+
         <SearchBar
           value={searchQuery}
           onChangeText={setSearchQuery}
@@ -272,5 +283,26 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#999',
     marginTop: 8,
+  },
+  buildButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#1B5E20',
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    borderRadius: 12,
+    marginBottom: 16,
+    gap: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
+  },
+  buildButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
