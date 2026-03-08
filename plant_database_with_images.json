@@ -55,7 +55,8 @@
     "vessel_min": 20,
     "vessel_max": 40,
     "growth_rate": "Közepes–gyors",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Nephrolepis_cordifolia.jpg"
   },
   {
     "name": "Asplenium nidus",
@@ -690,7 +691,8 @@
     "vessel_min": 25,
     "vessel_max": 50,
     "growth_rate": "Gyors",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Syngonium_podophyllum.jpg"
   },
   {
     "name": "Cryptanthus bivittatus",
@@ -1825,7 +1827,8 @@
     "vessel_min": 8,
     "vessel_max": 20,
     "growth_rate": "Lassú–közepes",
-    "substrate_group": "carnivorous"
+    "substrate_group": "carnivorous",
+    "image_file": "Drosera_aliciae.jpg"
   },
   {
     "name": "Drosera binata",
@@ -3188,7 +3191,8 @@
     "vessel_min": 10,
     "vessel_max": 30,
     "growth_rate": "Közepes",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Fittonia_albivenis.jpg"
   },
   {
     "name": "Hypoestes phyllostachya",
@@ -3256,7 +3260,8 @@
     "vessel_min": 10,
     "vessel_max": 30,
     "growth_rate": "Gyors",
-    "substrate_group": "foliage"
+    "substrate_group": "foliage",
+    "image_file": "Hypoestes_phyllostachya.jpg"
   },
   {
     "name": "Kindbergia praelonga",
@@ -3298,7 +3303,8 @@
     "vessel_min": 8,
     "vessel_max": 40,
     "growth_rate": "Közepes",
-    "substrate_group": "moss_both"
+    "substrate_group": "moss_both",
+    "image_file": "Kindbergia_praelonga.jpg"
   },
   {
     "name": "Plagiomnium affine",
@@ -3340,7 +3346,8 @@
     "vessel_min": 8,
     "vessel_max": 35,
     "growth_rate": "Lassú",
-    "substrate_group": "moss_both"
+    "substrate_group": "moss_both",
+    "image_file": "Plagiomnium_affine.jpg"
   },
   {
     "name": "Peperomia metallica",
