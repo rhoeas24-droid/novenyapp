@@ -76,7 +76,24 @@ export default function TerrariumBuilderScreen() {
     try {
       const terrariumType = getTerrariumType();
       const result = await getPlants(undefined, terrariumType);
-      setAvailablePlants(result.plants);
+      
+      // Load images for each plant
+      const plantsWithImages = await Promise.all(
+        result.plants.map(async (plant) => {
+          try {
+            const imageResponse = await fetch(
+              `https://terrarium-guide-dev.preview.emergentagent.com/api/plants/${encodeURIComponent(plant.name)}/image`
+            );
+            if (imageResponse.ok) {
+              const imageData = await imageResponse.json();
+              return { ...plant, image_base64: imageData.image_base64 };
+            }
+          } catch {}
+          return plant;
+        })
+      );
+      
+      setAvailablePlants(plantsWithImages);
     } catch (error) {
       console.error('Error loading plants:', error);
     } finally {
@@ -157,7 +174,11 @@ export default function TerrariumBuilderScreen() {
     // Collect unique substrates
     const substrates = new Set<string>();
     selectedPlants.forEach(p => {
-      if (p.substrate_base) substrates.add(p.substrate_base);
+      if (p.substrate_notes && p.substrate_notes !== '—') {
+        substrates.add(p.substrate_notes);
+      } else if (p.substrate_group) {
+        substrates.add(p.substrate_group);
+      }
     });
 
     // Calculate average light needs
@@ -423,16 +444,31 @@ export default function TerrariumBuilderScreen() {
       <ScrollView style={styles.stepContainer} showsVerticalScrollIndicator={false}>
         <Text style={styles.stepTitle}>{t('yourTerrarium') || 'A Te Terráriumod'}</Text>
 
-        {/* Selected Plants */}
+        {/* Selected Plants with Images */}
         <View style={styles.summarySection}>
           <Text style={styles.summaryLabel}>
             <Ionicons name="leaf" size={18} color="#388E3C" /> {t('plants') || 'Növények'} ({selectedPlants.length})
           </Text>
-          <View style={styles.summaryPlants}>
-            {selectedPlants.map(plant => (
-              <Text key={plant.name} style={styles.summaryPlantName}>• {plant.name}</Text>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.summaryPlantsScroll}>
+            {selectedPlants.map((plant, index) => (
+              <View key={plant.name} style={styles.summaryPlantCard}>
+                {plant.image_base64 ? (
+                  <Image
+                    source={{ uri: plant.image_base64 }}
+                    style={styles.summaryPlantImage}
+                    resizeMode="cover"
+                  />
+                ) : (
+                  <View style={[styles.summaryPlantImage, styles.plantImagePlaceholder]}>
+                    <Ionicons name="leaf" size={24} color="#81C784" />
+                  </View>
+                )}
+                <Text style={styles.summaryPlantCardName} numberOfLines={2}>
+                  {index === 0 && '⭐ '}{plant.name}
+                </Text>
+              </View>
             ))}
-          </View>
+          </ScrollView>
         </View>
 
         {/* Terrarium Type */}
@@ -774,5 +810,24 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#2E7D32',
     marginBottom: 2,
+  },
+  summaryPlantsScroll: {
+    marginTop: 8,
+  },
+  summaryPlantCard: {
+    width: 100,
+    marginRight: 12,
+    alignItems: 'center',
+  },
+  summaryPlantImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 12,
+  },
+  summaryPlantCardName: {
+    fontSize: 11,
+    color: '#333',
+    textAlign: 'center',
+    marginTop: 6,
   },
 });
