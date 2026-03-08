@@ -5,7 +5,7 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  Platform,
+  useWindowDimensions,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Plant } from '../api/client';
@@ -27,6 +27,8 @@ const groupColors: Record<string, string> = {
 };
 
 const PlantCard: React.FC<PlantCardProps> = ({ plant, onPress, showCompatibility }) => {
+  const { width: screenWidth } = useWindowDimensions();
+  const cardWidth = Math.floor((screenWidth - 48) / 2);
   const groupColor = groupColors[plant.group] || '#388E3C';
   
   const renderTerrarium = (type: string, value: string) => {
@@ -43,7 +45,7 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, onPress, showCompatibility
 
   return (
     <TouchableOpacity
-      style={styles.container}
+      style={[styles.container, { width: cardWidth }]}
       onPress={onPress}
       activeOpacity={0.8}
     >
@@ -89,7 +91,6 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, onPress, showCompatibility
 
 const styles = StyleSheet.create({
   container: {
-    flexBasis: '48%',
     backgroundColor: '#fff',
     borderRadius: 12,
     marginBottom: 16,
@@ -101,18 +102,14 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
   },
   imageContainer: {
-    width: '100%',
     height: 120,
-    position: 'relative',
     overflow: 'hidden',
   },
   image: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
   },
   placeholder: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },

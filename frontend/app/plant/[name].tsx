@@ -416,17 +416,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
   },
   imageContainer: {
-    width: '100%',
     height: HERO_HEIGHT,
     backgroundColor: '#388E3C',
   },
   image: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
   },
   placeholder: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#388E3C',
