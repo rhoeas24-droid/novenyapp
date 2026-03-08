@@ -1,0 +1,47 @@
+============================================================
+FIXING REMAINING HUNGARIAN WORDS
+============================================================
+[4/77] Fixing: Ficus pumila
+    Fixed height_cm: 5–15 (kúszó) -> 5–15 (climbing)
+    Fixed spread_cm: Korlátlan (kúszó) -> Korlátlan (climbing)
+    Fixed height_cm: 5–15 (kúszó) -> 5–15 (αναρριχητικό)
+    Fixed spread_cm: Korlátlan (kúszó) -> Korlátlan (αναρριχητικό)
+[5/77] Fixing: Hedera canariensis
+    Fixed height_cm: 20–100+ (kúszó) -> 20–100+ (climbing)
+    Fixed height_cm: 20–100+ (kúszó) -> 20–100+ (αναρριχητικό)
+[12/77] Fixing: Pilea multiflora
+    Retranslating treatment: Ragacslapok; inszeticid szappan...
+    Retranslating treatment: Ragacslapok; inszeticid szappan...
+[13/77] Fixing: Philodendron oxycardium
+    Fixed height_cm: 30–200+ (kúszó) -> 30–200+ (climbing)
+    Retranslating treatment: Ragacslapok; inszeticid szappan...
+    Fixed height_cm: 30–200+ (kúszó) -> 30–200+ (αναρριχητικό)
+    Retranslating treatment: Ragacslapok; inszeticid szappan...
+[14/77] Fixing: Syngonium podophyllum
+    Fixed height_cm: 30–150+ (kúszó) -> 30–150+ (climbing)
+    Fixed height_cm: 30–150+ (kúszó) -> 30–150+ (αναρριχητικό)
+[28/77] Fixing: Graptopetalum paraguayense
+    Fixed spread_cm: 15–30 (csüngő) -> 15–30 (trailing)
+    Fixed spread_cm: 15–30 (csüngő) -> 15–30 (κρεμαστό)
+[35/77] Fixing: Sedum morganianum
+    Fixed height_cm: 10–15 (csüngő: 60+) -> 10–15 (trailing: 60+)
+    Fixed height_cm: 10–15 (csüngő: 60+) -> 10–15 (κρεμαστό: 60+)
+[38/77] Fixing: Senecio rowleyanus
+    Fixed height_cm: 5–10 (csüngő: 60+) -> 5–10 (trailing: 60+)
+    Fixed height_cm: 5–10 (csüngő: 60+) -> 5–10 (κρεμαστό: 60+)
+[43/77] Fixing: Drosera prolifera
+    Retranslating treatment: Ragacslapok...
+    Retranslating treatment: Ragacslapok...
+[46/77] Fixing: Drosera spatulata
+    Retranslating treatment: Ragacslapok...
+    Retranslating treatment: Ragacslapok...
+[47/77] Fixing: Nepenthes alata
+    Fixed height_cm: 30–150+ (kúszó) -> 30–150+ (climbing)
+    Fixed height_cm: 30–150+ (kúszó) -> 30–150+ (αναρριχητικό)
+[48/77] Fixing: Nepenthes ventricosa
+    Fixed height_cm: 30–100+ (kúszó) -> 30–100+ (climbing)
+    Fixed height_cm: 30–100+ (kúszó) -> 30–100+ (αναρριχητικό)
+
+============================================================
+FIXED 12 plants!
+============================================================
