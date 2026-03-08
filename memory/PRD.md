@@ -48,7 +48,8 @@ A "Florárium Mester" (Florarium Master) mobil alkalmazás, amely terrárium nö
 - [x] Database content translation - ALL 77 plants translated to EN and EL
 - [x] Disease names translation - ALL disease/pest names translated to EN and EL
 
-## Preview URL
+## Known Limitations
+- Back navigation from compatible plants goes directly to home (not to previous plant) - this is an Expo Router limitation with dynamic routes
 https://terrarium-guide-dev.preview.emergentagent.com
 
 ## User Language
