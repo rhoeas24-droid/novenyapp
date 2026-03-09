@@ -11,6 +11,9 @@ config.cacheStores = [
   new FileStore({ root: path.join(root, 'cache') }),
 ];
 
+// Allow importing JSON files
+config.resolver.sourceExts = [...config.resolver.sourceExts, 'json'];
+
 
 // // Exclude unnecessary directories from file watching
 // config.watchFolders = [__dirname];

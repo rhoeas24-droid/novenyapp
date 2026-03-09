@@ -81,31 +81,15 @@ export default function TerrariumBuilderScreen() {
     return size?.maxPlants || 5;
   }, [container.size]);
 
-  // Load plants for first selection - filtered by terrarium type
+  // Load plants for first selection - filtered by terrarium type (OFFLINE)
   const loadPlantsForFirstSelection = useCallback(async () => {
     setLoading(true);
     try {
       const terrariumType = getTerrariumType();
       // Get plants that are suitable for the selected terrarium type
+      // OFFLINE: Images are already included in plant data
       const result = await getPlants(undefined, terrariumType);
-      
-      // Load images for each plant
-      const plantsWithImages = await Promise.all(
-        result.plants.map(async (plant) => {
-          try {
-            const imageResponse = await fetch(
-              `https://terrarium-matcher.preview.emergentagent.com/api/plants/${encodeURIComponent(plant.name)}/image`
-            );
-            if (imageResponse.ok) {
-              const imageData = await imageResponse.json();
-              return { ...plant, image_base64: imageData.image_base64 };
-            }
-          } catch {}
-          return plant;
-        })
-      );
-      
-      setAvailablePlants(plantsWithImages);
+      setAvailablePlants(result.plants);
     } catch (error) {
       console.error('Error loading plants:', error);
     } finally {
@@ -113,7 +97,7 @@ export default function TerrariumBuilderScreen() {
     }
   }, [getTerrariumType]);
 
-  // Load compatible plants after first plant is selected (substrate-based)
+  // Load compatible plants after first plant is selected (substrate-based) - OFFLINE
   const loadCompatiblePlants = useCallback(async (basePlant: Plant) => {
     setLoading(true);
     try {
@@ -124,25 +108,11 @@ export default function TerrariumBuilderScreen() {
       setTerrariumWarnings(result.warnings || []);
       setSubstrateRecipe(result.substrate_recipe || null);
       
-      // Load images for compatible plants
-      const plantsWithImages = await Promise.all(
-        result.compatible_plants
-          .filter(p => !selectedPlants.some(sp => sp.name === p.name))
-          .map(async (plant) => {
-            try {
-              const imageResponse = await fetch(
-                `https://terrarium-matcher.preview.emergentagent.com/api/plants/${encodeURIComponent(plant.name)}/image`
-              );
-              if (imageResponse.ok) {
-                const imageData = await imageResponse.json();
-                return { ...plant, image_base64: imageData.image_base64 };
-              }
-            } catch {}
-            return plant;
-          })
-      );
+      // OFFLINE: Images are already included, just filter out selected plants
+      const filteredPlants = result.compatible_plants
+        .filter(p => !selectedPlants.some(sp => sp.name === p.name));
       
-      setCompatiblePlants(plantsWithImages);
+      setCompatiblePlants(filteredPlants);
     } catch (error) {
       console.error('Error loading compatible plants:', error);
     } finally {
