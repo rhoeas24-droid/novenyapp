@@ -1,0 +1,3342 @@
+{
+  "version": "1.0",
+  "description": "Terrárium növény diagnosztikai rendszer",
+  "how_it_works": {
+    "hu": "1) QR kód beolvasás → ismert növénylista. 2) Felhasználó kiválasztja a beteg növényt. 3) Opcionális fotó → Plant.id API. 4) Kérdéssor: a rendszer csak az adott növény ismert betegségeihez tartozó tünetekre kérdez rá. 5) Pontszámítás → top diagnózis + kezelés.",
+    "en": "1) QR scan → known plant list. 2) User selects sick plant. 3) Optional photo → Plant.id API. 4) Questionnaire: system only asks about symptoms relevant to that plant's known diseases. 5) Scoring → top diagnosis + treatment."
+  },
+  "questions": [
+    {
+      "id": "env_watering",
+      "layer": 1,
+      "text_hu": "Mikor öntözted/párásítottad utoljára a terráriumot?",
+      "text_en": "When did you last water/mist the terrarium?",
+      "answers": [
+        {
+          "id": "recent",
+          "text_hu": "1-2 napja",
+          "text_en": "1-2 days ago",
+          "boost_tags": [
+            "root_rot",
+            "base_rot",
+            "soft_mushy",
+            "grey_mold",
+            "algae"
+          ],
+          "boost": 0.15,
+          "text_el": "1-2 μέρες πριν"
+        },
+        {
+          "id": "normal",
+          "text_hu": "3-5 napja",
+          "text_en": "3-5 days ago",
+          "boost_tags": [],
+          "boost": 0,
+          "text_el": "3-5 μέρες πριν"
+        },
+        {
+          "id": "long_ago",
+          "text_hu": "1 hete vagy régebben",
+          "text_en": "A week or more",
+          "boost_tags": [
+            "drying",
+            "wilting",
+            "color_change",
+            "leaf_curl"
+          ],
+          "boost": 0.2,
+          "text_el": "Μία εβδομάδα ή περισσότερο"
+        }
+      ],
+      "text_el": "Πότε ποτίσατε/ψεκάσατε τελευταία φορά το τεράριο;"
+    },
+    {
+      "id": "env_light",
+      "layer": 1,
+      "text_hu": "Kap-e a terrárium közvetlen napfényt?",
+      "text_en": "Does the terrarium get direct sunlight?",
+      "answers": [
+        {
+          "id": "direct",
+          "text_hu": "Igen, rendszeresen",
+          "text_en": "Yes, regularly",
+          "boost_tags": [
+            "drying",
+            "color_change",
+            "algae"
+          ],
+          "boost": 0.15,
+          "text_el": "Ναι, τακτικά"
+        },
+        {
+          "id": "indirect",
+          "text_hu": "Csak közvetett fényt kap",
+          "text_en": "Only indirect light",
+          "boost_tags": [],
+          "boost": 0,
+          "text_el": "Μόνο έμμεσο φως"
+        },
+        {
+          "id": "dark",
+          "text_hu": "Nagyon kevés fényt kap",
+          "text_en": "Very little light",
+          "boost_tags": [
+            "grey_mold",
+            "soft_mushy",
+            "algae"
+          ],
+          "boost": 0.1,
+          "text_el": "Πολύ λίγο φως"
+        }
+      ],
+      "text_el": "Δέχεται το τεράριο άμεσο ηλιακό φως;"
+    },
+    {
+      "id": "env_condensation",
+      "layer": 1,
+      "text_hu": "Van-e páralecsapódás a terrárium falán?",
+      "text_en": "Is there condensation on the terrarium walls?",
+      "answers": [
+        {
+          "id": "heavy",
+          "text_hu": "Igen, sok / folyik a víz",
+          "text_en": "Yes, heavy / water running",
+          "boost_tags": [
+            "root_rot",
+            "base_rot",
+            "soft_mushy",
+            "grey_mold",
+            "algae"
+          ],
+          "boost": 0.2,
+          "text_el": "Ναι, πολύ / τρέχει νερό"
+        },
+        {
+          "id": "normal",
+          "text_hu": "Normális pára",
+          "text_en": "Normal mist",
+          "boost_tags": [],
+          "boost": 0,
+          "text_el": "Κανονική υγρασία"
+        },
+        {
+          "id": "none",
+          "text_hu": "Semmi / nagyon száraz",
+          "text_en": "None / very dry",
+          "boost_tags": [
+            "drying",
+            "wilting",
+            "color_change"
+          ],
+          "boost": 0.2,
+          "text_el": "Καθόλου / πολύ ξηρό"
+        }
+      ],
+      "text_el": "Υπάρχει συμπύκνωση στα τοιχώματα του τεραρίου;"
+    },
+    {
+      "id": "env_temp",
+      "layer": 1,
+      "text_hu": "Változott-e a hőmérséklet az utóbbi időben a terrárium környékén?",
+      "text_en": "Has the temperature changed recently around the terrarium?",
+      "answers": [
+        {
+          "id": "warmer",
+          "text_hu": "Melegebb lett (fűtés, nyár)",
+          "text_en": "Got warmer (heating, summer)",
+          "boost_tags": [
+            "drying",
+            "color_change",
+            "base_rot",
+            "algae"
+          ],
+          "boost": 0.1,
+          "text_el": "Ζεστάθηκε (θέρμανση, καλοκαίρι)"
+        },
+        {
+          "id": "same",
+          "text_hu": "Nem változott",
+          "text_en": "No change",
+          "boost_tags": [],
+          "boost": 0,
+          "text_el": "Δεν άλλαξε"
+        },
+        {
+          "id": "cooler",
+          "text_hu": "Hűvösebb lett",
+          "text_en": "Got cooler",
+          "boost_tags": [
+            "grey_mold",
+            "soft_mushy"
+          ],
+          "boost": 0.1,
+          "text_el": "Δρόσισε"
+        }
+      ],
+      "text_el": "Άλλαξε η θερμοκρασία πρόσφατα γύρω από το τεράριο;"
+    },
+    {
+      "id": "vis_color",
+      "layer": 2,
+      "text_hu": "Milyen színváltozást látsz a növényen?",
+      "text_en": "What color change do you see on the plant?",
+      "relevant_tags": [
+        "brown_spots",
+        "yellow_spots",
+        "orange_spots",
+        "white_deposit",
+        "color_change"
+      ],
+      "answers": [
+        {
+          "id": "brown",
+          "text_hu": "Barna foltok vagy barnulás",
+          "text_en": "Brown spots or browning",
+          "boost_tags": [
+            "brown_spots",
+            "base_rot",
+            "root_rot"
+          ],
+          "boost": 0.25,
+          "text_el": "Καφέ κηλίδες ή μαύρισμα"
+        },
+        {
+          "id": "yellow",
+          "text_hu": "Sárgulás",
+          "text_en": "Yellowing",
+          "boost_tags": [
+            "yellow_spots",
+            "root_rot",
+            "wilting"
+          ],
+          "boost": 0.2,
+          "text_el": "Κιτρίνισμα"
+        },
+        {
+          "id": "white",
+          "text_hu": "Fehér bevonat vagy csomók",
+          "text_en": "White coating or clumps",
+          "boost_tags": [
+            "white_deposit",
+            "mealybug",
+            "grey_mold"
+          ],
+          "boost": 0.3,
+          "text_el": "Λευκή επικάλυψη ή συστάδες"
+        },
+        {
+          "id": "orange",
+          "text_hu": "Narancs/rozsda színű foltok",
+          "text_en": "Orange/rust spots",
+          "boost_tags": [
+            "orange_spots"
+          ],
+          "boost": 0.35,
+          "text_el": "Πορτοκαλί/σκουριά κηλίδες"
+        },
+        {
+          "id": "none",
+          "text_hu": "Nincs színváltozás",
+          "text_en": "No color change",
+          "penalize_tags": [
+            "brown_spots",
+            "yellow_spots",
+            "orange_spots",
+            "white_deposit",
+            "color_change"
+          ],
+          "penalize": 0.3,
+          "text_el": "Χωρίς αλλαγή χρώματος"
+        }
+      ],
+      "text_el": "Τι αλλαγή χρώματος βλέπετε στο φυτό;"
+    },
+    {
+      "id": "vis_texture",
+      "layer": 2,
+      "text_hu": "Milyen az érintett rész tapintása?",
+      "text_en": "How does the affected area feel?",
+      "relevant_tags": [
+        "soft_mushy",
+        "drying",
+        "base_rot",
+        "root_rot"
+      ],
+      "answers": [
+        {
+          "id": "soft",
+          "text_hu": "Puha, vizenyős, pépes",
+          "text_en": "Soft, mushy, soggy",
+          "boost_tags": [
+            "soft_mushy",
+            "base_rot",
+            "root_rot",
+            "grey_mold"
+          ],
+          "boost": 0.3,
+          "text_el": "Μαλακό, πολτώδες, υγρό"
+        },
+        {
+          "id": "dry",
+          "text_hu": "Száraz, törékeny, ropogós",
+          "text_en": "Dry, brittle, crispy",
+          "boost_tags": [
+            "drying",
+            "color_change"
+          ],
+          "boost": 0.3,
+          "text_el": "Ξηρό, εύθραυστο, τραγανό"
+        },
+        {
+          "id": "normal",
+          "text_hu": "Normális tapintású",
+          "text_en": "Normal texture",
+          "penalize_tags": [
+            "soft_mushy",
+            "drying"
+          ],
+          "penalize": 0.2,
+          "text_el": "Κανονική υφή"
+        }
+      ],
+      "text_el": "Πώς αισθάνεστε την προσβεβλημένη περιοχή;"
+    },
+    {
+      "id": "vis_location",
+      "layer": 2,
+      "text_hu": "A növény melyik részén látod a problémát?",
+      "text_en": "Where on the plant do you see the problem?",
+      "relevant_tags": [
+        "base_rot",
+        "root_rot",
+        "brown_spots",
+        "scale_insects",
+        "mealybug"
+      ],
+      "answers": [
+        {
+          "id": "base",
+          "text_hu": "Töve / szár alja",
+          "text_en": "Base / bottom of stem",
+          "boost_tags": [
+            "base_rot",
+            "root_rot"
+          ],
+          "boost": 0.3,
+          "text_el": "Βάση / κάτω μέρος βλαστού"
+        },
+        {
+          "id": "leaves",
+          "text_hu": "Leveleken",
+          "text_en": "On leaves",
+          "boost_tags": [
+            "brown_spots",
+            "yellow_spots",
+            "orange_spots",
+            "scale_insects"
+          ],
+          "boost": 0.15,
+          "text_el": "Στα φύλλα"
+        },
+        {
+          "id": "tips",
+          "text_hu": "Levélcsúcsokon / széleken",
+          "text_en": "Leaf tips / edges",
+          "boost_tags": [
+            "drying",
+            "color_change"
+          ],
+          "boost": 0.2,
+          "text_el": "Άκρες φύλλων / πλευρές"
+        },
+        {
+          "id": "all_over",
+          "text_hu": "Mindenhol / egész növény",
+          "text_en": "Everywhere / whole plant",
+          "boost_tags": [
+            "wilting",
+            "root_rot"
+          ],
+          "boost": 0.15,
+          "text_el": "Παντού / όλο το φυτό"
+        }
+      ],
+      "text_el": "Πού στο φυτό βλέπετε το πρόβλημα;"
+    },
+    {
+      "id": "vis_insects",
+      "layer": 2,
+      "text_hu": "Látsz-e rovarokat vagy különös bevonatot?",
+      "text_en": "Do you see insects or unusual coating?",
+      "relevant_tags": [
+        "scale_insects",
+        "mealybug",
+        "white_deposit",
+        "sticky_residue",
+        "web_threads"
+      ],
+      "answers": [
+        {
+          "id": "scale",
+          "text_hu": "Barna apró pajzsok a száron/levélen",
+          "text_en": "Small brown shields on stem/leaf",
+          "boost_tags": [
+            "scale_insects"
+          ],
+          "boost": 0.5,
+          "text_el": "Μικρές καφέ ασπίδες σε βλαστό/φύλλο"
+        },
+        {
+          "id": "white_clumps",
+          "text_hu": "Fehér pamacsos csomók",
+          "text_en": "White cottony clumps",
+          "boost_tags": [
+            "mealybug",
+            "white_deposit"
+          ],
+          "boost": 0.5,
+          "text_el": "Λευκές βαμβακώδεις συστάδες"
+        },
+        {
+          "id": "mold",
+          "text_hu": "Szürke/fehér penészszerű bevonat",
+          "text_en": "Grey/white mold-like coating",
+          "boost_tags": [
+            "grey_mold",
+            "white_deposit"
+          ],
+          "boost": 0.4,
+          "text_el": "Γκρίζα/λευκή επικάλυψη σαν μούχλα"
+        },
+        {
+          "id": "none",
+          "text_hu": "Nem látok semmit",
+          "text_en": "I don't see anything",
+          "penalize_tags": [
+            "scale_insects",
+            "mealybug",
+            "web_threads",
+            "sticky_residue"
+          ],
+          "penalize": 0.4,
+          "text_el": "Δεν βλέπω τίποτα"
+        }
+      ],
+      "text_el": "Βλέπετε έντομα ή ασυνήθιστη επικάλυψη;"
+    },
+    {
+      "id": "spec_smell",
+      "layer": 3,
+      "text_hu": "Érezhető-e kellemetlen szag a terráriumban?",
+      "text_en": "Is there an unpleasant smell in the terrarium?",
+      "relevant_tags": [
+        "root_rot",
+        "base_rot",
+        "soft_mushy"
+      ],
+      "answers": [
+        {
+          "id": "yes",
+          "text_hu": "Igen, rothadás szaga van",
+          "text_en": "Yes, smells like rot",
+          "boost_tags": [
+            "root_rot",
+            "base_rot"
+          ],
+          "boost": 0.3,
+          "text_el": "Ναι, μυρίζει σαπίλα"
+        },
+        {
+          "id": "musty",
+          "text_hu": "Dohos/penészes szag",
+          "text_en": "Musty/moldy smell",
+          "boost_tags": [
+            "grey_mold"
+          ],
+          "boost": 0.25,
+          "text_el": "Μυρωδιά μούχλας"
+        },
+        {
+          "id": "no",
+          "text_hu": "Nem érzek szagot",
+          "text_en": "No smell",
+          "penalize_tags": [
+            "root_rot",
+            "base_rot"
+          ],
+          "penalize": 0.15,
+          "text_el": "Δεν μυρίζει"
+        }
+      ],
+      "text_el": "Υπάρχει δυσάρεστη οσμή στο τεράριο;"
+    },
+    {
+      "id": "spec_spread",
+      "layer": 3,
+      "text_hu": "A probléma terjed-e más növényekre is?",
+      "text_en": "Is the problem spreading to other plants?",
+      "relevant_tags": [
+        "grey_mold",
+        "algae",
+        "scale_insects",
+        "mealybug"
+      ],
+      "answers": [
+        {
+          "id": "yes",
+          "text_hu": "Igen, több növény érintett",
+          "text_en": "Yes, multiple plants affected",
+          "boost_tags": [
+            "grey_mold",
+            "algae",
+            "scale_insects",
+            "mealybug"
+          ],
+          "boost": 0.2,
+          "text_el": "Ναι, πολλά φυτά προσβλήθηκαν"
+        },
+        {
+          "id": "no",
+          "text_hu": "Csak egy növényen látom",
+          "text_en": "Only on one plant",
+          "boost_tags": [
+            "root_rot",
+            "base_rot",
+            "overgrowth",
+            "growth_abnormal"
+          ],
+          "boost": 0.1,
+          "text_el": "Μόνο σε ένα φυτό"
+        }
+      ],
+      "text_el": "Εξαπλώνεται το πρόβλημα σε άλλα φυτά;"
+    },
+    {
+      "id": "spec_speed",
+      "layer": 3,
+      "text_hu": "Milyen gyorsan alakult ki a probléma?",
+      "text_en": "How quickly did the problem develop?",
+      "relevant_tags": [
+        "root_rot",
+        "base_rot",
+        "drying",
+        "wilting"
+      ],
+      "answers": [
+        {
+          "id": "fast",
+          "text_hu": "Néhány nap alatt",
+          "text_en": "Within a few days",
+          "boost_tags": [
+            "root_rot",
+            "base_rot",
+            "wilting"
+          ],
+          "boost": 0.15,
+          "text_el": "Μέσα σε λίγες μέρες"
+        },
+        {
+          "id": "gradual",
+          "text_hu": "Heteken át fokozatosan",
+          "text_en": "Gradually over weeks",
+          "boost_tags": [
+            "drying",
+            "color_change",
+            "scale_insects",
+            "mealybug"
+          ],
+          "boost": 0.15,
+          "text_el": "Σταδιακά σε εβδομάδες"
+        },
+        {
+          "id": "sudden",
+          "text_hu": "Hirtelen, egyik napról a másikra",
+          "text_en": "Suddenly, overnight",
+          "boost_tags": [
+            "wilting",
+            "grey_mold"
+          ],
+          "boost": 0.2,
+          "text_el": "Ξαφνικά, από τη μια μέρα στην άλλη"
+        }
+      ],
+      "text_el": "Πόσο γρήγορα εμφανίστηκε το πρόβλημα;"
+    }
+  ],
+  "plant_diseases": {
+    "Nephrolepis cordifolia": {
+      "substrate_group": "foliage",
+      "group": "Ferns & Foliage",
+      "diseases": [
+        {
+          "disease_id": "Nephrolepis cordifolia::Rhizoctonia blight",
+          "name": "Rhizoctonia blight",
+          "type": "fungal",
+          "symptoms_text": "Barna, vizenyős foltok a tövön; frondok hervadása",
+          "treatment_text": "Érintett rész eltávolítása; szellztetés javítása; fungicid",
+          "tags": [
+            "brown_spots",
+            "soft_mushy",
+            "wilting",
+            "base_rot"
+          ],
+          "name_en": "Rhizoctonia blight",
+          "name_el": "Rhizoctonia blight"
+        },
+        {
+          "disease_id": "Nephrolepis cordifolia::Pythium root rot",
+          "name": "Pythium root rot",
+          "type": "fungal",
+          "symptoms_text": "Puha, barna gyökerek; általános hervadás",
+          "treatment_text": "Drénázs javítása; öntözés csökkentése",
+          "tags": [
+            "soft_mushy",
+            "wilting",
+            "root_rot"
+          ],
+          "name_en": "Pythium root rot",
+          "name_el": "Pythium root rot"
+        },
+        {
+          "disease_id": "Nephrolepis cordifolia::Pajzstetű (scale)",
+          "name": "Pajzstetű (scale)",
+          "type": "pests",
+          "symptoms_text": "Barna ovális pajzsok a szár és levélnyélen",
+          "treatment_text": "Neem olaj; mechanikus eltávolítás",
+          "tags": [
+            "brown_spots",
+            "scale_insects"
+          ],
+          "name_en": "Woolly vine scale",
+          "name_el": "Ψώρα αμπελιού"
+        },
+        {
+          "disease_id": "Nephrolepis cordifolia::Lisztestű (mealybug)",
+          "name": "Lisztestű (mealybug)",
+          "type": "pests",
+          "symptoms_text": "Fehér csromók a levélhónaljban",
+          "treatment_text": "Alkohol; inszeticid szappan",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Mealybug",
+          "name_el": "Κοκκοειδές"
+        },
+        {
+          "disease_id": "Nephrolepis cordifolia::Gumók túlszaporodása",
+          "name": "Gumók túlszaporodása",
+          "type": "other",
+          "symptoms_text": "Túl sok gumó szorítja a gyökérzetet; cserép kitöltve",
+          "treatment_text": "Átültetés; gumók felosztása/szaporítása",
+          "tags": [
+            "overgrowth"
+          ],
+          "name_en": "Tuber overgrowth",
+          "name_el": "Υπερανάπτυξη κονδύλων"
+        }
+      ]
+    },
+    "Asplenium nidus": {
+      "substrate_group": "foliage",
+      "group": "Ferns & Foliage",
+      "diseases": [
+        {
+          "disease_id": "Asplenium nidus::Cercospora leaf spot",
+          "name": "Cercospora leaf spot",
+          "type": "fungal",
+          "symptoms_text": "Kerek, sötétbarna foltok sárgás szegéllyel a leveleken",
+          "treatment_text": "Érintett levelek eltávolítása; fungicid; permetezés kerülése",
+          "tags": [
+            "brown_spots",
+            "yellow_spots"
+          ],
+          "name_en": "Cercospora leaf spot",
+          "name_el": "Cercospora leaf spot"
+        },
+        {
+          "disease_id": "Asplenium nidus::Pythium root rot",
+          "name": "Pythium root rot",
+          "type": "fungal",
+          "symptoms_text": "Puha, barna gyökerek; növény hervadása öntözés ellenére",
+          "treatment_text": "Túlöntözés megszüntetése; drenázs javítása; új szubsztrát",
+          "tags": [
+            "soft_mushy",
+            "wilting",
+            "root_rot"
+          ],
+          "name_en": "Pythium root rot",
+          "name_el": "Pythium root rot"
+        },
+        {
+          "disease_id": "Asplenium nidus::Pajzstetű",
+          "name": "Pajzstetű",
+          "type": "pests",
+          "symptoms_text": "Barna pajzsok a levelek alsó felén",
+          "treatment_text": "Neem olaj; mechanikus eltávolítás",
+          "tags": [
+            "scale_insects"
+          ],
+          "name_en": "Woolly vine scale",
+          "name_el": "Ψώρα αμπελιού"
+        },
+        {
+          "disease_id": "Asplenium nidus::Csigák/meztelen csigák",
+          "name": "Csigák/meztelen csigák",
+          "type": "pests",
+          "symptoms_text": "Szabálytalan lyukak a leveleken; nyálkanyom",
+          "treatment_text": "Csigacsapda; kézi összegyűjtés",
+          "tags": [
+            "holes_damage"
+          ],
+          "name_en": "Snails/slugs",
+          "name_el": "Σαλιγκάρια/γυμνοσάλιαγκες"
+        }
+      ]
+    },
+    "Bolbitis heudelotii": {
+      "substrate_group": "foliage",
+      "group": "Ferns & Foliage",
+      "diseases": [
+        {
+          "disease_id": "Bolbitis heudelotii::Rhizome rot",
+          "name": "Rhizome rot",
+          "type": "fungal",
+          "symptoms_text": "Rhizóma puha, barna részek; levél sárgulás",
+          "treatment_text": "Érintett rhizóma rész eltávolítása; jobb vízmozgás",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Rhizome rot",
+          "name_el": "Rhizome rot"
+        },
+        {
+          "disease_id": "Bolbitis heudelotii::Algásodás",
+          "name": "Algásodás",
+          "type": "pests",
+          "symptoms_text": "Zöld bevonat a leveleken gyenge áramlásnál",
+          "treatment_text": "Jobb vízmozgás; kevesebb fény ideiglenesen",
+          "tags": [],
+          "name_en": "Algae growth",
+          "name_el": "Ανάπτυξη φυκιών"
+        }
+      ]
+    },
+    "Ficus pumila": {
+      "substrate_group": "foliage",
+      "group": "Ferns & Foliage",
+      "diseases": [
+        {
+          "disease_id": "Ficus pumila::Levélfoltosság (leaf spot)",
+          "name": "Levélfoltosság (leaf spot)",
+          "type": "fungal",
+          "symptoms_text": "Sötét foltok sárgás udvarral",
+          "treatment_text": "Légáramlás javítása; érintett levelek eltávolítása",
+          "tags": [
+            "yellow_spots"
+          ],
+          "name_en": "Leaf spot",
+          "name_el": "Κηλίδωση φύλλων"
+        },
+        {
+          "disease_id": "Ficus pumila::Takácsatka",
+          "name": "Takácsatka",
+          "type": "pests",
+          "symptoms_text": "Finom hálók; pontszerű elszíneződés",
+          "treatment_text": "Rendszeres permetezés vízzel; neem olaj",
+          "tags": [
+            "color_change",
+            "web_threads"
+          ],
+          "name_en": "Spider mite",
+          "name_el": "Τετράνυχος"
+        },
+        {
+          "disease_id": "Ficus pumila::Pajzstetű",
+          "name": "Pajzstetű",
+          "type": "pests",
+          "symptoms_text": "Barna ovális pajzsok a száron",
+          "treatment_text": "Mechanikus eltávolítás; neem olaj",
+          "tags": [
+            "brown_spots",
+            "scale_insects"
+          ],
+          "name_en": "Woolly vine scale",
+          "name_el": "Ψώρα αμπελιού"
+        }
+      ]
+    },
+    "Hedera canariensis": {
+      "substrate_group": "foliage",
+      "group": "Ferns & Foliage",
+      "diseases": [
+        {
+          "disease_id": "Hedera canariensis::Lisztharmat (powdery mildew)",
+          "name": "Lisztharmat (powdery mildew)",
+          "type": "fungal",
+          "symptoms_text": "Fehér, lisztes bevonat a leveleken",
+          "treatment_text": "Légáramlás; neem olaj; kénbázisú fungicid",
+          "tags": [
+            "mealybug"
+          ],
+          "name_en": "Powdery mildew",
+          "name_el": "Ωίδιο"
+        },
+        {
+          "disease_id": "Hedera canariensis::Takácsatka",
+          "name": "Takácsatka",
+          "type": "pests",
+          "symptoms_text": "Sárgás levelek; finom hálók",
+          "treatment_text": "Rendszeres vízpermet; neem olaj",
+          "tags": [
+            "yellow_spots",
+            "web_threads"
+          ],
+          "name_en": "Spider mite",
+          "name_el": "Τετράνυχος"
+        },
+        {
+          "disease_id": "Hedera canariensis::Levéltetű (aphid)",
+          "name": "Levéltetű (aphid)",
+          "type": "pests",
+          "symptoms_text": "Zöld/fekete apró rovarok a hajtásokon; ragadós mézharmat",
+          "treatment_text": "Vízzel lemosás; inszeticid szappan",
+          "tags": [
+            "sticky_residue"
+          ],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        },
+        {
+          "disease_id": "Hedera canariensis::Bacterial leaf spot",
+          "name": "Bacterial leaf spot",
+          "type": "other",
+          "symptoms_text": "Vizenyős, sötét foltok",
+          "treatment_text": "Érintett levelek eltávolítása; permetezés kerülése",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Bacterial leaf spot",
+          "name_el": "Bacterial leaf spot"
+        }
+      ]
+    },
+    "Microsorum pteropus": {
+      "substrate_group": "foliage",
+      "group": "Ferns & Foliage",
+      "diseases": [
+        {
+          "disease_id": "Microsorum pteropus::Rhizome rot",
+          "name": "Rhizome rot",
+          "type": "fungal",
+          "symptoms_text": "Puha, barna rhizóma; levelek leválnak",
+          "treatment_text": "Érintett rész eltávolítása; jobb vízmozgás",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Rhizome rot",
+          "name_el": "Rhizome rot"
+        },
+        {
+          "disease_id": "Microsorum pteropus::Csigák",
+          "name": "Csigák",
+          "type": "pests",
+          "symptoms_text": "Lyukak a leveleken",
+          "treatment_text": "Kézi gyűjtés",
+          "tags": [
+            "holes_damage"
+          ],
+          "name_en": "Snails",
+          "name_el": "Σαλιγκάρια"
+        },
+        {
+          "disease_id": "Microsorum pteropus::Java fern melt",
+          "name": "Java fern melt",
+          "type": "other",
+          "symptoms_text": "Levelek transzparensek, barnulnak, feloldódnak",
+          "treatment_text": "Kevesebb fény; CO2/tápanyag egyensúly javítása",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Java fern melt",
+          "name_el": "Java fern melt"
+        }
+      ]
+    },
+    "Nephrolepis exaltata": {
+      "substrate_group": "foliage",
+      "group": "Ferns & Foliage",
+      "diseases": [
+        {
+          "disease_id": "Nephrolepis exaltata::Pythium root rot",
+          "name": "Pythium root rot",
+          "type": "fungal",
+          "symptoms_text": "Gyökerek barnák, puhák; növény hervad",
+          "treatment_text": "Drenázs javítása; öntözés csökkentése",
+          "tags": [
+            "wilting",
+            "root_rot"
+          ],
+          "name_en": "Pythium root rot",
+          "name_el": "Pythium root rot"
+        },
+        {
+          "disease_id": "Nephrolepis exaltata::Botrytis",
+          "name": "Botrytis",
+          "type": "fungal",
+          "symptoms_text": "Szürke penész a lombon nedves időben",
+          "treatment_text": "Légáramlás; érintett részek eltávolítása",
+          "tags": [
+            "grey_mold"
+          ],
+          "name_en": "Botrytis",
+          "name_el": "Botrytis"
+        },
+        {
+          "disease_id": "Nephrolepis exaltata::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók",
+          "treatment_text": "Alkoholos törlés; inszeticid szappan",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        },
+        {
+          "disease_id": "Nephrolepis exaltata::Pajzstetű",
+          "name": "Pajzstetű",
+          "type": "pests",
+          "symptoms_text": "Barna pajzsok a szár mentén",
+          "treatment_text": "Neem olaj; mechanikus eltávolítás",
+          "tags": [
+            "scale_insects"
+          ],
+          "name_en": "Woolly vine scale",
+          "name_el": "Ψώρα αμπελιού"
+        }
+      ]
+    },
+    "Peperomia caperata": {
+      "substrate_group": "foliage",
+      "group": "Peperomia & Pilea",
+      "diseases": [
+        {
+          "disease_id": "Peperomia caperata::Gyökérrothadás (Pythium/Phytophthora)",
+          "name": "Gyökérrothadás (Pythium/Phytophthora)",
+          "type": "fungal",
+          "symptoms_text": "Tő puha, barna; levelek hirtelen hervadnak",
+          "treatment_text": "Szubsztrát csere; öntözés drasztikus csökkentése; érintett tő eltávolítása",
+          "tags": [
+            "soft_mushy",
+            "wilting",
+            "base_rot"
+          ],
+          "name_en": "Root rot (Pythium/Phytophthora)",
+          "name_el": "Root rot (Pythium/Phytophthora)"
+        },
+        {
+          "disease_id": "Peperomia caperata::Cercospora leaf spot",
+          "name": "Cercospora leaf spot",
+          "type": "fungal",
+          "symptoms_text": "Kerek barna foltok",
+          "treatment_text": "Érintett levelek eltávolítása; szellőztetés",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Cercospora leaf spot",
+          "name_el": "Cercospora leaf spot"
+        },
+        {
+          "disease_id": "Peperomia caperata::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér viaszos csomók",
+          "treatment_text": "Alkohol; neem olaj",
+          "tags": [],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        },
+        {
+          "disease_id": "Peperomia caperata::Tripszek (thrips)",
+          "name": "Tripszek (thrips)",
+          "type": "pests",
+          "symptoms_text": "Ezüstös csíkok a leveleken; apró fekete pontok",
+          "treatment_text": "Kék ragacslapok; inszeticid szappan",
+          "tags": [],
+          "name_en": "Thrips",
+          "name_el": "Θρίπες"
+        }
+      ]
+    },
+    "Peperomia obtusifolia": {
+      "substrate_group": "foliage",
+      "group": "Peperomia & Pilea",
+      "diseases": [
+        {
+          "disease_id": "Peperomia obtusifolia::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha tő; levelek sárgulnak és hullanak",
+          "treatment_text": "Öntözés csökkentése; drenázs javítása",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Peperomia obtusifolia::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók",
+          "treatment_text": "Neem olaj; alkohol",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        },
+        {
+          "disease_id": "Peperomia obtusifolia::Takácsatka",
+          "name": "Takácsatka",
+          "type": "pests",
+          "symptoms_text": "Sárga pöttyök; háló",
+          "treatment_text": "Vízpermet; neem olaj",
+          "tags": [
+            "yellow_spots",
+            "web_threads"
+          ],
+          "name_en": "Spider mite",
+          "name_el": "Τετράνυχος"
+        }
+      ]
+    },
+    "Peperomia verticillata": {
+      "substrate_group": "foliage",
+      "group": "Peperomia & Pilea",
+      "diseases": [
+        {
+          "disease_id": "Peperomia verticillata::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha szár tő közelében; hervadás",
+          "treatment_text": "Öntözés csökkentése; szubsztrát csere",
+          "tags": [
+            "soft_mushy",
+            "wilting"
+          ],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Peperomia verticillata::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér viaszos csomók",
+          "treatment_text": "Alkohol; inszeticid szappan",
+          "tags": [],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        }
+      ]
+    },
+    "Pilea depressa": {
+      "substrate_group": "foliage",
+      "group": "Peperomia & Pilea",
+      "diseases": [
+        {
+          "disease_id": "Pilea depressa::Levélfoltosság",
+          "name": "Levélfoltosság",
+          "type": "fungal",
+          "symptoms_text": "Barna foltok nedves környezetben",
+          "treatment_text": "Szellőztetés; érintett részek eltávolítása",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Leaf spot",
+          "name_el": "Κηλίδωση φύλλων"
+        },
+        {
+          "disease_id": "Pilea depressa::Levéltetű",
+          "name": "Levéltetű",
+          "type": "pests",
+          "symptoms_text": "Apró rovarok a hajtásvégeken",
+          "treatment_text": "Vízzel lemosás; inszeticid szappan",
+          "tags": [],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        }
+      ]
+    },
+    "Pilea multiflora": {
+      "substrate_group": "foliage",
+      "group": "Peperomia & Pilea",
+      "diseases": [
+        {
+          "disease_id": "Pilea multiflora::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Szár aljának sötétedése",
+          "treatment_text": "Drenázs javítása; szubsztrát szellősítése",
+          "tags": [],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Pilea multiflora::Tripsz",
+          "name": "Tripsz",
+          "type": "pests",
+          "symptoms_text": "Ezüstös csíkok",
+          "treatment_text": "Ragacslapok; inszeticid szappan",
+          "tags": [],
+          "name_en": "Thrips",
+          "name_el": "Θρίπες"
+        }
+      ]
+    },
+    "Philodendron oxycardium": {
+      "substrate_group": "foliage",
+      "group": "Aroids & Tropicals",
+      "diseases": [
+        {
+          "disease_id": "Philodendron oxycardium::Erwinia blight",
+          "name": "Erwinia blight",
+          "type": "fungal",
+          "symptoms_text": "Vizenyős, bűzös szárrothadás; gyors terjedés",
+          "treatment_text": "Érintett rész azonnali eltávolítása; steril eszközök; szellőztetés",
+          "tags": [
+            "soft_mushy",
+            "smell"
+          ],
+          "name_en": "Erwinia blight",
+          "name_el": "Erwinia blight"
+        },
+        {
+          "disease_id": "Philodendron oxycardium::Phytophthora",
+          "name": "Phytophthora",
+          "type": "fungal",
+          "symptoms_text": "Sötét, nedves foltok a leveleken és tövön",
+          "treatment_text": "Öntözés csökkentése; fungicid",
+          "tags": [
+            "base_rot"
+          ],
+          "name_en": "Phytophthora",
+          "name_el": "Phytophthora"
+        },
+        {
+          "disease_id": "Philodendron oxycardium::Takácsatka",
+          "name": "Takácsatka",
+          "type": "pests",
+          "symptoms_text": "Sárgás pöttyök; háló",
+          "treatment_text": "Neem olaj; vízpermet",
+          "tags": [
+            "yellow_spots",
+            "web_threads"
+          ],
+          "name_en": "Spider mite",
+          "name_el": "Τετράνυχος"
+        },
+        {
+          "disease_id": "Philodendron oxycardium::Tripsz",
+          "name": "Tripsz",
+          "type": "pests",
+          "symptoms_text": "Ezüstös sérülések",
+          "treatment_text": "Ragacslapok; inszeticid szappan",
+          "tags": [],
+          "name_en": "Thrips",
+          "name_el": "Θρίπες"
+        }
+      ]
+    },
+    "Syngonium podophyllum": {
+      "substrate_group": "foliage",
+      "group": "Aroids & Tropicals",
+      "diseases": [
+        {
+          "disease_id": "Syngonium podophyllum::Bacterial leaf blight (Xanthomonas)",
+          "name": "Bacterial leaf blight (Xanthomonas)",
+          "type": "fungal",
+          "symptoms_text": "Sötétbarna, vizenyős foltok sárgás szegéllyel",
+          "treatment_text": "Érintett levelek eltávolítása; réz-fungicid; permetezés kerülése",
+          "tags": [
+            "brown_spots",
+            "soft_mushy",
+            "yellow_spots"
+          ],
+          "name_en": "Bacterial leaf blight (Xanthomonas)",
+          "name_el": "Bacterial leaf blight (Xanthomonas)"
+        },
+        {
+          "disease_id": "Syngonium podophyllum::Myrothecium leaf spot",
+          "name": "Myrothecium leaf spot",
+          "type": "fungal",
+          "symptoms_text": "Koncentrikus barna foltok spóratestekkel",
+          "treatment_text": "Fungicid; szellőztetés",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Myrothecium leaf spot",
+          "name_el": "Myrothecium leaf spot"
+        },
+        {
+          "disease_id": "Syngonium podophyllum::Levéltetű",
+          "name": "Levéltetű",
+          "type": "pests",
+          "symptoms_text": "Ragadós csomók a hajtásokon",
+          "treatment_text": "Vízzel lemosás; inszeticid szappan",
+          "tags": [
+            "sticky_residue"
+          ],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        },
+        {
+          "disease_id": "Syngonium podophyllum::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér viaszos csomók",
+          "treatment_text": "Alkohol; neem olaj",
+          "tags": [],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        }
+      ]
+    },
+    "Cryptanthus bivittatus": {
+      "substrate_group": "foliage",
+      "group": "Aroids & Tropicals",
+      "diseases": [
+        {
+          "disease_id": "Cryptanthus bivittatus::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Belső levelek barnulnak, puha lesz a tő",
+          "treatment_text": "Öntözés csökkentése; szellőztetés; fertőzött tő eltávolítása",
+          "tags": [
+            "brown_spots",
+            "soft_mushy"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        },
+        {
+          "disease_id": "Cryptanthus bivittatus::Pajzstetű",
+          "name": "Pajzstetű",
+          "type": "pests",
+          "symptoms_text": "Barna pajzsok a levélalján",
+          "treatment_text": "Alkohol; neem olaj",
+          "tags": [
+            "scale_insects"
+          ],
+          "name_en": "Woolly vine scale",
+          "name_el": "Ψώρα αμπελιού"
+        }
+      ]
+    },
+    "Selaginella martensii": {
+      "substrate_group": "moss_both",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Selaginella martensii::Botrytis",
+          "name": "Botrytis",
+          "type": "fungal",
+          "symptoms_text": "Szürke penész a csúcsokon pangó levegőnél",
+          "treatment_text": "Szellőztetés; érintett részek eltávolítása",
+          "tags": [
+            "grey_mold"
+          ],
+          "name_en": "Botrytis",
+          "name_el": "Botrytis"
+        },
+        {
+          "disease_id": "Selaginella martensii::Csigák",
+          "name": "Csigák",
+          "type": "pests",
+          "symptoms_text": "Rágásnyomok",
+          "treatment_text": "Kézi gyűjtés",
+          "tags": [
+            "holes_damage"
+          ],
+          "name_en": "Snails",
+          "name_el": "Σαλιγκάρια"
+        },
+        {
+          "disease_id": "Selaginella martensii::Desiccation",
+          "name": "Desiccation",
+          "type": "other",
+          "symptoms_text": "Levelek összezsugorodnak, barnulnak",
+          "treatment_text": "Páratartalom emelése; áttetsző fóliatakarás",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Desiccation",
+          "name_el": "Αφυδάτωση"
+        }
+      ]
+    },
+    "Selaginella uncinata": {
+      "substrate_group": "moss_both",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Selaginella uncinata::Botrytis",
+          "name": "Botrytis",
+          "type": "fungal",
+          "symptoms_text": "Szürke penész",
+          "treatment_text": "Szellőztetés javítása",
+          "tags": [
+            "grey_mold"
+          ],
+          "name_en": "Botrytis",
+          "name_el": "Botrytis"
+        },
+        {
+          "disease_id": "Selaginella uncinata::Hővédelmi stressz",
+          "name": "Hővédelmi stressz",
+          "type": "other",
+          "symptoms_text": "Levelek összezsugorodnak; elveszti kék színét",
+          "treatment_text": "Hőmérséklet csökkentése; árnyékolás",
+          "tags": [],
+          "name_en": "Heat stress",
+          "name_el": "Θερμικό στρες"
+        }
+      ]
+    },
+    "Soleirolia soleirolii": {
+      "substrate_group": "foliage",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Soleirolia soleirolii::Botrytis",
+          "name": "Botrytis",
+          "type": "fungal",
+          "symptoms_text": "Szürke penész sűrű gyepben",
+          "treatment_text": "Ritkítás; légáramlás javítása",
+          "tags": [
+            "grey_mold"
+          ],
+          "name_en": "Botrytis",
+          "name_el": "Botrytis"
+        },
+        {
+          "disease_id": "Soleirolia soleirolii::Gombalégy (fungus gnat)",
+          "name": "Gombalégy (fungus gnat)",
+          "type": "pests",
+          "symptoms_text": "Apró legyek a talaj körül; lárvák a gyökereken",
+          "treatment_text": "Öntözés csökkentése; ragacslapok; Bt-baktérium",
+          "tags": [
+            "root_rot"
+          ],
+          "name_en": "Fungus gnat",
+          "name_el": "Μύκητο-κώνωπας"
+        }
+      ]
+    },
+    "Taxiphyllum barbieri": {
+      "substrate_group": "moss_both",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Taxiphyllum barbieri::Algásodás",
+          "name": "Algásodás",
+          "type": "other",
+          "symptoms_text": "Szálalga/zöldalga bevonat a mohán",
+          "treatment_text": "Fényidő csökkentése; jobb vízmozgás; kézi eltávolítás",
+          "tags": [
+            "algae",
+            "web_threads"
+          ],
+          "name_en": "Algae growth",
+          "name_el": "Ανάπτυξη φυκιών"
+        }
+      ]
+    },
+    "Plagiomnium undulatum": {
+      "substrate_group": "moss_both",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Plagiomnium undulatum::Rothadás",
+          "name": "Rothadás",
+          "type": "fungal",
+          "symptoms_text": "Barna, pépessé váló részek",
+          "treatment_text": "Hőmérséklet csökkentése; szellőztetés",
+          "tags": [
+            "brown_spots",
+            "soft_mushy"
+          ],
+          "name_en": "Rot",
+          "name_el": "Σήψη"
+        }
+      ]
+    },
+    "Vesicularia dubyana": {
+      "substrate_group": "moss_both",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Vesicularia dubyana::Algásodás",
+          "name": "Algásodás",
+          "type": "other",
+          "symptoms_text": "Zöld/barna algabevonat",
+          "treatment_text": "Fény csökkentése; jobb áramlás",
+          "tags": [
+            "algae"
+          ],
+          "name_en": "Algae growth",
+          "name_el": "Ανάπτυξη φυκιών"
+        }
+      ]
+    },
+    "Aloe vera": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Aloe vera::Gyökérrothadás (Phytophthora)",
+          "name": "Gyökérrothadás (Phytophthora)",
+          "type": "fungal",
+          "symptoms_text": "Puha, vizenyős tő; levelek barnulnak a bázistól",
+          "treatment_text": "Szubsztrát teljes csere; érintett gyökerek eltávolítása",
+          "tags": [
+            "brown_spots",
+            "soft_mushy",
+            "base_rot"
+          ],
+          "name_en": "Root rot (Phytophthora)",
+          "name_el": "Root rot (Phytophthora)"
+        },
+        {
+          "disease_id": "Aloe vera::Rust (Puccinia)",
+          "name": "Rust (Puccinia)",
+          "type": "fungal",
+          "symptoms_text": "Narancs-barna foltok a leveleken",
+          "treatment_text": "Érintett levelek eltávolítása; fungicid",
+          "tags": [
+            "brown_spots",
+            "orange_spots"
+          ],
+          "name_en": "Rust (Puccinia)",
+          "name_el": "Rust (Puccinia)"
+        },
+        {
+          "disease_id": "Aloe vera::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók a levéltövekben",
+          "treatment_text": "Alkohol; neem olaj",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        },
+        {
+          "disease_id": "Aloe vera::Aloe mite (Eriophyid)",
+          "name": "Aloe mite (Eriophyid)",
+          "type": "pests",
+          "symptoms_text": "Daganatos növedékek (galls) a leveleken",
+          "treatment_text": "Érintett növényrész eltávolítása; izolálás; nincs hatékony vegyszeres kezelés",
+          "tags": [
+            "growth_abnormal"
+          ],
+          "name_en": "Aloe mite (Eriophyid)",
+          "name_el": "Aloe mite (Eriophyid)"
+        }
+      ]
+    },
+    "Crassula muscosa": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Crassula muscosa::Belső rothadás",
+          "name": "Belső rothadás",
+          "type": "fungal",
+          "symptoms_text": "Szár belseje barnul; külsőleg nem látszik azonnal",
+          "treatment_text": "Ritkítás; öntözés csökkentése",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Internal rot",
+          "name_el": "Εσωτερική σήψη"
+        },
+        {
+          "disease_id": "Crassula muscosa::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók rejtett zugokban",
+          "treatment_text": "Alkohol; neem olaj",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        }
+      ]
+    },
+    "Echeveria elegans": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Echeveria elegans::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha tő; rozetta szétesik",
+          "treatment_text": "Szubsztrát csere; öntözés csökkentése",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Echeveria elegans::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók a levelek tövében",
+          "treatment_text": "Alkohol; neem olaj",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        },
+        {
+          "disease_id": "Echeveria elegans::Pajzstetű",
+          "name": "Pajzstetű",
+          "type": "pests",
+          "symptoms_text": "Pajzsok a levélaljon",
+          "treatment_text": "Mechanikus eltávolítás",
+          "tags": [
+            "scale_insects"
+          ],
+          "name_en": "Woolly vine scale",
+          "name_el": "Ψώρα αμπελιού"
+        }
+      ]
+    },
+    "Echeveria subsessilis": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Echeveria subsessilis::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha tő",
+          "treatment_text": "Drenázs javítása",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Echeveria subsessilis::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók",
+          "treatment_text": "Alkohol",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        }
+      ]
+    },
+    "Gasteria bicolor": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Gasteria bicolor::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha tő; levelek sárgulnak",
+          "treatment_text": "Öntözés csökkentése",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Gasteria bicolor::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók",
+          "treatment_text": "Alkohol; neem olaj",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        }
+      ]
+    },
+    "Gasteria carinata": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Gasteria carinata::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha bázis",
+          "treatment_text": "Drenázs javítása",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Gasteria carinata::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók",
+          "treatment_text": "Alkohol",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        }
+      ]
+    },
+    "Graptopetalum paraguayense": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Graptopetalum paraguayense::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha szár/tő",
+          "treatment_text": "Öntözés csökkentése",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Graptopetalum paraguayense::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók",
+          "treatment_text": "Alkohol",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        }
+      ]
+    },
+    "Gymnocalycium mihanovichii": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Gymnocalycium mihanovichii::Bázis rothadás",
+          "name": "Bázis rothadás",
+          "type": "fungal",
+          "symptoms_text": "Alany puha, sötét",
+          "treatment_text": "Újra-graftolás egészséges alanyra; szubsztrát csere",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Base rot",
+          "name_el": "Σήψη βάσης"
+        },
+        {
+          "disease_id": "Gymnocalycium mihanovichii::Pajzstetű",
+          "name": "Pajzstetű",
+          "type": "pests",
+          "symptoms_text": "Pajzsok a bordákon",
+          "treatment_text": "Alkohol; mechanikus eltávolítás",
+          "tags": [
+            "scale_insects"
+          ],
+          "name_en": "Woolly vine scale",
+          "name_el": "Ψώρα αμπελιού"
+        },
+        {
+          "disease_id": "Gymnocalycium mihanovichii::Gyapjas pajzstetű (root mealybug)",
+          "name": "Gyapjas pajzstetű (root mealybug)",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók a gyökereken; lassú növekedés",
+          "treatment_text": "Gyökérmosás; imidakloprid",
+          "tags": [
+            "white_deposit",
+            "mealybug",
+            "root_rot"
+          ],
+          "name_en": "Root mealybug",
+          "name_el": "Ριζικό κοκκοειδές"
+        }
+      ]
+    },
+    "Haworthia cooperi": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Haworthia cooperi::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha gyökerek; levelek ráncosak",
+          "treatment_text": "Szubsztrát csere; száraz tartás",
+          "tags": [
+            "soft_mushy",
+            "root_rot"
+          ],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Haworthia cooperi::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók a levéltövekben",
+          "treatment_text": "Alkohol",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        }
+      ]
+    },
+    "Haworthia fasciata": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Haworthia fasciata::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha bázis",
+          "treatment_text": "Drenázs javítása",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Haworthia fasciata::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók",
+          "treatment_text": "Alkohol",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        }
+      ]
+    },
+    "Kalanchoe tomentosa": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Kalanchoe tomentosa::Levélrothadás",
+          "name": "Levélrothadás",
+          "type": "fungal",
+          "symptoms_text": "Szőrös levelek között penész",
+          "treatment_text": "Permetezés kerülése; szellőztetés",
+          "tags": [],
+          "name_en": "Leaf rot",
+          "name_el": "Σήψη φύλλων"
+        },
+        {
+          "disease_id": "Kalanchoe tomentosa::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók a szőrös levelek közötti zugokban",
+          "treatment_text": "Alkohol vatapálcikával",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        }
+      ]
+    },
+    "Mammillaria elongata": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Mammillaria elongata::Bázis rothadás",
+          "name": "Bázis rothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha, sötétedő szár alul",
+          "treatment_text": "Érintett rész eltávolítása; szárítás",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Base rot",
+          "name_el": "Σήψη βάσης"
+        },
+        {
+          "disease_id": "Mammillaria elongata::Gyapjas pajzstetű (root mealybug)",
+          "name": "Gyapjas pajzstetű (root mealybug)",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók a gyökereken",
+          "treatment_text": "Gyökérmosás; szubsztrát csere; szisztémás inszeticid",
+          "tags": [
+            "white_deposit",
+            "mealybug",
+            "root_rot"
+          ],
+          "name_en": "Root mealybug",
+          "name_el": "Ριζικό κοκκοειδές"
+        }
+      ]
+    },
+    "Mammillaria gracilis": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Mammillaria gracilis::Rothadás",
+          "name": "Rothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha szár",
+          "treatment_text": "Öntözés csökkentése",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Rot",
+          "name_el": "Σήψη"
+        },
+        {
+          "disease_id": "Mammillaria gracilis::Root mealybug",
+          "name": "Root mealybug",
+          "type": "pests",
+          "symptoms_text": "Fehér a gyökereken",
+          "treatment_text": "Szisztémás kezelés",
+          "tags": [
+            "root_rot"
+          ],
+          "name_en": "Root mealybug",
+          "name_el": "Ριζικό κοκκοειδές"
+        }
+      ]
+    },
+    "Sedum morganianum": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Sedum morganianum::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha, áttetsző szár",
+          "treatment_text": "Öntözés csökkentése",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Sedum morganianum::Levéltetű",
+          "name": "Levéltetű",
+          "type": "pests",
+          "symptoms_text": "Apró zöld rovarok a hajtáscsúcsokon",
+          "treatment_text": "Inszeticid szappan",
+          "tags": [],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        }
+      ]
+    },
+    "Sedum rubrotinctum": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Sedum rubrotinctum::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha szár",
+          "treatment_text": "Öntözés csökkentése",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Sedum rubrotinctum::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók",
+          "treatment_text": "Alkohol",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        }
+      ]
+    },
+    "Sempervivum tectorum": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Sempervivum tectorum::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Belső levelek barnulnak",
+          "treatment_text": "Drenázs javítása; érintett rozetta eltávolítása",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        },
+        {
+          "disease_id": "Sempervivum tectorum::Levéltetű",
+          "name": "Levéltetű",
+          "type": "pests",
+          "symptoms_text": "Ragadós rozetta-közepek",
+          "treatment_text": "Vízpermet; inszeticid szappan",
+          "tags": [
+            "sticky_residue"
+          ],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        }
+      ]
+    },
+    "Senecio rowleyanus": {
+      "substrate_group": "succulent",
+      "group": "Succulents & Cacti",
+      "diseases": [
+        {
+          "disease_id": "Senecio rowleyanus::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Levelek zsugorodnak, szár barnul",
+          "treatment_text": "Öntözés drasztikus csökkentése; érintett rész eltávolítása; dugványozás az egészséges részből",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Senecio rowleyanus::Levéltetű",
+          "name": "Levéltetű",
+          "type": "pests",
+          "symptoms_text": "Ragadós mézharmat",
+          "treatment_text": "Inszeticid szappan",
+          "tags": [
+            "sticky_residue"
+          ],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        },
+        {
+          "disease_id": "Senecio rowleyanus::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók",
+          "treatment_text": "Alkohol",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        }
+      ]
+    },
+    "Drosera adelae": {
+      "substrate_group": "carnivorous",
+      "group": "Carnivorous",
+      "diseases": [
+        {
+          "disease_id": "Drosera adelae::Botrytis",
+          "name": "Botrytis",
+          "type": "fungal",
+          "symptoms_text": "Szürke penész a lombon alacsony szellőzésnél",
+          "treatment_text": "Légáramlás javítása; érintett levelek eltávolítása",
+          "tags": [
+            "grey_mold"
+          ],
+          "name_en": "Botrytis",
+          "name_el": "Botrytis"
+        },
+        {
+          "disease_id": "Drosera adelae::Levéltetű",
+          "name": "Levéltetű",
+          "type": "pests",
+          "symptoms_text": "Apró zöld rovarok a virágszáron",
+          "treatment_text": "Vízzel lemosás; NE használj vegyszert (érzékeny!)",
+          "tags": [],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        },
+        {
+          "disease_id": "Drosera adelae::Gombalégy",
+          "name": "Gombalégy",
+          "type": "pests",
+          "symptoms_text": "Apró legyek a szubsztrát körül; lárvák a gyökereken",
+          "treatment_text": "Öntözés kismértékű csökkentése; ragacslapok",
+          "tags": [
+            "root_rot"
+          ],
+          "name_en": "Fungus gnat",
+          "name_el": "Μύκητο-κώνωπας"
+        }
+      ]
+    },
+    "Drosera aliciae": {
+      "substrate_group": "carnivorous",
+      "group": "Carnivorous",
+      "diseases": [
+        {
+          "disease_id": "Drosera aliciae::Botrytis",
+          "name": "Botrytis",
+          "type": "fungal",
+          "symptoms_text": "Szürke penész tél/alacsony hőnél",
+          "treatment_text": "Tálca szárítása télen; szellőztetés",
+          "tags": [
+            "grey_mold"
+          ],
+          "name_en": "Botrytis",
+          "name_el": "Botrytis"
+        },
+        {
+          "disease_id": "Drosera aliciae::Levéltetű",
+          "name": "Levéltetű",
+          "type": "pests",
+          "symptoms_text": "Virágszáron",
+          "treatment_text": "Kézi eltávolítás",
+          "tags": [],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        }
+      ]
+    },
+    "Drosera binata": {
+      "substrate_group": "carnivorous",
+      "group": "Carnivorous",
+      "diseases": [
+        {
+          "disease_id": "Drosera binata::Botrytis",
+          "name": "Botrytis",
+          "type": "fungal",
+          "symptoms_text": "Szürke penész az alap rozettán",
+          "treatment_text": "Téli szárazabb tartás; szellőztetés",
+          "tags": [
+            "grey_mold"
+          ],
+          "name_en": "Botrytis",
+          "name_el": "Botrytis"
+        },
+        {
+          "disease_id": "Drosera binata::Levéltetű",
+          "name": "Levéltetű",
+          "type": "pests",
+          "symptoms_text": "Virágszáron csomók",
+          "treatment_text": "Kézi eltávolítás; vízpermet",
+          "tags": [],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        }
+      ]
+    },
+    "Drosera capensis": {
+      "substrate_group": "carnivorous",
+      "group": "Carnivorous",
+      "diseases": [
+        {
+          "disease_id": "Drosera capensis::Botrytis",
+          "name": "Botrytis",
+          "type": "fungal",
+          "symptoms_text": "Szürke penész téli nedves tartásnál",
+          "treatment_text": "Téli tálca szárítás; szellőztetés",
+          "tags": [
+            "grey_mold"
+          ],
+          "name_en": "Botrytis",
+          "name_el": "Botrytis"
+        },
+        {
+          "disease_id": "Drosera capensis::Levéltetű",
+          "name": "Levéltetű",
+          "type": "pests",
+          "symptoms_text": "Virágszáron",
+          "treatment_text": "Kézi eltávolítás",
+          "tags": [],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        }
+      ]
+    },
+    "Drosera prolifera": {
+      "substrate_group": "carnivorous",
+      "group": "Carnivorous",
+      "diseases": [
+        {
+          "disease_id": "Drosera prolifera::Botrytis",
+          "name": "Botrytis",
+          "type": "fungal",
+          "symptoms_text": "Szürke penész",
+          "treatment_text": "Szellőztetés",
+          "tags": [
+            "grey_mold"
+          ],
+          "name_en": "Botrytis",
+          "name_el": "Botrytis"
+        },
+        {
+          "disease_id": "Drosera prolifera::Gombalégy",
+          "name": "Gombalégy",
+          "type": "pests",
+          "symptoms_text": "Apró legyek",
+          "treatment_text": "Ragacslapok",
+          "tags": [],
+          "name_en": "Fungus gnat",
+          "name_el": "Μύκητο-κώνωπας"
+        }
+      ]
+    },
+    "Drosera rotundifolia": {
+      "substrate_group": "carnivorous",
+      "group": "Carnivorous",
+      "diseases": [
+        {
+          "disease_id": "Drosera rotundifolia::Botrytis",
+          "name": "Botrytis",
+          "type": "fungal",
+          "symptoms_text": "Szürke penész dormancia alatt",
+          "treatment_text": "Szárazabb tartás dormanciakor",
+          "tags": [
+            "grey_mold"
+          ],
+          "name_en": "Botrytis",
+          "name_el": "Botrytis"
+        }
+      ]
+    },
+    "Drosera slackii": {
+      "substrate_group": "carnivorous",
+      "group": "Carnivorous",
+      "diseases": [
+        {
+          "disease_id": "Drosera slackii::Botrytis",
+          "name": "Botrytis",
+          "type": "fungal",
+          "symptoms_text": "Szürke penész",
+          "treatment_text": "Szellőztetés",
+          "tags": [
+            "grey_mold"
+          ],
+          "name_en": "Botrytis",
+          "name_el": "Botrytis"
+        },
+        {
+          "disease_id": "Drosera slackii::Levéltetű",
+          "name": "Levéltetű",
+          "type": "pests",
+          "symptoms_text": "Virágszáron",
+          "treatment_text": "Kézi eltávolítás",
+          "tags": [],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        }
+      ]
+    },
+    "Drosera spatulata": {
+      "substrate_group": "carnivorous",
+      "group": "Carnivorous",
+      "diseases": [
+        {
+          "disease_id": "Drosera spatulata::Botrytis",
+          "name": "Botrytis",
+          "type": "fungal",
+          "symptoms_text": "Penész a sűrű magoncok között",
+          "treatment_text": "Ritkítás; szellőztetés",
+          "tags": [],
+          "name_en": "Botrytis",
+          "name_el": "Botrytis"
+        },
+        {
+          "disease_id": "Drosera spatulata::Gombalégy",
+          "name": "Gombalégy",
+          "type": "pests",
+          "symptoms_text": "Apró legyek",
+          "treatment_text": "Ragacslapok",
+          "tags": [],
+          "name_en": "Fungus gnat",
+          "name_el": "Μύκητο-κώνωπας"
+        }
+      ]
+    },
+    "Nepenthes alata": {
+      "substrate_group": "carnivorous",
+      "group": "Carnivorous",
+      "diseases": [
+        {
+          "disease_id": "Nepenthes alata::Botrytis (szürkepenész)",
+          "name": "Botrytis (szürkepenész)",
+          "type": "fungal",
+          "symptoms_text": "Szürke penész a leveleken/kancsókon rossz szellőzésnél",
+          "treatment_text": "Légáramlás javítása; érintett részek eltávolítása; fungicid kerülése (érzékeny)",
+          "tags": [
+            "grey_mold"
+          ],
+          "name_en": "Botrytis (gray mold)",
+          "name_el": "Botrytis (γκρίζα μούχλα)"
+        },
+        {
+          "disease_id": "Nepenthes alata::Cercospora/Alternaria leaf spot",
+          "name": "Cercospora/Alternaria leaf spot",
+          "type": "fungal",
+          "symptoms_text": "Barna/fekete foltok sárgás szegéllyel a leveleken",
+          "treatment_text": "Érintett levelek eltávolítása; szellőztetés; mérsékelt fungicid",
+          "tags": [
+            "yellow_spots"
+          ],
+          "name_en": "Cercospora/Alternaria leaf spot",
+          "name_el": "Cercospora/Alternaria leaf spot"
+        },
+        {
+          "disease_id": "Nepenthes alata::Fusarium wilt",
+          "name": "Fusarium wilt",
+          "type": "fungal",
+          "symptoms_text": "Progresszív sárgulás; hervadás; szár elszíneződés",
+          "treatment_text": "Érintett növény izolálása; szubsztrát csere; megelőzés: jó drenázs",
+          "tags": [
+            "wilting",
+            "color_change"
+          ],
+          "name_en": "Fusarium wilt",
+          "name_el": "Fusarium wilt"
+        },
+        {
+          "disease_id": "Nepenthes alata::Gyökérrothadás (Pythium)",
+          "name": "Gyökérrothadás (Pythium)",
+          "type": "fungal",
+          "symptoms_text": "Puha gyökerek; növény hervad öntözés ellenére",
+          "treatment_text": "Szubsztrát csere; jobb drenázs; öntözés csökkentése",
+          "tags": [
+            "soft_mushy",
+            "wilting",
+            "root_rot"
+          ],
+          "name_en": "Root rot (Pythium)",
+          "name_el": "Root rot (Pythium)"
+        },
+        {
+          "disease_id": "Nepenthes alata::Levéltetű",
+          "name": "Levéltetű",
+          "type": "pests",
+          "symptoms_text": "Apró rovarok a hajtásokon",
+          "treatment_text": "Vízpermet; inszeticid szappan óvatosan",
+          "tags": [],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        },
+        {
+          "disease_id": "Nepenthes alata::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér viaszos csomók",
+          "treatment_text": "Alkohol; neem olaj",
+          "tags": [],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        },
+        {
+          "disease_id": "Nepenthes alata::Takácsatka",
+          "name": "Takácsatka",
+          "type": "pests",
+          "symptoms_text": "Sárga pöttyök; finom háló",
+          "treatment_text": "Pára emelése; neem olaj; ragadozó atkák (Persimilis)",
+          "tags": [
+            "yellow_spots",
+            "web_threads"
+          ],
+          "name_en": "Spider mite",
+          "name_el": "Τετράνυχος"
+        },
+        {
+          "disease_id": "Nepenthes alata::Pajzstetű",
+          "name": "Pajzstetű",
+          "type": "pests",
+          "symptoms_text": "Barna pajzsok a száron",
+          "treatment_text": "Alkohol; mechanikus eltávolítás",
+          "tags": [
+            "scale_insects"
+          ],
+          "name_en": "Woolly vine scale",
+          "name_el": "Ψώρα αμπελιού"
+        }
+      ]
+    },
+    "Nepenthes ventricosa": {
+      "substrate_group": "carnivorous",
+      "group": "Carnivorous",
+      "diseases": [
+        {
+          "disease_id": "Nepenthes ventricosa::Botrytis",
+          "name": "Botrytis",
+          "type": "fungal",
+          "symptoms_text": "Szürke penész",
+          "treatment_text": "Szellőztetés",
+          "tags": [
+            "grey_mold"
+          ],
+          "name_en": "Botrytis",
+          "name_el": "Botrytis"
+        },
+        {
+          "disease_id": "Nepenthes ventricosa::Cercospora leaf spot",
+          "name": "Cercospora leaf spot",
+          "type": "fungal",
+          "symptoms_text": "Barna/fekete foltok",
+          "treatment_text": "Érintett levelek eltávolítása",
+          "tags": [],
+          "name_en": "Cercospora leaf spot",
+          "name_el": "Cercospora leaf spot"
+        },
+        {
+          "disease_id": "Nepenthes ventricosa::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha gyökerek",
+          "treatment_text": "Szubsztrát csere",
+          "tags": [
+            "soft_mushy",
+            "root_rot"
+          ],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Nepenthes ventricosa::Levéltetű",
+          "name": "Levéltetű",
+          "type": "pests",
+          "symptoms_text": "Hajtásokon",
+          "treatment_text": "Vízpermet",
+          "tags": [],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        },
+        {
+          "disease_id": "Nepenthes ventricosa::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók",
+          "treatment_text": "Alkohol",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        },
+        {
+          "disease_id": "Nepenthes ventricosa::Takácsatka",
+          "name": "Takácsatka",
+          "type": "pests",
+          "symptoms_text": "Sárgás pöttyök",
+          "treatment_text": "Neem olaj",
+          "tags": [
+            "yellow_spots"
+          ],
+          "name_en": "Spider mite",
+          "name_el": "Τετράνυχος"
+        }
+      ]
+    },
+    "Tillandsia aeranthos": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia aeranthos::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Tő barnul, levelek kihullanak",
+          "treatment_text": "Szárítás áztatás után fejjel lefelé; szellőztetés",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        },
+        {
+          "disease_id": "Tillandsia aeranthos::Pajzstetű",
+          "name": "Pajzstetű",
+          "type": "pests",
+          "symptoms_text": "Apró pajzsok a leveleken",
+          "treatment_text": "Alkohol; kézi eltávolítás",
+          "tags": [
+            "scale_insects"
+          ],
+          "name_en": "Woolly vine scale",
+          "name_el": "Ψώρα αμπελιού"
+        }
+      ]
+    },
+    "Tillandsia argentea": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia argentea::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Tő puha, barna",
+          "treatment_text": "Kevesebb áztatás; jobb szárítás",
+          "tags": [
+            "soft_mushy",
+            "base_rot"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia brachycaulos": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia brachycaulos::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Belső levelek barnulnak",
+          "treatment_text": "Szárítás fejjel lefelé",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia bulbosa": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia bulbosa::Bázis rothadás",
+          "name": "Bázis rothadás",
+          "type": "fungal",
+          "symptoms_text": "Hagymás tő puha, barna",
+          "treatment_text": "Áztatás helyett permetezés; alapos szárítás",
+          "tags": [
+            "soft_mushy",
+            "base_rot"
+          ],
+          "name_en": "Base rot",
+          "name_el": "Σήψη βάσης"
+        }
+      ]
+    },
+    "Tillandsia capitata": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia capitata::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Tő barnulás",
+          "treatment_text": "Szellőztetés; szárítás",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia caput-medusae": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia caput-medusae::Bázis rothadás",
+          "name": "Bázis rothadás",
+          "type": "fungal",
+          "symptoms_text": "Hagymás tő puha",
+          "treatment_text": "Kevesebb áztatás; jobb szellőzés",
+          "tags": [
+            "soft_mushy",
+            "base_rot"
+          ],
+          "name_en": "Base rot",
+          "name_el": "Σήψη βάσης"
+        }
+      ]
+    },
+    "Tillandsia circinata": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia circinata::Bázis rothadás",
+          "name": "Bázis rothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha tő",
+          "treatment_text": "Szárítás",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Base rot",
+          "name_el": "Σήψη βάσης"
+        }
+      ]
+    },
+    "Tillandsia concolor": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia concolor::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Belső barnulás",
+          "treatment_text": "Szellőztetés",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia fasciculata": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia fasciculata::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Tő barnulás",
+          "treatment_text": "Szellőztetés; szárítás",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        },
+        {
+          "disease_id": "Tillandsia fasciculata::Bromeliad weevil (Metamasius)",
+          "name": "Bromeliad weevil (Metamasius)",
+          "type": "pests",
+          "symptoms_text": "Belső szárpusztulás; frass (rágcsálás nyoma) a levelek között",
+          "treatment_text": "Karantén; érintett növény eltávolítása; EU-ban nem jellemző",
+          "tags": [],
+          "name_en": "Bromeliad weevil (Metamasius)",
+          "name_el": "Bromeliad weevil (Metamasius)"
+        }
+      ]
+    },
+    "Tillandsia filifolia": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia filifolia::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Tő barnulás",
+          "treatment_text": "Szellőztetés",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia flabellata": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia flabellata::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Belső barnulás",
+          "treatment_text": "Szellőztetés",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia funckiana": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia funckiana::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Tő barnulás",
+          "treatment_text": "Szellőztetés",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia gardneri": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia gardneri::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Belső barnulás",
+          "treatment_text": "Szárítás",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia guatemalensis": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia guatemalensis::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Tő barnulás",
+          "treatment_text": "Szellőztetés",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia intermedia": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia intermedia::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Tő barnulás",
+          "treatment_text": "Szellőztetés",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia ionantha": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia ionantha::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Tő puha, barna",
+          "treatment_text": "Szárítás; szellőztetés",
+          "tags": [
+            "soft_mushy",
+            "base_rot"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        },
+        {
+          "disease_id": "Tillandsia ionantha::Pajzstetű",
+          "name": "Pajzstetű",
+          "type": "pests",
+          "symptoms_text": "Apró pajzsok",
+          "treatment_text": "Alkohol",
+          "tags": [
+            "scale_insects"
+          ],
+          "name_en": "Woolly vine scale",
+          "name_el": "Ψώρα αμπελιού"
+        }
+      ]
+    },
+    "Tillandsia juncea": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia juncea::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Tő barnulás",
+          "treatment_text": "Szellőztetés",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia magnusiana": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia magnusiana::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Belső barnulás; levelek kihullanak",
+          "treatment_text": "Kevesebb víz; jobb szellőzés; szárítás fejjel lefelé",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia pruinosa": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia pruinosa::Bázis rothadás",
+          "name": "Bázis rothadás",
+          "type": "fungal",
+          "symptoms_text": "Hagymás tő puha",
+          "treatment_text": "Permetezés áztatás helyett; alapos szárítás",
+          "tags": [
+            "soft_mushy",
+            "base_rot"
+          ],
+          "name_en": "Base rot",
+          "name_el": "Σήψη βάσης"
+        }
+      ]
+    },
+    "Tillandsia streptophylla": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia streptophylla::Bázis rothadás",
+          "name": "Bázis rothadás",
+          "type": "fungal",
+          "symptoms_text": "Hagymás tő puha, barna",
+          "treatment_text": "Rövidebb áztatás; alapos szárítás; permetezés preferált",
+          "tags": [
+            "soft_mushy",
+            "base_rot"
+          ],
+          "name_en": "Base rot",
+          "name_el": "Σήψη βάσης"
+        }
+      ]
+    },
+    "Tillandsia stricta": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia stricta::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Tő puha",
+          "treatment_text": "Szellőztetés; szárítás",
+          "tags": [
+            "soft_mushy",
+            "base_rot"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia tectorum": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia tectorum::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Tő puha; levelek kihullanak",
+          "treatment_text": "Áztatás TILOS; csak permetezés; szellőztetés",
+          "tags": [
+            "soft_mushy",
+            "base_rot"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia velutina": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia velutina::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Tő barnulás",
+          "treatment_text": "Szellőztetés",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        }
+      ]
+    },
+    "Tillandsia xerographica": {
+      "substrate_group": "tillandsia",
+      "group": "Tillandsia",
+      "diseases": [
+        {
+          "disease_id": "Tillandsia xerographica::Rozetta rothadás",
+          "name": "Rozetta rothadás",
+          "type": "fungal",
+          "symptoms_text": "Belső levelek barnulnak; levelek kihullanak a bázisból",
+          "treatment_text": "Rövidebb áztatás; MINDIG fejjel lefelé szárítani; szellőztetés",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rosette rot",
+          "name_el": "Σήψη ροζέτας"
+        },
+        {
+          "disease_id": "Tillandsia xerographica::Pajzstetű",
+          "name": "Pajzstetű",
+          "type": "pests",
+          "symptoms_text": "Apró pajzsok a levéltőnél",
+          "treatment_text": "Alkohol; kézi eltávolítás",
+          "tags": [
+            "scale_insects"
+          ],
+          "name_en": "Woolly vine scale",
+          "name_el": "Ψώρα αμπελιού"
+        }
+      ]
+    },
+    "Fittonia albivenis": {
+      "substrate_group": "foliage",
+      "group": "Ferns & Foliage",
+      "diseases": [
+        {
+          "disease_id": "Fittonia albivenis::Gyökérrothadás (Pythium)",
+          "name": "Gyökérrothadás (Pythium)",
+          "type": "fungal",
+          "symptoms_text": "Puha, barna gyökerek; hirtelen hervadás öntözés ellenére",
+          "treatment_text": "Drenázs javítása; szubsztrát csere; öntözés csökkentése",
+          "tags": [
+            "soft_mushy",
+            "wilting",
+            "root_rot"
+          ],
+          "name_en": "Root rot (Pythium)",
+          "name_el": "Root rot (Pythium)"
+        },
+        {
+          "disease_id": "Fittonia albivenis::Levélfoltosság (Cercospora)",
+          "name": "Levélfoltosság (Cercospora)",
+          "type": "fungal",
+          "symptoms_text": "Barna/fekete foltok a leveleken",
+          "treatment_text": "Érintett levelek eltávolítása; szellőztetés; permetezés kerülése",
+          "tags": [],
+          "name_en": "Leaf spot (Cercospora)",
+          "name_el": "Leaf spot (Cercospora)"
+        },
+        {
+          "disease_id": "Fittonia albivenis::Levéltetű (aphid)",
+          "name": "Levéltetű (aphid)",
+          "type": "pests",
+          "symptoms_text": "Apró zöld/fekete rovarok a hajtáscsúcsokon; ragadós mézharmat",
+          "treatment_text": "Vízpermet; inszeticid szappan",
+          "tags": [
+            "sticky_residue"
+          ],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        },
+        {
+          "disease_id": "Fittonia albivenis::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók a levélhónaljban",
+          "treatment_text": "Alkohol; neem olaj",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        },
+        {
+          "disease_id": "Fittonia albivenis::Gombalégy (fungus gnat)",
+          "name": "Gombalégy (fungus gnat)",
+          "type": "pests",
+          "symptoms_text": "Apró legyek a szubsztrát körül; lárvák a gyökereken",
+          "treatment_text": "Öntözés kismértékű csökkentése; ragacslapok; Bt-baktérium",
+          "tags": [
+            "root_rot"
+          ],
+          "name_en": "Fungus gnat",
+          "name_el": "Μύκητο-κώνωπας"
+        },
+        {
+          "disease_id": "Fittonia albivenis::Drámai hervadás",
+          "name": "Drámai hervadás",
+          "type": "other",
+          "symptoms_text": "Teljes növény elernyed, levelek lógnak — de NEM halott!",
+          "treatment_text": "Azonnali öntözés; 1–2 órán belül visszaáll. Rendszeres ismétlődés gyengíti a növényt.",
+          "tags": [],
+          "name_en": "Dramatic wilting",
+          "name_el": "Δραματικός μαρασμός"
+        }
+      ]
+    },
+    "Hypoestes phyllostachya": {
+      "substrate_group": "foliage",
+      "group": "Ferns & Foliage",
+      "diseases": [
+        {
+          "disease_id": "Hypoestes phyllostachya::Lisztharmat (powdery mildew)",
+          "name": "Lisztharmat (powdery mildew)",
+          "type": "fungal",
+          "symptoms_text": "Fehér, lisztes bevonat a leveleken rossz szellőzésnél",
+          "treatment_text": "Szellőztetés; érintett levelek eltávolítása; neem olaj",
+          "tags": [
+            "mealybug"
+          ],
+          "name_en": "Powdery mildew",
+          "name_el": "Ωίδιο"
+        },
+        {
+          "disease_id": "Hypoestes phyllostachya::Gyökérrothadás",
+          "name": "Gyökérrothadás",
+          "type": "fungal",
+          "symptoms_text": "Puha tő; sárgulás; hervadás",
+          "treatment_text": "Öntözés csökkentése; drenázs javítása",
+          "tags": [
+            "soft_mushy",
+            "wilting"
+          ],
+          "name_en": "Root rot",
+          "name_el": "Σήψη ριζών"
+        },
+        {
+          "disease_id": "Hypoestes phyllostachya::Levéltetű",
+          "name": "Levéltetű",
+          "type": "pests",
+          "symptoms_text": "Ragadós hajtáscsúcsok; apró rovarok",
+          "treatment_text": "Vízpermet; inszeticid szappan",
+          "tags": [
+            "sticky_residue"
+          ],
+          "name_en": "Aphids",
+          "name_el": "Αφίδες"
+        },
+        {
+          "disease_id": "Hypoestes phyllostachya::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér csomók",
+          "treatment_text": "Alkohol; neem olaj",
+          "tags": [
+            "white_deposit",
+            "mealybug"
+          ],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        },
+        {
+          "disease_id": "Hypoestes phyllostachya::Pajzstetű",
+          "name": "Pajzstetű",
+          "type": "pests",
+          "symptoms_text": "Barna pajzsok a száron",
+          "treatment_text": "Mechanikus eltávolítás; neem olaj",
+          "tags": [
+            "scale_insects"
+          ],
+          "name_en": "Woolly vine scale",
+          "name_el": "Ψώρα αμπελιού"
+        },
+        {
+          "disease_id": "Hypoestes phyllostachya::Fehérlégy (whitefly)",
+          "name": "Fehérlégy (whitefly)",
+          "type": "pests",
+          "symptoms_text": "Apró fehér legyek a levelek alján; felrepülnek ha megérintjük",
+          "treatment_text": "Sárga ragacslapok; inszeticid szappan",
+          "tags": [],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        },
+        {
+          "disease_id": "Hypoestes phyllostachya::Virágzás utáni pusztulás",
+          "name": "Virágzás utáni pusztulás",
+          "type": "other",
+          "symptoms_text": "Növény hirtelen legyengül, levelek hullanak virágzás után",
+          "treatment_text": "Virágszár azonnali eltávolítása amint megjelenik; ha már legyengült: erős visszavágás, dugványozás az egészséges részből",
+          "tags": [],
+          "name_en": "Post-flowering die-off",
+          "name_el": "Θάνατος μετά την ανθοφορία"
+        }
+      ]
+    },
+    "Kindbergia praelonga": {
+      "substrate_group": "moss_both",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Kindbergia praelonga::Rothadás/penész",
+          "name": "Rothadás/penész",
+          "type": "fungal",
+          "symptoms_text": "Barna, pépes foltok pangó nedvességnél; fehér penészszálak",
+          "treatment_text": "Szellőztetés javítása; érintett rész eltávolítása; túlöntözés kerülése",
+          "tags": [
+            "brown_spots",
+            "web_threads"
+          ],
+          "name_en": "Rot/mold",
+          "name_el": "Σήψη/μούχλα"
+        },
+        {
+          "disease_id": "Kindbergia praelonga::Barnulás/kiszáradás",
+          "name": "Barnulás/kiszáradás",
+          "type": "other",
+          "symptoms_text": "Levelek barnulnak a csúcsoktól; moha összezsugorodik",
+          "treatment_text": "Páratartalom emelése; permetezés RO vízzel; zárt terrárium biztosítja a párát",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Browning/desiccation",
+          "name_el": "Μαύρισμα/αφυδάτωση"
+        }
+      ]
+    },
+    "Plagiomnium affine": {
+      "substrate_group": "moss_both",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Plagiomnium affine::Rothadás",
+          "name": "Rothadás",
+          "type": "fungal",
+          "symptoms_text": "Barna, pépessé váló részek túl meleg/nedves környezetben",
+          "treatment_text": "Hőmérséklet csökkentése; szellőztetés; érintett részek eltávolítása",
+          "tags": [
+            "brown_spots",
+            "soft_mushy"
+          ],
+          "name_en": "Rot",
+          "name_el": "Σήψη"
+        },
+        {
+          "disease_id": "Plagiomnium affine::Hőstressz elszíneződés",
+          "name": "Hőstressz elszíneződés",
+          "type": "other",
+          "symptoms_text": "Lilás/barnás elszíneződés a leveleken (normális stresszreakció)",
+          "treatment_text": "Hőmérséklet csökkentése; stabilizálás után visszazöldül",
+          "tags": [
+            "color_change"
+          ],
+          "name_en": "Heat stress discoloration",
+          "name_el": "Αποχρωματισμός θερμικού στρες"
+        }
+      ]
+    },
+    "Peperomia metallica": {
+      "substrate_group": "foliage",
+      "group": "Peperomia & Pilea",
+      "diseases": [
+        {
+          "disease_id": "Peperomia metallica::Gyökérrothadás (Pythium)",
+          "name": "Gyökérrothadás (Pythium)",
+          "type": "fungal",
+          "symptoms_text": "Puha, barna tő; levelek hirtelen hullanak",
+          "treatment_text": "Szubsztrát csere; öntözés drasztikus csökkentése; drenázs javítása",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Root rot (Pythium)",
+          "name_el": "Root rot (Pythium)"
+        },
+        {
+          "disease_id": "Peperomia metallica::Levélrothadás",
+          "name": "Levélrothadás",
+          "type": "fungal",
+          "symptoms_text": "Sötét, vizenyős foltok a leveleken zárt környezetben",
+          "treatment_text": "Szellőztetés; érintett levelek eltávolítása; párásság mérséklése",
+          "tags": [
+            "soft_mushy"
+          ],
+          "name_en": "Leaf rot",
+          "name_el": "Σήψη φύλλων"
+        },
+        {
+          "disease_id": "Peperomia metallica::Lisztestetű",
+          "name": "Lisztestetű",
+          "type": "pests",
+          "symptoms_text": "Fehér viaszos csomók a levélhónaljban",
+          "treatment_text": "Alkohol; neem olaj",
+          "tags": [],
+          "name_en": "Glasshouse whitefly",
+          "name_el": "Αλευρώδης θερμοκηπίου"
+        },
+        {
+          "disease_id": "Peperomia metallica::Tripszek",
+          "name": "Tripszek",
+          "type": "pests",
+          "symptoms_text": "Ezüstös csíkok a fémes leveleken",
+          "treatment_text": "Ragacslapok; inszeticid szappan",
+          "tags": [],
+          "name_en": "Thrips",
+          "name_el": "Θρίπες"
+        }
+      ]
+    },
+    "Hypnum cupressiforme": {
+      "substrate_group": "moss_both",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Hypnum cupressiforme::Rothadás",
+          "name": "Rothadás",
+          "type": "fungal",
+          "symptoms_text": "Barna, pépessé váló foltok pangó levegőjű környezetben",
+          "treatment_text": "Szellőztetés javítása; érintett rész eltávolítása",
+          "tags": [
+            "brown_spots",
+            "soft_mushy"
+          ],
+          "name_en": "Rot",
+          "name_el": "Σήψη"
+        },
+        {
+          "disease_id": "Hypnum cupressiforme::Kiszáradás",
+          "name": "Kiszáradás",
+          "type": "other",
+          "symptoms_text": "Összecsukódó, száraz, matt levelek",
+          "treatment_text": "Áztatás desztillált vízben; párásítás növelése",
+          "tags": [
+            "drying",
+            "leaf_curl"
+          ],
+          "name_en": "Desiccation",
+          "name_el": "Αφυδάτωση"
+        }
+      ]
+    },
+    "Leucobryum glaucum": {
+      "substrate_group": "moss_both",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Leucobryum glaucum::Penészesedés",
+          "name": "Penészesedés",
+          "type": "fungal",
+          "symptoms_text": "Fehéres penészréteg a párna tetején",
+          "treatment_text": "Szellőztetés javítása; érintett rész eltávolítása; nem túlöntözni",
+          "tags": [
+            "white_deposit"
+          ],
+          "name_en": "Mold growth",
+          "name_el": "Ανάπτυξη μούχλας"
+        },
+        {
+          "disease_id": "Leucobryum glaucum::Hőstressz elszíneződés",
+          "name": "Hőstressz elszíneződés",
+          "type": "other",
+          "symptoms_text": "Fehéres-szürkés elszíneződés szárazság vagy meleg hatására",
+          "treatment_text": "Párásítás növelése; hőmérséklet csökkentése; áztatás",
+          "tags": [
+            "white_deposit",
+            "drying",
+            "color_change"
+          ],
+          "name_en": "Heat stress discoloration",
+          "name_el": "Αποχρωματισμός θερμικού στρες"
+        }
+      ]
+    },
+    "Octoblepharum albidum": {
+      "substrate_group": "moss_both",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Octoblepharum albidum::Rothadás",
+          "name": "Rothadás",
+          "type": "fungal",
+          "symptoms_text": "Barna, szétmálló részek túlnedves környezetben",
+          "treatment_text": "Drénázs javítása; szellőztetés; érintett rész eltávolítása",
+          "tags": [
+            "brown_spots"
+          ],
+          "name_en": "Rot",
+          "name_el": "Σήψη"
+        }
+      ]
+    },
+    "Thuidium tamariscinum": {
+      "substrate_group": "moss_both",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Thuidium tamariscinum::Rothadás",
+          "name": "Rothadás",
+          "type": "fungal",
+          "symptoms_text": "Barna, pépessé váló részek túlnedves/meleg környezetben",
+          "treatment_text": "Hőmérséklet csökkentése; szellőztetés; érintett rész eltávolítása",
+          "tags": [
+            "brown_spots",
+            "soft_mushy"
+          ],
+          "name_en": "Rot",
+          "name_el": "Σήψη"
+        },
+        {
+          "disease_id": "Thuidium tamariscinum::Hőstressz",
+          "name": "Hőstressz",
+          "type": "other",
+          "symptoms_text": "Barnás-narancssárga elszíneződés meleg hatására",
+          "treatment_text": "Hűvösebb helyre mozgatás; párásítás növelése",
+          "tags": [
+            "yellow_spots",
+            "orange_spots",
+            "color_change"
+          ],
+          "name_en": "Heat stress",
+          "name_el": "Θερμικό στρες"
+        }
+      ]
+    },
+    "Sphagnum affine": {
+      "substrate_group": "sphagnum_acidic",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Sphagnum affine::Algásodás",
+          "name": "Algásodás",
+          "type": "fungal",
+          "symptoms_text": "Zöld algabevonat a felszínen",
+          "treatment_text": "Fény csökkentése; levegőztetés",
+          "tags": [
+            "algae"
+          ],
+          "name_en": "Algae growth",
+          "name_el": "Ανάπτυξη φυκιών"
+        }
+      ]
+    },
+    "Sphagnum medium": {
+      "substrate_group": "sphagnum_acidic",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Sphagnum medium::Algásodás",
+          "name": "Algásodás",
+          "type": "fungal",
+          "symptoms_text": "Zöld algabevonat a felszínen túl sok fénynél",
+          "treatment_text": "Fény csökkentése; levegőztetés; érintett réteg eltávolítása",
+          "tags": [
+            "algae",
+            "overgrowth"
+          ],
+          "name_en": "Algae growth",
+          "name_el": "Ανάπτυξη φυκιών"
+        },
+        {
+          "disease_id": "Sphagnum medium::Hőstressz",
+          "name": "Hőstressz",
+          "type": "other",
+          "symptoms_text": "Fehéredés, szürkülés meleg hatására",
+          "treatment_text": "Hőmérséklet csökkentése; hűtés biztosítása",
+          "tags": [
+            "color_change"
+          ],
+          "name_en": "Heat stress",
+          "name_el": "Θερμικό στρες"
+        }
+      ]
+    },
+    "Sphagnum magellanicum": {
+      "substrate_group": "sphagnum_acidic",
+      "group": "Moss & Selaginella",
+      "diseases": [
+        {
+          "disease_id": "Sphagnum magellanicum::Algásodás",
+          "name": "Algásodás",
+          "type": "fungal",
+          "symptoms_text": "Zöld algabevonat a felszínen",
+          "treatment_text": "Fény csökkentése; levegőztetés",
+          "tags": [
+            "algae"
+          ],
+          "name_en": "Algae growth",
+          "name_el": "Ανάπτυξη φυκιών"
+        },
+        {
+          "disease_id": "Sphagnum magellanicum::Hőstressz",
+          "name": "Hőstressz",
+          "type": "other",
+          "symptoms_text": "Fehéredés, színvesztés meleg hatására",
+          "treatment_text": "Hőmérséklet csökkentése; hűtés biztosítása",
+          "tags": [
+            "color_change"
+          ],
+          "name_en": "Heat stress",
+          "name_el": "Θερμικό στρες"
+        }
+      ]
+    }
+  }
+}

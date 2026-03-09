@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Plant } from '../api/client';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const groupColors: Record<string, string> = {
   'Ferns & Foliage': '#2E7D32',
@@ -30,18 +31,19 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, onPress, showCompatibility
   const { width: screenWidth } = useWindowDimensions();
   const cardWidth = Math.floor((screenWidth - 48) / 2);
   const groupColor = groupColors[plant.group] || '#388E3C';
+  const { t } = useLanguage();
   
   // OFFLINE MODE: Image is already in plant.image_base64
   const imageUri = plant.image_base64 || null;
   
-  const renderTerrarium = (type: string, value: string) => {
+  const renderTerrarium = (badgeKey: 'badgeClosed' | 'badgeSemiClosed' | 'badgeOpen', value: string) => {
     const isCompatible = value === '✓';
     const isPartial = value === '~';
     const color = isCompatible ? '#4CAF50' : isPartial ? '#FFC107' : '#E57373';
     
     return (
-      <View key={type} style={[styles.terrariumBadge, { backgroundColor: color }]}>
-        <Text style={styles.terrariumText}>{type}</Text>
+      <View key={badgeKey} style={[styles.terrariumBadge, { backgroundColor: color }]}>
+        <Text style={styles.terrariumText}>{t(badgeKey)}</Text>
       </View>
     );
   };
@@ -84,9 +86,9 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, onPress, showCompatibility
         </Text>
         
         <View style={styles.terrariumRow}>
-          {renderTerrarium('Z', plant.Z)}
-          {renderTerrarium('F', plant.F)}
-          {renderTerrarium('N', plant.N)}
+          {renderTerrarium('badgeClosed', plant.Z)}
+          {renderTerrarium('badgeSemiClosed', plant.F)}
+          {renderTerrarium('badgeOpen', plant.N)}
         </View>
       </View>
     </TouchableOpacity>

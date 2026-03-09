@@ -7,16 +7,10 @@ import {
   Animated,
   Dimensions,
 } from 'react-native';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const { width, height } = Dimensions.get('window');
 const SPLASH_IMAGE = require('../assets/splash.jpg');
-
-// Subtitles in different languages
-const subtitles = {
-  hu: 'Találd meg a tökéletes növénytársakat',
-  en: 'Find the perfect plant companions',
-  el: 'Βρες τους τέλειους συντρόφους φυτών',
-};
 
 interface SplashScreenProps {
   onFinish: () => void;
@@ -29,6 +23,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
   const titleSlide = useRef(new Animated.Value(30)).current;
   const subtitleFade = useRef(new Animated.Value(0)).current;
   const glowAnim = useRef(new Animated.Value(0)).current;
+  const { t } = useLanguage();
 
   useEffect(() => {
     // Sequence of animations
@@ -129,7 +124,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
             { opacity: subtitleFade },
           ]}
         >
-          Találd meg a tökéletes növénytársakat
+          {t('splashSubtitle')}
         </Animated.Text>
       </View>
       

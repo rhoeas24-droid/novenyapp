@@ -7,58 +7,81 @@ A "Florárium Mester" (Florarium Master) mobil alkalmazás, amely terrárium nö
 1. **Növény kompatibilitás**: Amikor a felhasználó kiválaszt egy növényt, az alkalmazás megjeleníti az azzal kompatibilis növényeket (talaj, fény, páratartalom alapján)
 2. **Szűrés**: Terrárium típus (zárt, félzárt, nyitott) és növénycsoport szerinti szűrés
 3. **Többnyelvűség**: Magyar, angol és görög nyelvi támogatás
-4. **Offline mód**: AsyncStorage gyorsítótárazással
+4. **OFFLINE MÓD**: Teljes offline működés - minden adat (84 növény + képek) be van csomagolva az alkalmazásba
 5. **Egyedi splash screen és app ikon**
+6. **Terrárium Építő**: Lépésről lépésre segít felépíteni a terráriumod
+7. **Növény Diagnózis**: Kérdőív alapú diagnosztikai eszköz betegségek/kártevők azonosítására
 
 ## Technical Stack
 - **Frontend**: Expo, React Native, TypeScript, Expo Router, Zustand
-- **Backend**: Python, FastAPI, MongoDB
+- **Backend**: Python, FastAPI, MongoDB (csak fejlesztéshez, az app teljesen offline működik)
 - **i18n**: Custom LanguageContext + translations.ts
-- **Translation**: OpenAI GPT-4o via emergentintegrations
+- **Data**: Minden adat `frontend/src/data/plants.json` és `frontend/src/data/diagnostic_engine.json` fájlokban
 
 ## Data
-- 77 növény az adatbázisban
-- Képek base64 formátumban tárolva
-- Fordítások a `translations` mezőben tárolva minden növénynél
+- 84 növény az adatbázisban
+- Képek base64 formátumban tárolva inline a JSON-ban
+- Fordítások 3 nyelven (HU, EN, EL)
+- Diagnosztikai motor 11 kérdéssel és betegség/kártevő adatbázissal
 
-## API Endpoints
-- `GET /api/plants?lang={hu|en|el}` - Növények listája
-- `GET /api/plants/{name}?lang={hu|en|el}` - Növény részletek
-- `GET /api/plants/{name}/compatible?lang={hu|en|el}` - Kompatibilis növények
-- `GET /api/plants/{name}/image` - Növény képe (lazy loading)
-- `GET /api/groups` - Növénycsoportok
+## Key Files
+- `frontend/src/data/plants.json` - Növények adatbázisa képekkel
+- `frontend/src/data/diagnostic_engine.json` - Diagnosztikai motor adatai
+- `frontend/src/data/confirmed_translations.json` - Megerősített fordítások
+- `frontend/src/diagnostic/DiagnosticEngine.ts` - Diagnosztikai logika
+- `frontend/app/diagnostic.tsx` - Diagnosztikai UI
+- `frontend/app/builder.tsx` - Terrárium Építő
+- `frontend/src/i18n/translations.ts` - UI fordítások
 
-## Completed (2025-03-08)
+## Completed Features
+
+### 2025-03-09
+- [x] **TELJES OFFLINE MÓD** implementálva
+  - Minden növényadat (84 db) becsomagolva az alkalmazásba
+  - Base64 képek beágyazva a JSON-ba
+  - Nincs szükség backend kapcsolatra
+- [x] **Növény Diagnózis modul** implementálva
+  - 11 kérdéses diagnosztikai kérdőív
+  - Valószínűség alapú diagnózis
+  - Magyar nyelvű kérdések és válaszok
+  - Betegségek és kártevők azonosítása
+- [x] **Bővített fordítások**
+  - Diagnosztikai UI kulcsok (hu, en, el)
+  - Badge rövidítések nyelvfüggően (Z/F/N, C/S/O, Κ/Η/Α)
+
+### 2025-03-08
 - [x] Core app development (home, detail screen)
 - [x] Plant compatibility algorithm
 - [x] Terrarium type filtering
 - [x] Search functionality
-- [x] Animated splash screen
+- [x] Animated splash screen with t() for subtitle
 - [x] Custom app icon
 - [x] UI translation (HU, EN, EL)
-- [x] Language switcher with cache clear
-- [x] Backend translation endpoint support
-- [x] Database translation script running (77 plants to EN/EL)
-- [x] Frontend API calls with language parameter
-
-## In Progress
-- None
-
-## Recently Completed (2025-03-08)
-- [x] Database content translation - ALL 77 plants translated to EN and EL
-- [x] Disease names translation - ALL disease/pest names translated to EN and EL
-- [x] Hungarian words fixed (csomó, terítő, Korlátlan, etc.)
-- [x] Hypoestes phyllostachya image updated
-- [x] Navigation fix with router.replace
-- [x] **NEW: Build Your Own Terrarium** feature added
-  - Container selection (shape, opening type, size)
+- [x] Language switcher
+- [x] Database content translation - ALL 84 plants translated
+- [x] **Build Your Own Terrarium** feature
+  - Container selection (shape, opening type, size, terrarium type)
   - First plant selection based on terrarium type
   - Compatible plants with compatibility score
-  - Summary with substrate, light, humidity, care tips, warnings
+  - Summary with substrate recipe, light, humidity, care tips, warnings
+
+## APK Build
+Az alkalmazás teljesen offline működik, ezért az APK build-hez:
+1. `cd frontend`
+2. `npm install` vagy `yarn install`
+3. `eas build -p android --profile preview`
 
 ## Known Limitations
-- Back navigation from compatible plants goes directly to home (not to previous plant) - this is an Expo Router limitation with dynamic routes
-https://terrarium-matcher.preview.emergentagent.com
+- Language selector nem működik web preview-ban (csak a mobil alkalmazásban)
+- Back navigation from compatible plants goes directly to home (Expo Router limitation)
+
+## Future Tasks (Backlog)
+- [ ] AI-alapú képelemzés a növény diagnózishoz (fénykép feltöltéssel)
+- [ ] Push értesítések öntözési emlékeztetőkhez
+- [ ] Közösségi funkciók (terrárium megosztás)
 
 ## User Language
 Hungarian (Magyar)
+
+## Preview URL
+https://plant-matcher.preview.emergentagent.com

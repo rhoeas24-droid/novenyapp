@@ -78,6 +78,14 @@ function AppContent() {
             headerBackTitle: t('back'),
           }}
         />
+        <Stack.Screen
+          name="diagnostic"
+          options={{
+            title: t('diagnosticTitle'),
+            headerBackTitle: t('back'),
+            headerShown: false,
+          }}
+        />
       </Stack>
       
       <LanguageSelector

@@ -307,7 +307,7 @@ export default function TerrariumBuilderScreen() {
       </View>
 
       {/* Terrarium Type Selection */}
-      <Text style={styles.sectionLabel}>{t('terrariumType') || 'Terrárium típusa'}</Text>
+      <Text style={styles.sectionLabel}>{t('terrariumType')}</Text>
       <View style={styles.optionRow}>
         {TERRARIUM_TYPES.map(type => (
           <TouchableOpacity
@@ -387,10 +387,8 @@ export default function TerrariumBuilderScreen() {
   // Render first plant selection step
   const renderFirstPlantStep = () => (
     <View style={styles.stepContainer}>
-      <Text style={styles.stepTitle}>{t('selectFirstPlant') || 'Válaszd ki az első növényt'}</Text>
-      <Text style={styles.stepSubtitle}>
-        {t('firstPlantHint') || 'Ez határozza meg a terrárium alap követelményeit'}
-      </Text>
+      <Text style={styles.stepTitle}>{t('selectFirstPlant')}</Text>
+      <Text style={styles.stepSubtitle}>{t('firstPlantHint')}</Text>
       
       {loading ? (
         <ActivityIndicator size="large" color="#388E3C" style={styles.loader} />
@@ -409,14 +407,14 @@ export default function TerrariumBuilderScreen() {
 
     return (
       <View style={styles.stepContainer}>
-        <Text style={styles.stepTitle}>{t('addMorePlants') || 'Adj hozzá növényeket'}</Text>
+        <Text style={styles.stepTitle}>{t('addMorePlants')}</Text>
         <Text style={styles.stepSubtitle}>
-          {selectedPlants.length}/{maxPlants} {t('plantsSelected') || 'növény kiválasztva'}
+          {selectedPlants.length}/{maxPlants} {t('plantsSelected')}
         </Text>
 
         {/* Selected Plants */}
         <View style={styles.selectedPlantsContainer}>
-          <Text style={styles.sectionLabel}>{t('selectedPlants') || 'Kiválasztott növények'}</Text>
+          <Text style={styles.sectionLabel}>{t('selectedPlants')}</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {selectedPlants.map((plant, index) => (
               <View key={plant.name} style={styles.selectedPlantChip}>
@@ -436,7 +434,7 @@ export default function TerrariumBuilderScreen() {
         {/* Compatible Plants */}
         {canAddMore && (
           <>
-            <Text style={styles.sectionLabel}>{t('compatiblePlants') || 'Kompatibilis növények'}</Text>
+            <Text style={styles.sectionLabel}>{t('compatiblePlants')}</Text>
             {loading ? (
               <ActivityIndicator size="large" color="#388E3C" style={styles.loader} />
             ) : (
@@ -452,7 +450,7 @@ export default function TerrariumBuilderScreen() {
           style={styles.continueButton}
           onPress={() => setStep('summary')}
         >
-          <Text style={styles.continueButtonText}>{t('viewSummary') || 'Összesítő megtekintése'}</Text>
+          <Text style={styles.continueButtonText}>{t('viewSummary')}</Text>
           <Ionicons name="document-text" size={20} color="#fff" />
         </TouchableOpacity>
       </View>
@@ -465,19 +463,19 @@ export default function TerrariumBuilderScreen() {
     if (!summary) return null;
 
     const terrariumTypeLabels: Record<string, string> = {
-      zart: t('closed') || 'Zárt',
-      felzart: t('semiClosed') || 'Félzárt',
-      nyitott: t('open') || 'Nyitott',
+      zart: t('closed'),
+      felzart: t('semiClosed'),
+      nyitott: t('open'),
     };
 
     return (
       <ScrollView style={styles.stepContainer} showsVerticalScrollIndicator={false}>
-        <Text style={styles.stepTitle}>{t('yourTerrarium') || 'A Te Terráriumod'}</Text>
+        <Text style={styles.stepTitle}>{t('yourTerrarium')}</Text>
 
         {/* Selected Plants with Images */}
         <View style={styles.summarySection}>
           <Text style={styles.summaryLabel}>
-            <Ionicons name="leaf" size={18} color="#388E3C" /> {t('plants') || 'Növények'} ({selectedPlants.length})
+            <Ionicons name="leaf" size={18} color="#388E3C" /> {t('plants')} ({selectedPlants.length})
           </Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.summaryPlantsScroll}>
             {selectedPlants.map((plant, index) => (
@@ -504,7 +502,7 @@ export default function TerrariumBuilderScreen() {
         {/* Terrarium Type */}
         <View style={styles.summarySection}>
           <Text style={styles.summaryLabel}>
-            <Ionicons name="home" size={18} color="#388E3C" /> {t('terrariumType') || 'Terrárium típusa'}
+            <Ionicons name="home" size={18} color="#388E3C" /> {t('terrariumType')}
           </Text>
           <Text style={styles.summaryValue}>{terrariumTypeLabels[summary.terrariumType]}</Text>
         </View>
@@ -513,7 +511,7 @@ export default function TerrariumBuilderScreen() {
         {terrariumWarnings.length > 0 && (
           <View style={[styles.summarySection, styles.warningSection]}>
             <Text style={styles.summaryLabel}>
-              <Ionicons name="alert-circle" size={18} color="#FF5722" /> Figyelmeztetés
+              <Ionicons name="alert-circle" size={18} color="#FF5722" /> {t('warning')}
             </Text>
             {terrariumWarnings.map((warning, i) => (
               <Text key={i} style={styles.warningText}>{warning}</Text>
@@ -524,7 +522,7 @@ export default function TerrariumBuilderScreen() {
         {/* Substrate Recipe */}
         <View style={styles.summarySection}>
           <Text style={styles.summaryLabel}>
-            <Ionicons name="layers" size={18} color="#8B4513" /> {t('substrate') || 'Szubsztrát'}
+            <Ionicons name="layers" size={18} color="#8B4513" /> {t('substrate')}
           </Text>
           {substrateRecipe ? (
             <>
@@ -541,7 +539,7 @@ export default function TerrariumBuilderScreen() {
         {/* Light */}
         <View style={styles.summarySection}>
           <Text style={styles.summaryLabel}>
-            <Ionicons name="sunny" size={18} color="#FFC107" /> {t('lightRequirements') || 'Fényigény'}
+            <Ionicons name="sunny" size={18} color="#FFC107" /> {t('lightRequirements')}
           </Text>
           {summary.lightNeeds.slice(0, 3).map((light, i) => (
             <Text key={i} style={styles.summaryValue}>• {light}</Text>
@@ -551,7 +549,7 @@ export default function TerrariumBuilderScreen() {
         {/* Humidity */}
         <View style={styles.summarySection}>
           <Text style={styles.summaryLabel}>
-            <Ionicons name="water" size={18} color="#2196F3" /> {t('humidity') || 'Páratartalom'}
+            <Ionicons name="water" size={18} color="#2196F3" /> {t('humidity')}
           </Text>
           {summary.humidityNeeds.slice(0, 3).map((hum, i) => (
             <Text key={i} style={styles.summaryValue}>• {hum}</Text>
@@ -561,7 +559,7 @@ export default function TerrariumBuilderScreen() {
         {/* Care Tips */}
         <View style={styles.summarySection}>
           <Text style={styles.summaryLabel}>
-            <Ionicons name="hand-left" size={18} color="#9C27B0" /> {t('careTips') || 'Gondozási tippek'}
+            <Ionicons name="hand-left" size={18} color="#9C27B0" /> {t('careTips')}
           </Text>
           {summary.careTips.slice(0, 3).map((tip, i) => (
             <Text key={i} style={styles.summaryValue}>• {tip}</Text>
@@ -572,7 +570,7 @@ export default function TerrariumBuilderScreen() {
         {summary.potentialIssues.length > 0 && (
           <View style={styles.summarySection}>
             <Text style={styles.summaryLabel}>
-              <Ionicons name="warning" size={18} color="#FF5722" /> {t('watchOut') || 'Figyelj oda'}
+              <Ionicons name="warning" size={18} color="#FF5722" /> {t('watchOut')}
             </Text>
             {summary.potentialIssues.map((issue, i) => (
               <Text key={i} style={styles.summaryValueWarning}>• {issue}</Text>
@@ -590,7 +588,7 @@ export default function TerrariumBuilderScreen() {
           }}
         >
           <Ionicons name="refresh" size={20} color="#fff" />
-          <Text style={styles.continueButtonText}>{t('startOver') || 'Újrakezdés'}</Text>
+          <Text style={styles.continueButtonText}>{t('startOver')}</Text>
         </TouchableOpacity>
 
         <View style={{ height: 40 }} />
@@ -627,7 +625,7 @@ export default function TerrariumBuilderScreen() {
         }}>
           <Ionicons name="arrow-back" size={24} color="#2E7D32" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>{t('buildTerrarium') || 'Terrárium Építő'}</Text>
+        <Text style={styles.headerTitle}>{t('buildTerrarium')}</Text>
         <View style={styles.stepIndicator}>
           <Text style={styles.stepIndicatorText}>{getStepNumber()}/4</Text>
         </View>

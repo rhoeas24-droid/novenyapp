@@ -106,14 +106,24 @@ export default function HomeScreen() {
     >
       {/* Header with filters */}
       <View style={styles.header}>
-        {/* Build Terrarium Button */}
-        <TouchableOpacity
-          style={styles.buildButton}
-          onPress={() => router.push('/builder' as any)}
-        >
-          <Ionicons name="construct" size={20} color="#fff" />
-          <Text style={styles.buildButtonText}>{t('buildTerrarium')}</Text>
-        </TouchableOpacity>
+        {/* Action Buttons */}
+        <View style={styles.actionButtons}>
+          <TouchableOpacity
+            style={styles.buildButton}
+            onPress={() => router.push('/builder' as any)}
+          >
+            <Ionicons name="construct" size={20} color="#fff" style={{ marginRight: 8 }} />
+            <Text style={styles.buildButtonText}>{t('buildTerrarium')}</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.diagnosticButton}
+            onPress={() => router.push('/diagnostic' as any)}
+          >
+            <Ionicons name="medkit" size={20} color="#fff" style={{ marginRight: 8 }} />
+            <Text style={styles.buildButtonText}>{t('diagnosticTitle')}</Text>
+          </TouchableOpacity>
+        </View>
 
         <SearchBar
           value={searchQuery}
@@ -285,20 +295,40 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   buildButton: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#1B5E20',
     paddingVertical: 14,
-    paddingHorizontal: 20,
+    paddingHorizontal: 12,
     borderRadius: 12,
-    marginBottom: 16,
-    gap: 8,
+    marginRight: 5,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 4,
+  },
+  diagnosticButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#C62828',
+    paddingVertical: 14,
+    paddingHorizontal: 12,
+    borderRadius: 12,
+    marginLeft: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
+  },
+  actionButtons: {
+    flexDirection: 'row',
+    marginBottom: 16,
   },
   buildButtonText: {
     color: '#fff',

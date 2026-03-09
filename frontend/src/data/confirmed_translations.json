@@ -1,0 +1,134 @@
+{
+  "Pajzstetű": {
+    "en": "Woolly vine scale",
+    "el": "Ψώρα αμπελιού"
+  },
+  "pajzstetű": {
+    "en": "woolly vine scale",
+    "el": "ψώρα αμπελιού"
+  },
+  "Lisztestetű": {
+    "en": "Glasshouse whitefly",
+    "el": "Αλευρώδης θερμοκηπίου"
+  },
+  "lisztestetű": {
+    "en": "glasshouse whitefly",
+    "el": "αλευρώδης θερμοκηπίου"
+  },
+  "Lisztestű": {
+    "en": "Mealybug",
+    "el": "Κοκκοειδές"
+  },
+  "Levéltetű": {
+    "en": "Aphids",
+    "el": "Αφίδες"
+  },
+  "levéltetű": {
+    "en": "aphids",
+    "el": "αφίδες"
+  },
+  "Takácsatka": {
+    "en": "Spider mite",
+    "el": "Τετράνυχος"
+  },
+  "takácsatka": {
+    "en": "spider mite",
+    "el": "τετράνυχος"
+  },
+  "Gombalégy": {
+    "en": "Fungus gnat",
+    "el": "Μύκητο-κώνωπας"
+  },
+  "gombalégy": {
+    "en": "fungus gnat",
+    "el": "μύκητο-κώνωπας"
+  },
+  "Fehérlégy": {
+    "en": "Glasshouse whitefly",
+    "el": "Αλευρώδης θερμοκηπίου"
+  },
+  "Tripszek": {
+    "en": "Thrips",
+    "el": "Θρίπες"
+  },
+  "Tripsz": {
+    "en": "Thrips",
+    "el": "Θρίπες"
+  },
+  "Algásodás": {
+    "en": "Algae growth",
+    "el": "Ανάπτυξη φυκιών"
+  },
+  "algásodás": {
+    "en": "algae growth",
+    "el": "ανάπτυξη φυκιών"
+  },
+  "etiolál": {
+    "en": "etiolates",
+    "el": "εξασθενίζει"
+  },
+  "etiolált": {
+    "en": "etiolated",
+    "el": "εξασθενημένο"
+  },
+  "Etiolál": {
+    "en": "Etiolates",
+    "el": "Εξασθενίζει"
+  },
+  "pruinose": {
+    "en": "waxy surface",
+    "el": "κέρινη επιφάνεια"
+  },
+  "monokarp": {
+    "en": "monocarpic",
+    "el": "μονοκαρπικό"
+  },
+  "Monokarp": {
+    "en": "Monocarpic",
+    "el": "Μονοκαρπικό"
+  },
+  "frass": {
+    "en": "frass",
+    "el": "frass"
+  },
+  "offszet": {
+    "en": "offset",
+    "el": "παραφυάδα"
+  },
+  "offszetek": {
+    "en": "offsets",
+    "el": "παραφυάδες"
+  },
+  "Offszetek": {
+    "en": "Offsets",
+    "el": "Παραφυάδες"
+  },
+  "stolon": {
+    "en": "stolon",
+    "el": "στολονοφόρος βλαστός"
+  },
+  "ragacslapok": {
+    "en": "sticky traps",
+    "el": "κολλητικές παγίδες"
+  },
+  "Ragacslapok": {
+    "en": "Sticky traps",
+    "el": "Κολλητικές παγίδες"
+  },
+  "Neem olaj": {
+    "en": "Neem oil",
+    "el": "Λάδι νιμ"
+  },
+  "neem olaj": {
+    "en": "neem oil",
+    "el": "λάδι νιμ"
+  },
+  "inszeticid szappan": {
+    "en": "insecticidal soap",
+    "el": "εντομοκτόνο σαπούνι"
+  },
+  "fungicid": {
+    "en": "fungicide",
+    "el": "μυκητοκτόνο"
+  }
+}

@@ -72,8 +72,13 @@ export const translations = {
       'Moss & Selaginella': 'Mohák és Selaginella',
       'Succulents & Cacti': 'Pozsgások és Kaktuszok',
       'Carnivorous': 'Húsevő növények',
-      'Tillandsia': 'Tillandsia (Légynövények)',
+      'Tillandsia': 'Tillandsia',
     },
+    
+    // Terrarium badge abbreviations (shown on plant cards)
+    badgeClosed: 'Z',
+    badgeSemiClosed: 'F',
+    badgeOpen: 'N',
     
     // Settings
     language: 'Nyelv',
@@ -109,6 +114,18 @@ export const translations = {
     careTips: 'Gondozási tippek',
     watchOut: 'Figyelj oda',
     startOver: 'Újrakezdés',
+    
+    // Diagnostic
+    diagnosticTitle: 'Növény diagnózis',
+    selectPlantForDiagnosis: 'Melyik növény beteg?',
+    selectPlantHint: 'Válaszd ki a terráriumodból',
+    diagnoseThisPlant: 'Diagnosztika',
+    topDiagnosis: 'Legvalószínűbb',
+    diagnosisResult: 'Diagnózis eredmény',
+    startNewDiagnosis: 'Új diagnózis',
+    backToPlant: 'Vissza a növényhez',
+    questionProgress: 'Kérdés {n}/{total}',
+    questionsAnsweredLabel: 'kérdés megválaszolva',
   },
   
   en: {
@@ -182,6 +199,11 @@ export const translations = {
       'Tillandsia': 'Tillandsia (Air Plants)',
     },
     
+    // Terrarium badge abbreviations (shown on plant cards)
+    badgeClosed: 'C',
+    badgeSemiClosed: 'S',
+    badgeOpen: 'O',
+    
     // Settings
     language: 'Language',
     hungarian: 'Magyar',
@@ -216,6 +238,18 @@ export const translations = {
     careTips: 'Care Tips',
     watchOut: 'Watch Out For',
     startOver: 'Start Over',
+    
+    // Diagnostic
+    diagnosticTitle: 'Plant Diagnosis',
+    selectPlantForDiagnosis: 'Which plant is sick?',
+    selectPlantHint: 'Select from your terrarium',
+    diagnoseThisPlant: 'Diagnose',
+    topDiagnosis: 'Most likely',
+    diagnosisResult: 'Diagnosis Result',
+    startNewDiagnosis: 'New Diagnosis',
+    backToPlant: 'Back to Plant',
+    questionProgress: 'Question {n}/{total}',
+    questionsAnsweredLabel: 'questions answered',
   },
   
   el: {
@@ -286,8 +320,13 @@ export const translations = {
       'Moss & Selaginella': 'Βρύα & Σελαγινέλλα',
       'Succulents & Cacti': 'Παχύφυτα & Κάκτοι',
       'Carnivorous': 'Σαρκοφάγα Φυτά',
-      'Tillandsia': 'Τιλάντσια (Αερόφυτα)',
+      'Tillandsia': 'Tillandsia (Αερόφυτα)',
     },
+    
+    // Terrarium badge abbreviations (shown on plant cards)
+    badgeClosed: 'Κ',
+    badgeSemiClosed: 'Η',
+    badgeOpen: 'Α',
     
     // Settings
     language: 'Γλώσσα',
@@ -323,6 +362,18 @@ export const translations = {
     careTips: 'Συμβουλές Φροντίδας',
     watchOut: 'Προσοχή',
     startOver: 'Ξεκινήστε Ξανά',
+    
+    // Diagnostic
+    diagnosticTitle: 'Διάγνωση φυτού',
+    selectPlantForDiagnosis: 'Ποιο φυτό είναι άρρωστο;',
+    selectPlantHint: 'Επιλέξτε από το τεράριό σας',
+    diagnoseThisPlant: 'Διάγνωση',
+    topDiagnosis: 'Πιθανότερο',
+    diagnosisResult: 'Αποτέλεσμα διάγνωσης',
+    startNewDiagnosis: 'Νέα διάγνωση',
+    backToPlant: 'Πίσω στο φυτό',
+    questionProgress: 'Ερώτηση {n}/{total}',
+    questionsAnsweredLabel: 'ερωτήσεις απαντήθηκαν',
   },
 };
 

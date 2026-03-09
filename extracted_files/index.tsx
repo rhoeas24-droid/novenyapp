@@ -1,0 +1,339 @@
+import React, { useEffect, useCallback, useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  ScrollView,
+  RefreshControl,
+  TouchableOpacity,
+} from 'react-native';
+import { useRouter } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
+import { usePlantStore } from '../src/store/plantStore';
+import PlantCard from '../src/components/PlantCard';
+import FilterChip from '../src/components/FilterChip';
+import SearchBar from '../src/components/SearchBar';
+import { Plant } from '../src/api/client';
+import { useLanguage } from '../src/i18n/LanguageContext';
+
+export default function HomeScreen() {
+  const router = useRouter();
+  const insets = useSafeAreaInsets();
+  const [refreshing, setRefreshing] = useState(false);
+  const { t, tGroup, language } = useLanguage();
+
+  const TERRARIUM_TYPES = [
+    { id: 'zart', label: t('closed'), color: '#2E7D32' },
+    { id: 'felzart', label: t('semiClosed'), color: '#689F38' },
+    { id: 'nyitott', label: t('open'), color: '#AFB42B' },
+  ] as const;
+
+  const {
+    plants,
+    groups,
+    loading,
+    error,
+    searchQuery,
+    selectedGroup,
+    selectedTerrariumType,
+    setSearchQuery,
+    setSelectedGroup,
+    setSelectedTerrariumType,
+    fetchPlants,
+    fetchGroups,
+  } = usePlantStore();
+
+  useEffect(() => {
+    fetchGroups();
+    fetchPlants();
+  }, []);
+
+  // Reload data when language changes
+  useEffect(() => {
+    fetchGroups();
+    fetchPlants();
+  }, [language]);
+
+  useEffect(() => {
+    const debounce = setTimeout(() => {
+      fetchPlants();
+    }, 300);
+    return () => clearTimeout(debounce);
+  }, [searchQuery, selectedGroup, selectedTerrariumType]);
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    await fetchPlants();
+    setRefreshing(false);
+  }, []);
+
+  const handlePlantPress = (plant: Plant) => {
+    router.push(`/plant/${encodeURIComponent(plant.name)}`);
+  };
+
+  if (loading && plants.length === 0) {
+    return (
+      <View style={styles.centered}>
+        <ActivityIndicator size="large" color="#388E3C" />
+        <Text style={styles.loadingText}>{t('loadingPlants')}</Text>
+      </View>
+    );
+  }
+
+  if (error && plants.length === 0) {
+    return (
+      <View style={styles.centered}>
+        <Text style={styles.errorText}>{t('errorLoading')}</Text>
+      </View>
+    );
+  }
+
+  return (
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + 20 }]}
+      showsVerticalScrollIndicator={false}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          colors={['#388E3C']}
+          tintColor="#388E3C"
+        />
+      }
+    >
+      {/* Header with filters */}
+      <View style={styles.header}>
+        {/* Action Buttons */}
+        <View style={styles.actionButtons}>
+          <TouchableOpacity
+            style={styles.buildButton}
+            onPress={() => router.push('/builder' as any)}
+          >
+            <Ionicons name="construct" size={20} color="#fff" />
+            <Text style={styles.buildButtonText}>{t('buildTerrarium')}</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.diagnosticButton}
+            onPress={() => router.push('/diagnostic' as any)}
+          >
+            <Ionicons name="medkit" size={20} color="#fff" />
+            <Text style={styles.buildButtonText}>{t('diagnosticTitle')}</Text>
+          </TouchableOpacity>
+        </View>
+
+        <SearchBar
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          placeholder={t('searchPlaceholder')}
+        />
+
+        {/* Terrarium Type Filter */}
+        <Text style={styles.filterLabel}>{t('terrariumType')}</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.filterRow}
+          contentContainerStyle={styles.filterRowContent}
+        >
+          <FilterChip
+            label={t('all')}
+            selected={selectedTerrariumType === null}
+            onPress={() => setSelectedTerrariumType(null)}
+            color="#666"
+          />
+          {TERRARIUM_TYPES.map((type) => (
+            <FilterChip
+              key={type.id}
+              label={type.label}
+              selected={selectedTerrariumType === type.id}
+              onPress={() =>
+                setSelectedTerrariumType(
+                  selectedTerrariumType === type.id ? null : type.id
+                )
+              }
+              color={type.color}
+            />
+          ))}
+        </ScrollView>
+
+        {/* Group Filter */}
+        <Text style={styles.filterLabel}>{t('plantGroup')}</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.filterRow}
+          contentContainerStyle={styles.filterRowContent}
+        >
+          <FilterChip
+            label={t('all')}
+            selected={selectedGroup === null}
+            onPress={() => setSelectedGroup(null)}
+            color="#666"
+          />
+          {groups.map((group) => (
+            <FilterChip
+              key={group.id}
+              label={tGroup(group.id)}
+              selected={selectedGroup === group.id}
+              onPress={() =>
+                setSelectedGroup(selectedGroup === group.id ? null : group.id)
+              }
+              color="#388E3C"
+            />
+          ))}
+        </ScrollView>
+
+        <View style={styles.resultCount}>
+          <Text style={styles.resultText}>
+            {plants.length} {t('plants')}{' '}
+            {selectedTerrariumType && (
+              <Text style={styles.filterActive}>
+                ({TERRARIUM_TYPES.find(type => type.id === selectedTerrariumType)?.label} {t('intoTerrarium')})
+              </Text>
+            )}
+          </Text>
+        </View>
+      </View>
+
+      {/* Plant Grid */}
+      {plants.length > 0 ? (
+        <View style={styles.plantsGrid}>
+          {plants.map((plant) => (
+            <PlantCard
+              key={plant._id}
+              plant={plant}
+              onPress={() => handlePlantPress(plant)}
+            />
+          ))}
+        </View>
+      ) : (
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyText}>{t('noResults')}</Text>
+          <Text style={styles.emptySubtext}>{t('tryOtherFilters')}</Text>
+        </View>
+      )}
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f8f9fa',
+  },
+  scrollContent: {
+    flexGrow: 1,
+  },
+  header: {
+    paddingHorizontal: 16,
+    paddingTop: 16,
+  },
+  filterLabel: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: '#666',
+    marginBottom: 8,
+    marginTop: 8,
+  },
+  filterRow: {
+    marginBottom: 4,
+  },
+  filterRowContent: {
+    paddingRight: 16,
+  },
+  resultCount: {
+    marginTop: 16,
+    marginBottom: 8,
+  },
+  resultText: {
+    fontSize: 14,
+    color: '#666',
+  },
+  filterActive: {
+    color: '#388E3C',
+    fontWeight: '500',
+  },
+  plantsGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+  },
+  centered: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f8f9fa',
+  },
+  loadingText: {
+    marginTop: 12,
+    fontSize: 15,
+    color: '#666',
+  },
+  errorText: {
+    fontSize: 15,
+    color: '#d32f2f',
+    textAlign: 'center',
+    paddingHorizontal: 32,
+  },
+  emptyContainer: {
+    paddingVertical: 60,
+    alignItems: 'center',
+  },
+  emptyText: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#666',
+  },
+  emptySubtext: {
+    fontSize: 14,
+    color: '#999',
+    marginTop: 8,
+  },
+  buildButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#1B5E20',
+    paddingVertical: 14,
+    paddingHorizontal: 12,
+    borderRadius: 12,
+    gap: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
+  },
+  diagnosticButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#C62828',
+    paddingVertical: 14,
+    paddingHorizontal: 12,
+    borderRadius: 12,
+    gap: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
+  },
+  actionButtons: {
+    flexDirection: 'row',
+    gap: 10,
+    marginBottom: 16,
+  },
+  buildButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+});
