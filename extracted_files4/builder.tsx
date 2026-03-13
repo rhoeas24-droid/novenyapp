@@ -15,7 +15,7 @@ import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
-import { cacheDirectory, moveAsync } from 'expo-file-system/legacy';
+import * as FileSystem from 'expo-file-system';
 import { useLanguage } from '../src/i18n/LanguageContext';
 import { Plant, getPlants, getSubstrateCompatiblePlants } from '../src/api/client';
 
@@ -744,8 +744,8 @@ export default function TerrariumBuilderScreen() {
     try {
       const { uri } = await Print.printToFileAsync({ html, base64: false });
       const fileName = `Terrarium_${new Date().toISOString().slice(0, 10)}.pdf`;
-      const newUri = `${cacheDirectory}${fileName}`;
-      await moveAsync({ from: uri, to: newUri });
+      const newUri = `${FileSystem.cacheDirectory}${fileName}`;
+      await FileSystem.moveAsync({ from: uri, to: newUri });
       
       if (await Sharing.isAvailableAsync()) {
         await Sharing.shareAsync(newUri, { 
