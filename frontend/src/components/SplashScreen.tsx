@@ -160,11 +160,6 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
             )}
           </View>
         )}
-
-        {/* Subtitle */}
-        <Animated.Text style={[styles.subtitle, { opacity: subtitleFade }]}>
-          {t('splashSubtitle')}
-        </Animated.Text>
       </View>
 
       {/* Gold sparkles */}
