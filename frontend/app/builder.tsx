@@ -576,26 +576,10 @@ export default function TerrariumBuilderScreen() {
       id: Date.now().toString(),
       createdAt: new Date().toISOString(),
       container,
-      // Save plant data WITHOUT image_base64 to keep AsyncStorage small
+      // Save only essential plant data to keep AsyncStorage small
       plants: selectedPlants.map(p => ({
         name: p.name,
         common: p.common,
-        family: p.family,
-        light: p.light,
-        temp: p.temp,
-        humidity: p.humidity,
-        maintenance: p.maintenance,
-        diseases: p.diseases,
-        substrate_group: p.substrate_group,
-        group: p.group,
-        role: p.role,
-        propagation: p.propagation,
-        avoid: p.avoid,
-        cyprus: p.cyprus,
-        height_cm: p.height_cm,
-        spread_cm: p.spread_cm,
-        // image_base64 intentionally excluded — too large for AsyncStorage
-        // images are loaded from the bundled plant data when needed
       })),
       summary: {
         terrariumType: summary.terrariumType,
@@ -609,9 +593,12 @@ export default function TerrariumBuilderScreen() {
 
     try {
       const existing = await AsyncStorage.getItem('saved_terrariums');
+      console.log('Save: existing data:', existing ? 'Found' : 'Empty');
       const list = existing ? JSON.parse(existing) : [];
       list.unshift(terrarium);
+      console.log('Save: new list length:', list.length);
       await AsyncStorage.setItem('saved_terrariums', JSON.stringify(list));
+      console.log('Save: successfully saved to AsyncStorage');
       Alert.alert(
         t('saved') || 'Mentve',
         t('terrariumSaved') || 'A terrárium elmentve a Terráriumaim listába.',

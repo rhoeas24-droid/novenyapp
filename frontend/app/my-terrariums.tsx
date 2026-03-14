@@ -131,10 +131,17 @@ export default function MyTerrariumsScreen() {
   const loadTerrariums = async () => {
     try {
       const data = await AsyncStorage.getItem('saved_terrariums');
-      if (data) setTerrariums(JSON.parse(data));
-      else setTerrariums([]);
+      console.log('Loaded terrariums data:', data ? 'Found' : 'Empty');
+      if (data) {
+        const parsed = JSON.parse(data);
+        console.log('Parsed terrariums count:', parsed.length);
+        setTerrariums(parsed);
+      } else {
+        setTerrariums([]);
+      }
     } catch (e) {
       console.error('Load error:', e);
+      setTerrariums([]);
     }
   };
 
