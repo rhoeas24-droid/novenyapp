@@ -491,14 +491,6 @@ async def get_substrate_compatible_plants(
     substrate_rules = SUBSTRATE_COMPATIBILITY.get(base_substrate, {})
     compatible_substrates = substrate_rules.get('compatible_with', [base_substrate])
     
-    # Special case: Tillandsia can be combined with ANY plant that matches
-    # its environmental requirements (terrarium type, humidity, light)
-    # The substrate will be determined by the first non-Tillandsia plant
-    is_tillandsia = base_substrate == 'tillandsia'
-    if is_tillandsia:
-        # Tillandsia is flexible on substrate - can go with any
-        compatible_substrates = list(SUBSTRATE_COMPATIBILITY.keys())
-    
     # Check terrarium type compatibility
     warnings = []
     if terrarium_type:
@@ -517,7 +509,7 @@ async def get_substrate_compatible_plants(
             else:
                 warnings.append(f"Note: {plant['name']} would do better in a {'closed' if 'zart' in ideal else 'open'} terrarium.")
     
-    # Get substrate recipe - for Tillandsia, show info that substrate depends on other plants
+    # Get substrate recipe
     recipe = SUBSTRATE_RECIPES.get(base_substrate, {})
     recipe_name = recipe.get(f'name_{lang}', recipe.get('name_hu', base_substrate))
     recipe_text = recipe.get(f'recipe_{lang}', recipe.get('recipe_hu', ''))
@@ -543,19 +535,6 @@ async def get_substrate_compatible_plants(
     base_light = plant.get('light_level', 'medium')
     
     for other in all_plants:
-        # For Tillandsia, also check humidity range overlap
-        if is_tillandsia:
-            other_humidity_min = other.get('humidity_min', 50)
-            other_humidity_max = other.get('humidity_max', 70)
-            
-            # Check if humidity ranges overlap reasonably
-            overlap_min = max(base_humidity_min, other_humidity_min)
-            overlap_max = min(base_humidity_max, other_humidity_max)
-            
-            # Skip if no humidity overlap or very small overlap
-            if overlap_max - overlap_min < 10:
-                continue
-        
         score = calculate_compatibility_score(plant, other, terrarium_type)
         if score >= 30:
             other['_id'] = str(other['_id'])
