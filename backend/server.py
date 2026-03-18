@@ -415,80 +415,56 @@ async def reset_database():
 # Keys MUST match the substrate_group values in plant_database.json
 SUBSTRATE_COMPATIBILITY = {
     "succulent": {
-        "compatible_with": ["succulent", "tillandsia"],
+        "compatible_with": ["succulent", "cactus"],
+        "ideal_terrarium": ["nyitott"],
+        "acceptable_terrarium": ["felzart"],
+        "avoid_terrarium": ["zart"]
+    },
+    "cactus": {
+        "compatible_with": ["cactus", "succulent"],
         "ideal_terrarium": ["nyitott"],
         "acceptable_terrarium": ["felzart"],
         "avoid_terrarium": ["zart"]
     },
     "foliage": {
-        "compatible_with": ["foliage", "moss_both", "tillandsia"],
+        "compatible_with": ["foliage"],
         "ideal_terrarium": ["zart", "felzart"],
         "acceptable_terrarium": ["nyitott"],
         "avoid_terrarium": []
     },
     "carnivorous": {
-        "compatible_with": ["carnivorous", "sphagnum_acidic"],
+        "compatible_with": ["carnivorous"],
         "ideal_terrarium": ["zart"],
         "acceptable_terrarium": ["felzart"],
         "avoid_terrarium": ["nyitott"]
-    },
-    "moss_both": {
-        "compatible_with": ["foliage", "moss_both"],
-        "ideal_terrarium": ["zart"],
-        "acceptable_terrarium": ["felzart"],
-        "avoid_terrarium": ["nyitott"]
-    },
-    "sphagnum_acidic": {
-        "compatible_with": ["carnivorous", "sphagnum_acidic"],
-        "ideal_terrarium": ["zart"],
-        "acceptable_terrarium": [],
-        "avoid_terrarium": ["felzart", "nyitott"]
-    },
-    "tillandsia": {
-        "compatible_with": ["tillandsia", "succulent", "foliage"],
-        "ideal_terrarium": ["felzart", "nyitott"],
-        "acceptable_terrarium": ["zart"],
-        "avoid_terrarium": []
     }
 }
 
 # Substrate recipes
 SUBSTRATE_RECIPES = {
-    "succulent": {
-        "name_hu": "Szukkulens szubsztrát",
-        "name_en": "Succulent substrate",
-        "recipe_hu": "40% perlit/pumice + 30% durva homok + 20% akvárium kavics + 10% kókuszrost",
-        "recipe_en": "40% perlite/pumice + 30% coarse sand + 20% aquarium gravel + 10% coco coir"
-    },
     "foliage": {
-        "name_hu": "Lombos szubsztrát",
-        "name_en": "Foliage substrate",
-        "recipe_hu": "40% kókuszrost + 30% sphagnum tőzeg + 20% perlit + 10% aktív szén",
-        "recipe_en": "40% coco coir + 30% sphagnum peat + 20% perlite + 10% activated charcoal"
+        "name_hu": "Trópusi lombozat mix",
+        "name_en": "Tropical foliage mix",
+        "recipe_hu": "2 rész kókusztőzeg, 1 rész homok, 1 rész semleges kertészeti tőzeg, 1 rész fenyőkéreg, ¾ rész aquasoil, ¾ rész gilisztahumusz, ½ rész aktív szén. Ugróvillásokat (Collembola) adj hozzá penészmegelőzésként.",
+        "recipe_en": "2 parts coco peat, 1 part sand, 1 part neutral horticultural peat, 1 part pine bark, ¾ part aquasoil, ¾ part worm castings, ½ part activated charcoal. Add springtails (Collembola) for mold prevention."
     },
     "carnivorous": {
-        "name_hu": "Húsevő szubsztrát",
-        "name_en": "Carnivorous substrate",
-        "recipe_hu": "60% sphagnum tőzeg + 40% perlit (NE használj trágyát!)",
-        "recipe_en": "60% sphagnum peat + 40% perlite (NO fertilizer!)"
+        "name_hu": "Húsevő mix",
+        "name_en": "Carnivorous mix",
+        "recipe_hu": "50% savas kertészeti tőzeg, 50% szilika homok vagy perlit. Felső réteg: élő sphagnum szőnyeg. Ugróvillásokat (Collembola) adj hozzá penészmegelőzésként.",
+        "recipe_en": "50% acidic horticultural peat, 50% silica sand or perlite. Top layer: live sphagnum carpet. Add springtails (Collembola) for mold prevention."
     },
-    "moss_both": {
-        "name_hu": "Moha szubsztrát",
-        "name_en": "Moss substrate",
-        "recipe_hu": "50% sphagnum tőzeg + 30% kókuszrost + 20% perlit",
-        "recipe_en": "50% sphagnum peat + 30% coco coir + 20% perlite"
+    "succulent": {
+        "name_hu": "Pozsgás mix",
+        "name_en": "Succulent mix",
+        "recipe_hu": "30% horzsakő, 25% lávaőrlemény, 20% perlit, 15% durva homok, 5% gilisztahumusz, 5% semleges kertészeti tőzeg vagy kókusz",
+        "recipe_en": "30% pumice, 25% lava rock, 20% perlite, 15% coarse sand, 5% worm castings, 5% neutral peat or coco"
     },
-    "sphagnum_acidic": {
-        "name_hu": "Savas moha szubsztrát",
-        "name_en": "Acidic sphagnum substrate",
-        "recipe_hu": "80% élő/száraz sphagnum + 20% perlit",
-        "recipe_en": "80% live/dried sphagnum + 20% perlite"
-    },
-    "tillandsia": {
-        "name_hu": "Tillandsia (szubsztrát nélkül)",
-        "name_en": "Tillandsia (no substrate)",
-        "recipe_hu": "Nincs szükség - rögzítsd fára, kőre vagy dróthoz",
-        "recipe_en": "No substrate - mount on wood, rock or wire"
+    "cactus": {
+        "name_hu": "Kaktusz mix",
+        "name_en": "Cactus mix",
+        "recipe_hu": "35% horzsakő, 30% lávaőrlemény, 20% homok, 10% perlit, 5% gilisztahumusz",
+        "recipe_en": "35% pumice, 30% lava rock, 20% sand, 10% perlite, 5% worm castings"
     }
 }
 

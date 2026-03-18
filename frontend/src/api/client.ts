@@ -65,15 +65,10 @@ const allPlants: Plant[] = plantsData as Plant[];
 
 // Compatibility rules (embedded for offline use)
 const SUBSTRATE_COMPATIBILITY: Record<string, string[]> = {
-  'foliage': ['foliage', 'moss_both', 'tropical_aroid'],
-  'tropical_aroid': ['tropical_aroid', 'foliage', 'moss_both'],
-  'moss_both': ['moss_both', 'foliage', 'tropical_aroid', 'sphagnum_acidic'],
-  'sphagnum_acidic': ['sphagnum_acidic', 'moss_both', 'carnivorous'],
-  'carnivorous': ['carnivorous', 'sphagnum_acidic'],
+  'foliage': ['foliage'],
+  'carnivorous': ['carnivorous'],
   'succulent': ['succulent', 'cactus'],
   'cactus': ['cactus', 'succulent'],
-  'tillandsia': ['tillandsia', 'epiphyte'],
-  'epiphyte': ['epiphyte', 'tillandsia', 'tropical_aroid'],
 };
 
 // Check substrate compatibility
@@ -246,39 +241,19 @@ export const getSubstrateCompatiblePlants = async (
   const substrateRecipes: Record<string, { name: string; recipe: string }> = {
     'foliage': {
       name: 'Trópusi lombozat mix',
-      recipe: '40% tőzeg, 30% perlit, 20% kókuszrost, 10% faszén',
-    },
-    'tropical_aroid': {
-      name: 'Aroid mix',
-      recipe: '30% kéreg, 30% perlit, 20% tőzeg, 10% faszén, 10% sphagnum',
-    },
-    'moss_both': {
-      name: 'Moha mix',
-      recipe: '50% sphagnum, 30% tőzeg, 20% perlit',
-    },
-    'sphagnum_acidic': {
-      name: 'Savas sphagnum mix',
-      recipe: '70% sphagnum, 20% tőzeg, 10% perlit (pH 4-5)',
+      recipe: '2 rész kókusztőzeg, 1 rész homok, 1 rész semleges kertészeti tőzeg, 1 rész fenyőkéreg, ¾ rész aquasoil, ¾ rész gilisztahumusz, ½ rész aktív szén. Zárt/félzárt terráriumba ugróvillásokat (Collembola) is adj hozzá penészmegelőzésként.',
     },
     'carnivorous': {
       name: 'Húsevő mix',
-      recipe: '50% sphagnum, 50% perlit (tiszta, tápanyagmentes!)',
+      recipe: '50% savas kertészeti tőzeg, 50% szilika homok vagy perlit (drénezés és levegőztetés). Felső réteg: élő sphagnum szőnyeg a szubsztrát takarására. Ugróvillásokat (Collembola) adj hozzá penészmegelőzésként.',
     },
     'succulent': {
       name: 'Pozsgás mix',
-      recipe: '50% homok, 30% perlit, 20% föld',
+      recipe: '30% horzsakő, 25% lávaőrlemény, 20% perlit, 15% durva homok, 5% gilisztahumusz, 5% semleges kertészeti tőzeg vagy kókusz',
     },
     'cactus': {
       name: 'Kaktusz mix',
-      recipe: '60% homok, 25% perlit, 15% föld',
-    },
-    'tillandsia': {
-      name: 'Léggyökeres (nincs szubsztrát)',
-      recipe: 'Rögzítés fára vagy kőre, rendszeres permetezés',
-    },
-    'epiphyte': {
-      name: 'Epifita mix',
-      recipe: '60% kéreg, 20% sphagnum, 20% perlit',
+      recipe: '35% horzsakő, 30% lávaőrlemény, 20% homok, 10% perlit, 5% gilisztahumusz',
     },
   };
   

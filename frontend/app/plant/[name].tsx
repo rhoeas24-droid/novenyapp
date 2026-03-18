@@ -18,6 +18,14 @@ import { Plant, getPlantDetail, getCompatiblePlants } from '../../src/api/client
 
 const HERO_HEIGHT = 250;
 
+// Substrate group → recipe lookup
+const SUBSTRATE_RECIPES: Record<string, { name: string; recipe: string }> = {
+  'foliage': { name: 'Trópusi lombozat mix', recipe: '2 rész kókusztőzeg, 1 rész homok, 1 rész semleges kertészeti tőzeg, 1 rész fenyőkéreg, ¾ rész aquasoil, ¾ rész gilisztahumusz, ½ rész aktív szén. Zárt/félzárt terráriumba ugróvillásokat (Collembola) is adj hozzá penészmegelőzésként.' },
+  'carnivorous': { name: 'Húsevő mix', recipe: '50% savas kertészeti tőzeg, 50% szilika homok vagy perlit (drénezés és levegőztetés). Felső réteg: élő sphagnum szőnyeg a szubsztrát takarására. Ugróvillásokat (Collembola) adj hozzá penészmegelőzésként.' },
+  'succulent': { name: 'Pozsgás mix', recipe: '30% horzsakő, 25% lávaőrlemény, 20% perlit, 15% durva homok, 5% gilisztahumusz, 5% semleges kertészeti tőzeg vagy kókusz' },
+  'cactus': { name: 'Kaktusz mix', recipe: '35% horzsakő, 30% lávaőrlemény, 20% homok, 10% perlit, 5% gilisztahumusz' },
+};
+
 export default function PlantDetailScreen() {
   const params = useGlobalSearchParams();
   const name = params.name as string;
@@ -249,6 +257,19 @@ export default function PlantDetailScreen() {
                   <View style={styles.infoContent}>
                     <Text style={styles.infoLabel}>{t('substrate')}</Text>
                     <Text style={styles.infoValue}>{selectedPlant.substrate_notes}</Text>
+                  </View>
+                </View>
+              )}
+
+              {/* Substrate recipe based on group */}
+              {selectedPlant.substrate_group && SUBSTRATE_RECIPES[selectedPlant.substrate_group] && (
+                <View style={styles.infoRow}>
+                  <Ionicons name="flask" size={20} color="#6D4C41" />
+                  <View style={styles.infoContent}>
+                    <Text style={styles.infoLabel}>{SUBSTRATE_RECIPES[selectedPlant.substrate_group].name}</Text>
+                    <Text style={[styles.infoValue, { fontStyle: 'italic', color: '#6D4C41' }]}>
+                      {SUBSTRATE_RECIPES[selectedPlant.substrate_group].recipe}
+                    </Text>
                   </View>
                 </View>
               )}
