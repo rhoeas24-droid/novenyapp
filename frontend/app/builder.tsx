@@ -8,6 +8,8 @@ import {
   Image,
   ActivityIndicator,
   Alert,
+  Modal,
+  TextInput,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -234,14 +236,24 @@ export default function TerrariumBuilderScreen() {
     selectedPlants.forEach(p => {
       const parsed = parseLightLevel(p.light || '');
       lightLevelMin = Math.max(lightLevelMin, parsed.level);
-      lightLevelMax = Math.min(lightLevelMax, parsed.level); // not useful for range, we use max of mins
+      lightLevelMax = Math.min(lightLevelMax, parsed.level);
       lightHoursMin = Math.max(lightHoursMin, parsed.minH);
       lightHoursMax = Math.min(lightHoursMax, parsed.maxH);
     });
-    if (lightHoursMin > lightHoursMax) lightHoursMax = lightHoursMin + 1;
+    // If intersection is too narrow or inverted, use the average range
+    if (lightHoursMin >= lightHoursMax) {
+      const allMin = selectedPlants.map(p => parseLightLevel(p.light || '').minH);
+      const allMax = selectedPlants.map(p => parseLightLevel(p.light || '').maxH);
+      lightHoursMin = Math.round(allMin.reduce((a,b)=>a+b,0) / allMin.length);
+      lightHoursMax = Math.round(allMax.reduce((a,b)=>a+b,0) / allMax.length);
+      if (lightHoursMin >= lightHoursMax) lightHoursMax = lightHoursMin + 1;
+    }
     // Build a human-readable light recommendation
     const lightLabels = ['', 'Low-indirect', 'Indirect', 'Bright indirect', 'Bright indirect-direct', 'Bright-direct'];
     const unifiedLightLabel = lightLabels[Math.min(lightLevelMin, 5)] || 'Indirect';
+    const unifiedLightHours = lightHoursMin === lightHoursMax 
+      ? `${lightHoursMin} h` 
+      : `${lightHoursMin}–${lightHoursMax} h`;
 
     // --- Watering note based on terrarium type ---
     let wateringNote = '';
@@ -309,7 +321,7 @@ export default function TerrariumBuilderScreen() {
       terrariumType: userType,
       humidityMin: humMin,
       humidityMax: humMax,
-      unifiedLight: `${unifiedLightLabel}, ${lightHoursMin}–${lightHoursMax} h`,
+      unifiedLight: `${unifiedLightLabel}, ${unifiedLightHours}`,
       wateringNote,
       perPlantCare,
       perPlantIssues,
@@ -637,21 +649,49 @@ export default function TerrariumBuilderScreen() {
   };
 
   // --- Save terrarium to AsyncStorage ---
+  // State for name input modal
+  const [showNameModal, setShowNameModal] = useState(false);
+  const [terrariumName, setTerrariumName] = useState('');
+
   const saveTerrarium = useCallback(async () => {
     const summary = calculateSummary();
     if (!summary) {
       console.error('Save: calculateSummary returned null');
       return;
     }
+    // Show naming modal
+    setTerrariumName('');
+    setShowNameModal(true);
+  }, [calculateSummary]);
+
+  const confirmSaveTerrarium = useCallback(async () => {
+    const summary = calculateSummary();
+    if (!summary) return;
+    setShowNameModal(false);
 
     const terrarium = {
       id: Date.now().toString(),
+      name: terrariumName.trim() || `Terrárium ${new Date().toLocaleDateString()}`,
       createdAt: new Date().toISOString(),
       container,
-      // Save only essential plant data to keep AsyncStorage small
       plants: selectedPlants.map(p => ({
         name: p.name,
         common: p.common,
+        family: p.family,
+        light: p.light,
+        temp: p.temp,
+        humidity: p.humidity,
+        maintenance: p.maintenance,
+        diseases: p.diseases,
+        substrate_group: p.substrate_group,
+        group: p.group,
+        role: p.role,
+        propagation: p.propagation,
+        avoid: p.avoid,
+        cyprus: p.cyprus,
+        height_cm: p.height_cm,
+        spread_cm: p.spread_cm,
+        // image_base64 intentionally excluded — too large for AsyncStorage
       })),
       summary: {
         terrariumType: summary.terrariumType,
@@ -665,12 +705,9 @@ export default function TerrariumBuilderScreen() {
 
     try {
       const existing = await AsyncStorage.getItem('saved_terrariums');
-      console.log('Save: existing data:', existing ? 'Found' : 'Empty');
       const list = existing ? JSON.parse(existing) : [];
       list.unshift(terrarium);
-      console.log('Save: new list length:', list.length);
       await AsyncStorage.setItem('saved_terrariums', JSON.stringify(list));
-      console.log('Save: successfully saved to AsyncStorage');
       Alert.alert(
         t('saved') || 'Mentve',
         t('terrariumSaved') || 'A terrárium elmentve a Terráriumaim listába.',
@@ -679,7 +716,7 @@ export default function TerrariumBuilderScreen() {
       console.error('Save error:', e);
       Alert.alert('Hiba', 'Nem sikerült menteni. Próbáld újra.');
     }
-  }, [calculateSummary, container, selectedPlants, substrateRecipe, t]);
+  }, [calculateSummary, container, selectedPlants, substrateRecipe, t, terrariumName]);
 
   // --- Helper: generate full HTML plant profile ---
   const plantProfileHtml = (p: Plant): string => {
@@ -1034,6 +1071,31 @@ export default function TerrariumBuilderScreen() {
       {step === 'firstPlant' && renderFirstPlantStep()}
       {step === 'addPlants' && renderAddPlantsStep()}
       {step === 'summary' && renderSummaryStep()}
+
+      {/* Name input modal */}
+      <Modal visible={showNameModal} transparent animationType="fade">
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalBox}>
+            <Text style={styles.modalTitle}>{t('nameYourTerrarium') || 'Nevezd el a terráriumod'}</Text>
+            <TextInput
+              style={styles.modalInput}
+              value={terrariumName}
+              onChangeText={setTerrariumName}
+              placeholder={t('enterTerrariumName') || 'Adj egy nevet...'}
+              placeholderTextColor="#999"
+              autoFocus
+            />
+            <View style={styles.modalButtons}>
+              <TouchableOpacity style={styles.modalCancel} onPress={() => setShowNameModal(false)}>
+                <Text style={{ color: '#666' }}>{t('cancel') || 'Mégsem'}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.modalSave} onPress={confirmSaveTerrarium}>
+                <Text style={{ color: '#fff', fontWeight: '600' }}>{t('saveTerrarium') || 'Mentés'}</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -1319,5 +1381,54 @@ const styles = StyleSheet.create({
     marginTop: 6,
     fontStyle: 'italic',
     lineHeight: 20,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
+  },
+  modalBox: {
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    padding: 24,
+    width: '100%',
+    maxWidth: 340,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#1B5E20',
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  modalInput: {
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+    borderRadius: 10,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    fontSize: 16,
+    color: '#333',
+    marginBottom: 20,
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  modalCancel: {
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 10,
+    alignItems: 'center',
+    backgroundColor: '#F5F5F5',
+  },
+  modalSave: {
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 10,
+    alignItems: 'center',
+    backgroundColor: '#1B5E20',
   },
 });
