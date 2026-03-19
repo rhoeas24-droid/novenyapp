@@ -142,12 +142,29 @@ const calculateCompatibilityScore = (basePlant: Plant, candidatePlant: Plant, te
 };
 
 // Get plants with filtering (OFFLINE)
+// Helper: categorize plant light level
+const getLightCategory = (light: string): string => {
+  const l = light.toLowerCase();
+  if (l.startsWith('low')) return 'low';
+  if (l.startsWith('indirect') || l.startsWith('indirect')) return 'medium';
+  return 'high'; // bright indirect, bright-direct, etc.
+};
+
+// Helper: get optimal temp range from temp string like "18–30°C (opt. 20–26°C)"
+const getOptimalTemp = (temp: string): { min: number; max: number } | null => {
+  const m = temp.match(/opt\.\s*(\d+)[–-](\d+)/);
+  if (m) return { min: parseInt(m[1]), max: parseInt(m[2]) };
+  return null;
+};
+
 export const getPlants = async (
   group?: string,
   terrariumType?: string,
   search?: string,
   _forceRefresh = false,
-  _language?: string
+  _language?: string,
+  lightPref?: string,
+  tempPref?: string
 ): Promise<{ plants: Plant[]; total: number }> => {
   let plants = [...allPlants];
   
@@ -170,6 +187,26 @@ export const getPlants = async (
     plants = plants.filter((p) => {
       const value = p[field as keyof Plant];
       return value === '✓' || value === '~';
+    });
+  }
+
+  // Light preference filter
+  if (lightPref && lightPref !== 'any') {
+    plants = plants.filter((p) => {
+      const cat = getLightCategory(p.light || '');
+      return cat === lightPref;
+    });
+  }
+
+  // Temperature preference filter
+  if (tempPref && tempPref !== 'any') {
+    plants = plants.filter((p) => {
+      const opt = getOptimalTemp(p.temp || '');
+      if (!opt) return true; // keep if no data
+      if (tempPref === 'cool') return opt.max <= 22; // opt range ends at or below 22
+      if (tempPref === 'room') return opt.min >= 15 && opt.max <= 26; // standard room
+      if (tempPref === 'warm') return opt.min >= 20; // warm-loving
+      return true;
     });
   }
   
